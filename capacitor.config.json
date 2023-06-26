@@ -1,0 +1,6 @@
+{
+  "appId": "it.poggioalleforche",
+  "appName": "PoggioAlleForche",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
