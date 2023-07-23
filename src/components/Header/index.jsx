@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
+// import logo from '../../assets/logo.svg';
 import routes from '../../utils/routes';
 import { GoBack, Logo } from './styles';
 
@@ -18,14 +18,14 @@ const Header = () => {
 
   return (
     <header className="rpx-4 py-6 w-full flex items-center justify-center">
-      {!isHomepage && <GoBack color="white" size={30} onClick={handleClickBackBtn} />}
+      {/* {!isHomepage && <GoBack color="white" size={30} onClick={handleClickBackBtn} />}
       <Logo
         src={logo}
         alt="logo"
         className="min-h-[29px]"
         onClick={handleClickLogo}
         $isHomepage={isHomepage}
-      />
+      /> */}
     </header>
   );
 };
