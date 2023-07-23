@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '../../layouts';
-import { Card } from '../../components';
+// import { Card } from '../../components';
 import routes from '../../utils/routes';
 import { useInfiniteQuery } from 'react-query';
-import { request } from '../../utils';
+// import { request } from '../../utils';
 import { EventsListLoader } from '../../components/Loader';
 import { useInView } from 'react-intersection-observer';
-import { EVENTS_FETCHED_PER_PAGE } from '../../utils/constants';
+// import { EVENTS_FETCHED_PER_PAGE } from '../../utils/constants';
 
 const Home = () => {
   const { ref, inView } = useInView();
   const [totalEvents, setTotalEvents] = useState(0);
 
   const getEvents = async page => {
-    const response = await request.get(`/events?page=${page}&perPage=${EVENTS_FETCHED_PER_PAGE}`);
-    const events = response.data;
-    const totalCount = response.headers.get('X-Total-Count');
-    setTotalEvents(totalCount);
-    return events;
+    // const response = await request.get(`/events?page=${page}&perPage=${EVENTS_FETCHED_PER_PAGE}`);
+    // const events = response.data;
+    // const totalCount = response.headers.get('X-Total-Count');
+    // setTotalEvents(totalCount);
+    // return events;
   };
 
   const {
@@ -29,10 +29,10 @@ const Home = () => {
     isError,
   } = useInfiniteQuery('events', ({ pageParam = 1 }) => getEvents(pageParam), {
     getNextPageParam: (lastPage, allPages) => {
-      if (allPages.length * EVENTS_FETCHED_PER_PAGE > totalEvents) {
-        return false;
-      }
-      return allPages.length + 1;
+      // if (allPages.length * EVENTS_FETCHED_PER_PAGE > totalEvents) {
+      //   return false;
+      // }
+      // return allPages.length + 1;
     },
   });
 
@@ -54,22 +54,23 @@ const Home = () => {
       </div>
     );
 
-  return (
-    <Layout>
-      <div className="gap-5 grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4">
-        {events?.pages.map(page => {
-          return page.map(event => (
-            <Link key={event._id} to={routes.event(event._id)}>
-              <Card event={event} />
-            </Link>
-          ));
-        })}
-      </div>
-      <div ref={ref} className="text-gray-500 uppercase pt-2 w-full text-center text-xl">
-        {hasNextPage ? 'Loading more...' : ''}
-      </div>
-    </Layout>
-  );
+  return '';
+  // return (
+  //   <Layout>
+  //     <div className="gap-5 grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4">
+  //       {events?.pages.map(page => {
+  //         return page.map(event => (
+  //           <Link key={event._id} to={routes.event(event._id)}>
+  //             <Card event={event} />
+  //           </Link>
+  //         ));
+  //       })}
+  //     </div>
+  //     <div ref={ref} className="text-gray-500 uppercase pt-2 w-full text-center text-xl">
+  //       {hasNextPage ? 'Loading more...' : ''}
+  //     </div>
+  //   </Layout>
+  // );
 };
 
 export default Home;
