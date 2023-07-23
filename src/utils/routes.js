@@ -1,9 +1,9 @@
 const routes = {
-  home: '/',
-  login: '/login',
-  events: '/events',
-  event: (id = ':id') => `/events/${id}`,
-  newEvent: '/new-event',
+  cover: '/',
+  home: '/home',
+  tenuta: '/famiglia',
+  famiglia: `/famiglia`,
+  prodotti: '/prodotti',
 };
 
 export default routes;
