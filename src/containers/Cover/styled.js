@@ -1,10 +1,9 @@
 import styled, { keyframes, css } from 'styled-components';
 
-const moveUp = keyframes``;
-
-const _defaultImg = styled.div`
+const _defaultCover = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
-  background-size: cover;
+  background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
@@ -12,37 +11,64 @@ const _defaultImg = styled.div`
   flex-direction: column;
 `;
 
-const desktopDimension = css`
-  width: 40vw;
-  max-width: 40vw;
-  height: auto;
-  max-height: 20vh;
-`;
-const mobileDimension = css`
-  width: 60vw;
-  max-width: 90vw;
-  height: auto;
-  max-height: 40vh;
-`;
-const _defaultLogo = styled(_defaultImg)`
-  max-width: 500px;
-  max-height: 500px;
-  ${props => (props.isDesktop() ? desktopDimension : mobileDimension)}
-`;
-
-export const Wrapper = styled(_defaultImg)`
-  name: cover;
+export const Wrapper = styled(_defaultCover)`
+  background-size: cover;
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: lightblue;
-  // background: ${props => (props.src ? `url(${props.src})` : '')};
+  transition: transform 2s;
+  ${props =>
+    props.moveup &&
+    css`
+      transform: translateY(-100vh);
+    `}
 `;
 
-export const LogoStyled = styled(_defaultLogo)``;
+const _defaultImg = styled(_defaultCover)`
+  max-width: 500px;
+  max-height: 500px;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 3s, opacity 3s;
+  ${props =>
+    props.appear &&
+    css`
+      opacity: 1;
+      transform: scale(1);
+    `}
+`;
 
-export const MarchioStyled = styled(_defaultLogo)``;
+export const LogoStyled = styled(_defaultImg)`
+  width: 15vw;
+  height: 15vw;
+`;
 
-export const LabelStyled = styled(_defaultLogo)``;
+export const MarchioStyled = styled(_defaultImg)`
+  width: 60vw;
+  height: 20vh;
+`;
 
-export const IndicatorStyled = styled(_defaultLogo)``;
+export const LabelStyled = styled(_defaultImg)`
+  width: 60vw;
+  height: 10vh;
+`;
+
+export const IndicatorStyled = styled(_defaultImg)`
+  width: 40vw;
+  height: 8vw;
+  transition: transform 4s, opacity 3s;
+  transition-delay: 2s;
+  ${props =>
+    props.bounce &&
+    css`
+      animation: ${bounce} 2s linear infinite alternate;
+    `}
+`;
+
+const bounce = keyframes`
+from {
+  transform: translateY(-2vh);
+}
+to {
+  transform: translateY(+2vh);
+}`;
