@@ -1,1 +1,0 @@
-export const EVENTS_FETCHED_PER_PAGE = 10;
