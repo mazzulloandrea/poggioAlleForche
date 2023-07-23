@@ -10,13 +10,6 @@ export const GoBack = tw(BiArrowBack)`
     cursor-pointer
 `;
 
-// export const Logo = tw.img`
-//   ${({ $isHomepage }) => (!$isHomepage ? 'cursor-pointer' : 'cursor-default')}
-// `;
-
-// export const Logo = tw.div`
-//   ${({$isMobile}) => ($isMobile ? `
-
-//   ` : `
-//   `)}
-// `
+export const Logo = tw.img`
+  ${({ $isHomepage }) => (!$isHomepage ? 'cursor-pointer' : 'cursor-default')}
+`;

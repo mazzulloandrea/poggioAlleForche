@@ -1,4 +1,3 @@
 export { default as history } from './history';
 export { default as routes } from './routes';
 export { default as request } from './request';
-export { default as debounce } from './debounce';
