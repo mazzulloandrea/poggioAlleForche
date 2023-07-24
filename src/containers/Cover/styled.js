@@ -22,6 +22,11 @@ export const Wrapper = styled(_defaultCover)`
     css`
       transform: translateY(-100vh);
     `}
+  ${props =>
+    props.showHomepage &&
+    css`
+      display: none;
+    `}
 `;
 
 const _defaultImg = styled(_defaultCover)`
@@ -56,7 +61,7 @@ export const LabelStyled = styled(_defaultImg)`
 export const IndicatorStyled = styled(_defaultImg)`
   width: 40vw;
   height: 8vw;
-  transition: transform 4s, opacity 3s;
+  transition: transform 2s, opacity 2s;
   transition-delay: 2s;
   ${props =>
     props.bounce &&

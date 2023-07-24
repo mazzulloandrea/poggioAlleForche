@@ -1,33 +1,59 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import logo from '../../assets/logo.svg';
 import routes from '../../utils/routes';
-import { GoBack, Logo } from './styles';
+import { slide as MenuHamburger } from 'react-burger-menu';
+import { hamburger, xClose } from '../../assets';
 
 const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isHomepage = pathname === routes.home;
 
-  const handleClickBackBtn = () => navigate(-1);
-
   const handleClickLogo = () => {
     if (isHomepage) return null;
     return navigate(routes.home);
   };
 
-  return (
-    <header className="rpx-4 py-6 w-full flex items-center justify-center">
-      {/* {!isHomepage && <GoBack color="white" size={30} onClick={handleClickBackBtn} />}
-      <Logo
-        src={logo}
-        alt="logo"
-        className="min-h-[29px]"
-        onClick={handleClickLogo}
-        $isHomepage={isHomepage}
-      /> */}
-    </header>
-  );
+  <MenuHamburger
+    right
+    customBurgerIcon={<img src={hamburger} />}
+    customCrossIcon={<img src={xClose} />}
+  >
+    <a
+      id="home"
+      className="menu-item"
+      href="/home"
+      style={{ color: pathname === '/home' || pathname === '/' ? 'gold' : 'white' }}
+    >
+      Tenuta
+    </a>
+    <a
+      id="about"
+      className="menu-item"
+      href="/famiglia"
+      style={{ color: pathname === '/famiglia' ? 'gold' : 'white' }}
+    >
+      Famiglia
+    </a>
+    <a
+      id="contact"
+      className="menu-item"
+      href="/prodotti"
+      style={{ color: pathname === '/prodotti' ? 'gold' : 'white' }}
+    >
+      Prodotti
+    </a>
+    <a
+      id="contact"
+      className="menu-item"
+      href="/territorio"
+      style={{ color: pathname === '/territorio' ? 'gold' : 'white' }}
+    >
+      Territorio
+    </a>
+  </MenuHamburger>;
+
+  return <header className="rpx-4 py-6 w-full flex items-center justify-center"></header>;
 };
 
 export default Header;

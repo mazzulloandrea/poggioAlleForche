@@ -7,6 +7,7 @@ console.log(logo, marchio, dicitura, background, indicator);
 const Cover = () => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
+  const [showHomepage, setShowHomepage] = useState(false);
 
   useEffect(() => {
     setStep(1);
@@ -19,10 +20,14 @@ const Cover = () => {
   //   }
   // }, [step]);
 
-  const setUp = useCallback(() => {
-    setStep(step + 1);
-    console.log(step);
-  }, [step]);
+  const setUp = useCallback(
+    event => {
+      setStep(step + 1);
+      event.stopPropagation();
+      console.log(step);
+    },
+    [step],
+  );
 
   const bounce = useCallback(() => {
     return step >= 4;
@@ -51,7 +56,8 @@ const Cover = () => {
       <Wrapper
         src={background}
         moveup={moveUp}
-        onTransitionEnd={() => console.log('transition end')}
+        showHomepage={showHomepage}
+        onTransitionEnd={() => step === 5 && setShowHomepage(true)}
         onClick={() => isToAnimate('indicator') && setMoveUp(true)}
       >
         <LogoStyled src={logo} appear={isToAnimate('logo')} onTransitionEnd={setUp}></LogoStyled>
@@ -72,7 +78,7 @@ const Cover = () => {
           onTransitionEnd={setUp}
         />
       </Wrapper>
-      <Home />
+      <Home show={showHomepage} />
     </div>
   );
 };
