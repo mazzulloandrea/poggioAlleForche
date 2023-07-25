@@ -1,30 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Home } from '../index';
+import { Tenuta, COVER_SHOW, COVER_HIDE } from '..';
 import { Wrapper, LogoStyled, MarchioStyled, LabelStyled, IndicatorStyled } from './styled';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
-console.log(logo, marchio, dicitura, background, indicator);
 
 const Cover = () => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
-  const [showHomepage, setShowHomepage] = useState(false);
+  const [showCover, setShowCover] = useState(COVER_SHOW);
 
   useEffect(() => {
     setStep(1);
   }, []);
 
-  // useEffect(() => {
-  //   console.log('stepChange into', step);
-  //   if (step === 10) {
-  //     setMoveUp(true);
-  //   }
-  // }, [step]);
-
   const setUp = useCallback(
     event => {
       setStep(step + 1);
       event.stopPropagation();
-      console.log(step);
+      // console.log(step);
     },
     [step],
   );
@@ -32,11 +24,6 @@ const Cover = () => {
   const bounce = useCallback(() => {
     return step >= 4;
   }, [step]);
-
-  // const handleSlideUp = event => {
-  //   // console.log(event);
-  //   setStep(5);
-  // };
 
   const isToAnimate = type => {
     switch (type) {
@@ -56,8 +43,8 @@ const Cover = () => {
       <Wrapper
         src={background}
         moveup={moveUp}
-        showHomepage={showHomepage}
-        onTransitionEnd={() => step === 5 && setShowHomepage(true)}
+        showCover={showCover}
+        onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
         onClick={() => isToAnimate('indicator') && setMoveUp(true)}
       >
         <LogoStyled src={logo} appear={isToAnimate('logo')} onTransitionEnd={setUp}></LogoStyled>
@@ -78,7 +65,7 @@ const Cover = () => {
           onTransitionEnd={setUp}
         />
       </Wrapper>
-      <Home show={showHomepage} />
+      {showCover === COVER_HIDE && <Tenuta />}
     </div>
   );
 };

@@ -1,3 +1,2 @@
-const mobileWidth = 900;
-
-export default mobileWidth;
+export const mobileWidth = 900;
+export const NO_MENU_ROUTE_KEY = 'cover';

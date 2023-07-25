@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { COVER_HIDE } from '../index';
 
 const _defaultCover = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
@@ -13,7 +14,7 @@ const _defaultCover = styled.div`
 
 export const Wrapper = styled(_defaultCover)`
   background-size: cover;
-  position: relative;
+  position: absolute;
   height: 100vh;
   width: 100vw;
   transition: transform 2s;
@@ -23,7 +24,7 @@ export const Wrapper = styled(_defaultCover)`
       transform: translateY(-100vh);
     `}
   ${props =>
-    props.showHomepage &&
+    props.showHomepage === COVER_HIDE &&
     css`
       display: none;
     `}

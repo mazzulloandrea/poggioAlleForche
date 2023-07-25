@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Header, Gallery } from '../../components';
 
-const Layout = () => {
+const Layout = ({ dimensions }) => {
   useEffect(() => {}, []);
 
   return (
     <div>
-      <Header></Header>
+      <Header dimensions={dimensions}></Header>
       <Gallery />
     </div>
   );
