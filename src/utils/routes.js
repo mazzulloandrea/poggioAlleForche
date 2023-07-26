@@ -1,9 +1,9 @@
 const routes = {
   cover: '/',
-  home: '/home',
-  tenuta: '/famiglia',
+  tenuta: '/tenuta',
   famiglia: `/famiglia`,
   prodotti: '/prodotti',
+  territorio: '/territorio',
 };
 
 export default routes;

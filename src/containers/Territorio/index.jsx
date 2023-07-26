@@ -3,7 +3,7 @@ import { Layout } from '..';
 import { Wrapper } from './styled';
 import { mobileWidth } from '../../utils';
 
-const Prodotti = () => {
+const Territorio = () => {
   useEffect(() => {}, []);
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -35,4 +35,4 @@ const Prodotti = () => {
   );
 };
 
-export default Prodotti;
+export default Territorio;

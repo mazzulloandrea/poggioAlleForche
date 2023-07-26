@@ -6,7 +6,8 @@
 
 @layer base {
     body {
-        @apply bg-xgray
+        /* @apply bg-xgray */
+        @apply bg-white
     }
 }
 

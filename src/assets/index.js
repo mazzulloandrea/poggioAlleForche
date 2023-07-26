@@ -1,3 +1,13 @@
 export { logo, marchio, dicitura, logoMarchioDicitura } from './logo';
 export { background, arrowDown } from './cover';
-// export { default as coverBackground } from './cover/background.png';
+export {
+  tenuta,
+  tenutaSelected,
+  famiglia,
+  famigliaSelected,
+  territorio,
+  territorioSelected,
+  prodotti,
+  prodottiSelected,
+} from './menuDesktop';
+export { hamburger, xClose } from './menuMobile';

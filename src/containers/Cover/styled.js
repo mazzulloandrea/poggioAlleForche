@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { COVER_HIDE } from '../index';
 
 const _defaultCover = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
@@ -13,7 +14,7 @@ const _defaultCover = styled.div`
 
 export const Wrapper = styled(_defaultCover)`
   background-size: cover;
-  position: relative;
+  position: absolute;
   height: 100vh;
   width: 100vw;
   transition: transform 2s;
@@ -21,6 +22,11 @@ export const Wrapper = styled(_defaultCover)`
     props.moveup &&
     css`
       transform: translateY(-100vh);
+    `}
+  ${props =>
+    props.showCover === COVER_HIDE &&
+    css`
+      display: none;
     `}
 `;
 
@@ -41,22 +47,45 @@ const _defaultImg = styled(_defaultCover)`
 export const LogoStyled = styled(_defaultImg)`
   width: 15vw;
   height: 15vw;
+  ${props =>
+    props.moveup &&
+    css`
+      transition: transform 1s;
+      transform: translateY(-100vh);
+    `}
 `;
 
 export const MarchioStyled = styled(_defaultImg)`
   width: 60vw;
   height: 20vh;
+  ${props =>
+    props.moveup &&
+    css`
+      transition: transform 1s;
+      transition-delay: 550ms;
+      transform: translateY(-100vh);
+    `}
 `;
 
 export const LabelStyled = styled(_defaultImg)`
   width: 60vw;
   height: 10vh;
+  ${props =>
+    props.moveup &&
+    css`
+      transition: transform 1s;
+      transition-delay: 350ms;
+      transform: translateY(-100vh);
+    `}
 `;
 
 export const IndicatorStyled = styled(_defaultImg)`
   width: 40vw;
   height: 8vw;
-  transition: transform 4s, opacity 3s;
+  // transition: transform 2s, opacity 2s;
+  transition-property: transform;
+  transition-duration: 2s;
+  transition-timing-function: ease-out;
   transition-delay: 2s;
   ${props =>
     props.bounce &&
