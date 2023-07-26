@@ -25,7 +25,7 @@ const App = () => (
         <Route path="*" element={<Navigate replace to={routes.cover} />} />
       </Routes>
     </HistoryRouter>
-    <ReactQueryDevtools initialIsOpen={false} />
+    {/* <ReactQueryDevtools initialIsOpen={false} /> */}
   </QueryClientProvider>
 );
 

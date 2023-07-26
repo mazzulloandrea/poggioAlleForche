@@ -68,11 +68,11 @@ const Cover = () => {
           moveup={moveUp}
           src={dicitura}
           appear={isToAnimate('dicitura')}
-          onTransitionEnd={() => {
+          onTransitionEnd={event => {
             if (step === 5) {
               setShowCover(COVER_HIDE);
             } else {
-              setUp();
+              setUp(event);
             }
           }}
         ></LabelStyled>

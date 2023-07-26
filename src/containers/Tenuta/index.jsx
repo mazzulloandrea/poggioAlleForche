@@ -32,7 +32,7 @@ const Tenuta = () => {
     };
   });
 
-  console.log('tenuta');
+  // console.log('tenuta');
   return (
     <Wrapper show={show}>
       <Layout dimensions={dimensions}></Layout>
