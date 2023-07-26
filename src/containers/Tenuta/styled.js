@@ -1,7 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   opacity: 0;
-  transition: opacity 1s;
-  opacity: 1;
+
+  ${props =>
+    props.show &&
+    css`
+      transition: opacity 5s;
+      opacity: 1;
+    `}
 `;

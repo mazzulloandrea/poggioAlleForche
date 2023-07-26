@@ -34,39 +34,59 @@ const Cover = () => {
       case 'dicitura':
         return step >= 3;
       case 'indicator':
-        return step >= 4;
+        return step === 4;
     }
   };
 
   return (
-    <div>
+    <>
       <Wrapper
         src={background}
-        moveup={moveUp}
+        // moveup={moveUp}
         showCover={showCover}
-        onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
-        onClick={() => isToAnimate('indicator') && setMoveUp(true)}
+        // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
+        onClick={() => {
+          if (isToAnimate('indicator')) {
+            setMoveUp(true);
+            // setShowCover(COVER_HIDE);
+          }
+        }}
       >
-        <LogoStyled src={logo} appear={isToAnimate('logo')} onTransitionEnd={setUp}></LogoStyled>
+        <LogoStyled
+          moveup={moveUp}
+          src={logo}
+          appear={isToAnimate('logo')}
+          onTransitionEnd={setUp}
+        ></LogoStyled>
         <MarchioStyled
+          moveup={moveUp}
           src={marchio}
           appear={isToAnimate('marchio')}
           onTransitionEnd={setUp}
         ></MarchioStyled>
         <LabelStyled
+          moveup={moveUp}
           src={dicitura}
           appear={isToAnimate('dicitura')}
-          onTransitionEnd={setUp}
+          onTransitionEnd={() => {
+            if (step === 5) {
+              setShowCover(COVER_HIDE);
+            } else {
+              setUp();
+            }
+          }}
         ></LabelStyled>
-        <IndicatorStyled
-          src={indicator}
-          appear={isToAnimate('indicator')}
-          bounce={bounce()}
-          onTransitionEnd={setUp}
-        />
+        {showCover != COVER_HIDE && (
+          <IndicatorStyled
+            src={indicator}
+            appear={isToAnimate('indicator')}
+            bounce={bounce()}
+            onTransitionEnd={setUp}
+          />
+        )}
       </Wrapper>
       {showCover === COVER_HIDE && <Tenuta />}
-    </div>
+    </>
   );
 };
 

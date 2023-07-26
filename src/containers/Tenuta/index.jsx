@@ -5,8 +5,11 @@ import { mobileWidth } from '../../utils';
 
 const Tenuta = () => {
   // if (show === TOGGLE_SHOW_COVER) return false;
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setShow(true);
+  }, []);
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -29,8 +32,9 @@ const Tenuta = () => {
     };
   });
 
+  console.log('tenuta');
   return (
-    <Wrapper>
+    <Wrapper show={show}>
       <Layout dimensions={dimensions}></Layout>
       <article></article>
     </Wrapper>
