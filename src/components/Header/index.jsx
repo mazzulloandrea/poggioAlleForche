@@ -43,8 +43,7 @@ const Header = ({ dimensions }) => {
           <a
             key={menuKey}
             id={menuKey}
-            // className={menuKey}
-            href={`/${menuKey}`}
+            onClick={() => navigate(`/${menuKey}`)}
             style={{ color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white' }}
           >
             {menuKey}
