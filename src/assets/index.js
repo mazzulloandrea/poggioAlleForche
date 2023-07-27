@@ -11,3 +11,4 @@ export {
   prodottiSelected,
 } from './menuDesktop';
 export { hamburger, xClose } from './menuMobile';
+export { articlesTenuta, articlesProdotti, articlesFamiglia, articlesTerritorio } from './articles';

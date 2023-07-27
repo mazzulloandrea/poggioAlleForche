@@ -23,7 +23,7 @@ import './menuMobile.css';
 const Header = ({ dimensions }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const isHomepage = pathname === routes.tenuta;
+  const isHomepage = pathname === routes.tenuta || pathname === '\\';
 
   const handleClickLogo = () => {
     if (isHomepage) return null;
@@ -75,7 +75,7 @@ const Header = ({ dimensions }) => {
         {menuList.map(menuKey => {
           if (menuKey === 'logo')
             return (
-              <LogoContainer href={`/tenuta`}>
+              <LogoContainer onClick={handleClickLogo}>
                 <Logo src={logo} />
                 <Marchio src={marchio} />
               </LogoContainer>
@@ -84,7 +84,7 @@ const Header = ({ dimensions }) => {
             <MenuVoice
               key={menuKey}
               id={menuKey}
-              href={`/${menuKey}`}
+              onClick={navigate(`/${menuKey}`)}
               src={getSrc(`/${menuKey}`)}
             ></MenuVoice>
           );

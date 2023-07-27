@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Layout } from '..';
 import { Wrapper } from './styled';
 import { mobileWidth } from '../../utils';
+import { Articles } from '../../components';
 
 const Tenuta = () => {
-  // if (show === TOGGLE_SHOW_COVER) return false;
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -32,11 +32,10 @@ const Tenuta = () => {
     };
   });
 
-  // console.log('tenuta');
   return (
     <Wrapper show={show}>
-      <Layout dimensions={dimensions}></Layout>
-      <article></article>
+      <Layout dimensions={dimensions} />
+      <Articles dimensions={dimensions} />
     </Wrapper>
   );
 };
