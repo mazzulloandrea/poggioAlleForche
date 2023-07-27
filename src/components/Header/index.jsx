@@ -84,7 +84,7 @@ const Header = ({ dimensions }) => {
             <MenuVoice
               key={menuKey}
               id={menuKey}
-              onClick={navigate(`/${menuKey}`)}
+              onClick={() => navigate(`/${menuKey}`)}
               src={getSrc(`/${menuKey}`)}
             ></MenuVoice>
           );
