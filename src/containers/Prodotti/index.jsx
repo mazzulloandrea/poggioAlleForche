@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '..';
-import { Wrapper } from './styled';
+import { Wrapper } from '../commonStyled';
 import { mobileWidth } from '../../utils';
 
 const Prodotti = () => {
-  useEffect(() => {}, []);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -28,7 +33,7 @@ const Prodotti = () => {
   });
 
   return (
-    <Wrapper>
+    <Wrapper show={show}>
       <Layout dimensions={dimensions}></Layout>
       <article></article>
     </Wrapper>

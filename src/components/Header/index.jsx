@@ -40,15 +40,15 @@ const Header = ({ dimensions }) => {
         customCrossIcon={<img src={xClose} />}
       >
         {menuList.map(menuKey => (
-          <a
+          <MenuVoice
             key={menuKey}
             id={menuKey}
-            // className={menuKey}
-            href={`/${menuKey}`}
+            onClick={() => navigate(`/${menuKey}`)}
             style={{ color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white' }}
+            ismobile={true}
           >
             {menuKey}
-          </a>
+          </MenuVoice>
         ))}
       </MenuHamburger>
     );
@@ -86,7 +86,7 @@ const Header = ({ dimensions }) => {
               id={menuKey}
               onClick={() => navigate(`/${menuKey}`)}
               src={getSrc(`/${menuKey}`)}
-            ></MenuVoice>
+            />
           );
         })}
       </MenuDesktopStyled>

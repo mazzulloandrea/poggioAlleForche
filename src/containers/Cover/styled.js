@@ -31,8 +31,6 @@ export const Wrapper = styled(_defaultCover)`
 `;
 
 const _defaultImg = styled(_defaultCover)`
-  max-width: 500px;
-  max-height: 500px;
   opacity: 0;
   transform: scale(0);
   transition: transform 3s, opacity 3s;
@@ -45,8 +43,19 @@ const _defaultImg = styled(_defaultCover)`
 `;
 
 export const LogoStyled = styled(_defaultImg)`
-  width: 15vw;
-  height: 15vw;
+  ${props =>
+    props.isMobile
+      ? css`
+          margin-bottom: -2em;
+          width: 10%;
+          height: 15%;
+        `
+      : css`
+          margin-top: 10%;
+          width: 10%;
+          height: 15%;
+        `}
+
   ${props =>
     props.moveup &&
     css`
@@ -56,8 +65,17 @@ export const LogoStyled = styled(_defaultImg)`
 `;
 
 export const MarchioStyled = styled(_defaultImg)`
-  width: 60vw;
-  height: 20vh;
+  ${props =>
+    props.isMobile
+      ? css`
+          width: 80%;
+          height: 20%;
+        `
+      : css`
+          width: 60%;
+          height: 25%;
+        `}
+
   ${props =>
     props.moveup &&
     css`
@@ -68,8 +86,18 @@ export const MarchioStyled = styled(_defaultImg)`
 `;
 
 export const LabelStyled = styled(_defaultImg)`
-  width: 60vw;
-  height: 10vh;
+  ${props =>
+    props.isMobile
+      ? css`
+          width: 35%;
+          margin-top: -3%;
+          height: 10%;
+        `
+      : css`
+          width: 25%;
+          height: 10%;
+        `}
+
   ${props =>
     props.moveup &&
     css`
