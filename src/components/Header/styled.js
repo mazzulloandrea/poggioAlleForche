@@ -47,6 +47,12 @@ export const MenuVoice = styled.a`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   background-size: contain;
+  ${props =>
+    props.ismobile &&
+    css`
+      font-size: 1.2em;
+      margin: 5vh 0 5vh 2vw;
+    `}
 `;
 
 export const LogoContainer = styled.a`

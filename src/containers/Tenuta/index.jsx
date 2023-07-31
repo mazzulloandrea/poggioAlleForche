@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '..';
-import { Wrapper } from './styled';
+// import { Wrapper } from './styled';
+import { Wrapper } from '../commonStyled';
 import { mobileWidth } from '../../utils';
 import { Articles } from '../../components';
 
@@ -10,6 +11,7 @@ const Tenuta = () => {
   useEffect(() => {
     setShow(true);
   }, []);
+
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
