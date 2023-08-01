@@ -1,6 +1,134 @@
 import styled, { keyframes, css } from 'styled-components';
 import { COVER_HIDE } from '../index';
 
+const defaultLogoStyle = css`
+  width: 15%;
+  height: 15%;
+`;
+
+const defaultMarchioStyle = css`
+  width: 80%;
+  height: 20%;
+`;
+
+const defaultDicituraStyle = css`
+  width: 35%;
+  height: 10%;
+`;
+
+const defaultIndicatorStyle = css`
+  width: 7%;
+  height: 7%;
+`;
+
+const tabletOrMobileDim = css`
+  width: 100%;
+  height: 60%;
+  > .logo {
+    ${defaultLogoStyle}
+    margin-bottom: -5px;
+  }
+  > .marchio {
+    ${defaultMarchioStyle}
+  }
+  > .dicitura {
+    ${defaultDicituraStyle}
+    margin-top: -5px;
+  }
+  > .indicator {
+    ${defaultIndicatorStyle}
+    bottom: 25vh;
+  }
+`;
+
+const desktopOrLaptopDim = css`
+  width: 80%;
+  height: 50%;
+  > .logo {
+    ${defaultLogoStyle}
+    margin-bottom: -20px;
+    height: 25%;
+  }
+  > .marchio {
+    ${defaultMarchioStyle}
+    height: 45%;
+  }
+  > .dicitura {
+    ${defaultDicituraStyle}
+    margin-top: -10px;
+    height: 20%;
+  }
+  > .indicator {
+    ${defaultIndicatorStyle}
+    width: 5%;
+    height: 5%;
+    bottom: 5%;
+  }
+`;
+
+const bigScreenDim = css`
+  width: 100%;
+  height: 60%;
+  > .logo {
+    ${defaultLogoStyle}
+    margin-bottom: -20px;
+    height: 25%;
+  }
+  > .marchio {
+    ${defaultMarchioStyle}
+    height: 45%;
+  }
+  > .dicitura {
+    ${defaultDicituraStyle}
+    margin-top: 0px;
+    width: 30%;
+    height: 15%;
+  }
+  > .indicator {
+    ${defaultIndicatorStyle}
+    width: 5%;
+    height: 5%;
+    bottom: 5%;
+  }
+  color: green;
+`;
+
+// const retinaDim = css`
+//   width: 80%;
+//   height: 60%;
+//   color: red;
+//   > .logo {
+//     ${defaultLogoStyle}
+//     margin-bottom: -20px;
+//     height: 25%;
+//   }
+//   > .marchio {
+//     ${defaultMarchioStyle}
+//     height: 45%;
+//   }
+//   > .dicitura {
+//     ${defaultDicituraStyle}
+//     margin-top: -10px;
+//     height: 12%;
+//   }
+//   > .indicator {
+//     ${defaultIndicatorStyle}
+//     width: 5%;
+//     height: 5%;
+//     bottom: 5%;
+//   }
+// `;
+
+// const portraitDim = css`
+//   width: 2000px;
+//   height: 1000px;
+// `;
+
+// const landscapeDim = css`
+//   width: 2000px;
+//   height: 1000px;
+// `;
+
 const _defaultCover = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   background-position: center;
@@ -15,9 +143,9 @@ const _defaultCover = styled.div`
 export const Wrapper = styled(_defaultCover)`
   background-size: cover;
   position: absolute;
+  transition: transform 2s;
   height: 100vh;
   width: 100vw;
-  transition: transform 2s;
   ${props =>
     props.moveup &&
     css`
@@ -28,6 +156,16 @@ export const Wrapper = styled(_defaultCover)`
     css`
       display: none;
     `}
+`;
+
+export const ContainerCentered = styled.div`
+  ${props => props.istabletormobile && tabletOrMobileDim}
+  ${props => props.isdesktoporlaptop && desktopOrLaptopDim}
+  ${props => props.isbigscreen && bigScreenDim}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const _defaultImg = styled(_defaultCover)`
@@ -44,19 +182,6 @@ const _defaultImg = styled(_defaultCover)`
 
 export const LogoStyled = styled(_defaultImg)`
   ${props =>
-    props.isMobile
-      ? css`
-          margin-bottom: -2em;
-          width: 10%;
-          height: 15%;
-        `
-      : css`
-          margin-top: 10%;
-          width: 10%;
-          height: 15%;
-        `}
-
-  ${props =>
     props.moveup &&
     css`
       transition: transform 1s;
@@ -68,12 +193,12 @@ export const MarchioStyled = styled(_defaultImg)`
   ${props =>
     props.isMobile
       ? css`
-          width: 80%;
-          height: 20%;
+          // width: 80%;
+          // height: 20%;
         `
       : css`
-          width: 60%;
-          height: 25%;
+          // width: 60%;
+          // height: 25%;
         `}
 
   ${props =>
@@ -87,18 +212,6 @@ export const MarchioStyled = styled(_defaultImg)`
 
 export const LabelStyled = styled(_defaultImg)`
   ${props =>
-    props.isMobile
-      ? css`
-          width: 35%;
-          margin-top: -3%;
-          height: 10%;
-        `
-      : css`
-          width: 25%;
-          height: 10%;
-        `}
-
-  ${props =>
     props.moveup &&
     css`
       transition: transform 1s;
@@ -108,9 +221,18 @@ export const LabelStyled = styled(_defaultImg)`
 `;
 
 export const IndicatorStyled = styled(_defaultImg)`
-  width: 40vw;
-  height: 8vw;
-  // transition: transform 2s, opacity 2s;
+  ${props =>
+    props.isMobile
+      ? css`
+          // width: 5vw;
+          // height: 5vw;
+        `
+      : css`
+          // width: 5vw;
+          // height: 5vw;
+        `}
+  position: absolute;
+  bottom: 3vh;
   transition-property: transform;
   transition-duration: 2s;
   transition-timing-function: ease-out;
