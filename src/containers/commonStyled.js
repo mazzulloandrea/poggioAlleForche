@@ -3,10 +3,10 @@ import { APPEARING_TIMING } from './constants';
 import { background } from '../assets';
 
 export const Wrapper = styled.div`
-  background: url(${background});
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  // background: url(${background});
+  // background-position: center;
+  // background-size: contain;
+  // background-repeat: no-repeat;
   opacity: 0;
 
   ${props =>
