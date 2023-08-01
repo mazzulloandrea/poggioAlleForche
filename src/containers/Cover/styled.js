@@ -17,13 +17,14 @@ const defaultDicituraStyle = css`
 `;
 
 const defaultIndicatorStyle = css`
-  width: 7%;
-  height: 7%;
+  width: 10%;
+  height: 10%;
 `;
 
 const tabletOrMobileDim = css`
   width: 100%;
-  height: 60%;
+  height: 50%;
+  justify-content: flex-start;
   > .logo {
     ${defaultLogoStyle}
     margin-bottom: -5px;
@@ -144,7 +145,7 @@ export const Wrapper = styled(_defaultCover)`
   background-size: cover;
   position: absolute;
   transition: transform 2s;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   ${props =>
     props.moveup &&
@@ -159,13 +160,13 @@ export const Wrapper = styled(_defaultCover)`
 `;
 
 export const ContainerCentered = styled.div`
-  ${props => props.istabletormobile && tabletOrMobileDim}
-  ${props => props.isdesktoporlaptop && desktopOrLaptopDim}
-  ${props => props.isbigscreen && bigScreenDim}
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${props => props.istabletormobile && tabletOrMobileDim}
+  ${props => props.isdesktoporlaptop && desktopOrLaptopDim}
+  ${props => props.isbigscreen && bigScreenDim}
 `;
 
 const _defaultImg = styled(_defaultCover)`
