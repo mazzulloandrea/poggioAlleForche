@@ -7,7 +7,7 @@ import {
   articlesFamiglia,
   articlesTerritorio,
 } from '../../assets';
-import { Wrapper, Article } from './styled';
+import { Wrapper, Article, Text, Title, Img } from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
@@ -32,21 +32,28 @@ const Articles = ({ dimensions }) => {
     return articleData.desktop;
   };
 
-  const getComponent = ({ id, type, title, text, src }) => {
+  const getComponent = (el, id) => {
+    const { type, src, title } = el;
     return (
       <Article>
-        {title && <article>{title}</article>}
-        {type === 'text' && (
-          <article id={id} style={{}} src={src || ''}>
-            {text}
-          </article>
+        {type === 'txt' && (
+          <>
+            {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
+            <Text id={id} style={{}} src={src || ''}>
+              {src}
+            </Text>
+          </>
         )}
-        {type === 'img' && <img id={id} src={src}></img>}
+        {type === 'img' && <Img id={id} src={src}></Img>}
       </Article>
     );
   };
 
-  return <Wrapper>{getLayout(getArticle()).map(el => getComponent(el))}</Wrapper>;
+  return (
+    <Wrapper>
+      {getLayout(getArticle()).map((el, index) => getComponent(el, `${index}_article`))}
+    </Wrapper>
+  );
 };
 
 export default Articles;
