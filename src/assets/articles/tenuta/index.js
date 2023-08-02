@@ -3,7 +3,8 @@ import img2 from './La_tenuta_2.png';
 import img3 from './La_tenuta_3.png';
 import img4 from './La_tenuta_4.png';
 
-const title = 'La <i>nostra</i> casa sul Poggio';
+const title = 'La tenuta';
+const subTitle = 'La <i>nostra</i> casa sul Poggio';
 const text1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`;
 const text2 =
   'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
@@ -14,7 +15,7 @@ const text4 =
 
 const articleTenuta = {
   mobile: [
-    { type: 'txt', src: text1, title },
+    { type: 'txt', src: text1, title, subTitle },
     { type: 'img', src: img1 },
     { type: 'txt', src: text2 },
     { type: 'img', src: img2 },
@@ -24,7 +25,7 @@ const articleTenuta = {
     { type: 'img', src: img4 },
   ],
   desktop: [
-    { type: 'txt', src: text1, title },
+    { type: 'txt', src: text1, title, subTitle },
     { type: 'img', src: img1 },
     { type: 'img', src: img2 },
     { type: 'txt', src: text2 },

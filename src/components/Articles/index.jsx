@@ -7,7 +7,7 @@ import {
   articlesFamiglia,
   articlesTerritorio,
 } from '../../assets';
-import { Wrapper, Article, Text, Title, Img } from './styled';
+import { Wrapper, Article, Text, Title, SubTitle, Img } from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
@@ -33,12 +33,13 @@ const Articles = ({ dimensions }) => {
   };
 
   const getComponent = (el, id) => {
-    const { type, src, title } = el;
+    const { type, src, title, subTitle } = el;
     return (
       <Article>
         {type === 'txt' && (
           <>
             {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
+            {subTitle && <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} />}
             <Text id={id} style={{}} src={src || ''}>
               {src}
             </Text>
