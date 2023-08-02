@@ -20,6 +20,13 @@ export const Title = styled.p`
   font-size: 5em;
 `;
 
+export const SubTitle = styled.p`
+  padding: 2%;
+  display: block;
+  font-family: arial;
+  font-size: 5em;
+`;
+
 export const Text = styled.p`
   padding: 2%;
   font-family: arial;
