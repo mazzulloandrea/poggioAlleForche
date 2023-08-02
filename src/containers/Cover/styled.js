@@ -192,17 +192,6 @@ export const LogoStyled = styled(_defaultImg)`
 
 export const MarchioStyled = styled(_defaultImg)`
   ${props =>
-    props.isMobile
-      ? css`
-          // width: 80%;
-          // height: 20%;
-        `
-      : css`
-          // width: 60%;
-          // height: 25%;
-        `}
-
-  ${props =>
     props.moveup &&
     css`
       transition: transform 1s;
@@ -222,16 +211,6 @@ export const LabelStyled = styled(_defaultImg)`
 `;
 
 export const IndicatorStyled = styled(_defaultImg)`
-  ${props =>
-    props.isMobile
-      ? css`
-          // width: 5vw;
-          // height: 5vw;
-        `
-      : css`
-          // width: 5vw;
-          // height: 5vw;
-        `}
   position: absolute;
   bottom: 3vh;
   transition-property: transform;
@@ -246,9 +225,9 @@ export const IndicatorStyled = styled(_defaultImg)`
 `;
 
 const bounce = keyframes`
-from {
-  transform: translateY(-2vh);
-}
-to {
-  transform: translateY(+2vh);
-}`;
+  from {
+    transform: translateY(-2vh);
+  }
+  to {
+    transform: translateY(+2vh);
+  }`;
