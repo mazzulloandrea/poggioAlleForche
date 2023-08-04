@@ -9,7 +9,7 @@ import './style.css';
 const Gallery = () => {
   const { pathname } = useLocation();
   let galleriesName = pathname.substring(1, pathname.length);
-  if (!galleries[galleriesName]) galleriesName = 'tenuta';
+  if (!galleries[galleriesName]) galleriesName = 'Tradizione';
   const data = galleries[galleriesName].map(el => ({ original: el }));
 
   return <ImageGallery items={data} />;

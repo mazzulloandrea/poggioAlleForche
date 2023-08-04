@@ -6,14 +6,14 @@ import {
   hamburger,
   xClose,
   background,
-  tenuta,
-  tenutaSelected,
-  famiglia,
-  famigliaSelected,
-  territorio,
-  territorioSelected,
-  prodotti,
-  prodottiSelected,
+  tradizione,
+  tradizioneSelected,
+  cantina,
+  cantinaSelected,
+  vini,
+  viniSelected,
+  viti,
+  vitiSelected,
   logo,
   marchio,
 } from '../../assets';
@@ -23,11 +23,11 @@ import './menuMobile.css';
 const Header = ({ dimensions }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const isHomepage = pathname === routes.tenuta || pathname === '\\';
+  const isHomepage = pathname === routes.tradizione || pathname === '\\';
 
   const handleClickLogo = () => {
     if (isHomepage) return null;
-    return navigate(routes.tenuta);
+    return navigate(routes.tradizione);
   };
 
   const menuMobile = () => {
@@ -59,14 +59,14 @@ const Header = ({ dimensions }) => {
     menuList.splice(2, 0, 'logo');
     const getSrc = menuKey => {
       switch (menuKey) {
-        case routes.tenuta:
-          return pathname === menuKey || pathname === '/' ? tenutaSelected : tenuta;
-        case routes.famiglia:
-          return pathname === menuKey ? famigliaSelected : famiglia;
-        case routes.prodotti:
-          return pathname === menuKey ? prodottiSelected : prodotti;
-        case routes.territorio:
-          return pathname === menuKey ? territorioSelected : territorio;
+        case routes.tradizione:
+          return pathname === menuKey || pathname === '/' ? tradizioneSelected : tradizione;
+        case routes.cantina:
+          return pathname === menuKey ? cantinaSelected : cantina;
+        case routes.viti:
+          return pathname === menuKey ? vitiSelected : viti;
+        case routes.vini:
+          return pathname === menuKey ? viniSelected : vini;
       }
       return ``;
     };
@@ -84,7 +84,10 @@ const Header = ({ dimensions }) => {
             <MenuVoice
               key={menuKey}
               id={menuKey}
-              onClick={() => navigate(`/${menuKey}`)}
+              onClick={() => {
+                console.log(`/${menuKey}`);
+                navigate(`/${menuKey}`);
+              }}
               src={getSrc(`/${menuKey}`)}
             />
           );

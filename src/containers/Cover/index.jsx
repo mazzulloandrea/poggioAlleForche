@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Tenuta, COVER_SHOW, COVER_HIDE } from '..';
+import { Tradizione, COVER_SHOW, COVER_HIDE } from '..';
 import {
   Wrapper,
   ContainerCentered,
@@ -139,7 +139,7 @@ const Cover = () => {
           )}
         </ContainerCentered>
       </Wrapper>
-      {showCover === COVER_HIDE && <Tenuta />}
+      {showCover === COVER_HIDE && <Tradizione />}
     </>
   );
 };

@@ -8,9 +8,10 @@ export const Wrapper = styled.section`
 `;
 
 export const Article = styled.article`
-  width: calc(50% - 6vw);
+  // width: calc(50% - 6vw);
   float: left;
   width: 50%;
+  height: 900px;
 `;
 
 export const Title = styled.p`
@@ -30,10 +31,15 @@ export const SubTitle = styled.p`
 export const Text = styled.p`
   padding: 2%;
   font-family: arial;
-  font-size: 3em;
+  font-size: 2em;
   flex-wrap: wrap;
 `;
 
-export const Img = styled.img`
+export const ImgBkg = styled.div`
   width: 100%;
+  height: 100%;
+  background: ${props => (props.src ? `url(${props.src})` : '')};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
