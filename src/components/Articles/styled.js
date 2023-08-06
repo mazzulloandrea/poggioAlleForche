@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
 export const Article = styled.article`
   // width: calc(50% - 6vw);
   float: left;
-  width: 50%;
+  width: ${props => (props.mobilelayout ? '100%' : '50%')};
   height: 900px;
 `;
 
