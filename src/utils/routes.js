@@ -1,9 +1,9 @@
 const routes = {
   cover: '/',
-  tenuta: '/tenuta',
-  famiglia: `/famiglia`,
-  prodotti: '/prodotti',
-  territorio: '/territorio',
+  tradizione: '/tradizione',
+  viti: `/viti`,
+  cantina: '/cantina',
+  vini: '/vini',
 };
 
 export default routes;

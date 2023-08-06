@@ -2,26 +2,28 @@ import React, { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY, mobileWidth } from '../../utils';
 import {
-  articlesTenuta,
-  articlesProdotti,
-  articlesFamiglia,
-  articlesTerritorio,
+  articlesTradizione,
+  // articlesViti,
+  // articlesCantine,
+  // articlesTerritorio,
 } from '../../assets';
-import { Wrapper, Article, Text, Title, SubTitle, Img } from './styled';
+import { Wrapper, Article, Text, Title, SubTitle, ImgBkg } from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
 
   const getArticle = useCallback(() => {
     switch (pathname) {
-      case '/famiglia':
-        return articlesFamiglia;
-      case '/territorio':
-        return articlesTerritorio;
-      case '/prodotti':
-        return articlesProdotti;
+      case '/tradizione':
+        return articlesTradizione;
+      // case '/cantina':
+      //   return articlesCantine;
+      // case '/viti':
+      //   return articlesViti;
+      // case '/vini':
+      //   return articlesVini;
       default:
-        return articlesTenuta;
+        return articlesTradizione;
     }
   }, [pathname]);
 
@@ -45,7 +47,7 @@ const Articles = ({ dimensions }) => {
             </Text>
           </>
         )}
-        {type === 'img' && <Img id={id} src={src}></Img>}
+        {type === 'img' && <ImgBkg id={id} src={src} />}
       </Article>
     );
   };

@@ -1,4 +1,4 @@
-export { default as articlesTenuta } from './tenuta';
-export { default as articlesProdotti } from './prodotti';
-export { default as articlesFamiglia } from './famiglia';
-export { default as articlesTerritorio } from './territorio';
+export { default as articlesTradizione } from './tradizione';
+// export { default as articlesViti } from './viti';
+// export { default as articlesCantine } from './cantine';
+// export { default as articlesTerritorio } from './territorio';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Tenuta, COVER_SHOW, COVER_HIDE } from '..';
+import { Tradizione, COVER_SHOW, COVER_HIDE } from '..';
 import {
   Wrapper,
   ContainerCentered,
@@ -100,7 +100,7 @@ const Cover = () => {
         >
           <LogoStyled
             className="logo"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={logo}
             appear={isToAnimate('logo')}
@@ -108,7 +108,7 @@ const Cover = () => {
           ></LogoStyled>
           <MarchioStyled
             className="marchio"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={marchio}
             appear={isToAnimate('marchio')}
@@ -116,7 +116,7 @@ const Cover = () => {
           ></MarchioStyled>
           <LabelStyled
             className="dicitura"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={dicitura}
             appear={isToAnimate('dicitura')}
@@ -139,7 +139,7 @@ const Cover = () => {
           )}
         </ContainerCentered>
       </Wrapper>
-      {showCover === COVER_HIDE && <Tenuta />}
+      {showCover === COVER_HIDE && <Tradizione />}
     </>
   );
 };
