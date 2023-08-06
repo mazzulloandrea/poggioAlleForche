@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Gallery } from '../../components';
+import { Header, Gallery, Footer } from '../../components';
 
-const Layout = ({ dimensions }) => {
+const Layout = ({ dimensions, children }) => {
   useEffect(() => {}, []);
 
   return (
     <div>
-      <Header dimensions={dimensions}></Header>
+      <Header dimensions={dimensions} />
       <Gallery />
+      {children}
+      <Footer dimensions={dimensions} />
     </div>
   );
 };

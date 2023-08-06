@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import galleries from '../../assets/galleries';
+import { galleries } from '../../assets';
 import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
@@ -9,10 +9,28 @@ import './style.css';
 const Gallery = () => {
   const { pathname } = useLocation();
   let galleriesName = pathname.substring(1, pathname.length);
-  if (!galleries[galleriesName]) galleriesName = 'Tradizione';
+  if (!galleries[galleriesName]) galleriesName = 'tradizione';
   const data = galleries[galleriesName].map(el => ({ original: el }));
 
-  return <ImageGallery items={data} />;
+  return (
+    <ImageGallery
+      items={data}
+      renderLeftNav={(onClick, disabled) => (
+        <button className="image-gallery-icon image-gallery-left-nav">
+          <img
+            className="image-gallery-svg"
+            src={galleries.galleryCustom.arrowSx}
+            onClick={onClick}
+            disabled={disabled}
+            style={{
+              height: '120px',
+              width: '120px',
+            }}
+          />
+        </button>
+      )}
+    />
+  );
 };
 
 export default Gallery;

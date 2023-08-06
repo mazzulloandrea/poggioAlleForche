@@ -13,3 +13,4 @@ export {
 export { hamburger, xClose } from './menuMobile';
 // export { articlesTradizione, articlesViti, articlesCantine, articlesTerritorio } from './articles';
 export { articlesTradizione } from './articles';
+export { default as galleries } from './galleries';

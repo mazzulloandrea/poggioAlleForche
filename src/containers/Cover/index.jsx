@@ -100,7 +100,7 @@ const Cover = () => {
         >
           <LogoStyled
             className="logo"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={logo}
             appear={isToAnimate('logo')}
@@ -108,7 +108,7 @@ const Cover = () => {
           ></LogoStyled>
           <MarchioStyled
             className="marchio"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={marchio}
             appear={isToAnimate('marchio')}
@@ -116,7 +116,7 @@ const Cover = () => {
           ></MarchioStyled>
           <LabelStyled
             className="dicitura"
-            isMobile={dimensions.isMobile}
+            isMobile={dimensions.isMobile ? 1 : 0}
             moveup={moveUp}
             src={dicitura}
             appear={isToAnimate('dicitura')}

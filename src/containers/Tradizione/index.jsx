@@ -34,9 +34,10 @@ const Tradizione = () => {
   });
 
   return (
-    <Wrapper show={show}>
-      <Layout dimensions={dimensions} />
-      <Articles dimensions={dimensions} />
+    <Wrapper show={show ? 1 : 0}>
+      <Layout dimensions={dimensions}>
+        <Articles dimensions={dimensions} />
+      </Layout>
     </Wrapper>
   );
 };

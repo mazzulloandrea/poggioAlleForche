@@ -33,7 +33,7 @@ const Cantina = () => {
   });
 
   return (
-    <Wrapper show={show}>
+    <Wrapper show={show ? 1 : 0}>
       <Layout dimensions={dimensions}></Layout>
       <article></article>
     </Wrapper>

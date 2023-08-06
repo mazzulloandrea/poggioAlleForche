@@ -99,7 +99,7 @@ const Header = ({ dimensions }) => {
   return (
     <>
       {dimensions.isMobile && menuMobile()}
-      <HeaderStyled src={background} ismobile={dimensions.isMobile}>
+      <HeaderStyled src={background} ismobile={dimensions.isMobile ? 1 : 0}>
         {!dimensions.isMobile && menuDesktop()}
       </HeaderStyled>
     </>

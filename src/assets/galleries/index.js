@@ -4,11 +4,18 @@ import foto3 from './home/Gallery-1,-foto-C.png';
 import foto4 from './home/Gallery-1,-foto-D.png';
 import foto5 from './home/Gallery-1,-foto-E.png';
 
+import arrowSx from './arrowSx.png';
+import arrowDx from './arrowDx.png';
+
 const galleries = {
-  Tradizione: [foto1, foto2, foto3, foto4, foto5],
-  Cantine: [foto3, foto4, foto5, foto1, foto2],
-  Viti: [foto4, foto1, foto5, foto3, foto2],
-  territorio: [foto1, foto2, foto3, foto4, foto5],
+  tradizione: [foto1, foto2, foto3, foto4, foto5],
+  cantina: [foto3, foto4, foto5, foto1, foto2],
+  viti: [foto4, foto1, foto5, foto3, foto2],
+  vini: [foto1, foto2, foto3, foto4, foto5],
+  galleryCustom: {
+    arrowSx,
+    arrowDx,
+  },
 };
 
 export default galleries;
