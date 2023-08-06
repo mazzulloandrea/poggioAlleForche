@@ -45,7 +45,7 @@ const Header = ({ dimensions }) => {
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
             style={{ color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white' }}
-            ismobile={true}
+            ismobile={1}
           >
             {menuKey}
           </MenuVoice>
@@ -53,6 +53,13 @@ const Header = ({ dimensions }) => {
       </MenuHamburger>
     );
   };
+
+  const LogoComponent = (
+    <LogoContainer onClick={handleClickLogo} ismobile={dimensions.isMobile ? 1 : 0}>
+      <Logo src={logo} />
+      <Marchio src={marchio} />
+    </LogoContainer>
+  );
 
   const menuDesktop = () => {
     let menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
@@ -73,13 +80,7 @@ const Header = ({ dimensions }) => {
     return (
       <MenuDesktopStyled>
         {menuList.map(menuKey => {
-          if (menuKey === 'logo')
-            return (
-              <LogoContainer onClick={handleClickLogo}>
-                <Logo src={logo} />
-                <Marchio src={marchio} />
-              </LogoContainer>
-            );
+          if (menuKey === 'logo') return LogoComponent;
           return (
             <MenuVoice
               key={menuKey}
@@ -100,7 +101,7 @@ const Header = ({ dimensions }) => {
     <>
       {dimensions.isMobile && menuMobile()}
       <HeaderStyled src={background} ismobile={dimensions.isMobile ? 1 : 0}>
-        {!dimensions.isMobile && menuDesktop()}
+        {!dimensions.isMobile ? menuDesktop() : LogoComponent}
       </HeaderStyled>
     </>
   );

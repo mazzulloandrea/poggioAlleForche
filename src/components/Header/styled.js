@@ -56,7 +56,7 @@ export const MenuVoice = styled.a`
 `;
 
 export const LogoContainer = styled.a`
-  width: 40%;
+  width: ${props => (props.ismobile ? '100%' : '40%')};
   height: 100%;
   padding: 2vh 2vw;
   display: flex;
