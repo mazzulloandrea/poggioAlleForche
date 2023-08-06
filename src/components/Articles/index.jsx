@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY, mobileWidth } from '../../utils';
 import {
@@ -11,24 +11,30 @@ import { Wrapper, Article, Text, Title, SubTitle, ImgBkg } from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
+  const [mobileLayout, setMobileLayout] = useState(dimensions.width < 1700);
+
+  useEffect(() => {
+    setMobileLayout(dimensions.width < 1700);
+  }, [dimensions.width]);
 
   const getArticle = useCallback(() => {
     switch (pathname) {
       case '/tradizione':
         return articlesTradizione;
-      // case '/cantina':
-      //   return articlesCantine;
-      // case '/viti':
-      //   return articlesViti;
-      // case '/vini':
-      //   return articlesVini;
+      case '/cantina':
+        return articlesCantine;
+      case '/viti':
+        return articlesViti;
+      case '/vini':
+        return articlesVini;
       default:
         return articlesTradizione;
     }
   }, [pathname]);
 
   const getLayout = articleData => {
-    if (dimensions.isMobile) {
+    // if (dimensions.isMobile) {
+    if (mobileLayout) {
       return articleData.mobile;
     }
     return articleData.desktop;
@@ -37,7 +43,7 @@ const Articles = ({ dimensions }) => {
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
     return (
-      <Article>
+      <Article mobilelayout={mobileLayout ? 1 : 0}>
         {type === 'txt' && (
           <>
             {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
