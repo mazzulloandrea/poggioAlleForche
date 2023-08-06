@@ -16,12 +16,12 @@ const Articles = ({ dimensions }) => {
     switch (pathname) {
       case '/tradizione':
         return articlesTradizione;
-      // case '/cantina':
-      //   return articlesCantine;
-      // case '/viti':
-      //   return articlesViti;
-      // case '/vini':
-      //   return articlesVini;
+      case '/cantina':
+        return articlesCantine;
+      case '/viti':
+        return articlesViti;
+      case '/vini':
+        return articlesVini;
       default:
         return articlesTradizione;
     }

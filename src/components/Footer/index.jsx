@@ -13,7 +13,9 @@ const Footer = ({ dimensions }) => {
     <>
       <FooterStyled src={background} ismobile={dimensions.isMobile ? 1 : 0}>
         <Contacts>
-          <div>Contatti:</div>
+          <div>Indirizzo</div>
+          <br />
+          <br />
           <article>
             <p>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</p>
             <p>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</p>
@@ -27,7 +29,32 @@ const Footer = ({ dimensions }) => {
           <Logo src={logo} />
           <Marchio src={marchio} />
         </BackToHome>
-        <Grants />
+        <Grants>
+          <div>Contatti</div>
+          <br />
+          <br />
+          <article>
+            <p>
+              Email{' '}
+              <a href="mailto:poggioalleforche@email.it" style={{ textDecoration: 'underline' }}>
+                poggioalleforche@email.it{' '}
+              </a>
+            </p>
+          </article>
+          <br />
+          <article>
+            <p>
+              Phone{' '}
+              {dimensions.isMobile ? (
+                <a href="tel:333 3456 789" style={{ textDecoration: 'underline' }}>
+                  333 3456 789
+                </a>
+              ) : (
+                <span>333 3456 789</span>
+              )}
+            </p>
+          </article>
+        </Grants>
       </FooterStyled>
     </>
   );
