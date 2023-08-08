@@ -9,7 +9,7 @@ import {
   LabelStyled,
   IndicatorStyled,
 } from './styled';
-import { mobileWidth } from '../../utils';
+import { tabletWidth } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
 const Cover = () => {
@@ -28,7 +28,7 @@ const Cover = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isMobile: window.innerWidth < mobileWidth,
+    isTablet: window.innerWidth < tabletWidth,
   });
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Cover = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isMobile: window.innerWidth < mobileWidth,
+        isTablet: window.innerWidth < tabletWidth,
       });
     };
 
@@ -100,7 +100,7 @@ const Cover = () => {
         >
           <LogoStyled
             className="logo"
-            isMobile={dimensions.isMobile ? 1 : 0}
+            istablet={dimensions.isTablet ? 1 : 0}
             moveup={moveUp}
             src={logo}
             appear={isToAnimate('logo')}
@@ -108,7 +108,7 @@ const Cover = () => {
           ></LogoStyled>
           <MarchioStyled
             className="marchio"
-            isMobile={dimensions.isMobile ? 1 : 0}
+            istablet={dimensions.isTablet ? 1 : 0}
             moveup={moveUp}
             src={marchio}
             appear={isToAnimate('marchio')}
@@ -116,7 +116,7 @@ const Cover = () => {
           ></MarchioStyled>
           <LabelStyled
             className="dicitura"
-            isMobile={dimensions.isMobile ? 1 : 0}
+            istablet={dimensions.isTablet ? 1 : 0}
             moveup={moveUp}
             src={dicitura}
             appear={isToAnimate('dicitura')}

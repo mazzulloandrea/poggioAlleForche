@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { mobileWidth } from '../../utils';
+import { mobilebletWidth, tabletWidth } from '../../utils';
 import { Articles } from '../../components';
 
 const Tradizione = () => {
@@ -14,15 +14,20 @@ const Tradizione = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isMobile: window.innerWidth < mobileWidth,
+    isTablet: window.innerWidth < tabletWidth,
+    isMobile: window.innerHeight < mobilebletWidth,
   });
+
+  useEffect(() => {
+    // console.log(dimensions);
+  }, [dimensions]);
 
   useEffect(() => {
     const debouncedHandleResize = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isMobile: window.innerWidth < mobileWidth,
+        isTablet: window.innerWidth < tabletWidth,
       });
     };
 
