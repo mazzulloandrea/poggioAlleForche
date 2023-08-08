@@ -28,7 +28,7 @@ export const BackgroundContainerRules = css`
 `;
 
 export const HeaderStyled = styled.header`
-  height: ${props => (props.ismobile ? '20vh' : '30vh')};
+  height: ${props => (props.istablet ? '20vh' : '30vh')};
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
 `;
@@ -48,7 +48,7 @@ export const MenuVoice = styled.a`
   ${BackgroundContainerRules}
   background-size: contain;
   ${props =>
-    props.ismobile &&
+    props.istablet &&
     css`
       font-size: 1.2em;
       margin: 5vh 0 5vh 2vw;
@@ -56,7 +56,7 @@ export const MenuVoice = styled.a`
 `;
 
 export const LogoContainer = styled.a`
-  width: ${props => (props.ismobile ? '100%' : '40%')};
+  width: ${props => (props.istablet ? '100%' : '40%')};
   height: 100%;
   padding: 2vh 2vw;
   display: flex;

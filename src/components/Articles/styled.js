@@ -8,30 +8,34 @@ export const Wrapper = styled.section`
 `;
 
 export const Article = styled.article`
-  // width: calc(50% - 6vw);
   float: left;
   width: ${props => (props.mobilelayout ? '100%' : '50%')};
-  height: 900px;
+  height: 60vh;
+`;
+
+export const TextWrapper = styled.div`
+  padding: 5%;
 `;
 
 export const Title = styled.p`
-  padding: 2%;
+  margin-top: -5%;
+  padding-bottom: 0;
   display: block;
   font-family: arial;
-  font-size: 5em;
+  font-size: 2em;
 `;
 
 export const SubTitle = styled.p`
-  padding: 2%;
+  margin-top: -3%;
+  padding-bottom: 5%;
   display: block;
   font-family: arial;
-  font-size: 5em;
+  font-size: 3em;
 `;
 
 export const Text = styled.p`
-  padding: 2%;
   font-family: arial;
-  font-size: 2em;
+  font-size: 1.2em;
   flex-wrap: wrap;
 `;
 

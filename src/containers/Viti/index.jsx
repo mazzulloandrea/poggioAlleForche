@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { mobileWidth } from '../../utils';
+import { tabletWidth } from '../../utils';
 
 const Viti = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const Viti = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isMobile: window.innerWidth < mobileWidth,
+    isTablet: window.innerWidth < tabletWidth,
   });
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Viti = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isMobile: window.innerWidth < mobileWidth,
+        isTablet: window.innerWidth < tabletWidth,
       });
     };
 

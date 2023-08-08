@@ -45,7 +45,7 @@ const Header = ({ dimensions }) => {
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
             style={{ color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white' }}
-            ismobile={1}
+            istablet={1}
           >
             {menuKey}
           </MenuVoice>
@@ -55,7 +55,7 @@ const Header = ({ dimensions }) => {
   };
 
   const LogoComponent = (
-    <LogoContainer onClick={handleClickLogo} ismobile={dimensions.isMobile ? 1 : 0}>
+    <LogoContainer onClick={handleClickLogo} istablet={dimensions.isTablet ? 1 : 0}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </LogoContainer>
@@ -99,9 +99,9 @@ const Header = ({ dimensions }) => {
 
   return (
     <>
-      {dimensions.isMobile && menuMobile()}
-      <HeaderStyled src={background} ismobile={dimensions.isMobile ? 1 : 0}>
-        {!dimensions.isMobile ? menuDesktop() : LogoComponent}
+      {dimensions.isTablet && menuMobile()}
+      <HeaderStyled src={background} istablet={dimensions.isTablet ? 1 : 0}>
+        {!dimensions.isTablet ? menuDesktop() : LogoComponent}
       </HeaderStyled>
     </>
   );

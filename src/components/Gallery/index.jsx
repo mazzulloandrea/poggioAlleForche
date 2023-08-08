@@ -6,7 +6,7 @@ import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
 
-const Gallery = () => {
+const Gallery = ({ dimensions }) => {
   const { pathname } = useLocation();
   let galleriesName = pathname.substring(1, pathname.length);
   if (!galleries[galleriesName]) galleriesName = 'tradizione';
@@ -23,8 +23,8 @@ const Gallery = () => {
             onClick={onClick}
             disabled={disabled}
             style={{
-              height: '120px',
-              width: '120px',
+              height: '10vw',
+              width: '10vw',
             }}
           />
         </button>

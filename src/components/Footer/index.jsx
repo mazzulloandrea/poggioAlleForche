@@ -1,5 +1,5 @@
 import React from 'react';
-import { routes } from '../../utils';
+import { routes, tabletWidth, mobilebletWidth } from '../../utils';
 import { background, logo, marchio, dicitura } from '../../assets';
 import { FooterStyled, Contacts, BackToHome, Grants, Logo, Marchio } from './styled';
 
@@ -15,11 +15,12 @@ const Footer = ({ dimensions }) => {
       <Marchio src={marchio} />
     </BackToHome>
   );
+
   const getContacs = (
-    <Contacts>
-      <div>Indirizzo</div>
-      <br />
-      <br />
+    <Contacts istablet={dimensions.isTablet ? 1 : 0}>
+      {/* <div>Indirizzo</div> */}
+      {/* <br />
+      <br /> */}
       <article>
         <p>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</p>
         <p>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</p>
@@ -32,10 +33,10 @@ const Footer = ({ dimensions }) => {
   );
 
   const getGrants = (
-    <Grants>
-      <div>Contatti</div>
+    <Grants istablet={dimensions.isTablet ? 1 : 0}>
+      {/* <div>Contatti</div>
       <br />
-      <br />
+      <br /> */}
       <article>
         <p>
           Email{' '}
@@ -48,7 +49,7 @@ const Footer = ({ dimensions }) => {
       <article>
         <p>
           Phone{' '}
-          {dimensions.isMobile ? (
+          {dimensions.isTablet ? (
             <a href="tel:333 3456 789" style={{ textDecoration: 'underline' }}>
               333 3456 789
             </a>
@@ -59,24 +60,23 @@ const Footer = ({ dimensions }) => {
       </article>
     </Grants>
   );
+
   return (
-    <>
-      <FooterStyled src={background} ismobile={dimensions.width < 1700 ? 1 : 0}>
-        {dimensions.width < 1700 ? (
-          <>
-            {getLogo}
-            {getContacs}
-            {getGrants}
-          </>
-        ) : (
-          <>
-            {getContacs}
-            {getLogo}
-            {getGrants}
-          </>
-        )}
-      </FooterStyled>
-    </>
+    <FooterStyled src={background} istablet={dimensions.isTablet ? 1 : 0}>
+      {dimensions.isTablet ? (
+        <>
+          {getLogo}
+          {getContacs}
+          {getGrants}
+        </>
+      ) : (
+        <>
+          {getContacs}
+          {getLogo}
+          {getGrants}
+        </>
+      )}
+    </FooterStyled>
   );
 };
 

@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY, mobileWidth } from '../../utils';
+import { routes, NO_MENU_ROUTE_KEY, tabletWidth } from '../../utils';
 import {
   articlesTradizione,
   // articlesViti,
   // articlesCantine,
   // articlesTerritorio,
 } from '../../assets';
-import { Wrapper, Article, Text, Title, SubTitle, ImgBkg } from './styled';
+import { Wrapper, Article, TextWrapper, Text, Title, SubTitle, ImgBkg } from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
-  const [mobileLayout, setMobileLayout] = useState(dimensions.width < 1700);
+  // const [mobileLayout, setMobileLayout] = useState(dimensions.width < 1700);
 
-  useEffect(() => {
-    setMobileLayout(dimensions.width < 1700);
-  }, [dimensions.width]);
+  // useEffect(() => {
+  //   setMobileLayout(dimensions.width < 1700);
+  // }, [dimensions.width]);
 
   const getArticle = useCallback(() => {
     switch (pathname) {
@@ -33,8 +33,8 @@ const Articles = ({ dimensions }) => {
   }, [pathname]);
 
   const getLayout = articleData => {
-    // if (dimensions.isMobile) {
-    if (mobileLayout) {
+    if (dimensions && dimensions.isTablet) {
+      // if (dimensions) {
       return articleData.mobile;
     }
     return articleData.desktop;
@@ -43,15 +43,15 @@ const Articles = ({ dimensions }) => {
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
     return (
-      <Article mobilelayout={mobileLayout ? 1 : 0}>
+      <Article mobilelayout={dimensions.isTablet ? 1 : 0}>
         {type === 'txt' && (
-          <>
+          <TextWrapper>
             {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
             {subTitle && <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} />}
             <Text id={id} style={{}} src={src || ''}>
               {src}
             </Text>
-          </>
+          </TextWrapper>
         )}
         {type === 'img' && <ImgBkg id={id} src={src} />}
       </Article>

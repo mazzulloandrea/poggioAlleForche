@@ -11,14 +11,14 @@ export const FooterStyled = styled.article`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   display: flex;
-  align-items: flex-start;
-  padding: 2% 0;
+  align-items: center;
+  padding: 2% 4%;
   ${props =>
-    props.ismobile &&
+    props.istablet &&
     css`
       height: 90vh;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
       > div {
         height: 30vh;
         width: 100%;
@@ -31,12 +31,20 @@ export const Contacts = styled.div`
   width: 40%;
   color: white;
   padding: 0 2%;
-  text-align: center;
-  > div {
-    font-size: 2em;
-  }
+  ${props =>
+    props.istablet &&
+    css`
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      // text-align: center;
+    `}
+  // > div {
+  //   font-size: 2em;
+  // }
   > article {
-    font-size: 1.3em;
+    font-size: 0.8em;
   }
 `;
 
@@ -52,6 +60,16 @@ export const BackToHome = styled.div`
 
 export const Grants = styled(Contacts)`
   width: 40%;
+  text-align: center;
+  ${props =>
+    props.istablet &&
+    css`
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      // text-align: center;
+    `}
 `;
 
 export const LogoContainer = styled.a`

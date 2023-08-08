@@ -5,6 +5,7 @@
   top: 15px;
   right: 15px;
 }
+
 .bm-cross-button {
   width: 13vh !important;
   height: 13vh !important;
@@ -47,4 +48,21 @@
   padding-left: 10px;
   margin: 30px 0;
   color: white;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+  .bm-burger-button {
+    width: 8vh;
+    height: 8vh;
+  }
+  .bm-cross-button {
+    width: 8vh !important;
+    height: 8vh !important;
+  }
+  .bm-menu-wrap {
+    width: 40vw !important;
+  }
+
 }
