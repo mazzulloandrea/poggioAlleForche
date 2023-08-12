@@ -6,8 +6,19 @@ import {
   // articlesViti,
   // articlesCantine,
   // articlesTerritorio,
+  logo,
 } from '../../assets';
-import { Wrapper, Article, TextWrapper, Text, Title, SubTitle, ImgBkg } from './styled';
+import {
+  Wrapper,
+  Article,
+  TextWrapper,
+  Text,
+  TitleWrapper,
+  Title,
+  LogoStyled,
+  SubTitle,
+  ImgBkg,
+} from './styled';
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
@@ -42,18 +53,30 @@ const Articles = ({ dimensions }) => {
 
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
+    const { isTablet, isMobile } = dimensions;
+    const defaulProps = {
+      istablet: isTablet ? 1 : 0,
+      ismobile: isMobile ? 1 : 0,
+    };
     return (
-      <Article mobilelayout={dimensions.isTablet ? 1 : 0}>
+      <Article {...defaulProps}>
         {type === 'txt' && (
           <TextWrapper>
-            {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
-            {subTitle && <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} />}
-            <Text id={id} style={{}} src={src || ''}>
+            {title && (
+              <TitleWrapper {...defaulProps}>
+                <Title dangerouslySetInnerHTML={{ __html: title }} {...defaulProps} />
+                <LogoStyled src={logo} {...defaulProps} />
+              </TitleWrapper>
+            )}
+            {subTitle && (
+              <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} {...defaulProps} />
+            )}
+            <Text id={id} style={{}} src={src || ''} {...defaulProps}>
               {src}
             </Text>
           </TextWrapper>
         )}
-        {type === 'img' && <ImgBkg id={id} src={src} />}
+        {type === 'img' && <ImgBkg id={id} src={src} {...defaulProps} />}
       </Article>
     );
   };

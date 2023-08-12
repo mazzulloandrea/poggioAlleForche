@@ -105,7 +105,7 @@ const Cover = () => {
             src={logo}
             appear={isToAnimate('logo')}
             onTransitionEnd={setUp}
-          ></LogoStyled>
+          />
           <MarchioStyled
             className="marchio"
             istablet={dimensions.isTablet ? 1 : 0}
@@ -113,7 +113,7 @@ const Cover = () => {
             src={marchio}
             appear={isToAnimate('marchio')}
             onTransitionEnd={setUp}
-          ></MarchioStyled>
+          />
           <LabelStyled
             className="dicitura"
             istablet={dimensions.isTablet ? 1 : 0}
@@ -127,7 +127,7 @@ const Cover = () => {
                 setUp(event);
               }
             }}
-          ></LabelStyled>
+          />
           {showCover != COVER_HIDE && (
             <IndicatorStyled
               className="indicator"

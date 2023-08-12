@@ -44,10 +44,16 @@ const Header = ({ dimensions }) => {
             key={menuKey}
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
-            style={{ color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white' }}
+            style={{
+              color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white',
+              width: '100%',
+              textTransform: 'uppercase',
+              fontSize: '1.3em',
+            }}
             istablet={1}
+            ismobile={1}
           >
-            {menuKey}
+            {`- ${menuKey}`}
           </MenuVoice>
         ))}
       </MenuHamburger>

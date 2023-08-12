@@ -130,7 +130,7 @@ const bigScreenDim = css`
 //   height: 1000px;
 // `;
 
-const _defaultCover = styled.div`
+export const _defaultCover = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   background-position: center;
   background-size: contain;
