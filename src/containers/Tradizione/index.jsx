@@ -15,7 +15,7 @@ const Tradizione = () => {
     height: window.innerHeight,
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
-    isMobile: window.innerHeight < mobilebletWidth,
+    isMobile: window.innerWidth < mobilebletWidth,
   });
 
   useEffect(() => {

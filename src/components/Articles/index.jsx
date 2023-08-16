@@ -59,7 +59,7 @@ const Articles = ({ dimensions }) => {
       ismobile: isMobile ? 1 : 0,
     };
     return (
-      <Article {...defaulProps}>
+      <Article {...defaulProps} key={id}>
         {type === 'txt' && (
           <TextWrapper>
             {title && (
