@@ -142,6 +142,7 @@ export const _defaultCover = styled.div`
 `;
 
 export const Wrapper = styled(_defaultCover)`
+  background-color: #036ffc;
   background-size: cover;
   position: absolute;
   transition: transform 2s;
