@@ -1,3 +1,7 @@
+// import * as test from './menuMobile';
+// debugger;
+// console.log(test);
+
 export { logo, marchio, dicitura, logoMarchioDicitura } from './logo';
 export { background, arrowDown, coverStripe } from './cover';
 export {
@@ -10,7 +14,7 @@ export {
   viti,
   vitiSelected,
 } from './menuDesktop';
-export { hamburger, xClose } from './menuMobile';
+export { default as menuMobile } from './menuMobile';
 // export { articlesTradizione, articlesViti, articlesCantine, articlesTerritorio } from './articles';
 export { articlesTradizione } from './articles';
 export { default as galleries } from './galleries';

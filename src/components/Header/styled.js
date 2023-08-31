@@ -48,10 +48,11 @@ export const MenuVoice = styled.a`
   ${BackgroundContainerRules}
   background-size: contain;
   ${props =>
-    props.istablet &&
+    props.ismobile &&
     css`
-      font-size: 1.2em;
       margin: 5vh 0 5vh 2vw;
+      width: 80%;
+      height: 50px;
     `}
 `;
 
