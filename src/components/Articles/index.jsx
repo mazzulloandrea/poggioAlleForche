@@ -22,11 +22,6 @@ import {
 
 const Articles = ({ dimensions }) => {
   const { pathname } = useLocation();
-  // const [mobileLayout, setMobileLayout] = useState(dimensions.width < 1700);
-
-  // useEffect(() => {
-  //   setMobileLayout(dimensions.width < 1700);
-  // }, [dimensions.width]);
 
   const getArticle = useCallback(() => {
     switch (pathname) {
@@ -45,7 +40,6 @@ const Articles = ({ dimensions }) => {
 
   const getLayout = articleData => {
     if (dimensions && dimensions.isTablet) {
-      // if (dimensions) {
       return articleData.mobile;
     }
     return articleData.desktop;
