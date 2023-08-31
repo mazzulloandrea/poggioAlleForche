@@ -1,6 +1,6 @@
 import React from 'react';
 import { routes, tabletWidth, mobilebletWidth } from '../../utils';
-import { background, logo, marchio, dicitura } from '../../assets';
+import { coverStripe, logo, marchio, dicitura } from '../../assets';
 import { FooterStyled, Contacts, BackToHome, Grants, Logo, Marchio } from './styled';
 
 const Footer = ({ dimensions }) => {
@@ -62,7 +62,7 @@ const Footer = ({ dimensions }) => {
   );
 
   return (
-    <FooterStyled src={background} istablet={dimensions.isTablet ? 1 : 0}>
+    <FooterStyled src={coverStripe} istablet={dimensions.isTablet ? 1 : 0}>
       {dimensions.isTablet ? (
         <>
           {getLogo}

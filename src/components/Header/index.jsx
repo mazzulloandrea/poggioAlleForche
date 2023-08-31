@@ -5,7 +5,7 @@ import { slide as MenuHamburger } from 'react-burger-menu';
 import {
   hamburger,
   xClose,
-  background,
+  coverStripe,
   tradizione,
   tradizioneSelected,
   cantina,
@@ -106,7 +106,7 @@ const Header = ({ dimensions }) => {
   return (
     <>
       {dimensions.isTablet && menuMobile()}
-      <HeaderStyled src={background} istablet={dimensions.isTablet ? 1 : 0}>
+      <HeaderStyled src={coverStripe} istablet={dimensions.isTablet ? 1 : 0}>
         {!dimensions.isTablet ? menuDesktop() : LogoComponent}
       </HeaderStyled>
     </>

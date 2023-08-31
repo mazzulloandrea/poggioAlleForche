@@ -1,5 +1,5 @@
 export { logo, marchio, dicitura, logoMarchioDicitura } from './logo';
-export { background, arrowDown } from './cover';
+export { background, arrowDown, coverStripe } from './cover';
 export {
   tradizione,
   tradizioneSelected,
