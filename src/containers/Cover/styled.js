@@ -94,31 +94,31 @@ const bigScreenDim = css`
   color: green;
 `;
 
-// const retinaDim = css`
-//   width: 80%;
-//   height: 60%;
-//   color: red;
-//   > .logo {
-//     ${defaultLogoStyle}
-//     margin-bottom: -20px;
-//     height: 25%;
-//   }
-//   > .marchio {
-//     ${defaultMarchioStyle}
-//     height: 45%;
-//   }
-//   > .dicitura {
-//     ${defaultDicituraStyle}
-//     margin-top: -10px;
-//     height: 12%;
-//   }
-//   > .indicator {
-//     ${defaultIndicatorStyle}
-//     width: 5%;
-//     height: 5%;
-//     bottom: 5%;
-//   }
-// `;
+const retinaScreenDim = css`
+  width: 58%;
+  height: 60%;
+  > .logo {
+    ${defaultLogoStyle}
+    margin-bottom: -10px;
+    height: 17%;
+  }
+  > .marchio {
+    ${defaultMarchioStyle}
+    width: 58%;
+    height: 25%;
+  }
+  > .dicitura {
+    ${defaultDicituraStyle}
+    margin-top: -10px;
+    height: 12%;
+  }
+  > .indicator {
+    ${defaultIndicatorStyle}
+    width: 5%;
+    height: 5%;
+    bottom: 5%;
+  }
+`;
 
 // const portraitDim = css`
 //   width: 2000px;
@@ -168,6 +168,7 @@ export const ContainerCentered = styled.div`
   ${props => props.istabletormobile && tabletOrMobileDim}
   ${props => props.isdesktoporlaptop && desktopOrLaptopDim}
   ${props => props.isbigscreen && bigScreenDim}
+  ${props => props.isretina && retinaScreenDim}
 `;
 
 const _defaultImg = styled(_defaultCover)`

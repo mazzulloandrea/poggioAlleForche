@@ -23,7 +23,7 @@ const Cover = () => {
   const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-  // const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -92,7 +92,7 @@ const Cover = () => {
         // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
       >
         <ContainerCentered
-          // isretina={isRetina}
+          isretina={isRetina}
           isbigscreen={isBigScreen}
           isdesktoporlaptop={isDesktopOrLaptop}
           istabletormobile={isTabletOrMobile}
