@@ -28,7 +28,7 @@ export const BackgroundContainerRules = css`
 `;
 
 export const HeaderStyled = styled.header`
-  height: ${props => (props.istablet ? '20vh' : '30vh')};
+  height: 15vh;
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
 `;
@@ -42,8 +42,8 @@ export const MenuDesktopStyled = styled.div`
 `;
 
 export const MenuVoice = styled.a`
-  height: 50%;
-  width: 15%;
+  height: 65%;
+  width: 20%;
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   background-size: contain;
@@ -57,7 +57,8 @@ export const MenuVoice = styled.a`
 `;
 
 export const LogoContainer = styled.a`
-  width: ${props => (props.istablet ? '100%' : '40%')};
+  // width: ${props => (props.istablet ? '100%' : '40%')};
+  width: 40%;
   height: 100%;
   padding: 2vh 2vw;
   display: flex;

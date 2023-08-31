@@ -29,6 +29,20 @@ const Gallery = ({ dimensions }) => {
           />
         </button>
       )}
+      renderRightNav={(onClick, disabled) => (
+        <button className="image-gallery-icon image-gallery-right-nav">
+          <img
+            className="image-gallery-svg"
+            src={galleries.galleryCustom.arrowDx}
+            onClick={onClick}
+            disabled={disabled}
+            style={{
+              height: '10vw',
+              width: '10vw',
+            }}
+          />
+        </button>
+      )}
     />
   );
 };

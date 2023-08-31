@@ -97,14 +97,6 @@ const Header = ({ dimensions }) => {
             key={menuKey}
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
-            // style={{
-            //   // color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white',
-            //   width: '100%',
-            //   height: '50px',
-            //   // textTransform: 'uppercase',
-            //   fontSize: '1.3em',
-            // }}
-            // istablet={1}
             ismobile={1}
             src={getSrc(`/${menuKey}`, true)}
           ></MenuVoice>
@@ -146,9 +138,9 @@ const Header = ({ dimensions }) => {
 
   return (
     <>
-      {dimensions.isTablet && menuMobile()}
-      <HeaderStyled src={coverStripe} istablet={dimensions.isTablet ? 1 : 0}>
-        {!dimensions.isTablet ? menuDesktop() : LogoComponent}
+      {dimensions.isMobile && menuMobile()}
+      <HeaderStyled src={coverStripe}>
+        {!dimensions.isMobile ? menuDesktop() : LogoComponent}
       </HeaderStyled>
     </>
   );
