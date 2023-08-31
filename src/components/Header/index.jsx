@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
-  hamburger,
-  xClose,
+  // hamburger,
+  // xClose,
   coverStripe,
   tradizione,
   tradizioneSelected,
@@ -16,7 +16,9 @@ import {
   vitiSelected,
   logo,
   marchio,
+  menuMobile as menuMobileVoice,
 } from '../../assets';
+// import * as all from '../../assets';
 import { HeaderStyled, MenuDesktopStyled, MenuVoice, LogoContainer, Logo, Marchio } from './styled';
 import './menuMobile.css';
 
@@ -30,31 +32,82 @@ const Header = ({ dimensions }) => {
     return navigate(routes.tradizione);
   };
 
+  const getSrc = (menuKey, isMobile) => {
+    let menuVoice = '';
+    switch (menuKey) {
+      case routes.tradizione:
+        menuVoice =
+          pathname === menuKey || pathname === '/'
+            ? isMobile
+              ? menuMobileVoice.tradizioneSelected
+              : tradizioneSelected
+            : isMobile
+            ? menuMobileVoice.tradizione
+            : tradizione;
+        break;
+      case routes.cantina:
+        // menuVoice = pathname === menuKey ? cantinaSelected : cantina;
+        menuVoice =
+          pathname === menuKey
+            ? isMobile
+              ? menuMobileVoice.cantinaSelected
+              : cantinaSelected
+            : isMobile
+            ? menuMobileVoice.cantina
+            : cantina;
+        break;
+      case routes.viti:
+        // menuVoice = pathname === menuKey ? vitiSelected : viti;
+        menuVoice =
+          pathname === menuKey
+            ? isMobile
+              ? menuMobileVoice.vitiSelected
+              : vitiSelected
+            : isMobile
+            ? menuMobileVoice.viti
+            : viti;
+        break;
+      case routes.vini:
+        // menuVoice = pathname === menuKey ? viniSelected : vini;
+        menuVoice =
+          pathname === menuKey
+            ? isMobile
+              ? menuMobileVoice.viniSelected
+              : viniSelected
+            : isMobile
+            ? menuMobileVoice.vini
+            : vini;
+        break;
+    }
+
+    return menuVoice;
+  };
+
   const menuMobile = () => {
     const menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
 
     return (
       <MenuHamburger
         right
-        customBurgerIcon={<img src={hamburger} />}
-        customCrossIcon={<img src={xClose} />}
+        customBurgerIcon={<img src={menuMobileVoice.hamburger} />}
+        customCrossIcon={<img src={menuMobileVoice.xClose} />}
       >
         {menuList.map(menuKey => (
           <MenuVoice
             key={menuKey}
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
-            style={{
-              color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white',
-              width: '100%',
-              textTransform: 'uppercase',
-              fontSize: '1.3em',
-            }}
-            istablet={1}
+            // style={{
+            //   // color: pathname === `/${menuKey}` || pathname === '/' ? 'gold' : 'white',
+            //   width: '100%',
+            //   height: '50px',
+            //   // textTransform: 'uppercase',
+            //   fontSize: '1.3em',
+            // }}
+            // istablet={1}
             ismobile={1}
-          >
-            {`- ${menuKey}`}
-          </MenuVoice>
+            src={getSrc(`/${menuKey}`, true)}
+          ></MenuVoice>
         ))}
       </MenuHamburger>
     );
@@ -70,19 +123,7 @@ const Header = ({ dimensions }) => {
   const menuDesktop = () => {
     let menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
     menuList.splice(2, 0, 'logo');
-    const getSrc = menuKey => {
-      switch (menuKey) {
-        case routes.tradizione:
-          return pathname === menuKey || pathname === '/' ? tradizioneSelected : tradizione;
-        case routes.cantina:
-          return pathname === menuKey ? cantinaSelected : cantina;
-        case routes.viti:
-          return pathname === menuKey ? vitiSelected : viti;
-        case routes.vini:
-          return pathname === menuKey ? viniSelected : vini;
-      }
-      return ``;
-    };
+
     return (
       <MenuDesktopStyled>
         {menuList.map(menuKey => {
