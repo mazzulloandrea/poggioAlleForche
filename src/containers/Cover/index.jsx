@@ -29,6 +29,7 @@ const Cover = () => {
     height: window.innerHeight,
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
+    isRetina,
   });
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const Cover = () => {
         height: window.innerHeight,
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
+        isRetina,
       });
     };
 

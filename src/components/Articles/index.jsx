@@ -53,10 +53,11 @@ const Articles = ({ dimensions }) => {
 
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
-    const { isTablet, isMobile } = dimensions;
+    const { isTablet, isMobile, isRetina } = dimensions;
     const defaulProps = {
       istablet: isTablet ? 1 : 0,
       ismobile: isMobile ? 1 : 0,
+      isretina: isRetina ? 1 : 0,
     };
     return (
       <Article {...defaulProps} key={id}>

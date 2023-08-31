@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { mobilebletWidth, tabletWidth } from '../../utils';
@@ -6,6 +7,7 @@ import { Articles } from '../../components';
 
 const Tradizione = () => {
   const [show, setShow] = useState(false);
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   useEffect(() => {
     setShow(true);
@@ -16,6 +18,7 @@ const Tradizione = () => {
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
     isMobile: window.innerWidth < mobilebletWidth,
+    isRetina,
   });
 
   useEffect(() => {
@@ -28,6 +31,8 @@ const Tradizione = () => {
         height: window.innerHeight,
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
+        isMobile: window.innerWidth < mobilebletWidth,
+        isRetina,
       });
     };
 

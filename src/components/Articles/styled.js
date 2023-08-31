@@ -90,9 +90,14 @@ export const SubTitle = styled.p`
 `;
 
 export const Text = styled.p`
-  font-family: arial;
+  font-family: 'Times new roman';
   font-size: 1.2em;
   flex-wrap: wrap;
+  ${props =>
+    props.isretina &&
+    css`
+      font-size: 1.5em;
+    `}
 `;
 
 export const ImgBkg = styled.div`
