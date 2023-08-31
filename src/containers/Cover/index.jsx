@@ -30,6 +30,7 @@ const Cover = () => {
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
     isRetina,
+    isBigScreen,
   });
 
   useEffect(() => {
