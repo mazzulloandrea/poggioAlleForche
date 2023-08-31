@@ -12,6 +12,17 @@ const Gallery = ({ dimensions }) => {
   if (!galleries[galleriesName]) galleriesName = 'tradizione';
   const data = galleries[galleriesName].map(el => ({ original: el }));
 
+  const arrowProps = {
+    height: '10vw',
+    width: '10vw',
+    marginBottom:
+      dimensions && dimensions.isMobile
+        ? '50px'
+        : dimensions && dimensions.isTablet
+        ? '120px'
+        : '17vh',
+  };
+
   return (
     <ImageGallery
       items={data}
@@ -22,10 +33,7 @@ const Gallery = ({ dimensions }) => {
             src={galleries.galleryCustom.arrowSx}
             onClick={onClick}
             disabled={disabled}
-            style={{
-              height: '10vw',
-              width: '10vw',
-            }}
+            style={arrowProps}
           />
         </button>
       )}
@@ -36,10 +44,7 @@ const Gallery = ({ dimensions }) => {
             src={galleries.galleryCustom.arrowDx}
             onClick={onClick}
             disabled={disabled}
-            style={{
-              height: '10vw',
-              width: '10vw',
-            }}
+            style={arrowProps}
           />
         </button>
       )}
