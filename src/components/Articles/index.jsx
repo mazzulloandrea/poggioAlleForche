@@ -15,7 +15,6 @@ import {
   Text,
   TitleWrapper,
   Title,
-  LogoStyled,
   SubTitle,
   ImgBkg,
 } from './styled';
@@ -65,12 +64,14 @@ const Articles = ({ dimensions }) => {
           <TextWrapper>
             {title && (
               <TitleWrapper {...defaulProps}>
-                <Title dangerouslySetInnerHTML={{ __html: title }} {...defaulProps} />
-                <LogoStyled src={logo} {...defaulProps} />
+                {/* <Title dangerouslySetInnerHTML={{ __html: title }} {...defaulProps} /> */}
+                {/* <LogoStyled src={logo} {...defaulProps} /> */}
+                <Title src={title} />
               </TitleWrapper>
             )}
             {subTitle && (
-              <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} {...defaulProps} />
+              // <SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} {...defaulProps} />
+              <SubTitle src={subTitle} />
             )}
             <Text id={id} style={{}} src={src || ''} {...defaulProps}>
               {src}
