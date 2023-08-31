@@ -71,6 +71,11 @@ export const Text = styled.p`
     css`
       font-size: 1.5em;
     `}
+  ${props =>
+    props.isbigscreen &&
+    css`
+      font-size: 1.8em;
+    `}
 `;
 
 export const ImgBkg = styled.div`
