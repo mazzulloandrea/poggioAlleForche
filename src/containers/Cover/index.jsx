@@ -101,7 +101,6 @@ const Cover = () => {
           istabletormobile={isTabletOrMobile}
           isportrait={isPortrait}
         >
-          {isRetina && <div style={{ fontSize: '6rem' }}>RETINA</div>}
           <LogoStyled
             className="logo"
             istablet={dimensions.isTablet ? 1 : 0}
