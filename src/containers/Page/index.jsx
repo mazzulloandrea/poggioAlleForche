@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Layout } from "..";
 import { Wrapper } from "../commonStyled";
-import { tabletWidth } from "../../utils";
+import { mobilebletWidth, tabletWidth } from "../../utils";
+import { Articles } from "../../components";
 
-const Vini = () => {
+const Page = () => {
 	const [show, setShow] = useState(false);
 	const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
 	const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
@@ -21,6 +22,10 @@ const Vini = () => {
 		isRetina,
 		isBigScreen,
 	});
+
+	useEffect(() => {
+		// console.log(dimensions);
+	}, [dimensions]);
 
 	useEffect(() => {
 		const debouncedHandleResize = () => {
@@ -43,10 +48,11 @@ const Vini = () => {
 
 	return (
 		<Wrapper show={show ? 1 : 0}>
-			<Layout dimensions={dimensions}></Layout>
-			<article></article>
+			<Layout dimensions={dimensions}>
+				<Articles dimensions={dimensions} />
+			</Layout>
 		</Wrapper>
 	);
 };
 
-export default Vini;
+export default Page;
