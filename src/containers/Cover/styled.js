@@ -95,7 +95,8 @@ const bigScreenDim = css`
 `;
 
 const retinaScreenDim = css`
-  width: 58%;
+  width: 700px;
+  width: 50%;
   height: 60%;
   > .logo {
     ${defaultLogoStyle}
@@ -154,7 +155,7 @@ export const Wrapper = styled(_defaultCover)`
       transform: translateY(-100vh);
     `}
   ${props =>
-    props.showCover === COVER_HIDE &&
+    props.showcover === COVER_HIDE &&
     css`
       display: none;
     `}
