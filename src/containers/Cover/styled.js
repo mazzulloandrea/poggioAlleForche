@@ -189,6 +189,7 @@ export const LogoStyled = styled(_defaultImg)`
     props.moveup &&
     css`
       transition: transform 1s;
+      -webkit-transition: transform 1s;
       transform: translateY(-100vh);
     `}
 `;
