@@ -40,6 +40,7 @@ const Cover = () => {
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
         isRetina,
+        isBigScreen,
       });
     };
 
@@ -56,6 +57,7 @@ const Cover = () => {
 
   const setUp = useCallback(
     event => {
+      debugger;
       setStep(step + 1);
       event.stopPropagation();
       // console.log(step);
@@ -84,7 +86,7 @@ const Cover = () => {
     <>
       <Wrapper
         src={background}
-        showCover={showCover}
+        showcover={showCover}
         onClick={() => {
           if (isToAnimate('indicator')) {
             setMoveUp(true);
@@ -95,34 +97,34 @@ const Cover = () => {
         // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
       >
         <ContainerCentered
-          isretina={isRetina}
-          isbigscreen={isBigScreen}
-          isdesktoporlaptop={isDesktopOrLaptop}
-          istabletormobile={isTabletOrMobile}
-          isportrait={isPortrait}
+          isretina={isRetina ? 1 : 0}
+          isbigscreen={isBigScreen ? 1 : 0}
+          isdesktoporlaptop={isDesktopOrLaptop ? 1 : 0}
+          istabletormobile={isTabletOrMobile ? 1 : 0}
+          isportrait={isPortrait ? 1 : 0}
         >
           <LogoStyled
             className="logo"
             istablet={dimensions.isTablet ? 1 : 0}
-            moveup={moveUp}
+            moveup={moveUp ? 1 : 0}
             src={logo}
-            appear={isToAnimate('logo')}
+            appear={isToAnimate('logo') ? 1 : 0}
             onTransitionEnd={setUp}
           />
           <MarchioStyled
             className="marchio"
             istablet={dimensions.isTablet ? 1 : 0}
-            moveup={moveUp}
+            moveup={moveUp ? 1 : 0}
             src={marchio}
-            appear={isToAnimate('marchio')}
+            appear={isToAnimate('marchio') ? 1 : 0}
             onTransitionEnd={setUp}
           />
           <LabelStyled
             className="dicitura"
             istablet={dimensions.isTablet ? 1 : 0}
-            moveup={moveUp}
+            moveup={moveUp ? 1 : 0}
             src={dicitura}
-            appear={isToAnimate('dicitura')}
+            appear={isToAnimate('dicitura') ? 1 : 0}
             onTransitionEnd={event => {
               if (step === 5) {
                 setShowCover(COVER_HIDE);
@@ -135,8 +137,8 @@ const Cover = () => {
             <IndicatorStyled
               className="indicator"
               src={indicator}
-              appear={isToAnimate('indicator')}
-              bounce={bounce()}
+              appear={isToAnimate('indicator') ? 1 : 0}
+              bounce={bounce() ? 1 : 0}
               onTransitionEnd={setUp}
             />
           )}
