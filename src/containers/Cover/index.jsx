@@ -57,7 +57,8 @@ const Cover = () => {
 
   const setUp = useCallback(
     event => {
-      debugger;
+      // debugger;
+      console.log('setUp actual step', step);
       setStep(step + 1);
       event.stopPropagation();
       // console.log(step);
@@ -70,6 +71,8 @@ const Cover = () => {
   }, [step]);
 
   const isToAnimate = type => {
+    // debugger;
+    console.log(`isToAnimate  type:${type},  step:${step}`);
     switch (type) {
       case 'logo':
         return step >= 1;
@@ -126,6 +129,7 @@ const Cover = () => {
             src={dicitura}
             appear={isToAnimate('dicitura') ? 1 : 0}
             onTransitionEnd={event => {
+              // debugger;
               if (step === 5) {
                 setShowCover(COVER_HIDE);
               } else {

@@ -147,12 +147,14 @@ export const Wrapper = styled(_defaultCover)`
   background-size: cover;
   position: absolute;
   transition: transform 2s;
+  -webkit-transition: transform 2s;
   height: 100%;
   width: 100vw;
   ${props =>
     props.moveup &&
     css`
       transform: translateY(-100vh);
+      -webkit-transform: translateY(-100vh);
     `}
   ${props =>
     props.showcover === COVER_HIDE &&
@@ -176,11 +178,14 @@ const _defaultImg = styled(_defaultCover)`
   opacity: 0;
   transform: scale(0);
   transition: transform 3s, opacity 3s;
+  -webkit-transform: scale(0);
+  -webkit-transition: transform 3s, opacity 3s;
   ${props =>
     props.appear &&
     css`
       opacity: 1;
       transform: scale(1);
+      -webkit-transform: scale(1);
     `}
 `;
 
@@ -191,6 +196,7 @@ export const LogoStyled = styled(_defaultImg)`
       transition: transform 1s;
       -webkit-transition: transform 1s;
       transform: translateY(-100vh);
+      -webkit-transform: translateY(-100vh);
     `}
 `;
 
@@ -199,8 +205,11 @@ export const MarchioStyled = styled(_defaultImg)`
     props.moveup &&
     css`
       transition: transform 1s;
+      -webkit-transition: transform 1s;
       transition-delay: 550ms;
+      -webkit-transition-delay: 550ms;
       transform: translateY(-100vh);
+      -webkit-transform: translateY(-100vh);
     `}
 `;
 
@@ -209,8 +218,11 @@ export const LabelStyled = styled(_defaultImg)`
     props.moveup &&
     css`
       transition: transform 1s;
+      -webkit-transition-delay: 350ms;
       transition-delay: 350ms;
+      -webkit-transition-delay: 350ms;
       transform: translateY(-100vh);
+      -webkit-transform: translateY(-100vh);
     `}
 `;
 
@@ -221,6 +233,10 @@ export const IndicatorStyled = styled(_defaultImg)`
   transition-duration: 2s;
   transition-timing-function: ease-out;
   transition-delay: 2s;
+  -webkit-transition-property: transform;
+  -webkit-transition-duration: 2s;
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-delay: 2s;
   ${props =>
     props.bounce &&
     css`
@@ -231,7 +247,9 @@ export const IndicatorStyled = styled(_defaultImg)`
 const bounce = keyframes`
   from {
     transform: translateY(-2vh);
+    -webkit-transform: translateY(-2vh);
   }
   to {
     transform: translateY(+2vh);
+    -webkit-transform: translateY(+2vh);
   }`;
