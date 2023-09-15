@@ -23,6 +23,13 @@ export const Article = styled.article`
       width: 100%;
       height: auto;
     `};
+  ${props =>
+    props.fullwidth &&
+    css`
+      width: 100%;
+      height: auto;
+      padding: 5vh 0;
+    `};
 `;
 
 export const TextWrapper = styled.div`
@@ -98,4 +105,10 @@ export const ImgBkg = styled.div`
       // margin: -20vh 0;
       // background-size: contain;
     `};
+`;
+
+export const ImgMap = styled.img`
+  width: auto;
+  height: 100%;
+  margin: 5vh 0;
 `;

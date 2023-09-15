@@ -2,6 +2,8 @@ import title from './title.png';
 import subTitle from './subtitle.png';
 import img1 from './La_tradizione_1.png';
 import img2 from './La_tradizione_2.png';
+import { mappa, mappaMobile } from './map';
+
 // import img3 from './La_tradizione_3.png';
 // import img4 from './La_tradizione_4.png';
 
@@ -27,6 +29,7 @@ const articleTradizione = {
     { type: 'img', src: img1 },
     { type: 'txt', src: text2 },
     { type: 'img', src: img2 },
+    { type: 'map', src: mappaMobile },
     // { type: 'txt', src: text3 },
     // { type: 'img', src: img3 },
     // { type: 'txt', src: text4 },
@@ -37,6 +40,7 @@ const articleTradizione = {
     { type: 'img', src: img1 },
     { type: 'img', src: img2 },
     { type: 'txt', src: text2 },
+    { type: 'map', src: mappa },
     // { type: 'txt', src: text3 },
     // { type: 'img', src: img3 },
     // { type: 'img', src: img4 },
