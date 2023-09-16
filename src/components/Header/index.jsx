@@ -125,7 +125,6 @@ const Header = ({ dimensions }) => {
               key={menuKey}
               id={menuKey}
               onClick={() => {
-                // console.log(`/${menuKey}`);
                 navigate(`/${menuKey}`);
               }}
               src={getSrc(`/${menuKey}`)}
