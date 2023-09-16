@@ -58,7 +58,7 @@ const Cover = () => {
   const setUp = useCallback(
     event => {
       // debugger;
-      // console.log('setUp actual step', step);
+      console.log('setUp actual step', step);
       setStep(step + 1);
       event.stopPropagation();
       // console.log(step);
@@ -72,7 +72,7 @@ const Cover = () => {
 
   const isToAnimate = type => {
     // debugger;
-    // console.log(`isToAnimate  type:${type},  step:${step}`);
+    console.log(`isToAnimate  type:${type},  step:${step}`);
     switch (type) {
       case 'logo':
         return step >= 1;
