@@ -38,7 +38,7 @@ const tabletOrMobileDim = css`
   }
   > .indicator {
     ${defaultIndicatorStyle}
-    bottom: 25vh;
+    bottom: 10vh;
   }
 `;
 
