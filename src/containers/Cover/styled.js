@@ -45,6 +45,8 @@ const tabletOrMobileDim = css`
 const desktopOrLaptopDim = css`
   width: 80%;
   height: 50%;
+  width: 500px;
+  height: 400px;
   > .logo {
     ${defaultLogoStyle}
     margin-bottom: -20px;
@@ -53,10 +55,11 @@ const desktopOrLaptopDim = css`
   > .marchio {
     ${defaultMarchioStyle}
     height: 45%;
+    height: 100px;
   }
   > .dicitura {
     ${defaultDicituraStyle}
-    margin-top: -10px;
+    margin-top: -30px;
     height: 20%;
   }
   > .indicator {
@@ -168,10 +171,9 @@ export const ContainerCentered = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${props => props.istabletormobile && tabletOrMobileDim}
-  ${props => props.isdesktoporlaptop && desktopOrLaptopDim}
-  ${props => props.isbigscreen && bigScreenDim}
-  ${props => props.isretina && retinaScreenDim}
+  ${props => props.istabletormobile && tabletOrMobileDim};
+  ${props => props.isdesktoporlaptop && desktopOrLaptopDim};
+  ${props => props.isbigscreen && bigScreenDim};
 `;
 
 const _defaultImg = styled(_defaultCover)`

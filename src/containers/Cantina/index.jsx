@@ -6,7 +6,6 @@ import { tabletWidth } from '../../utils';
 
 const Cantina = () => {
   const [show, setShow] = useState(false);
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   useEffect(() => {
     setShow(true);
@@ -16,7 +15,6 @@ const Cantina = () => {
     height: window.innerHeight,
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
-    isRetina,
   });
 
   useEffect(() => {
@@ -25,7 +23,6 @@ const Cantina = () => {
         height: window.innerHeight,
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
-        isRetina,
       });
     };
 

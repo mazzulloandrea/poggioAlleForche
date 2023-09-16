@@ -7,7 +7,6 @@ import { Articles } from '../../components';
 
 const Tradizione = () => {
   const [show, setShow] = useState(false);
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
   const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
 
   useEffect(() => {
@@ -19,7 +18,6 @@ const Tradizione = () => {
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
     isMobile: window.innerWidth < mobilebletWidth,
-    isRetina,
     isBigScreen,
   });
 
@@ -34,7 +32,6 @@ const Tradizione = () => {
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
         isMobile: window.innerWidth < mobilebletWidth,
-        isRetina,
         isBigScreen,
       });
     };
