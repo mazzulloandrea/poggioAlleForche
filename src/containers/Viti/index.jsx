@@ -6,7 +6,6 @@ import { tabletWidth } from '../../utils';
 
 const Viti = () => {
   const [show, setShow] = useState(false);
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   useEffect(() => {
     setShow(true);
@@ -16,7 +15,6 @@ const Viti = () => {
     height: window.innerHeight,
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
-    isRetina,
   });
 
   useEffect(() => {
@@ -25,7 +23,6 @@ const Viti = () => {
         height: window.innerHeight,
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
-        isRetina,
       });
     };
 

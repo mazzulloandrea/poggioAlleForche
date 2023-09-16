@@ -54,11 +54,10 @@ const Articles = ({ dimensions }) => {
 
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
-    const { isTablet, isMobile, isRetina, isBigScreen } = dimensions;
+    const { isTablet, isMobile, isBigScreen } = dimensions;
     const defaulProps = {
       istablet: isTablet ? 1 : 0,
       ismobile: isMobile ? 1 : 0,
-      isretina: isRetina ? 1 : 0,
       isbigscreen: isBigScreen ? 1 : 0,
     };
     return (

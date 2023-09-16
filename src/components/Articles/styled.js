@@ -74,11 +74,6 @@ export const Text = styled.p`
   font-size: 1.2em;
   flex-wrap: wrap;
   ${props =>
-    props.isretina &&
-    css`
-      font-size: 1.5em;
-    `}
-  ${props =>
     props.isbigscreen &&
     css`
       font-size: 1.8em;
