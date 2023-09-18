@@ -83,13 +83,27 @@ const Articles = ({ dimensions }) => {
               </TitleWrapper>
             )}
             {subTitle && <SubTitle src={subTitle} />}
-            <Text id={id} style={{}} src={src || ''} {...defaulProps}>
+            <Text
+              id={id}
+              style={{}}
+              src={src || ''}
+              {...defaulProps}
+              className={isBigScreen && 'bigScreenText'}
+            >
               {src}
             </Text>
           </TextWrapper>
         )}
         {type === 'img' && <ImgBkg id={id} src={src} {...defaulProps} />}
-        {type === 'map' && <ImgMap ref={mapRef} id="map" src={src} {...defaulProps} />}
+        {type === 'map' && (
+          <ImgMap
+            ref={mapRef}
+            id="map"
+            src={src}
+            {...defaulProps}
+            className={isBigScreen && 'bigScreenMap'}
+          />
+        )}
       </Article>
     );
   };

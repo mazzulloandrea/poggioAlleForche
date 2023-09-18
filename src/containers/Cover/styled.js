@@ -73,6 +73,9 @@ const desktopOrLaptopDim = css`
 const bigScreenDim = css`
   width: 100%;
   height: 60%;
+  // fix for old Safari
+  width: 1000px;
+  height: 500px;
   > .logo {
     ${defaultLogoStyle}
     margin-bottom: -20px;
