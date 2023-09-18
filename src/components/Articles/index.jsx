@@ -46,8 +46,11 @@ const Articles = ({ dimensions }) => {
   }, [pathname]);
 
   const getLayout = articleData => {
-    if (dimensions && dimensions.isTablet) {
+    if (dimensions && dimensions.isMobile) {
       return articleData.mobile;
+    }
+    if (dimensions && dimensions.isTablet) {
+      return articleData.tablet || articleData.mobile;
     }
     return articleData.desktop;
   };

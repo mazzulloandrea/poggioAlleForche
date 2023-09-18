@@ -106,4 +106,16 @@ export const ImgMap = styled.img`
   width: auto;
   height: 100%;
   margin: 5vh 0;
+  ${props =>
+    props.istablet &&
+    css`
+      width: 100%;
+      height: auto;
+    `};
+  ${props =>
+    props.ismobile &&
+    css`
+      width: 100%;
+      height: auto;
+    `};
 `;
