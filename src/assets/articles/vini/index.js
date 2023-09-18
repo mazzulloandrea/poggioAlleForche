@@ -35,6 +35,17 @@ const articleTradizione = {
     // { type: 'txt', src: text4 },
     // { type: 'img', src: img4 },
   ],
+  tablet: [
+    { type: 'txt', src: text1, title, subTitle },
+    { type: 'img', src: img1 },
+    { type: 'txt', src: text2 },
+    { type: 'img', src: img2 },
+    { type: 'map', src: mappa },
+    // { type: 'txt', src: text3 },
+    // { type: 'img', src: img3 },
+    // { type: 'txt', src: text4 },
+    // { type: 'img', src: img4 },
+  ],
   desktop: [
     { type: 'txt', src: text1, title, subTitle },
     { type: 'img', src: img1 },
