@@ -83,6 +83,11 @@ const Header = ({ dimensions }) => {
     return menuVoice;
   };
 
+  const getMenuLabel = menuKey => {
+    if (`/${menuKey}` === routes.tradizione) return 'Tradizione e modernità';
+    return menuKey;
+  };
+
   const menuMobile = () => {
     const menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
 
@@ -98,8 +103,10 @@ const Header = ({ dimensions }) => {
             id={menuKey}
             onClick={() => navigate(`/${menuKey}`)}
             ismobile={1}
-            src={getSrc(`/${menuKey}`, true)}
-          ></MenuVoice>
+            // src={getSrc(`/${menuKey}`, true)}
+          >
+            <span>{getMenuLabel(menuKey)}</span>
+          </MenuVoice>
         ))}
       </MenuHamburger>
     );

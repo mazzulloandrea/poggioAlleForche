@@ -54,6 +54,10 @@ export const MenuVoice = styled.a`
       width: 80%;
       height: 50px;
     `}
+  span {
+    color: white;
+    text-transform: uppercase;
+  }
 `;
 
 export const LogoContainer = styled.a`
