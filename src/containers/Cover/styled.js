@@ -34,7 +34,7 @@ const tabletOrMobileDim = css`
   }
   > .dicitura {
     ${defaultDicituraStyle}
-    margin-top: -5px;
+    margin-top: 10px;
   }
   > .indicator {
     ${defaultIndicatorStyle}
@@ -179,9 +179,9 @@ export const ContainerCentered = styled.div`
 const _defaultImg = styled(_defaultCover)`
   opacity: 0;
   transform: scale(0);
-  transition: transform 3s, opacity 3s;
   -webkit-transform: scale(0);
-  -webkit-transition: transform 3s, opacity 3s;
+  transition: transform 1.5s, opacity 1.5s;
+  -webkit-transition: transform 1.5s, opacity 1.5s;
   ${props =>
     props.appear &&
     css`
@@ -192,6 +192,8 @@ const _defaultImg = styled(_defaultCover)`
 `;
 
 export const LogoStyled = styled(_defaultImg)`
+  transition: transform 3s, opacity 3s;
+  -webkit-transition: transform 3s, opacity 3s;
   ${props =>
     props.moveup &&
     css`

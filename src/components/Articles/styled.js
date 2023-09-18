@@ -97,8 +97,6 @@ export const ImgBkg = styled.div`
     css`
       font-size: 1em;
       height: 35vh;
-      // margin: -20vh 0;
-      // background-size: contain;
     `};
 `;
 
