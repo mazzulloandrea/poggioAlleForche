@@ -29,6 +29,7 @@ const Cover = () => {
     width: window.innerWidth,
     isTablet: window.innerWidth < tabletWidth,
     isBigScreen,
+    isPortrait,
   });
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Cover = () => {
         width: window.innerWidth,
         isTablet: window.innerWidth < tabletWidth,
         isBigScreen,
+        isPortrait,
       });
     };
 

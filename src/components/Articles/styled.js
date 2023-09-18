@@ -98,6 +98,12 @@ export const ImgBkg = styled.div`
       font-size: 1em;
       height: 35vh;
     `};
+  ${props =>
+    props.ismobile &&
+    !props.isportrait &&
+    css`
+      height: 100vh;
+    `}
 `;
 
 export const ImgMap = styled.img`

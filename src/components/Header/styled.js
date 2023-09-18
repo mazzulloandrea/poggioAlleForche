@@ -57,6 +57,7 @@ export const MenuVoice = styled.a`
   span {
     color: white;
     text-transform: uppercase;
+    font-size: 1em;
   }
 `;
 

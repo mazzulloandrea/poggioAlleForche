@@ -30,6 +30,10 @@ const Articles = ({ dimensions }) => {
     }
   }, [hash]);
 
+  // useEffect(() => {
+  //   console.log('change in ', dimensions.isPortrait ? 'portrait' : 'landscape');
+  // }, [dimensions.isPortrait]);
+
   const getArticle = useCallback(() => {
     switch (pathname) {
       case '/tradizione':
@@ -47,6 +51,11 @@ const Articles = ({ dimensions }) => {
 
   const getLayout = articleData => {
     if (dimensions && dimensions.isMobile) {
+      // fix per mettere la mappa del tablet in landscape mobile
+      if (!dimensions.isPortrait) {
+        return articleData.tablet;
+      }
+
       return articleData.mobile;
     }
     if (dimensions && dimensions.isTablet) {
@@ -57,11 +66,12 @@ const Articles = ({ dimensions }) => {
 
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
-    const { isTablet, isMobile, isBigScreen } = dimensions;
+    const { isTablet, isMobile, isBigScreen, isPortrait } = dimensions;
     const defaulProps = {
       istablet: isTablet ? 1 : 0,
       ismobile: isMobile ? 1 : 0,
       isbigscreen: isBigScreen ? 1 : 0,
+      isportrait: isPortrait ? 1 : 0,
     };
     return (
       <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0}>

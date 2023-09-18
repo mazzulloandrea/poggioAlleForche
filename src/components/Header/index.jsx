@@ -105,7 +105,7 @@ const Header = ({ dimensions }) => {
             ismobile={1}
             // src={getSrc(`/${menuKey}`, true)}
           >
-            <span>{getMenuLabel(menuKey)}</span>
+            <span key={`span_menu_label_${menuKey}`}>{getMenuLabel(menuKey)}</span>
           </MenuVoice>
         ))}
       </MenuHamburger>
