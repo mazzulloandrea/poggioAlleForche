@@ -174,8 +174,8 @@ export const ContainerCentered = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${props => props.istabletormobile && tabletOrMobileDim};
-  ${props => props.isdesktoporlaptop && desktopOrLaptopDim};
+  ${props => (props.ismobile || props.istablet) && tabletOrMobileDim};
+  ${props => (props.issmallscreen || props.ismediumscreen) && desktopOrLaptopDim};
   ${props => props.isbigscreen && bigScreenDim};
 `;
 

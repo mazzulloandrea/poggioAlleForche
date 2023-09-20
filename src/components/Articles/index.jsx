@@ -19,6 +19,7 @@ import {
   ImgBkg,
   ImgMap,
 } from './styled';
+import './style.css';
 
 const Articles = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
@@ -50,6 +51,7 @@ const Articles = ({ dimensions }) => {
   }, [pathname]);
 
   const getLayout = articleData => {
+    // debugger;
     if (dimensions && dimensions.isMobile) {
       // fix per mettere la mappa del tablet in landscape mobile
       if (!dimensions.isPortrait) {
@@ -66,10 +68,13 @@ const Articles = ({ dimensions }) => {
 
   const getComponent = (el, id) => {
     const { type, src, title, subTitle } = el;
-    const { isTablet, isMobile, isBigScreen, isPortrait } = dimensions;
+    const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
+      dimensions;
     const defaulProps = {
-      istablet: isTablet ? 1 : 0,
       ismobile: isMobile ? 1 : 0,
+      istablet: isTablet ? 1 : 0,
+      issmallscreen: isSmallScreen ? 1 : 0,
+      ismediumscreen: isMediumScreen ? 1 : 0,
       isbigscreen: isBigScreen ? 1 : 0,
       isportrait: isPortrait ? 1 : 0,
     };

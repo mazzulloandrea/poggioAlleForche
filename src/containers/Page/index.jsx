@@ -2,12 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { mobilebletWidth, tabletWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
 import { Articles } from '../../components';
 
 const Page = () => {
   const [show, setShow] = useState(false);
-  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
+  const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
+  const isMediumScreen = useMediaQuery({
+    query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
+  });
+  const isSmallScreen = useMediaQuery({
+    query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
+  });
+  const isTablet = useMediaQuery({
+    query: `(min-width: ${mobilebletWidth}px) and (max-width: ${tabletWidth}px)`,
+  });
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${mobilebletWidth}px)`,
+  });
+
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
@@ -17,42 +30,24 @@ const Page = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isTablet: window.innerWidth < tabletWidth,
-    isMobile: window.innerWidth < mobilebletWidth,
     isBigScreen,
+    isMediumScreen,
+    isSmallScreen,
+    isTablet,
+    isMobile,
     isPortrait,
   });
-
-  useEffect(
-    () => {
-      // console.log(dimensions);
-      // setDimensions({
-      //   height: window.innerHeight,
-      //   width: window.innerWidth,
-      //   isMobile: window.innerWidth < mobilebletWidth,
-      //   isTablet: window.innerWidth < tabletWidth,
-      //   isBigScreen,
-      //   isPortrait,
-      // });
-    },
-    [
-      // dimensions.height,
-      // dimensions.width,
-      // dimensions.isMobile,
-      // dimensions.isTablet,
-      // dimensions.isBigScreen,
-      // dimensions.isPortrait,
-    ],
-  );
 
   useEffect(() => {
     const debouncedHandleResize = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isTablet: window.innerWidth < tabletWidth,
-        isMobile: window.innerWidth < mobilebletWidth,
         isBigScreen,
+        isMediumScreen,
+        isSmallScreen,
+        isTablet,
+        isMobile,
         isPortrait,
       });
     };
