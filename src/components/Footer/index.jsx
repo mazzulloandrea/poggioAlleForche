@@ -89,8 +89,13 @@ const Footer = ({ dimensions }) => {
   );
 
   return (
-    <FooterStyled src={coverStripe} istablet={dimensions.isTablet ? 1 : 0} id="map">
-      {dimensions.isTablet ? (
+    <FooterStyled
+      src={coverStripe}
+      ismobile={dimensions.isMobile ? 1 : 0}
+      istablet={dimensions.isTablet ? 1 : 0}
+      id="map"
+    >
+      {dimensions.isMobile || dimensions.isTablet ? (
         <>
           {getLogo}
           {getContacs}
