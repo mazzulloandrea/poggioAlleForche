@@ -7,3 +7,15 @@
   height: auto;
   margin: 5vh 0;
 }
+
+.image-gallery-slide:first-child .image-gallery-image {
+  transition: filter 3s, transform 3s;
+  filter: sepia(100%);
+  transform: scale(1);
+}
+
+.image-gallery-slide:first-child .image-gallery-image:hover {
+  transition: filter 3s, transform 3s;
+  filter: sepia(0%);
+  transform: scale(1.1);
+}

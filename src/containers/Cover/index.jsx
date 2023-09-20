@@ -9,7 +9,7 @@ import {
   LabelStyled,
   IndicatorStyled,
 } from './styled';
-import { tabletWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
 const Cover = () => {
@@ -17,18 +17,30 @@ const Cover = () => {
   const [moveUp, setMoveUp] = useState(false);
   const [showCover, setShowCover] = useState(COVER_SHOW);
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1224px)',
+  const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
+  const isMediumScreen = useMediaQuery({
+    query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
   });
-  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const isSmallScreen = useMediaQuery({
+    query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
+  });
+  const isTablet = useMediaQuery({
+    query: `(min-width: ${mobilebletWidth}px) and (max-width: ${tabletWidth}px)`,
+  });
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${mobilebletWidth}px)`,
+  });
+
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isTablet: window.innerWidth < tabletWidth,
     isBigScreen,
+    isMediumScreen,
+    isSmallScreen,
+    isTablet,
+    isMobile,
     isPortrait,
   });
 
@@ -37,16 +49,24 @@ const Cover = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isTablet: window.innerWidth < tabletWidth,
         isBigScreen,
+        isMediumScreen,
+        isSmallScreen,
+        isTablet,
+        isMobile,
         isPortrait,
       });
     };
 
-    window.addEventListener('resize', debouncedHandleResize);
+    const changeOrientation = () => {
+      setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
+    };
 
+    window.addEventListener('resize', debouncedHandleResize);
+    window.addEventListener('orientationchange', changeOrientation);
     return _ => {
       window.removeEventListener('resize', debouncedHandleResize);
+      window.removeEventListener('orientationchange', changeOrientation);
     };
   });
 
@@ -57,7 +77,7 @@ const Cover = () => {
   const setUp = useCallback(
     event => {
       // debugger;
-      console.log('setUp actual step', step);
+      // console.log('setUp actual step', step);
       setStep(step + 1);
       event.stopPropagation();
       // console.log(step);
@@ -71,7 +91,7 @@ const Cover = () => {
 
   const isToAnimate = type => {
     // debugger;
-    console.log(`isToAnimate  type:${type},  step:${step}`);
+    // console.log(`isToAnimate  type:${type},  step:${step}`);
     switch (type) {
       case 'logo':
         return step >= 1;
@@ -100,8 +120,12 @@ const Cover = () => {
       >
         <ContainerCentered
           isbigscreen={isBigScreen ? 1 : 0}
-          isdesktoporlaptop={isDesktopOrLaptop ? 1 : 0}
-          istabletormobile={isTabletOrMobile ? 1 : 0}
+          ismediumscreen={isMediumScreen ? 1 : 0}
+          issmallscreen={isSmallScreen ? 1 : 0}
+          istablet={isTablet ? 1 : 0}
+          ismobile={isMobile ? 1 : 0}
+          // isdesktoporlaptop={isDesktopOrLaptop ? 1 : 0}
+          // istabletormobile={isTabletOrMobile ? 1 : 0}
           isportrait={isPortrait ? 1 : 0}
         >
           <LogoStyled
@@ -146,7 +170,7 @@ const Cover = () => {
           )}
         </ContainerCentered>
       </Wrapper>
-      {showCover === COVER_HIDE && <Tradizione />}
+      {showCover === COVER_HIDE && <Tradizione dimensions={dimensions} />}
     </>
   );
 };

@@ -71,12 +71,21 @@ export const SubTitle = styled.div`
 
 export const Text = styled.p`
   font-family: 'Times new roman';
-  font-size: 1.2em;
   flex-wrap: wrap;
   ${props =>
     props.isbigscreen &&
     css`
-      font-size: 1.8em;
+      font-size: 2.3em;
+    `}
+  ${props =>
+    props.istablet &&
+    css`
+      font-size: 2em;
+    `}
+  ${props =>
+    props.ismobile &&
+    css`
+      font-size: 1.2em;
     `}
 `;
 

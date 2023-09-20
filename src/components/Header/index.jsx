@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
-  // hamburger,
-  // xClose,
   coverStripe,
   tradizione,
   tradizioneSelected,
@@ -18,7 +16,6 @@ import {
   marchio,
   menuMobile as menuMobileVoice,
 } from '../../assets';
-// import * as all from '../../assets';
 import { HeaderStyled, MenuDesktopStyled, MenuVoice, LogoContainer, Logo, Marchio } from './styled';
 import './menuMobile.css';
 
@@ -101,9 +98,10 @@ const Header = ({ dimensions }) => {
           <MenuVoice
             key={menuKey}
             id={menuKey}
-            onClick={() => navigate(`/${menuKey}`)}
+            onClick={() => {
+              navigate(`/${menuKey}`);
+            }}
             ismobile={1}
-            // src={getSrc(`/${menuKey}`, true)}
           >
             <span key={`span_menu_label_${menuKey}`}>{getMenuLabel(menuKey)}</span>
           </MenuVoice>

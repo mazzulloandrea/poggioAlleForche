@@ -5,43 +5,43 @@ import { Wrapper } from '../commonStyled';
 import { mobilebletWidth, tabletWidth } from '../../utils';
 import { Articles } from '../../components';
 
-const Tradizione = () => {
+const Tradizione = ({ dimensions }) => {
   const [show, setShow] = useState(false);
-  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
+  // const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' });
 
   useEffect(() => {
     setShow(true);
   }, []);
 
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-    isTablet: window.innerWidth < tabletWidth,
-    isMobile: window.innerWidth < mobilebletWidth,
-    isBigScreen,
-  });
+  // const [dimensions, setDimensions] = useState({
+  //   height: window.innerHeight,
+  //   width: window.innerWidth,
+  //   isTablet: window.innerWidth < tabletWidth,
+  //   isMobile: window.innerWidth < mobilebletWidth,
+  //   isBigScreen,
+  // });
 
-  useEffect(() => {
-    // console.log(dimensions);
-  }, [dimensions]);
+  // useEffect(() => {
+  //   // console.log(dimensions);
+  // }, [dimensions]);
 
-  useEffect(() => {
-    const debouncedHandleResize = () => {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-        isTablet: window.innerWidth < tabletWidth,
-        isMobile: window.innerWidth < mobilebletWidth,
-        isBigScreen,
-      });
-    };
+  // useEffect(() => {
+  //   const debouncedHandleResize = () => {
+  //     setDimensions({
+  //       height: window.innerHeight,
+  //       width: window.innerWidth,
+  //       isTablet: window.innerWidth < tabletWidth,
+  //       isMobile: window.innerWidth < mobilebletWidth,
+  //       isBigScreen,
+  //     });
+  //   };
 
-    window.addEventListener('resize', debouncedHandleResize);
+  //   window.addEventListener('resize', debouncedHandleResize);
 
-    return _ => {
-      window.removeEventListener('resize', debouncedHandleResize);
-    };
-  });
+  //   return _ => {
+  //     window.removeEventListener('resize', debouncedHandleResize);
+  //   };
+  // });
 
   return (
     <Wrapper show={show ? 1 : 0}>
