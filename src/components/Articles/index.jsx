@@ -51,7 +51,6 @@ const Articles = ({ dimensions }) => {
   }, [pathname]);
 
   const getLayout = articleData => {
-    // debugger;
     if (dimensions && dimensions.isMobile) {
       // fix per mettere la mappa del tablet in landscape mobile
       if (!dimensions.isPortrait) {
