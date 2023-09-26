@@ -12,18 +12,27 @@ export const FooterStyled = styled.article`
   ${BackgroundContainerRules}
   display: flex;
   align-items: center;
-  // padding: 2% 4%;
   padding: 10px 30px;
   ${props =>
-    props.ismobile &&
-    css`
-      height: 90vh;
-      flex-direction: column;
-      > div {
-        height: 30vh;
-        width: 100%;
-      }
-    `}
+    props.ismobile
+      ? css`
+          height: 90vh;
+          flex-direction: column;
+          > div {
+            height: 30vh;
+            width: 100%;
+          }
+        `
+      : css``}
+  ${props =>
+    props.istablet
+      ? css`
+          align-items: flex-start;
+          > div {
+            padding-top: 15px;
+          }
+        `
+      : css``}
 `;
 
 export const footerArticle = styled.div`
@@ -49,25 +58,30 @@ export const Contacts = styled(footerArticle)`
 export const BackToHome = styled.div`
   width: 20%;
   height: 100%;
-  // padding: 2vh 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  ${props =>
+    props.istablet
+      ? css`
+          margin-top: -10px;
+        `
+      : css``}
 `;
 
 export const Grants = styled(Contacts)`
   width: 20%;
   text-align: center;
   ${props =>
-    props.istablet &&
-    css`
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      // text-align: center;
-    `}
+    props.istablet
+      ? css`
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+        `
+      : css``}
 `;
 
 // export const LogoContainer = styled.a`
@@ -97,8 +111,16 @@ export const Marchio = styled.div`
 `;
 
 export const Address = styled(footerArticle)`
-  ${props => props.istablet && footerArticleTablet}
+  ${props => props.istablet && footerArticleTablet};
 `;
 export const MapLink = styled(footerArticle)`
-  ${props => props.istablet && footerArticleTablet}
+  ${props => props.istablet && footerArticleTablet};
+  ${props =>
+    props.istablet
+      ? css`
+          p {
+            text-align: center;
+          }
+        `
+      : css``}
 `;

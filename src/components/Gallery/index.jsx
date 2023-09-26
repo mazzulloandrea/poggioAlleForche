@@ -25,6 +25,7 @@ const Gallery = ({ dimensions }) => {
 
   return (
     <ImageGallery
+      showFullscreenButton={false}
       items={data}
       renderLeftNav={(onClick, disabled) => (
         <button className="image-gallery-icon image-gallery-left-nav">
