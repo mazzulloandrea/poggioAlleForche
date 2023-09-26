@@ -22,7 +22,7 @@ const Footer = ({ dimensions }) => {
   };
 
   const getLogo = (
-    <BackToHome>
+    <BackToHome istablet={dimensions.isTablet ? 1 : 0}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </BackToHome>
@@ -53,7 +53,10 @@ const Footer = ({ dimensions }) => {
   );
 
   const getMap = (
-    <MapLink onClick={() => navigate(`${routes.prodotti}#map`)}>
+    <MapLink
+      onClick={() => navigate(`${routes.prodotti}#map`)}
+      istablet={dimensions.isTablet ? 1 : 0}
+    >
       <article>
         <p>dove siamo</p>
       </article>

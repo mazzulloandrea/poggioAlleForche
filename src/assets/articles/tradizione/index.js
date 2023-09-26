@@ -1,4 +1,5 @@
-import title from './title.png';
+// import title from './title.png';
+import title2 from './title_2.png';
 import subTitle from './subtitle.png';
 import img1 from './La_tradizione_1.png';
 import img2 from './La_tradizione_2.png';
@@ -23,7 +24,7 @@ const text2 = `In edizione limitata, elaborato con tecniche artigianali e uve ra
 
 const articleTradizione = {
   mobile: [
-    { type: 'txt', src: text1, title, subTitle },
+    { type: 'txt', src: text1, title: title2, subTitle },
     { type: 'img', src: img1 },
     { type: 'txt', src: text2 },
     { type: 'img', src: img2 },
@@ -33,7 +34,7 @@ const articleTradizione = {
     // { type: 'img', src: img4 },
   ],
   tablet: [
-    { type: 'txt', src: text1, title, subTitle },
+    { type: 'txt', src: text1, title: title2, subTitle },
     { type: 'img', src: img1 },
     { type: 'txt', src: text2 },
     { type: 'img', src: img2 },
@@ -43,7 +44,7 @@ const articleTradizione = {
     // { type: 'img', src: img4 },
   ],
   desktop: [
-    { type: 'txt', src: text1, title, subTitle },
+    { type: 'txt', src: text1, title: title2, subTitle },
     { type: 'img', src: img1 },
     { type: 'img', src: img2 },
     { type: 'txt', src: text2 },
