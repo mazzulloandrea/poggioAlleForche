@@ -19,6 +19,18 @@ const Articles = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
   const mapRef = useRef(null);
 
+  /** workaround Tablet to force transition */
+  useEffect(() => {
+    if (dimensions && dimensions.isTablet) {
+      const firstImages = document.querySelector(
+        '.image-gallery-slide:first-child .image-gallery-image',
+      );
+      setTimeout(() => {
+        firstImages && firstImages.classList.add('forceAnimation');
+      }, 2000);
+    }
+  }, []);
+
   useEffect(() => {
     if (hash === '#map') {
       mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });

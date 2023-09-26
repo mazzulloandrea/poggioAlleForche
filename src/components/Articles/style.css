@@ -8,15 +8,33 @@
   margin: 5vh 0;
 }
 
-.image-gallery-slide:first-child .image-gallery-image {
-  transition: filter 3s, transform 3s;
-  filter: sepia(100%);
-  transform: scale(1);
+/* desktop change color on hover */
+@media only screen and (min-width: 1100px) {
+  .image-gallery-slide:first-child .image-gallery-image {
+    transition: filter 3s, transform 3s;
+    filter: sepia(100%);
+    transform: scale(1);
+  }
+
+  .image-gallery-slide:first-child .image-gallery-image:hover {
+    transition: filter 3s, transform 3s;
+    transition-delay: 0.8s;
+    filter: sepia(0%);
+    transform: scale(1.1);
+  }
 }
 
-.image-gallery-slide:first-child .image-gallery-image:hover {
-  transition: filter 3s, transform 3s;
-  transition-delay: 0.8s;
-  filter: sepia(0%);
-  transform: scale(1.1);
+/* tablet change color after 2 secoonds  */
+@media only screen and (max-width: 1100px) {
+  .image-gallery-slide:first-child .image-gallery-image {
+    transition: filter 3s, transform 3s;
+    filter: sepia(100%);
+    transform: scale(1);
+  }
+  .image-gallery-slide:first-child .image-gallery-image.forceAnimation {
+    transition: filter 3s, transform 3s;
+    transition-delay: 3s;
+    filter: sepia(0%);
+    transform: scale(1.1);
+  }
 }
