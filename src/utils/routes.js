@@ -3,7 +3,7 @@ const routes = {
   tradizione: '/tradizione',
   viti: `/viti`,
   cantina: '/cantina',
-  vini: '/vini',
+  prodotti: '/prodotti',
 };
 
 export default routes;

@@ -7,14 +7,15 @@ export const BackgroundContainerRules = css`
 `;
 
 export const FooterStyled = styled.article`
-  height: 30vh;
+  height: 15vh;
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   display: flex;
   align-items: center;
-  padding: 2% 4%;
+  // padding: 2% 4%;
+  padding: 10px 30px;
   ${props =>
-    (props.ismobile || props.istablet) &&
+    props.ismobile &&
     css`
       height: 90vh;
       flex-direction: column;
@@ -48,7 +49,7 @@ export const Contacts = styled(footerArticle)`
 export const BackToHome = styled.div`
   width: 20%;
   height: 100%;
-  padding: 2vh 2vw;
+  // padding: 2vh 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,15 +70,15 @@ export const Grants = styled(Contacts)`
     `}
 `;
 
-export const LogoContainer = styled.a`
-  width: 20%;
-  height: 100%;
-  padding: 2vh 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
+// export const LogoContainer = styled.a`
+//   width: 20%;
+//   height: 100%;
+//   // padding: 2vh 2vw;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+// `;
 
 export const Logo = styled.div`
   height: 100%;

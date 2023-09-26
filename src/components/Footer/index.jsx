@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../utils';
-import { coverStripe, logo, marchio, dicitura } from '../../assets';
+import { headerBkg, logo, marchio, dicitura } from '../../assets';
 import {
   FooterStyled,
   Contacts,
@@ -37,10 +37,10 @@ const Footer = ({ dimensions }) => {
         <p>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</p>
         {/* <p>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</p> */}
       </article>
-      <br />
-      <article>
+      {/* <br /> */}
+      {/* <article>
         <p>C.F. e PIVA iscrizione registro imprese Siena: xxxxxxx</p>
-      </article>
+      </article> */}
     </Contacts>
   );
 
@@ -53,12 +53,13 @@ const Footer = ({ dimensions }) => {
   );
 
   const getMap = (
-    <MapLink onClick={() => navigate(`${routes.vini}#map`)}>
+    <MapLink onClick={() => navigate(`${routes.prodotti}#map`)}>
       <article>
         <p>dove siamo</p>
       </article>
     </MapLink>
   );
+
   const getGrants = (
     <Grants istablet={dimensions.isTablet ? 1 : 0}>
       {/* <div>Contatti</div>
@@ -72,7 +73,7 @@ const Footer = ({ dimensions }) => {
           </a>
         </p>
       </article>
-      <br />
+      {/* <br />
       <article>
         <p>
           Phone{' '}
@@ -84,21 +85,23 @@ const Footer = ({ dimensions }) => {
             <span>333 3456 789</span>
           )}
         </p>
-      </article>
+      </article> */}
     </Grants>
   );
 
   return (
     <FooterStyled
-      src={coverStripe}
+      src={headerBkg}
       ismobile={dimensions.isMobile ? 1 : 0}
       istablet={dimensions.isTablet ? 1 : 0}
       id="map"
     >
-      {dimensions.isMobile || dimensions.isTablet ? (
+      {dimensions.isMobile ? (
         <>
           {getLogo}
+          {getAddress}
           {getContacs}
+          {getMap}
           {getGrants}
         </>
       ) : (

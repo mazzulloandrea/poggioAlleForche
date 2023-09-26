@@ -13,7 +13,7 @@ const galleries = {
   tradizione: [foto1, foto2, foto3, foto4, foto5, foto6, foto7],
   cantina: [foto3, foto4, foto5, foto1, foto2, foto7, foto6],
   viti: [foto4, foto1, foto5, foto3, foto2, foto7, foto6],
-  vini: [foto1, foto2, foto3, foto4, foto5, foto6, foto7],
+  prodotti: [foto1, foto2, foto3, foto4, foto5, foto6, foto7],
   galleryCustom: {
     arrowSx,
     arrowDx,
