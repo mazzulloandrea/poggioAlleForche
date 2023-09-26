@@ -12,33 +12,38 @@ export const Article = styled.article`
   width: 50%;
   height: 60vh;
   ${props =>
-    props.istablet &&
-    css`
-      width: 100%;
-      height: 60vh;
-    `};
+    props.ismobile
+      ? css`
+          width: 100%;
+          height: auto;
+        `
+      : css``};
   ${props =>
-    props.ismobile &&
-    css`
-      width: 100%;
-      height: auto;
-    `};
+    props.istablet
+      ? css`
+          width: 100%;
+          height: auto;
+        `
+      : css``};
+
   ${props =>
-    props.fullwidth &&
-    css`
-      width: 100%;
-      height: auto;
-      padding: 5vh 0;
-    `};
+    props.fullwidth
+      ? css`
+          width: 100%;
+          height: auto;
+          padding: 5vh 0;
+        `
+      : css``};
 `;
 
 export const TextWrapper = styled.div`
   padding: 5%;
   ${props =>
-    props.ismobile &&
-    css`
-      height: 60vh;
-    `};
+    props.ismobile
+      ? css`
+          height: 60vh;
+        `
+      : css``};
 `;
 
 export const TitleWrapper = styled.div`
@@ -73,20 +78,23 @@ export const Text = styled.p`
   font-family: 'Times new roman';
   flex-wrap: wrap;
   ${props =>
-    props.isbigscreen &&
-    css`
-      font-size: 2.3em;
-    `}
+    props.ismobile
+      ? css`
+          font-size: 1.2em;
+        `
+      : css``}
   ${props =>
-    props.istablet &&
-    css`
-      font-size: 2em;
-    `}
+    props.istablet
+      ? css`
+          font-size: 1.5em;
+        `
+      : css``}
   ${props =>
-    props.ismobile &&
-    css`
-      font-size: 1.2em;
-    `}
+    props.isbigscreen
+      ? css`
+          font-size: 2.3em;
+        `
+      : css``}
 `;
 
 export const ImgBkg = styled.div`
@@ -97,16 +105,18 @@ export const ImgBkg = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   ${props =>
-    props.istablet &&
-    css`
-      font-size: 1em;
-    `};
-  ${props =>
     props.ismobile &&
     css`
       font-size: 1em;
       height: 35vh;
     `};
+  ${props =>
+    props.istablet &&
+    css`
+      font-size: 1em;
+      height: 85vh;
+    `};
+
   ${props =>
     props.ismobile &&
     !props.isportrait &&
