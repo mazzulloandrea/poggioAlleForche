@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY, tabletWidth } from '../../utils';
-import {
-  articlesTradizione,
-  articlesViti,
-  articlesCantine,
-  articlesVini,
-  // logo,
-} from '../../assets';
+import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
   Wrapper,
   Article,
@@ -31,10 +25,6 @@ const Articles = ({ dimensions }) => {
     }
   }, [hash]);
 
-  // useEffect(() => {
-  //   console.log('change in ', dimensions.isPortrait ? 'portrait' : 'landscape');
-  // }, [dimensions.isPortrait]);
-
   const getArticle = useCallback(() => {
     switch (pathname) {
       case '/tradizione':
@@ -43,8 +33,8 @@ const Articles = ({ dimensions }) => {
         return articlesCantine;
       case '/viti':
         return articlesViti;
-      case '/vini':
-        return articlesVini;
+      case '/prodotti':
+        return articlesProdotti;
       default:
         return articlesTradizione;
     }

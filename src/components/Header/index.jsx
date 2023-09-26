@@ -3,18 +3,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
-  coverStripe,
   tradizione,
   tradizioneSelected,
   cantina,
   cantinaSelected,
-  vini,
-  viniSelected,
+  prodotti,
+  prodottiSelected,
   viti,
   vitiSelected,
   logo,
   marchio,
   menuMobile as menuMobileVoice,
+  headerBkg,
 } from '../../assets';
 import { HeaderStyled, MenuDesktopStyled, MenuVoice, LogoContainer, Logo, Marchio } from './styled';
 import './menuMobile.css';
@@ -43,7 +43,6 @@ const Header = ({ dimensions }) => {
             : tradizione;
         break;
       case routes.cantina:
-        // menuVoice = pathname === menuKey ? cantinaSelected : cantina;
         menuVoice =
           pathname === menuKey
             ? isMobile
@@ -54,7 +53,6 @@ const Header = ({ dimensions }) => {
             : cantina;
         break;
       case routes.viti:
-        // menuVoice = pathname === menuKey ? vitiSelected : viti;
         menuVoice =
           pathname === menuKey
             ? isMobile
@@ -64,16 +62,15 @@ const Header = ({ dimensions }) => {
             ? menuMobileVoice.viti
             : viti;
         break;
-      case routes.vini:
-        // menuVoice = pathname === menuKey ? viniSelected : vini;
+      case routes.prodotti:
         menuVoice =
           pathname === menuKey
             ? isMobile
-              ? menuMobileVoice.viniSelected
-              : viniSelected
+              ? menuMobileVoice.prodottiSelected
+              : prodottiSelected
             : isMobile
-            ? menuMobileVoice.vini
-            : vini;
+            ? menuMobileVoice.prodotti
+            : prodotti;
         break;
     }
 
@@ -143,7 +140,7 @@ const Header = ({ dimensions }) => {
   return (
     <>
       {dimensions.isMobile && menuMobile()}
-      <HeaderStyled src={coverStripe}>
+      <HeaderStyled src={headerBkg}>
         {!dimensions.isMobile ? menuDesktop() : LogoComponent}
       </HeaderStyled>
     </>
