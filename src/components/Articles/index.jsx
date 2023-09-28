@@ -20,16 +20,16 @@ const Articles = ({ dimensions }) => {
   const mapRef = useRef(null);
 
   /** workaround Tablet to force transition */
-  useEffect(() => {
-    if (dimensions && dimensions.isTablet) {
-      const sephia = document.getElementById('sephia');
-      const colored = document.getElementById('colored');
-      setTimeout(() => {
-        sephia && sephia.classList.add('forceAnimation');
-        colored && colored.classList.add('forceAnimation');
-      }, 2000);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (dimensions && dimensions.isTablet) {
+  //     const sephia = document.getElementById('sephia');
+  //     const colored = document.getElementById('colored');
+  //     setTimeout(() => {
+  //       sephia && sephia.classList.add('forceAnimation');
+  //       colored && colored.classList.add('forceAnimation');
+  //     }, 2000);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (hash === '#map') {

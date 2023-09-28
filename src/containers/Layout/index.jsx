@@ -7,7 +7,7 @@ const Layout = ({ dimensions, children }) => {
   return (
     <div>
       <Header dimensions={dimensions} />
-      <Gallery />
+      <Gallery dimensions={dimensions} />
       {children}
       <Footer dimensions={dimensions} />
     </div>
