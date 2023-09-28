@@ -16,8 +16,9 @@ export const FooterStyled = styled.article`
   ${props =>
     props.ismobile
       ? css`
-          height: 90vh;
+          height: 100vh;
           flex-direction: column;
+          padding-top: 30px;
           > div {
             height: 30vh;
             width: 100%;
@@ -52,7 +53,7 @@ const footerArticleTablet = css`
 `;
 
 export const Contacts = styled(footerArticle)`
-  ${props => props.istablet && footerArticleTablet}
+  ${props => (props.istablet ? footerArticleTablet : css``)}
 `;
 
 export const BackToHome = styled.div`
@@ -111,10 +112,11 @@ export const Marchio = styled.div`
 `;
 
 export const Address = styled(footerArticle)`
-  ${props => props.istablet && footerArticleTablet};
+  ${footerArticleTablet}
 `;
+
 export const MapLink = styled(footerArticle)`
-  ${props => props.istablet && footerArticleTablet};
+  ${props => (props.istablet ? footerArticleTablet : css``)};
   ${props =>
     props.istablet
       ? css`
