@@ -11,6 +11,7 @@ const Gallery = ({ dimensions }) => {
   if (!galleries[galleriesName]) galleriesName = 'tradizione';
   const data = galleries[galleriesName].list.map(el => ({ original: el }));
   const colored = galleries[galleriesName].colored;
+  const gif = galleries[galleriesName].gif;
 
   const arrowProps = {
     height: '10vw',
@@ -24,26 +25,34 @@ const Gallery = ({ dimensions }) => {
   };
 
   const WorkaroundFromSephiaToColored = event => {
-    var container = [...document.querySelectorAll('.image-gallery-slide')].find(
-      el => el.offsetHeight !== 0,
-    );
-    if (container.children.length > 1) return;
-    container.style.height = container.offsetHeight + 'px';
-    const sephia = container.children[0];
-    sephia.style.position = 'absolute';
-    sephia.id = 'sephia';
-
-    const imageColored = sephia.cloneNode();
-    imageColored.src = colored;
-    // imageColored.style.opacity = 0;
-    imageColored.id = 'colored';
-    container.appendChild(imageColored);
     if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
+      // mobile & talet use GIF
       setTimeout(() => {
-        sephia && sephia.classList.add('forceAnimation');
-        imageColored && imageColored.classList.add('forceAnimation');
+        document.querySelector('.image-gallery-image').src = gif;
       }, 2000);
+    } else {
+      var container = [...document.querySelectorAll('.image-gallery-slide')].find(
+        el => el.offsetHeight !== 0,
+      );
+      if (container.children.length > 1) return;
+      container.style.height = container.offsetHeight + 'px';
+      const sephia = container.children[0];
+      sephia.style.position = 'absolute';
+      sephia.id = 'sephia';
+
+      const imageColored = sephia.cloneNode();
+      imageColored.src = colored;
+      // imageColored.style.opacity = 0;
+      imageColored.id = 'colored';
+      container.appendChild(imageColored);
     }
+
+    // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
+    //   setTimeout(() => {
+    //     sephia && sephia.classList.add('forceAnimation');
+    //     imageColored && imageColored.classList.add('forceAnimation');
+    //   }, 2000);
+    // }
   };
 
   return (
