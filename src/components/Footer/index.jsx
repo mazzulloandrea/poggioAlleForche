@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../utils';
-import { headerBkg, logo, marchio, dicitura } from '../../assets';
+import { background, headerBkg, logo, marchio } from '../../assets';
 import {
   FooterStyled,
   Contacts,
@@ -94,7 +94,7 @@ const Footer = ({ dimensions }) => {
 
   return (
     <FooterStyled
-      src={headerBkg}
+      src={dimensions.isMobile ? background : headerBkg}
       ismobile={dimensions.isMobile ? 1 : 0}
       istablet={dimensions.isTablet ? 1 : 0}
       id="map"

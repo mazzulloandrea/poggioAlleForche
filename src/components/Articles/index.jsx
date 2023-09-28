@@ -22,11 +22,11 @@ const Articles = ({ dimensions }) => {
   /** workaround Tablet to force transition */
   useEffect(() => {
     if (dimensions && dimensions.isTablet) {
-      const firstImages = document.querySelector(
-        '.image-gallery-slide:first-child .image-gallery-image',
-      );
+      const sephia = document.getElementById('sephia');
+      const colored = document.getElementById('colored');
       setTimeout(() => {
-        firstImages && firstImages.classList.add('forceAnimation');
+        sephia && sephia.classList.add('forceAnimation');
+        colored && colored.classList.add('forceAnimation');
       }, 2000);
     }
   }, []);
