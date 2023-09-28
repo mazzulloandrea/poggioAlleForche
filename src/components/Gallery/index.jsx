@@ -29,14 +29,21 @@ const Gallery = ({ dimensions }) => {
     );
     if (container.children.length > 1) return;
     container.style.height = container.offsetHeight + 'px';
-    const image = container.children[0];
-    image.style.position = 'absolute';
-    image.id = 'sephia';
-    const imageColored = image.cloneNode();
+    const sephia = container.children[0];
+    sephia.style.position = 'absolute';
+    sephia.id = 'sephia';
+
+    const imageColored = sephia.cloneNode();
     imageColored.src = colored;
     // imageColored.style.opacity = 0;
     imageColored.id = 'colored';
     container.appendChild(imageColored);
+    if (dimensions && dimensions.isTablet) {
+      setTimeout(() => {
+        sephia && sephia.classList.add('forceAnimation');
+        imageColored && imageColored.classList.add('forceAnimation');
+      }, 2000);
+    }
   };
 
   return (
