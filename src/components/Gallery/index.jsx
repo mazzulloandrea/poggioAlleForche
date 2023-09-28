@@ -24,7 +24,9 @@ const Gallery = ({ dimensions }) => {
   };
 
   const WorkaroundFromSephiaToColored = event => {
-    const container = document.querySelector('.image-gallery-slide.image-gallery-center');
+    var container = [...document.querySelectorAll('.image-gallery-slide')].find(
+      el => el.offsetHeight !== 0,
+    );
     if (container.children.length > 1) return;
     container.style.height = container.offsetHeight + 'px';
     const image = container.children[0];
