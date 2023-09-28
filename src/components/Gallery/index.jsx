@@ -38,7 +38,7 @@ const Gallery = ({ dimensions }) => {
     // imageColored.style.opacity = 0;
     imageColored.id = 'colored';
     container.appendChild(imageColored);
-    if (dimensions && dimensions.isTablet) {
+    if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
       setTimeout(() => {
         sephia && sephia.classList.add('forceAnimation');
         imageColored && imageColored.classList.add('forceAnimation');
