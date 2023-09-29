@@ -26,10 +26,12 @@ const Gallery = ({ dimensions }) => {
 
   const WorkaroundFromSephiaToColored = event => {
     if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-      // mobile & talet use GIF
-      setTimeout(() => {
-        document.querySelector('.image-gallery-image').src = gif;
-      }, 2000);
+      if (['/', '/tradizione'].includes(pathname)) {
+        // mobile & talet use GIF
+        setTimeout(() => {
+          document.querySelector('.image-gallery-image').src = gif;
+        }, 2000);
+      }
     } else {
       var container = [...document.querySelectorAll('.image-gallery-slide')].find(
         el => el.offsetHeight !== 0,
