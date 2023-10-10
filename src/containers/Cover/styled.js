@@ -1,6 +1,16 @@
 import styled, { keyframes, css } from 'styled-components';
 import { COVER_HIDE } from '../index';
 
+const bounce = keyframes`
+  from {
+    transform: translateY(-2vh);
+    -webkit-transform: translateY(-2vh);
+  }
+  to {
+    transform: translateY(+2vh);
+    -webkit-transform: translateY(+2vh);
+  }`;
+
 const defaultLogoStyle = css`
   width: 15%;
   height: 15%;
@@ -180,18 +190,25 @@ export const ContainerCentered = styled.div`
 `;
 
 const _defaultImg = styled(_defaultCover)`
-  opacity: 0;
-  transform: scale(0);
-  -webkit-transform: scale(0);
-  transition: transform 1.5s, opacity 1.5s;
-  -webkit-transition: transform 1.5s, opacity 1.5s;
   ${props =>
-    props.appear &&
-    css`
-      opacity: 1;
-      transform: scale(1);
-      -webkit-transform: scale(1);
-    `}
+    props.staticSite
+      ? css`
+          opacity: 1;
+        `
+      : css`
+          opacity: 0;
+          transform: scale(0);
+          -webkit-transform: scale(0);
+          transition: transform 1.5s, opacity 1.5s;
+          -webkit-transition: transform 1.5s, opacity 1.5s;
+          ${props =>
+            props.appear &&
+            css`
+              opacity: 1;
+              transform: scale(1);
+              -webkit-transform: scale(1);
+            `}
+        `};
 `;
 
 export const LogoStyled = styled(_defaultImg)`
@@ -251,12 +268,9 @@ export const IndicatorStyled = styled(_defaultImg)`
     `}
 `;
 
-const bounce = keyframes`
-  from {
-    transform: translateY(-2vh);
-    -webkit-transform: translateY(-2vh);
-  }
-  to {
-    transform: translateY(+2vh);
-    -webkit-transform: translateY(+2vh);
-  }`;
+export const UnderConstruction = styled.div`
+  color: white;
+  font-size: 2.5em;
+  position: absolute;
+  bottom: 25%;
+`;

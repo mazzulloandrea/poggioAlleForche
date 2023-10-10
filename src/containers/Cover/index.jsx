@@ -8,11 +8,12 @@ import {
   MarchioStyled,
   LabelStyled,
   IndicatorStyled,
+  UnderConstruction,
 } from './styled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
-const Cover = () => {
+const Cover = ({ staticSite }) => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
   const [showCover, setShowCover] = useState(COVER_SHOW);
@@ -102,17 +103,47 @@ const Cover = () => {
     }
   };
 
+  if (staticSite) {
+    return (
+      <>
+        <Wrapper src={background} showcover={showCover}>
+          <ContainerCentered
+            isbigscreen={isBigScreen ? 1 : 0}
+            ismediumscreen={isMediumScreen ? 1 : 0}
+            issmallscreen={isSmallScreen ? 1 : 0}
+            istablet={isTablet ? 1 : 0}
+            ismobile={isMobile ? 1 : 0}
+            isportrait={isPortrait ? 1 : 0}
+          >
+            <LogoStyled
+              staticSite={staticSite}
+              className="logo"
+              istablet={dimensions.isTablet ? 1 : 0}
+              src={logo}
+            />
+            <MarchioStyled
+              staticSite={staticSite}
+              className="marchio"
+              istablet={dimensions.isTablet ? 1 : 0}
+              src={marchio}
+            />
+            <LabelStyled
+              staticSite={staticSite}
+              className="dicitura"
+              istablet={dimensions.isTablet ? 1 : 0}
+              src={dicitura}
+            />
+            <UnderConstruction>Coming soon</UnderConstruction>
+          </ContainerCentered>
+        </Wrapper>
+      </>
+    );
+  }
   return (
     <>
       <Wrapper
         src={background}
-        showcover={showCover}
-        onClick={() => {
-          if (isToAnimate('indicator')) {
-            setMoveUp(true);
-            // setShowCover(COVER_HIDE);
-          }
-        }}
+
         // moveup={moveUp}
         // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
       >
