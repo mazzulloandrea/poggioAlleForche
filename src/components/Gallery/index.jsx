@@ -87,7 +87,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   return (
     <ImageGallery
       ref={galleryRef}
-      showFullscreenButton={false}
+      // showFullscreenButton={false}
+      showFullscreenButton={true}
       items={data}
       renderLeftNav={(onClick, disabled) => (
         <button className="image-gallery-icon image-gallery-left-nav">
