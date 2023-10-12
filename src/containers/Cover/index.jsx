@@ -72,17 +72,22 @@ const Cover = ({ staticSite }) => {
   }, []); // TODO definire eventuali dipendenze
 
   useEffect(() => {
-    setStep(1);
+    setTimeout(() => setStep(1), 1500);
   }, []);
 
-  // use to force launch animation
+  // WORKAROUND use to force launch animation after 5 seconds
+  // useEffect(() => {
+  //   console.log('actual step', step);
+  //   setTimeout(() => {
+  //     if (step === 0) {
+  //       setStep(4);
+  //     }
+  //   }, 5000);
+  // }, [step]);
+
   useEffect(() => {
-    setTimeout(() => {
-      if (step === 0) {
-        setStep(2);
-      }
-    }, 3000);
-  }, []);
+    console.log(dimensions.isPortrait ? 'portrait' : 'landscap');
+  }, [dimensions.isPortrait]);
 
   const setUp = useCallback(
     event => {

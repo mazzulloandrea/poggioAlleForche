@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
@@ -7,6 +8,17 @@ import { Articles } from '../../components';
 
 const Tradizione = () => {
   const [show, setShow] = useState(false);
+  const myRef = useRef();
+
+  const { inViewport, enterCount, leaveCount } = useInViewport(
+    myRef,
+    {}, // (options),
+    { disconnectOnLeave: false }, // (config = { disconnectOnLeave: false }),
+    {}, // props,
+  );
+
+  console.log(inViewport);
+
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
     query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
@@ -66,7 +78,7 @@ const Tradizione = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions}>
+      <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
         <Articles dimensions={dimensions} />
       </Layout>
     </Wrapper>
