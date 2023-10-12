@@ -1,8 +1,10 @@
-import tradizione1 from './tradizione/foto1.png';
-import tradizione2 from './tradizione/foto2.jpg';
-import tradizione3 from './tradizione/foto3.jpg';
-import tradizione4 from './tradizione/foto4.jpg';
-import tradizione5 from './tradizione/foto5.jpg';
+// import tradizione1 from './tradizione/foto1.png';
+import tradizione2 from './tradizione/foto2.png';
+import tradizione3 from './tradizione/foto3.png';
+import tradizione4 from './tradizione/foto4.png';
+import tradizione5 from './tradizione/foto5.png';
+import tradizione6 from './tradizione/foto6.jpg';
+import tradizione7 from './tradizione/foto7.png';
 import tradizione1Colored from './tradizione/foto1_colored.png';
 import tradizioneGif1 from './tradizione/gif1.gif';
 
@@ -32,7 +34,16 @@ import arrowDx from './arrowDx.png';
 
 const galleries = {
   tradizione: {
-    list: [tradizione1, tradizione2, tradizione3, tradizione4, tradizione5],
+    list: [
+      /* tradizione1, */
+      tradizioneGif1,
+      tradizione2,
+      tradizione3,
+      tradizione4,
+      tradizione5,
+      tradizione6,
+      tradizione7,
+    ],
     colored: tradizione1Colored,
     gif: tradizioneGif1,
   },

@@ -143,6 +143,13 @@ const Cover = ({ staticSite }) => {
     <>
       <Wrapper
         src={background}
+        showcover={showCover}
+        onClick={() => {
+          if (isToAnimate('indicator')) {
+            setMoveUp(true);
+            // setShowCover(COVER_HIDE);
+          }
+        }}
 
         // moveup={moveUp}
         // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
