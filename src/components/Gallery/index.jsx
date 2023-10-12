@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries } from '../../assets';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
 
-const Gallery = ({ dimensions }) => {
+const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const { pathname } = useLocation();
   let galleriesName = pathname.substring(1, pathname.length);
   if (!galleries[galleriesName]) galleriesName = 'tradizione';
@@ -64,8 +64,29 @@ const Gallery = ({ dimensions }) => {
     // }
   };
 
+  const [fullscreen, setFullscreen] = useState(false);
+
+  useEffect(() => {
+    if (inViewport && !dimensions.isPortrait) {
+      setFullscreen(true);
+    } else {
+      galleryRef.current.exitFullScreen();
+      setFullscreen(false);
+    }
+  }, [inViewport, dimensions.isPortrait]);
+
+  useEffect(() => {
+    if (fullscreen) {
+      galleryRef.current.fullScreen();
+    } else {
+      galleryRef.current.exitFullScreen();
+      // galleryRef.current.toggleFullScreen();
+    }
+  }, [fullscreen]);
+
   return (
     <ImageGallery
+      ref={galleryRef}
       showFullscreenButton={false}
       items={data}
       renderLeftNav={(onClick, disabled) => (
