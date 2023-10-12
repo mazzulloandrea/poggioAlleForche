@@ -10,7 +10,7 @@ const Gallery = ({ dimensions }) => {
   let galleriesName = pathname.substring(1, pathname.length);
   if (!galleries[galleriesName]) galleriesName = 'tradizione';
   const data = galleries[galleriesName].list.map(el => ({ original: el }));
-  const colored = galleries[galleriesName].colored;
+  // const colored = galleries[galleriesName].colored;
   const gif = galleries[galleriesName].gif;
 
   const arrowProps = {
@@ -25,29 +25,36 @@ const Gallery = ({ dimensions }) => {
   };
 
   const WorkaroundFromSephiaToColored = event => {
-    if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-      if (['/', '/tradizione'].includes(pathname)) {
-        // mobile & talet use GIF
-        setTimeout(() => {
-          document.querySelector('.image-gallery-image').src = gif;
-        }, 2000);
-      }
-    } else {
-      var container = [...document.querySelectorAll('.image-gallery-slide')].find(
-        el => el.offsetHeight !== 0,
-      );
-      if (container.children.length > 1) return;
-      container.style.height = container.offsetHeight + 'px';
-      const sephia = container.children[0];
-      sephia.style.position = 'absolute';
-      sephia.id = 'sephia';
-
-      const imageColored = sephia.cloneNode();
-      imageColored.src = colored;
-      // imageColored.style.opacity = 0;
-      imageColored.id = 'colored';
-      container.appendChild(imageColored);
+    if (['/', '/tradizione'].includes(pathname)) {
+      // all device use GIF
+      setTimeout(() => {
+        document.querySelector('.image-gallery-image').src = gif;
+      }, 2500);
     }
+
+    // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
+    //   if (['/', '/tradizione'].includes(pathname)) {
+    //     // mobile & talet use GIF
+    //     setTimeout(() => {
+    //       document.querySelector('.image-gallery-image').src = gif;
+    //     }, 2000);
+    //   }
+    // } else {
+    //   var container = [...document.querySelectorAll('.image-gallery-slide')].find(
+    //     el => el.offsetHeight !== 0,
+    //   );
+    //   if (container.children.length > 1) return;
+    //   container.style.height = container.offsetHeight + 'px';
+    //   const sephia = container.children[0];
+    //   sephia.style.position = 'absolute';
+    //   sephia.id = 'sephia';
+
+    //   const imageColored = sephia.cloneNode();
+    //   imageColored.src = colored;
+    //   // imageColored.style.opacity = 0;
+    //   imageColored.id = 'colored';
+    //   container.appendChild(imageColored);
+    // }
 
     // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
     //   setTimeout(() => {

@@ -69,10 +69,19 @@ const Cover = ({ staticSite }) => {
       window.removeEventListener('resize', debouncedHandleResize);
       window.removeEventListener('orientationchange', changeOrientation);
     };
-  });
+  }, []); // TODO definire eventuali dipendenze
 
   useEffect(() => {
     setStep(1);
+  }, []);
+
+  // use to force launch animation
+  useEffect(() => {
+    setTimeout(() => {
+      if (step === 0) {
+        setStep(2);
+      }
+    }, 3000);
   }, []);
 
   const setUp = useCallback(
