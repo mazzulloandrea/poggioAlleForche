@@ -78,9 +78,11 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   useEffect(() => {
     if (fullscreen) {
       galleryRef.current.fullScreen();
+      // document.querySelector('.image-gallery-fullscreen-button').click();
     } else {
       galleryRef.current.exitFullScreen();
       // galleryRef.current.toggleFullScreen();
+      // document.querySelector('.image-gallery-fullscreen-button').click();
     }
   }, [fullscreen]);
 
