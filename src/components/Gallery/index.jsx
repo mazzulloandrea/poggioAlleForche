@@ -77,20 +77,17 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   useEffect(() => {
     if (fullscreen) {
-      galleryRef.current.fullScreen();
-      // document.querySelector('.image-gallery-fullscreen-button').click();
+      document.querySelector('.image-gallery').classList.add('fullscreenMode');
     } else {
-      galleryRef.current.exitFullScreen();
-      // galleryRef.current.toggleFullScreen();
-      // document.querySelector('.image-gallery-fullscreen-button').click();
+      document.querySelector('.image-gallery').classList.remove('fullscreenMode');
     }
   }, [fullscreen]);
 
   return (
     <ImageGallery
+      id="galleryContainer"
+      className="galleryContainer"
       ref={galleryRef}
-      // showFullscreenButton={false}
-      showFullscreenButton={true}
       items={data}
       renderLeftNav={(onClick, disabled) => (
         <button className="image-gallery-icon image-gallery-left-nav">
