@@ -1,11 +1,11 @@
-// import tradizione1 from './tradizione/foto1.png';
+import tradizione1 from './tradizione/foto1.png';
 import tradizione2 from './tradizione/foto2.png';
 import tradizione3 from './tradizione/foto3.png';
 import tradizione4 from './tradizione/foto4.png';
 import tradizione5 from './tradizione/foto5.png';
 import tradizione6 from './tradizione/foto6.jpg';
 import tradizione7 from './tradizione/foto7.png';
-import tradizione1Colored from './tradizione/foto1_colored.png';
+// import tradizione1Colored from './tradizione/foto1_colored.png';
 import tradizioneGif1 from './tradizione/gif1.gif';
 
 import viti1 from './viti/foto1.png';
@@ -35,8 +35,7 @@ import arrowDx from './arrowDx.png';
 const galleries = {
   tradizione: {
     list: [
-      /* tradizione1, */
-      tradizioneGif1,
+      tradizione1,
       tradizione2,
       tradizione3,
       tradizione4,
@@ -44,22 +43,22 @@ const galleries = {
       tradizione6,
       tradizione7,
     ],
-    colored: tradizione1Colored,
+    // colored: tradizione1Colored,
     gif: tradizioneGif1,
   },
   viti: {
     list: [viti1, viti2, viti3, viti4, viti5],
-    colored: viti1Colored,
+    // colored: viti1Colored,
     gif: tradizioneGif1,
   },
   cantina: {
     list: [cantina1, cantina2, cantina3, cantina4, cantina5],
-    colored: cantina1Colored,
+    // colored: cantina1Colored,
     gif: tradizioneGif1,
   },
   prodotti: {
     list: [prodotti1, prodotti2, prodotti3, prodotti4, prodotti5],
-    colored: prodotti1Colored,
+    // colored: prodotti1Colored,
     gif: tradizioneGif1,
   },
   galleryCustom: {
