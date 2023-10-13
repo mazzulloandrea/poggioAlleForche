@@ -119,6 +119,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
       // if (!fullscreen) {
       //   enterFullscreen();
       // } else {
+      setShowDialog(false);
       exitFullscreen();
     }
   }, [fullscreen]);

@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 `;
 export const Container = styled.div`
   width: 50%;
-  height: 50%;
+  height: 40%;
   background: blue;
   opacity: 1;
   color: white;
