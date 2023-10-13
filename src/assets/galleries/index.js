@@ -31,6 +31,8 @@ import prodotti1Colored from './prodotti/foto1_colored.png';
 
 import arrowSx from './arrowSx.png';
 import arrowDx from './arrowDx.png';
+import resizescreenIcon from './resizescreen';
+import fullscreenIcon from './fullscreen';
 
 const galleries = {
   tradizione: {
@@ -64,6 +66,8 @@ const galleries = {
   galleryCustom: {
     arrowSx,
     arrowDx,
+    fullscreenIcon,
+    resizescreenIcon,
   },
 };
 
