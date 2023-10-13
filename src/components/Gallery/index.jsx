@@ -78,39 +78,39 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   //   }
   // }, [inViewport, dimensions.isPortrait]);
 
-  // const enterFullscreen = useCallback(() => {
-  //   setShowDialog(false);
-  //   const elemFullscreen = document.documentElement;
-  //   const galleryContainer = document.querySelector('.image-gallery');
-  //   galleryContainer.classList.add('fullscreenMode');
-  //   document.body.style.overflowY = 'hidden';
+  const enterFullscreen = useCallback(() => {
+    setShowDialog(false);
+    const elemFullscreen = document.documentElement;
+    const galleryContainer = document.querySelector('.image-gallery');
+    galleryContainer.classList.add('fullscreenMode');
+    document.body.style.overflowY = 'hidden';
 
-  //   if (elemFullscreen.requestFullscreen) {
-  //     elemFullscreen.requestFullscreen();
-  //   } else if (elemFullscreen.webkitRequestFullscreen) {
-  //     /* Safari */
-  //     elemFullscreen.webkitRequestFullscreen();
-  //   } else if (elemFullscreen.msRequestFullscreen) {
-  //     /* IE11 */
-  //     elemFullscreen.msRequestFullscreen();
-  //   }
-  // }, []);
+    if (elemFullscreen.requestFullscreen) {
+      elemFullscreen.requestFullscreen();
+    } else if (elemFullscreen.webkitRequestFullscreen) {
+      /* Safari */
+      elemFullscreen.webkitRequestFullscreen();
+    } else if (elemFullscreen.msRequestFullscreen) {
+      /* IE11 */
+      elemFullscreen.msRequestFullscreen();
+    }
+  }, []);
 
-  // const exitFullscreen = useCallback(() => {
-  //   // const elemFullscreen = document.documentElement;
-  //   const galleryContainer = document.querySelector('.image-gallery');
-  //   galleryContainer.classList.remove('fullscreenMode');
-  //   document.body.style.overflowY = 'auto';
-  //   if (document.exitFullscreen) {
-  //     document.exitFullscreen();
-  //   } else if (document.webkitExitFullscreen) {
-  //     /* Safari */
-  //     document.webkitExitFullscreen();
-  //   } else if (document.msExitFullscreen) {
-  //     /* IE11 */
-  //     document.msExitFullscreen();
-  //   }
-  // }, []);
+  const exitFullscreen = useCallback(() => {
+    // const elemFullscreen = document.documentElement;
+    const galleryContainer = document.querySelector('.image-gallery');
+    galleryContainer.classList.remove('fullscreenMode');
+    document.body.style.overflowY = 'auto';
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      /* IE11 */
+      document.msExitFullscreen();
+    }
+  }, []);
 
   // useEffect(() => {
   //   if (fullscreen) {
@@ -168,8 +168,9 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
           <button
             className="image-gallery-icon image-gallery-fullscreen-button"
             onClick={() => {
-              onClick();
-              dimensions.isMobile && changeOrientation(isFullscreen);
+              // onClick();
+              // dimensions.isMobile && changeOrientation(isFullscreen);
+              isFullscreen ? exitFullscreen() : enterFullscreen();
             }}
           >
             {isFullscreen ? (
