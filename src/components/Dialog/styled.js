@@ -37,7 +37,7 @@ export const Actions = styled.div`
   bottom: 0;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid white;
+  border: 2px solid white;
   width: 30%;
   text-align: center;
   margin: 5px auto 10px;
