@@ -20,7 +20,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  // justify-content: center;
   position: relative;
   border-radius: 5px;
   background: ${props => (props.src ? `url(${props.src})` : '')};

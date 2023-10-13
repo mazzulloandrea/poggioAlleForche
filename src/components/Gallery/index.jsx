@@ -65,64 +65,72 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
     // }
   };
 
-  const [fullscreen, setFullscreen] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
+  // const [fullscreen, setFullscreen] = useState(false);
+  // const [showDialog, setShowDialog] = useState(false);
 
-  useEffect(() => {
-    if (inViewport && !dimensions.isPortrait) {
-      setFullscreen(true);
+  // useEffect(() => {
+  //   if (inViewport && !dimensions.isPortrait) {
+  //     setFullscreen(true);
+  //   } else {
+  //     if (!fullscreen) return;
+  //     galleryRef.current.exitFullScreen();
+  //     setFullscreen(false);
+  //   }
+  // }, [inViewport, dimensions.isPortrait]);
+
+  // const enterFullscreen = useCallback(() => {
+  //   setShowDialog(false);
+  //   const elemFullscreen = document.documentElement;
+  //   const galleryContainer = document.querySelector('.image-gallery');
+  //   galleryContainer.classList.add('fullscreenMode');
+  //   document.body.style.overflowY = 'hidden';
+
+  //   if (elemFullscreen.requestFullscreen) {
+  //     elemFullscreen.requestFullscreen();
+  //   } else if (elemFullscreen.webkitRequestFullscreen) {
+  //     /* Safari */
+  //     elemFullscreen.webkitRequestFullscreen();
+  //   } else if (elemFullscreen.msRequestFullscreen) {
+  //     /* IE11 */
+  //     elemFullscreen.msRequestFullscreen();
+  //   }
+  // }, []);
+
+  // const exitFullscreen = useCallback(() => {
+  //   // const elemFullscreen = document.documentElement;
+  //   const galleryContainer = document.querySelector('.image-gallery');
+  //   galleryContainer.classList.remove('fullscreenMode');
+  //   document.body.style.overflowY = 'auto';
+  //   if (document.exitFullscreen) {
+  //     document.exitFullscreen();
+  //   } else if (document.webkitExitFullscreen) {
+  //     /* Safari */
+  //     document.webkitExitFullscreen();
+  //   } else if (document.msExitFullscreen) {
+  //     /* IE11 */
+  //     document.msExitFullscreen();
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if (fullscreen) {
+  //     setShowDialog(true);
+  //   } else {
+  //     // if (!fullscreen) {
+  //     //   enterFullscreen();
+  //     // } else {
+  //     setShowDialog(false);
+  //     exitFullscreen();
+  //   }
+  // }, [fullscreen]);
+
+  const changeOrientation = isFullscreen => {
+    if (isFullscreen) {
+      screen.orientation.lock('landscape');
     } else {
-      if (!fullscreen) return;
-      galleryRef.current.exitFullScreen();
-      setFullscreen(false);
+      screen.orientation.lock('portrait');
     }
-  }, [inViewport, dimensions.isPortrait]);
-
-  const enterFullscreen = useCallback(() => {
-    setShowDialog(false);
-    const elemFullscreen = document.documentElement;
-    const galleryContainer = document.querySelector('.image-gallery');
-    galleryContainer.classList.add('fullscreenMode');
-    document.body.style.overflowY = 'hidden';
-
-    if (elemFullscreen.requestFullscreen) {
-      elemFullscreen.requestFullscreen();
-    } else if (elemFullscreen.webkitRequestFullscreen) {
-      /* Safari */
-      elemFullscreen.webkitRequestFullscreen();
-    } else if (elemFullscreen.msRequestFullscreen) {
-      /* IE11 */
-      elemFullscreen.msRequestFullscreen();
-    }
-  }, []);
-
-  const exitFullscreen = useCallback(() => {
-    // const elemFullscreen = document.documentElement;
-    const galleryContainer = document.querySelector('.image-gallery');
-    galleryContainer.classList.remove('fullscreenMode');
-    document.body.style.overflowY = 'auto';
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      /* IE11 */
-      document.msExitFullscreen();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (fullscreen) {
-      setShowDialog(true);
-    } else {
-      // if (!fullscreen) {
-      //   enterFullscreen();
-      // } else {
-      setShowDialog(false);
-      exitFullscreen();
-    }
-  }, [fullscreen]);
+  };
 
   return (
     <>
@@ -130,6 +138,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
         id="galleryContainer"
         className="galleryContainer"
         showFullscreenButton={true}
+        useBrowserFullscreen={false}
         ref={galleryRef}
         items={data}
         renderLeftNav={(onClick, disabled) => (
@@ -155,8 +164,23 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
           </button>
         )}
         onImageLoad={WorkaroundFromSephiaToColored}
+        renderFullscreenButton={(onClick, isFullscreen) => (
+          <button
+            className="image-gallery-icon image-gallery-fullscreen-button"
+            onClick={() => {
+              onClick();
+              dimensions.isMobile && changeOrientation(isFullscreen);
+            }}
+          >
+            {isFullscreen ? (
+              <galleries.galleryCustom.resizescreenIcon />
+            ) : (
+              <galleries.galleryCustom.fullscreenIcon />
+            )}
+          </button>
+        )}
       />
-      {showDialog && <Dialog onSuccess={enterFullscreen} src={dialogBackground} />}
+      {/* {showDialog && <Dialog onSuccess={enterFullscreen} src={dialogBackground} />} */}
     </>
   );
 };

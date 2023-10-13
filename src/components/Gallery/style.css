@@ -2,20 +2,23 @@
   max-height: 100%;
 }
 
-.image-gallery-fullscreen-button {
+.image-gallery-icon:focus {
+  outline: none;
+}
+/* .image-gallery-fullscreen-button {
   visibility: hidden;
   pointer-events: none;
-}
+} */
 
 /**
 * fullscreen mode
 */
-.fullscreenMode {
+/* .fullscreenMode {
   position: fixed;
   inset: 0px;
   background: black;
   z-index: 99999;
-}
+} */
 
 /* desktop change color on hover */
 /* @media only screen and (min-width: 1100px) {
