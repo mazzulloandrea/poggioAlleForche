@@ -79,11 +79,11 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   // }, [inViewport, dimensions.isPortrait]);
 
   const enterFullscreen = useCallback(() => {
-    setShowDialog(false);
+    // setShowDialog(false);
     const elemFullscreen = document.documentElement;
-    const galleryContainer = document.querySelector('.image-gallery');
-    galleryContainer.classList.add('fullscreenMode');
-    document.body.style.overflowY = 'hidden';
+    // const galleryContainer = document.querySelector('.image-gallery');
+    // galleryContainer.classList.add('fullscreenMode');
+    // document.body.style.overflowY = 'hidden';
 
     if (elemFullscreen.requestFullscreen) {
       elemFullscreen.requestFullscreen();
@@ -98,9 +98,9 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   const exitFullscreen = useCallback(() => {
     // const elemFullscreen = document.documentElement;
-    const galleryContainer = document.querySelector('.image-gallery');
-    galleryContainer.classList.remove('fullscreenMode');
-    document.body.style.overflowY = 'auto';
+    // const galleryContainer = document.querySelector('.image-gallery');
+    // galleryContainer.classList.remove('fullscreenMode');
+    // document.body.style.overflowY = 'auto';
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
