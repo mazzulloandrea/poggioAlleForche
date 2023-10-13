@@ -76,10 +76,33 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   }, [inViewport, dimensions.isPortrait]);
 
   useEffect(() => {
+    const elemFullscreen = document.documentElement;
+    const galleryContainer = document.querySelector('.image-gallery');
     if (fullscreen) {
-      document.querySelector('.image-gallery').classList.add('fullscreenMode');
+      galleryContainer.classList.add('fullscreenMode');
+      document.body.style.overflowY = 'hidden';
+
+      if (elemFullscreen.requestFullscreen) {
+        elemFullscreen.requestFullscreen();
+      } else if (elemFullscreen.webkitRequestFullscreen) {
+        /* Safari */
+        elemFullscreen.webkitRequestFullscreen();
+      } else if (elemFullscreen.msRequestFullscreen) {
+        /* IE11 */
+        elemFullscreen.msRequestFullscreen();
+      }
     } else {
-      document.querySelector('.image-gallery').classList.remove('fullscreenMode');
+      galleryContainer.classList.remove('fullscreenMode');
+      document.body.style.overflowY = 'auto';
+      if (elemFullscreen.exitFullscreen) {
+        elemFullscreen.exitFullscreen();
+      } else if (elemFullscreen.webkitExitFullscreen) {
+        /* Safari */
+        elemFullscreen.webkitExitFullscreen();
+      } else if (elemFullscreen.msExitFullscreen) {
+        /* IE11 */
+        elemFullscreen.msExitFullscreen();
+      }
     }
   }, [fullscreen]);
 
