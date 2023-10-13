@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { galleries } from '../../assets';
+import { galleries, dialogBackground } from '../../assets';
+import Dialog from '../Dialog';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
 
@@ -65,77 +66,97 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   };
 
   const [fullscreen, setFullscreen] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     if (inViewport && !dimensions.isPortrait) {
       setFullscreen(true);
     } else {
+      if (!fullscreen) return;
       galleryRef.current.exitFullScreen();
       setFullscreen(false);
     }
   }, [inViewport, dimensions.isPortrait]);
 
-  useEffect(() => {
+  const enterFullscreen = useCallback(() => {
+    setShowDialog(false);
     const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
-    if (fullscreen) {
-      galleryContainer.classList.add('fullscreenMode');
-      document.body.style.overflowY = 'hidden';
+    galleryContainer.classList.add('fullscreenMode');
+    document.body.style.overflowY = 'hidden';
 
-      if (elemFullscreen.requestFullscreen) {
-        elemFullscreen.requestFullscreen();
-      } else if (elemFullscreen.webkitRequestFullscreen) {
-        /* Safari */
-        elemFullscreen.webkitRequestFullscreen();
-      } else if (elemFullscreen.msRequestFullscreen) {
-        /* IE11 */
-        elemFullscreen.msRequestFullscreen();
-      }
+    if (elemFullscreen.requestFullscreen) {
+      elemFullscreen.requestFullscreen();
+    } else if (elemFullscreen.webkitRequestFullscreen) {
+      /* Safari */
+      elemFullscreen.webkitRequestFullscreen();
+    } else if (elemFullscreen.msRequestFullscreen) {
+      /* IE11 */
+      elemFullscreen.msRequestFullscreen();
+    }
+  }, []);
+
+  const exitFullscreen = useCallback(() => {
+    // const elemFullscreen = document.documentElement;
+    const galleryContainer = document.querySelector('.image-gallery');
+    galleryContainer.classList.remove('fullscreenMode');
+    document.body.style.overflowY = 'auto';
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      /* IE11 */
+      document.msExitFullscreen();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (fullscreen) {
+      setShowDialog(true);
     } else {
-      galleryContainer.classList.remove('fullscreenMode');
-      document.body.style.overflowY = 'auto';
-      if (elemFullscreen.exitFullscreen) {
-        elemFullscreen.exitFullscreen();
-      } else if (elemFullscreen.webkitExitFullscreen) {
-        /* Safari */
-        elemFullscreen.webkitExitFullscreen();
-      } else if (elemFullscreen.msExitFullscreen) {
-        /* IE11 */
-        elemFullscreen.msExitFullscreen();
-      }
+      // if (!fullscreen) {
+      //   enterFullscreen();
+      // } else {
+      exitFullscreen();
     }
   }, [fullscreen]);
 
   return (
-    <ImageGallery
-      id="galleryContainer"
-      className="galleryContainer"
-      ref={galleryRef}
-      items={data}
-      renderLeftNav={(onClick, disabled) => (
-        <button className="image-gallery-icon image-gallery-left-nav">
-          <img
-            className="image-gallery-svg"
-            src={galleries.galleryCustom.arrowSx}
-            onClick={onClick}
-            disabled={disabled}
-            style={arrowProps}
-          />
-        </button>
-      )}
-      renderRightNav={(onClick, disabled) => (
-        <button className="image-gallery-icon image-gallery-right-nav">
-          <img
-            className="image-gallery-svg"
-            src={galleries.galleryCustom.arrowDx}
-            onClick={onClick}
-            disabled={disabled}
-            style={arrowProps}
-          />
-        </button>
-      )}
-      onImageLoad={WorkaroundFromSephiaToColored}
-    />
+    <>
+      <ImageGallery
+        id="galleryContainer"
+        className="galleryContainer"
+        showFullscreenButton={true}
+        ref={galleryRef}
+        items={data}
+        renderLeftNav={(onClick, disabled) => (
+          <button className="image-gallery-icon image-gallery-left-nav">
+            <img
+              className="image-gallery-svg"
+              src={galleries.galleryCustom.arrowSx}
+              onClick={onClick}
+              disabled={disabled}
+              style={arrowProps}
+            />
+          </button>
+        )}
+        renderRightNav={(onClick, disabled) => (
+          <button className="image-gallery-icon image-gallery-right-nav">
+            <img
+              className="image-gallery-svg"
+              src={galleries.galleryCustom.arrowDx}
+              onClick={onClick}
+              disabled={disabled}
+              style={arrowProps}
+            />
+          </button>
+        )}
+        onImageLoad={WorkaroundFromSephiaToColored}
+      />
+      {showDialog && <Dialog onSuccess={enterFullscreen} src={dialogBackground} />}
+    </>
   );
 };
 

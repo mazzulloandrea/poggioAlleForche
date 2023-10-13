@@ -14,3 +14,4 @@ export { default as menuMobile } from './menuMobile';
 export { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from './articles';
 export { default as galleries } from './galleries';
 export { headerBkg } from './header';
+export { default as dialogBackground } from './dialog/dialogBackground.png';
