@@ -172,7 +172,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
             onClick={() => {
               onClick();
               setTimeout(() => {
-                dimensions.isMobile && changeOrientation(isFullscreen);
+                console.log(isFullscreen);
+                dimensions.isMobile && changeOrientation(!isFullscreen);
               }, 200);
               // dimensions.isMobile && changeOrientation(isFullscreen);
               // isFullscreen ? exitFullscreen() : enterFullscreen();
