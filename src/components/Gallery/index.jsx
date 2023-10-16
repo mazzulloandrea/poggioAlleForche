@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries, dialogBackground } from '../../assets';
-import Dialog from '../Dialog';
+// import Dialog from '../Dialog';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
 
@@ -81,8 +81,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const enterFullscreen = useCallback(() => {
     // setShowDialog(false);
     const elemFullscreen = document.documentElement;
-    // const galleryContainer = document.querySelector('.image-gallery');
-    // galleryContainer.classList.add('fullscreenMode');
+    const galleryContainer = document.querySelector('.image-gallery');
+    galleryContainer.classList.add('fullscreen-modal');
     // document.body.style.overflowY = 'hidden';
 
     if (elemFullscreen.requestFullscreen) {
@@ -98,8 +98,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   const exitFullscreen = useCallback(() => {
     // const elemFullscreen = document.documentElement;
-    // const galleryContainer = document.querySelector('.image-gallery');
-    // galleryContainer.classList.remove('fullscreenMode');
+    const galleryContainer = document.querySelector('.image-gallery');
+    galleryContainer.classList.remove('fullscreen-modal');
     // document.body.style.overflowY = 'auto';
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -126,9 +126,9 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   const changeOrientation = isFullscreen => {
     if (isFullscreen) {
-      screen.orientation.lock('landscape');
+      screen?.orientation?.lock('landscape');
     } else {
-      screen.orientation.lock('portrait');
+      screen?.orientation?.lock('portrait');
     }
   };
 
@@ -168,9 +168,12 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
           <button
             className="image-gallery-icon image-gallery-fullscreen-button"
             onClick={() => {
-              // onClick();
+              onClick();
+              setTimeout(() => {
+                dimensions.isMobile && changeOrientation(isFullscreen);
+              }, 200);
               // dimensions.isMobile && changeOrientation(isFullscreen);
-              isFullscreen ? exitFullscreen() : enterFullscreen();
+              // isFullscreen ? exitFullscreen() : enterFullscreen();
             }}
           >
             {isFullscreen ? (
