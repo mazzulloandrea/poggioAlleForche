@@ -126,8 +126,10 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   const changeOrientation = isFullscreen => {
     if (isFullscreen) {
+      enterFullscreen();
       screen?.orientation?.lock('landscape');
     } else {
+      exitFullscreen();
       screen?.orientation?.lock('portrait');
     }
   };
