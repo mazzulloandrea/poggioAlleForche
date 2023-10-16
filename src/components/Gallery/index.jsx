@@ -78,7 +78,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   //   }
   // }, [inViewport, dimensions.isPortrait]);
 
-  const enterFullscreen = useCallback(() => {
+  const enterFullscreen = useCallback(async () => {
     // setShowDialog(false);
     const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
@@ -86,30 +86,32 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
     // document.body.style.overflowY = 'hidden';
 
     if (elemFullscreen.requestFullscreen) {
-      elemFullscreen.requestFullscreen();
+      await elemFullscreen.requestFullscreen();
     } else if (elemFullscreen.webkitRequestFullscreen) {
       /* Safari */
-      elemFullscreen.webkitRequestFullscreen();
+      await elemFullscreen.webkitRequestFullscreen();
     } else if (elemFullscreen.msRequestFullscreen) {
       /* IE11 */
-      elemFullscreen.msRequestFullscreen();
+      await elemFullscreen.msRequestFullscreen();
     }
+    screen?.orientation?.lock('landscape');
   }, []);
 
-  const exitFullscreen = useCallback(() => {
+  const exitFullscreen = useCallback(async () => {
     // const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
     galleryContainer.classList.remove('fullscreen-modal');
     // document.body.style.overflowY = 'auto';
     if (document.exitFullscreen) {
-      document.exitFullscreen();
+      await document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
       /* Safari */
-      document.webkitExitFullscreen();
+      await document.webkitExitFullscreen();
     } else if (document.msExitFullscreen) {
       /* IE11 */
-      document.msExitFullscreen();
+      await document.msExitFullscreen();
     }
+    screen?.orientation?.lock('portrait');
   }, []);
 
   // useEffect(() => {
@@ -126,9 +128,9 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
 
   const changeOrientation = isFullscreen => {
     if (isFullscreen) {
-      screen?.orientation?.lock('landscape');
+      enterFullscreen();
     } else {
-      screen?.orientation?.lock('portrait');
+      exitFullscreen();
     }
   };
 

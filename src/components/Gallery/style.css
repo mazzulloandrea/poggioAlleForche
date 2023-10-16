@@ -5,6 +5,14 @@
 .image-gallery-icon:focus {
   outline: none;
 }
+
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+  .image-gallery-fullscreen-button,
+  .image-gallery-play-button {
+    bottom: 10%;
+  }
+}
+
 /* .image-gallery-fullscreen-button {
   visibility: hidden;
   pointer-events: none;
