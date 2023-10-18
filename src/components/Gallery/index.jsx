@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries, dialogBackground } from '../../assets';
@@ -8,11 +8,18 @@ import './style.css';
 
 const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const { pathname } = useLocation();
-  let galleriesName = pathname.substring(1, pathname.length);
-  if (!galleries[galleriesName]) galleriesName = 'tradizione';
-  const data = galleries[galleriesName].list.map(el => ({ original: el }));
-  // const colored = galleries[galleriesName].colored;
-  const gif = galleries[galleriesName].gif;
+
+  const images = useMemo(() => {
+    let galleriesName = pathname.substring(1, pathname.length);
+    if (!galleries[galleriesName]) galleriesName = 'tradizione';
+    const data = galleries[galleriesName].list.map(el => ({ original: el }));
+    // const colored = galleries[galleriesName].colored;
+    const gif = galleries[galleriesName].gif;
+    return {
+      data,
+      gif,
+    };
+  }, [pathname]);
 
   const arrowProps = {
     height: '10vw',
@@ -26,10 +33,10 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   };
 
   const WorkaroundFromSephiaToColored = event => {
-    if (['/', '/tradizione'].includes(pathname)) {
+    if (['/', '/tradizione', '/viti', '/cantina'].includes(pathname)) {
       // all device use GIF
       setTimeout(() => {
-        document.querySelector('.image-gallery-image').src = gif;
+        document.querySelector('.image-gallery-image').src = images.gif;
       }, 2500);
     }
 
@@ -142,7 +149,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
         showFullscreenButton={true}
         useBrowserFullscreen={false}
         ref={galleryRef}
-        items={data}
+        items={images.data}
         renderLeftNav={(onClick, disabled) => (
           <button className="image-gallery-icon image-gallery-left-nav">
             <img
@@ -172,11 +179,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
             onClick={() => {
               onClick();
               setTimeout(() => {
-                console.log(isFullscreen);
                 dimensions.isMobile && changeOrientation(!isFullscreen);
               }, 200);
-              // dimensions.isMobile && changeOrientation(isFullscreen);
-              // isFullscreen ? exitFullscreen() : enterFullscreen();
             }}
           >
             {isFullscreen ? (

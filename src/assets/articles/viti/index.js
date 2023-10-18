@@ -1,7 +1,7 @@
 import title from './title.png';
 import subTitle from './subtitle.png';
-import img1 from './La_tradizione_1.png';
-import img2 from './La_tradizione_2.png';
+import img1 from './a.png';
+import img2 from './b.png';
 // import img3 from './La_tradizione_3.png';
 // import img4 from './La_tradizione_4.png';
 
