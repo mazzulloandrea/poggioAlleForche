@@ -6,21 +6,25 @@ import tradizione5 from './tradizione/foto5.png';
 import tradizione6 from './tradizione/foto6.jpg';
 import tradizione7 from './tradizione/foto7.png';
 // import tradizione1Colored from './tradizione/foto1_colored.png';
-import tradizioneGif1 from './tradizione/gif1.gif';
+import tradizioneGif1 from './tradizione/tradizione.gif';
 
 import viti1 from './viti/foto1.png';
-import viti2 from './viti/foto2.jpg';
-import viti3 from './viti/foto3.jpg';
-import viti4 from './viti/foto4.jpg';
-import viti5 from './viti/foto5.jpg';
-import viti1Colored from './viti/foto1_colored.png';
+import viti2 from './viti/foto2.png';
+import viti3 from './viti/foto3.png';
+import viti4 from './viti/foto4.png';
+import viti5 from './viti/foto5.png';
+import viti6 from './viti/foto6.png';
+// import viti1Colored from './viti/foto1_colored.png';
+import vitiGif1 from './viti/viti.gif';
 
 import cantina1 from './cantina/foto1.png';
-import cantina2 from './cantina/foto2.jpg';
-import cantina3 from './cantina/foto3.jpg';
-import cantina4 from './cantina/foto4.jpg';
-import cantina5 from './cantina/foto5.jpg';
-import cantina1Colored from './cantina/foto1_colored.png';
+import cantina2 from './cantina/foto2.png';
+import cantina3 from './cantina/foto3.png';
+import cantina4 from './cantina/foto4.png';
+import cantina5 from './cantina/foto5.png';
+import cantina6 from './cantina/foto6.png';
+// import cantina1Colored from './cantina/foto1_colored.png';
+import cantinaGif1 from './cantina/cantina.gif';
 
 import prodotti1 from './prodotti/foto1.png';
 import prodotti2 from './prodotti/foto2.jpg';
@@ -49,14 +53,14 @@ const galleries = {
     gif: tradizioneGif1,
   },
   viti: {
-    list: [viti1, viti2, viti3, viti4, viti5],
+    list: [viti1, viti2, viti3, viti4, viti5, viti6],
     // colored: viti1Colored,
-    gif: tradizioneGif1,
+    gif: vitiGif1,
   },
   cantina: {
-    list: [cantina1, cantina2, cantina3, cantina4, cantina5],
+    list: [cantina1, cantina2, cantina3, cantina4, cantina5, cantina6],
     // colored: cantina1Colored,
-    gif: tradizioneGif1,
+    gif: cantinaGif1,
   },
   prodotti: {
     list: [prodotti1, prodotti2, prodotti3, prodotti4, prodotti5],
