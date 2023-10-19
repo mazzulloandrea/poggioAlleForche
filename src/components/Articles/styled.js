@@ -90,6 +90,18 @@ export const Text = styled.p`
         `
       : css``}
   ${props =>
+    props.issmallscreen
+      ? css`
+          font-size: 1.3em;
+        `
+      : css``}
+  ${props =>
+    props.ismediumscreen
+      ? css`
+          font-size: 2.3em;
+        `
+      : css``}
+  ${props =>
     props.isbigscreen
       ? css`
           font-size: 2.3em;

@@ -17,8 +17,6 @@ const Tradizione = () => {
     {}, // props,
   );
 
-  console.log(inViewport);
-
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
     query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,

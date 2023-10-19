@@ -41,10 +41,10 @@ const Articles = ({ dimensions }) => {
     switch (pathname) {
       case '/tradizione':
         return articlesTradizione;
-      case '/cantina':
-        return articlesCantine;
       case '/viti':
         return articlesViti;
+      case '/cantina':
+        return articlesCantine;
       case '/prodotti':
         return articlesProdotti;
       default:
@@ -95,8 +95,9 @@ const Articles = ({ dimensions }) => {
               src={src || ''}
               {...defaulProps}
               className={isBigScreen && 'bigScreenText'}
+              dangerouslySetInnerHTML={{ __html: src }}
             >
-              {src}
+              {/* {src} */}
             </Text>
           </TextWrapper>
         )}
