@@ -3,12 +3,12 @@ import React from 'react';
 const resizescreen = props => {
   return (
     <svg
-      class="image-gallery-svg"
+      className="image-gallery-svg"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     >

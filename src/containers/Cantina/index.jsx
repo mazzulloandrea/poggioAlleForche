@@ -1,11 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { tabletWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
+import { Articles } from '../../components';
 
 const Cantina = () => {
   const [show, setShow] = useState(false);
+  const myRef = useRef();
+
+  const { inViewport, enterCount, leaveCount } = useInViewport(
+    myRef,
+    {}, // (options),
+    { disconnectOnLeave: false }, // (config = { disconnectOnLeave: false }),
+    {}, // props,
+  );
+
+  const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
+  const isMediumScreen = useMediaQuery({
+    query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
+  });
+  const isSmallScreen = useMediaQuery({
+    query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
+  });
+  const isTablet = useMediaQuery({
+    query: `(min-width: ${mobilebletWidth}px) and (max-width: ${tabletWidth}px)`,
+  });
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${mobilebletWidth}px)`,
+  });
+
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
     setShow(true);
@@ -14,7 +40,12 @@ const Cantina = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isTablet: window.innerWidth < tabletWidth,
+    isBigScreen,
+    isMediumScreen,
+    isSmallScreen,
+    isTablet,
+    isMobile,
+    isPortrait,
   });
 
   useEffect(() => {
@@ -22,21 +53,32 @@ const Cantina = () => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isTablet: window.innerWidth < tabletWidth,
+        isBigScreen,
+        isMediumScreen,
+        isSmallScreen,
+        isTablet,
+        isMobile,
+        isPortrait,
       });
     };
 
-    window.addEventListener('resize', debouncedHandleResize);
+    const changeOrientation = () => {
+      setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
+    };
 
+    window.addEventListener('resize', debouncedHandleResize);
+    window.addEventListener('orientationchange', changeOrientation);
     return _ => {
       window.removeEventListener('resize', debouncedHandleResize);
+      window.removeEventListener('orientationchange', changeOrientation);
     };
   });
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions} />
-      <article></article>
+      <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+        <Articles dimensions={dimensions} />
+      </Layout>
     </Wrapper>
   );
 };

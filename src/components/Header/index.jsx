@@ -108,7 +108,11 @@ const Header = ({ dimensions }) => {
   };
 
   const LogoComponent = (
-    <LogoContainer onClick={handleClickLogo} istablet={dimensions.isTablet ? 1 : 0}>
+    <LogoContainer
+      key="LogoCOmponent"
+      onClick={handleClickLogo}
+      istablet={dimensions.isTablet ? 1 : 0}
+    >
       <Logo src={logo} />
       <Marchio src={marchio} />
     </LogoContainer>

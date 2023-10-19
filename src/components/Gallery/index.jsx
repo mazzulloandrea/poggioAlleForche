@@ -2,21 +2,20 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries, dialogBackground } from '../../assets';
-// import Dialog from '../Dialog';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import './style.css';
 
 const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const { pathname } = useLocation();
+  const [loadedGif, setLoadedGif] = useState(false);
 
   const images = useMemo(() => {
-    let galleriesName = pathname.substring(1, pathname.length);
+    const galleriesName = pathname.substring(1, pathname.length);
     if (!galleries[galleriesName]) galleriesName = 'tradizione';
-    const data = galleries[galleriesName].list.map(el => ({ original: el }));
-    // const colored = galleries[galleriesName].colored;
+    const list = galleries[galleriesName].list.map(el => ({ original: el }));
     const gif = galleries[galleriesName].gif;
     return {
-      data,
+      list,
       gif,
     };
   }, [pathname]);
@@ -32,65 +31,25 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
         : '17vh',
   };
 
-  const WorkaroundFromSephiaToColored = event => {
-    if (['/', '/tradizione', '/viti', '/cantina'].includes(pathname)) {
-      // all device use GIF
+  const changeGif = useCallback(() => {
+    if (window.location.href.includes(pathname) && !loadedGif) {
+      setLoadedGif(true);
+      document.querySelector('.image-gallery-image').src = images.gif;
+    }
+  }, [pathname, loadedGif]);
+
+  const loadGif = evt => {
+    if (evt.target.src.includes(images.list[0].original)) {
       setTimeout(() => {
-        document.querySelector('.image-gallery-image').src = images.gif;
+        changeGif();
       }, 2500);
     }
-
-    // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-    //   if (['/', '/tradizione'].includes(pathname)) {
-    //     // mobile & talet use GIF
-    //     setTimeout(() => {
-    //       document.querySelector('.image-gallery-image').src = gif;
-    //     }, 2000);
-    //   }
-    // } else {
-    //   var container = [...document.querySelectorAll('.image-gallery-slide')].find(
-    //     el => el.offsetHeight !== 0,
-    //   );
-    //   if (container.children.length > 1) return;
-    //   container.style.height = container.offsetHeight + 'px';
-    //   const sephia = container.children[0];
-    //   sephia.style.position = 'absolute';
-    //   sephia.id = 'sephia';
-
-    //   const imageColored = sephia.cloneNode();
-    //   imageColored.src = colored;
-    //   // imageColored.style.opacity = 0;
-    //   imageColored.id = 'colored';
-    //   container.appendChild(imageColored);
-    // }
-
-    // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-    //   setTimeout(() => {
-    //     sephia && sephia.classList.add('forceAnimation');
-    //     imageColored && imageColored.classList.add('forceAnimation');
-    //   }, 2000);
-    // }
   };
 
-  // const [fullscreen, setFullscreen] = useState(false);
-  // const [showDialog, setShowDialog] = useState(false);
-
-  // useEffect(() => {
-  //   if (inViewport && !dimensions.isPortrait) {
-  //     setFullscreen(true);
-  //   } else {
-  //     if (!fullscreen) return;
-  //     galleryRef.current.exitFullScreen();
-  //     setFullscreen(false);
-  //   }
-  // }, [inViewport, dimensions.isPortrait]);
-
   const enterFullscreen = useCallback(async () => {
-    // setShowDialog(false);
     const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
     galleryContainer.classList.add('fullscreen-modal');
-    // document.body.style.overflowY = 'hidden';
 
     if (elemFullscreen.requestFullscreen) {
       await elemFullscreen.requestFullscreen();
@@ -105,10 +64,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   }, []);
 
   const exitFullscreen = useCallback(async () => {
-    // const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
     galleryContainer.classList.remove('fullscreen-modal');
-    // document.body.style.overflowY = 'auto';
     if (document.exitFullscreen) {
       await document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
@@ -121,18 +78,6 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
     screen?.orientation?.lock('portrait');
   }, []);
 
-  // useEffect(() => {
-  //   if (fullscreen) {
-  //     setShowDialog(true);
-  //   } else {
-  //     // if (!fullscreen) {
-  //     //   enterFullscreen();
-  //     // } else {
-  //     setShowDialog(false);
-  //     exitFullscreen();
-  //   }
-  // }, [fullscreen]);
-
   const changeOrientation = isFullscreen => {
     if (isFullscreen) {
       enterFullscreen();
@@ -140,6 +85,39 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
       exitFullscreen();
     }
   };
+
+  // const WorkaroundFromSephiaToColored = event => {
+  // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
+  //   if (['/', '/tradizione'].includes(pathname)) {
+  //     // mobile & talet use GIF
+  //     setTimeout(() => {
+  //       document.querySelector('.image-gallery-image').src = gif;
+  //     }, 2000);
+  //   }
+  // } else {
+  //   var container = [...document.querySelectorAll('.image-gallery-slide')].find(
+  //     el => el.offsetHeight !== 0,
+  //   );
+  //   if (container.children.length > 1) return;
+  //   container.style.height = container.offsetHeight + 'px';
+  //   const sephia = container.children[0];
+  //   sephia.style.position = 'absolute';
+  //   sephia.id = 'sephia';
+
+  //   const imageColored = sephia.cloneNode();
+  //   imageColored.src = colored;
+  //   // imageColored.style.opacity = 0;
+  //   imageColored.id = 'colored';
+  //   container.appendChild(imageColored);
+  // }
+
+  // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
+  //   setTimeout(() => {
+  //     sephia && sephia.classList.add('forceAnimation');
+  //     imageColored && imageColored.classList.add('forceAnimation');
+  //   }, 2000);
+  // }
+  // };
 
   return (
     <>
@@ -149,7 +127,8 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
         showFullscreenButton={true}
         useBrowserFullscreen={false}
         ref={galleryRef}
-        items={images.data}
+        items={images.list}
+        onImageLoad={loadGif}
         renderLeftNav={(onClick, disabled) => (
           <button className="image-gallery-icon image-gallery-left-nav">
             <img
@@ -172,7 +151,6 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
             />
           </button>
         )}
-        onImageLoad={WorkaroundFromSephiaToColored}
         renderFullscreenButton={(onClick, isFullscreen) => (
           <button
             className="image-gallery-icon image-gallery-fullscreen-button"
@@ -191,7 +169,6 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
           </button>
         )}
       />
-      {/* {showDialog && <Dialog onSuccess={enterFullscreen} src={dialogBackground} />} */}
     </>
   );
 };
