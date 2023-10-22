@@ -10,7 +10,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const [loadedGif, setLoadedGif] = useState(false);
 
   const images = useMemo(() => {
-    const galleriesName = pathname.substring(1, pathname.length);
+    let galleriesName = pathname.substring(1, pathname.length);
     if (!galleries[galleriesName]) galleriesName = 'tradizione';
     const list = galleries[galleriesName].list.map(el => ({ original: el }));
     const gif = galleries[galleriesName].gif;
