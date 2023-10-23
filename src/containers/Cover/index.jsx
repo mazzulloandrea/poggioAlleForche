@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import ReactGA from 'react-ga';
 import { useMediaQuery } from 'react-responsive';
+import CookieConsent from 'react-cookie-consent';
 import { Tradizione, COVER_SHOW, COVER_HIDE } from '..';
 import {
   Wrapper,
@@ -17,6 +19,7 @@ const Cover = ({ staticSite }) => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
   const [showCover, setShowCover] = useState(COVER_SHOW);
+  const [cookieAcceptance, setCookieAcceptance] = useState(false);
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
@@ -44,6 +47,10 @@ const Cover = ({ staticSite }) => {
     isMobile,
     isPortrait,
   });
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + '_cover');
+  }, []);
 
   useEffect(() => {
     const debouncedHandleResize = () => {
@@ -220,6 +227,20 @@ const Cover = ({ staticSite }) => {
         </ContainerCentered>
       </Wrapper>
       {showCover === COVER_HIDE && <Tradizione dimensions={dimensions} />}
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        cookieName="myAwesomeCookieName2"
+        style={{ background: '#2B373B' }}
+        buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+        expires={1}
+        onAccept={acceptedByScrolling => {
+          setCookieAcceptance(true);
+        }}
+      >
+        This website uses cookies to enhance the user experience.{' '}
+        {/* <span style={{ fontSize: '10px' }}>This bit of text is smaller :O</span> */}
+      </CookieConsent>
     </>
   );
 };

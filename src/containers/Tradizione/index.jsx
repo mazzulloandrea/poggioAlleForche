@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import ReactGA from 'react-ga';
 import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
@@ -32,6 +33,10 @@ const Tradizione = () => {
   });
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   useEffect(() => {
     setShow(true);
@@ -72,7 +77,7 @@ const Tradizione = () => {
       window.removeEventListener('resize', debouncedHandleResize);
       window.removeEventListener('orientationchange', changeOrientation);
     };
-  });
+  }, []);
 
   return (
     <Wrapper show={show ? 1 : 0}>

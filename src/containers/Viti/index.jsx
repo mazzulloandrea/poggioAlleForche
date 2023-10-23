@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import ReactGA from 'react-ga';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
@@ -22,6 +23,10 @@ const Viti = () => {
   });
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   useEffect(() => {
     setShow(true);
@@ -62,7 +67,7 @@ const Viti = () => {
       window.removeEventListener('resize', debouncedHandleResize);
       window.removeEventListener('orientationchange', changeOrientation);
     };
-  });
+  }, []);
 
   return (
     <Wrapper show={show ? 1 : 0}>
