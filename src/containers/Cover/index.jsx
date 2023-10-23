@@ -160,6 +160,7 @@ const Cover = ({ staticSite }) => {
       </>
     );
   }
+
   return (
     <>
       <Wrapper
@@ -168,12 +169,8 @@ const Cover = ({ staticSite }) => {
         onClick={() => {
           if (isToAnimate('indicator')) {
             setMoveUp(true);
-            // setShowCover(COVER_HIDE);
           }
         }}
-
-        // moveup={moveUp}
-        // onTransitionEnd={() => step === 5 && setShowCover(COVER_HIDE)}
       >
         <ContainerCentered
           isbigscreen={isBigScreen ? 1 : 0}
@@ -181,8 +178,6 @@ const Cover = ({ staticSite }) => {
           issmallscreen={isSmallScreen ? 1 : 0}
           istablet={isTablet ? 1 : 0}
           ismobile={isMobile ? 1 : 0}
-          // isdesktoporlaptop={isDesktopOrLaptop ? 1 : 0}
-          // istabletormobile={isTabletOrMobile ? 1 : 0}
           isportrait={isPortrait ? 1 : 0}
         >
           <LogoStyled
@@ -239,7 +234,6 @@ const Cover = ({ staticSite }) => {
         }}
       >
         This website uses cookies to enhance the user experience.{' '}
-        {/* <span style={{ fontSize: '10px' }}>This bit of text is smaller :O</span> */}
       </CookieConsent>
     </>
   );

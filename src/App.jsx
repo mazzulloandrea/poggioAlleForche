@@ -3,12 +3,13 @@ import { unstable_HistoryRouter as HistoryRouter, Routes, Route, Navigate } from
 import { Cover, Page, Tradizione, Viti, Cantina, Prodotti } from './containers';
 import { history, routes } from './utils';
 
-const staticSite = false;
+// NB use to force STATIC site PRE-LIVE
+const staticSite = true;
 
 const App = () => (
   <HistoryRouter history={history}>
     <Routes>
-      {staticSite && <Route path="*" exact element={<Cover staticSite={false} />} />}
+      {staticSite && <Route path="*" exact element={<Cover staticSite={staticSite} />} />}
       {!staticSite && (
         <>
           <Route path={routes.cover} exact element={<Cover />} />
