@@ -27,11 +27,17 @@ import cantina6 from './cantina/foto6.png';
 import cantinaGif1 from './cantina/cantina.gif';
 
 import prodotti1 from './prodotti/foto1.png';
-import prodotti2 from './prodotti/foto2.jpg';
-import prodotti3 from './prodotti/foto3.jpg';
-import prodotti4 from './prodotti/foto4.jpg';
-import prodotti5 from './prodotti/foto5.jpg';
-import prodotti1Colored from './prodotti/foto1_colored.png';
+import prodotti2 from './prodotti/foto2.png';
+import prodotti3 from './prodotti/foto3.png';
+import prodotti4 from './prodotti/foto4.png';
+import prodotti5 from './prodotti/foto5.png';
+import prodotti6 from './prodotti/foto6.png';
+import prodotti7 from './prodotti/foto7.png';
+import prodotti8 from './prodotti/foto8.png';
+import prodotti9 from './prodotti/foto9.png';
+import prodottiGif1 from './prodotti/prodotti.gif';
+
+// import prodotti1Colored from './prodotti/foto1_colored.png';
 
 import arrowSx from './arrowSx.png';
 import arrowDx from './arrowDx.png';
@@ -63,9 +69,19 @@ const galleries = {
     gif: cantinaGif1,
   },
   prodotti: {
-    list: [prodotti1, prodotti2, prodotti3, prodotti4, prodotti5],
+    list: [
+      prodotti1,
+      prodotti2,
+      prodotti3,
+      prodotti4,
+      prodotti5,
+      prodotti6,
+      prodotti7,
+      prodotti8,
+      prodotti9,
+    ],
     // colored: prodotti1Colored,
-    gif: tradizioneGif1,
+    gif: prodottiGif1,
   },
   galleryCustom: {
     arrowSx,

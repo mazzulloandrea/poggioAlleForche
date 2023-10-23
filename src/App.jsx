@@ -4,7 +4,7 @@ import { Cover, Page, Tradizione, Viti, Cantina, Prodotti } from './containers';
 import { history, routes } from './utils';
 
 // NB use to force STATIC site PRE-LIVE
-const staticSite = true;
+const staticSite = false;
 
 const App = () => (
   <HistoryRouter history={history}>
