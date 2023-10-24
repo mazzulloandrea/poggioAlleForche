@@ -7,6 +7,7 @@ import tradizione6 from './tradizione/foto6.jpg';
 import tradizione7 from './tradizione/foto7.png';
 // import tradizione1Colored from './tradizione/foto1_colored.png';
 import tradizioneGif1 from './tradizione/tradizione.gif';
+import tradizioneVideo from './tradizione/tradizione.MP4';
 
 import viti1 from './viti/foto1.png';
 import viti2 from './viti/foto2.png';
@@ -57,6 +58,7 @@ const galleries = {
     ],
     // colored: tradizione1Colored,
     gif: tradizioneGif1,
+    video: tradizioneVideo,
   },
   viti: {
     list: [viti1, viti2, viti3, viti4, viti5, viti6],

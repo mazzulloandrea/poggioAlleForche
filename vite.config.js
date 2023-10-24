@@ -6,4 +6,5 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 2999 },
   transpileDependencies: true,
+  assetsInclude: ['**/*.MP4'],
 });

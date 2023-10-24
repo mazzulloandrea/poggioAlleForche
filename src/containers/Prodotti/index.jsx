@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
@@ -28,6 +28,10 @@ const Prodotti = () => {
     setShow(true);
   }, []);
 
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Prodotti' });
+  }, []);
+
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -38,10 +42,6 @@ const Prodotti = () => {
     isMobile,
     isPortrait,
   });
-
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
-  }, []);
 
   useEffect(() => {
     const debouncedHandleResize = () => {

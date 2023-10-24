@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
@@ -25,7 +25,7 @@ const Viti = () => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cantina' });
   }, []);
 
   useEffect(() => {
