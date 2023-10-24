@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ReactGA from 'react-ga4';
-import { useInViewport } from 'react-in-viewport';
+// import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
@@ -9,14 +9,14 @@ import { Articles } from '../../components';
 
 const Tradizione = () => {
   const [show, setShow] = useState(false);
-  const myRef = useRef();
+  // const myRef = useRef();
 
-  const { inViewport, enterCount, leaveCount } = useInViewport(
-    myRef,
-    {}, // (options),
-    { disconnectOnLeave: false }, // (config = { disconnectOnLeave: false }),
-    {}, // props,
-  );
+  // const { inViewport, enterCount, leaveCount } = useInViewport(
+  //   // myRef,
+  //   {}, // (options),
+  //   { disconnectOnLeave: false }, // (config = { disconnectOnLeave: false }),
+  //   {}, // props,
+  // );
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
@@ -81,7 +81,7 @@ const Tradizione = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+      <Layout dimensions={dimensions}>
         <Articles dimensions={dimensions} />
       </Layout>
     </Wrapper>

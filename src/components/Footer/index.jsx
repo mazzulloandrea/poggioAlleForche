@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../utils';
 import { background, headerBkg, logo, marchio } from '../../assets';
 import {
@@ -18,6 +18,7 @@ import {
 
 const Footer = ({ dimensions }) => {
   const navigate = useNavigate();
+  const { pathname, hash } = useLocation();
 
   const handleClickLogo = () => {
     if (isHomepage) return null;
@@ -25,7 +26,7 @@ const Footer = ({ dimensions }) => {
   };
 
   const getLogo = (
-    <BackToHome istablet={dimensions.isTablet ? 1 : 0}>
+    <BackToHome istablet={dimensions.isTablet ? 1 : 0} onClick={() => pathname === '/tradizione'}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </BackToHome>
@@ -59,7 +60,9 @@ const Footer = ({ dimensions }) => {
     <Links>
       <MapLink
         onClick={event => {
-          navigate(`${routes.prodotti}#map`);
+          pathname === routes.prodotti
+            ? (document.documentElement.scrollTop -= 300)
+            : navigate(`${routes.prodotti}#map`);
           event.stopPropagation();
         }}
         istablet={dimensions.isTablet ? 1 : 0}
@@ -68,7 +71,9 @@ const Footer = ({ dimensions }) => {
       </MapLink>
       <VideoLink
         onClick={event => {
-          navigate(`${routes.tradizione}#video`);
+          pathname === routes.tradizione
+            ? (document.documentElement.scrollTop = 300)
+            : navigate(`${routes.tradizione}#video`);
           event.stopPropagation();
         }}
       >

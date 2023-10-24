@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries } from '../../assets';
@@ -7,10 +7,30 @@ import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
-const Gallery = ({ dimensions, galleryRef, inViewport }) => {
-  const { pathname } = useLocation();
+const Gallery = ({ dimensions }) => {
+  const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
   const [loadedVideo, setLoadedVideo] = useState(false);
+  const containerRef = useRef(null);
+  const galleryRef = useRef(null);
+
+  const swipeToVideo = useEffect(() => {
+    if (hash === '#video' && galleryRef) {
+      window.gr = galleryRef;
+      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
+    }
+    // return false;
+  }, [hash, galleryRef]);
+
+  const renderVideo = videoSrc => {
+    if (!videoSrc) return null;
+    return (
+      <Player>
+        <source src={videoSrc} />
+      </Player>
+    );
+  };
 
   const images = useMemo(() => {
     let galleriesName = pathname.substring(1, pathname.length);
@@ -27,15 +47,6 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
       gif,
     };
   }, [pathname]);
-
-  const renderVideo = videoSrc => {
-    if (!videoSrc) return null;
-    return (
-      <Player>
-        <source src={videoSrc} />
-      </Player>
-    );
-  };
 
   const arrowProps = {
     height: '10vw',
@@ -55,13 +66,13 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
     }
   }, [pathname, loadedGif]);
 
-  const changeToVideo = useCallback(() => {
-    if (['/', 'tradizione'].includes(window.location.pathname) && !loadedVideo) {
-      setLoadedVideo(true);
-      const videoContainer = document.querySelectorAll('.image-gallery-image')[1];
-      // videoContainer
-    }
-  }, [pathname, loadedVideo]);
+  // const changeToVideo = useCallback(() => {
+  //   if (['/', 'tradizione'].includes(window.location.pathname) && !loadedVideo) {
+  //     setLoadedVideo(true);
+  //     const videoContainer = document.querySelectorAll('.image-gallery-image')[1];
+  //     // videoContainer
+  //   }
+  // }, [pathname, loadedVideo]);
 
   const loadGif = evt => {
     if (evt.target.src.includes(images.list[0].original)) {
@@ -113,14 +124,14 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   };
 
   return (
-    <>
+    <div ref={containerRef}>
       <ImageGallery
         id="galleryContainer"
         className="galleryContainer"
         showFullscreenButton={true}
         useBrowserFullscreen={false}
-        ref={galleryRef}
         items={images.list}
+        ref={galleryRef}
         onImageLoad={loadGif}
         renderLeftNav={(onClick, disabled) => (
           <button className="image-gallery-icon image-gallery-left-nav">
@@ -162,7 +173,7 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
           </button>
         )}
       />
-    </>
+    </div>
   );
 };
 
