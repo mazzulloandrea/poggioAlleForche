@@ -115,7 +115,11 @@ export const Address = styled(footerArticle)`
   ${footerArticleTablet}
 `;
 
-export const MapLink = styled(footerArticle)`
+export const Links = styled(footerArticle)`
+  ${footerArticleTablet}
+`;
+
+export const MapLink = styled.article`
   ${props => (props.istablet ? footerArticleTablet : css``)};
   ${props =>
     props.istablet
@@ -125,4 +129,13 @@ export const MapLink = styled(footerArticle)`
           }
         `
       : css``}
+`;
+
+export const VideoLink = styled(MapLink)`
+  margin: 10px 0;
+`;
+
+export const Underline = styled.p`
+  text-decoration: underline;
+  cursor: pointer;
 `;

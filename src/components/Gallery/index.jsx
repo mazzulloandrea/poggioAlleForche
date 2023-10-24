@@ -1,24 +1,41 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { galleries, dialogBackground } from '../../assets';
-import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
+import { galleries } from '../../assets';
+import { Player } from 'video-react';
+import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
+import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
 const Gallery = ({ dimensions, galleryRef, inViewport }) => {
   const { pathname } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
+  const [loadedVideo, setLoadedVideo] = useState(false);
 
   const images = useMemo(() => {
     let galleriesName = pathname.substring(1, pathname.length);
     if (!galleries[galleriesName]) galleriesName = 'tradizione';
     const list = galleries[galleriesName].list.map(el => ({ original: el }));
     const gif = galleries[galleriesName].gif;
+    const videoSrc = galleries[galleriesName].video;
+
+    if (['/', '/tradizione'].includes(pathname)) {
+      list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc) };
+    }
     return {
       list,
       gif,
     };
   }, [pathname]);
+
+  const renderVideo = videoSrc => {
+    if (!videoSrc) return null;
+    return (
+      <Player>
+        <source src={videoSrc} />
+      </Player>
+    );
+  };
 
   const arrowProps = {
     height: '10vw',
@@ -38,11 +55,20 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
     }
   }, [pathname, loadedGif]);
 
+  const changeToVideo = useCallback(() => {
+    if (['/', 'tradizione'].includes(window.location.pathname) && !loadedVideo) {
+      setLoadedVideo(true);
+      const videoContainer = document.querySelectorAll('.image-gallery-image')[1];
+      // videoContainer
+    }
+  }, [pathname, loadedVideo]);
+
   const loadGif = evt => {
     if (evt.target.src.includes(images.list[0].original)) {
       setTimeout(() => {
         changeGif();
       }, 2500);
+      // changeToVideo();
     }
   };
 
@@ -85,39 +111,6 @@ const Gallery = ({ dimensions, galleryRef, inViewport }) => {
       exitFullscreen();
     }
   };
-
-  // const WorkaroundFromSephiaToColored = event => {
-  // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-  //   if (['/', '/tradizione'].includes(pathname)) {
-  //     // mobile & talet use GIF
-  //     setTimeout(() => {
-  //       document.querySelector('.image-gallery-image').src = gif;
-  //     }, 2000);
-  //   }
-  // } else {
-  //   var container = [...document.querySelectorAll('.image-gallery-slide')].find(
-  //     el => el.offsetHeight !== 0,
-  //   );
-  //   if (container.children.length > 1) return;
-  //   container.style.height = container.offsetHeight + 'px';
-  //   const sephia = container.children[0];
-  //   sephia.style.position = 'absolute';
-  //   sephia.id = 'sephia';
-
-  //   const imageColored = sephia.cloneNode();
-  //   imageColored.src = colored;
-  //   // imageColored.style.opacity = 0;
-  //   imageColored.id = 'colored';
-  //   container.appendChild(imageColored);
-  // }
-
-  // if (dimensions && (dimensions.isTablet || dimensions.isMobile)) {
-  //   setTimeout(() => {
-  //     sephia && sephia.classList.add('forceAnimation');
-  //     imageColored && imageColored.classList.add('forceAnimation');
-  //   }, 2000);
-  // }
-  // };
 
   return (
     <>

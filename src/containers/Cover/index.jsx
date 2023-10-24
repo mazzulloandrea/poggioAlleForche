@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { useMediaQuery } from 'react-responsive';
 import CookieConsent from 'react-cookie-consent';
 import { Tradizione, COVER_SHOW, COVER_HIDE } from '..';
@@ -49,7 +49,7 @@ const Cover = ({ staticSite }) => {
   });
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + '_cover');
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cover' });
   }, []);
 
   useEffect(() => {
@@ -227,7 +227,7 @@ const Cover = ({ staticSite }) => {
         buttonText="Accept"
         cookieName="myAwesomeCookieName2"
         style={{ background: '#2B373B' }}
-        buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+        buttonStyle={{ background: '#FFFFFF', color: '#4e503b', fontSize: '13px' }}
         expires={1}
         onAccept={acceptedByScrolling => {
           setCookieAcceptance(true);

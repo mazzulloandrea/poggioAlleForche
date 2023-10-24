@@ -34,6 +34,14 @@ export const Article = styled.article`
           padding: 5vh 0;
         `
       : css``};
+  ${props =>
+    props.full
+      ? css`
+          margin: 50px 0;
+          width: 100vw;
+          height: 115vh;
+        `
+      : css``}
 `;
 
 export const TextWrapper = styled.div`
@@ -117,24 +125,32 @@ export const ImgBkg = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   ${props =>
-    props.ismobile &&
-    css`
-      font-size: 1em;
-      height: 35vh;
-    `};
+    props.ismobile
+      ? css`
+          font-size: 1em;
+          height: 35vh;
+        `
+      : css``};
   ${props =>
-    props.istablet &&
-    css`
-      font-size: 1em;
-      height: 85vh;
-    `};
+    props.istablet
+      ? css`
+          font-size: 1em;
+          height: 85vh;
+        `
+      : css``};
 
   ${props =>
-    props.ismobile &&
-    !props.isportrait &&
-    css`
-      height: 100vh;
-    `}
+    props.ismobile && !props.isportrait
+      ? css`
+          height: 100vh;
+        `
+      : css``}
+  ${props =>
+    props.full
+      ? css`
+          // background-size: contain;
+        `
+      : css``}
 `;
 
 export const ImgMap = styled.img`

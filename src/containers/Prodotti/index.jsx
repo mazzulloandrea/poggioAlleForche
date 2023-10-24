@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ReactGA from 'react-ga';
+import { useLocation } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
 import { Articles } from '../../components';
 
 const Prodotti = () => {
+  const { pathname, hash } = useLocation();
   const [show, setShow] = useState(false);
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
@@ -24,8 +26,20 @@ const Prodotti = () => {
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
+  // useEffect(() => {
+  //   if (pathname) {
+  //   }
+  //   if (hash) {
+  //     alert(hash);
+  //   }
+  // }, []);
+
   useEffect(() => {
     setShow(true);
+  }, []);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Prodotti' });
   }, []);
 
   const [dimensions, setDimensions] = useState({
@@ -38,10 +52,6 @@ const Prodotti = () => {
     isMobile,
     isPortrait,
   });
-
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
-  }, []);
 
   useEffect(() => {
     const debouncedHandleResize = () => {

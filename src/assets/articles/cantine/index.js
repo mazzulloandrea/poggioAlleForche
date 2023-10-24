@@ -1,4 +1,4 @@
-import title from './title.png';
+import title from '../common/title.png';
 import subTitle from './subtitle.png';
 import img1 from './cantine_1.png';
 import img2 from './cantine_2.png';

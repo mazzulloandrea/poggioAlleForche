@@ -18,24 +18,16 @@ import './style.css';
 const Articles = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
   const mapRef = useRef(null);
-
-  /** workaround Tablet to force transition */
-  // useEffect(() => {
-  //   if (dimensions && dimensions.isTablet) {
-  //     const sephia = document.getElementById('sephia');
-  //     const colored = document.getElementById('colored');
-  //     setTimeout(() => {
-  //       sephia && sephia.classList.add('forceAnimation');
-  //       colored && colored.classList.add('forceAnimation');
-  //     }, 2000);
-  //   }
-  // }, []);
+  const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
     if (hash === '#map') {
-      mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (scrolling) return;
+      setScrolling(true);
+      // window.mp = mapRef.current;
+      mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
-  }, [hash]);
+  }, [scrolling]);
 
   const getArticle = useCallback(() => {
     switch (pathname) {
@@ -68,7 +60,7 @@ const Articles = ({ dimensions }) => {
   };
 
   const getComponent = (el, id) => {
-    const { type, src, title, subTitle } = el;
+    const { type, src, title, subTitle, full } = el;
     const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
       dimensions;
     const defaulProps = {
@@ -80,7 +72,7 @@ const Articles = ({ dimensions }) => {
       isportrait: isPortrait ? 1 : 0,
     };
     return (
-      <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0}>
+      <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0} full={full}>
         {type === 'txt' && (
           <TextWrapper>
             {title && (
@@ -101,7 +93,7 @@ const Articles = ({ dimensions }) => {
             </Text>
           </TextWrapper>
         )}
-        {type === 'img' && <ImgBkg id={id} src={src} {...defaulProps} />}
+        {type === 'img' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}

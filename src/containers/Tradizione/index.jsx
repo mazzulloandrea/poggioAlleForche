@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
@@ -35,7 +35,7 @@ const Tradizione = () => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Tradizione' });
   }, []);
 
   useEffect(() => {
