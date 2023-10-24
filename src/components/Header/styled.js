@@ -47,6 +47,7 @@ export const MenuVoice = styled.a`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   background-size: contain;
+  cursor: pointer;
   ${props =>
     props.ismobile &&
     css`
@@ -70,6 +71,7 @@ export const LogoContainer = styled.a`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 export const Logo = styled.div`

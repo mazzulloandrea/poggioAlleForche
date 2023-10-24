@@ -10,7 +10,10 @@ import {
   Logo,
   Marchio,
   Address,
+  Links,
   MapLink,
+  VideoLink,
+  Underline,
 } from './styled';
 
 const Footer = ({ dimensions }) => {
@@ -52,15 +55,26 @@ const Footer = ({ dimensions }) => {
     </Address>
   );
 
-  const getMap = (
-    <MapLink
-      onClick={() => navigate(`${routes.prodotti}#map`)}
-      istablet={dimensions.isTablet ? 1 : 0}
-    >
-      <article>
-        <p>dove siamo</p>
-      </article>
-    </MapLink>
+  const getLink = (
+    <Links>
+      <MapLink
+        onClick={event => {
+          navigate(`${routes.prodotti}#map`);
+          event.stopPropagation();
+        }}
+        istablet={dimensions.isTablet ? 1 : 0}
+      >
+        <Underline>dove siamo</Underline>
+      </MapLink>
+      <VideoLink
+        onClick={event => {
+          navigate(`${routes.tradizione}#video`);
+          event.stopPropagation();
+        }}
+      >
+        <Underline>video</Underline>
+      </VideoLink>
+    </Links>
   );
 
   const getGrants = (
@@ -104,7 +118,7 @@ const Footer = ({ dimensions }) => {
           {getLogo}
           {getAddress}
           {getContacs}
-          {getMap}
+          {getLink}
           {getGrants}
         </>
       ) : (
@@ -112,7 +126,7 @@ const Footer = ({ dimensions }) => {
           {getAddress}
           {getContacs}
           {getLogo}
-          {getMap}
+          {getLink}
           {getGrants}
         </>
       )}

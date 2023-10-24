@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
@@ -7,6 +8,7 @@ import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../uti
 import { Articles } from '../../components';
 
 const Prodotti = () => {
+  const { pathname, hash } = useLocation();
   const [show, setShow] = useState(false);
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
@@ -23,6 +25,14 @@ const Prodotti = () => {
   });
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+
+  // useEffect(() => {
+  //   if (pathname) {
+  //   }
+  //   if (hash) {
+  //     alert(hash);
+  //   }
+  // }, []);
 
   useEffect(() => {
     setShow(true);
