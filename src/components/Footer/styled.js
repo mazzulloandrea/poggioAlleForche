@@ -63,6 +63,7 @@ export const BackToHome = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
   ${props =>
     props.istablet
       ? css`

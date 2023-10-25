@@ -25,7 +25,7 @@ const Articles = ({ dimensions }) => {
       if (scrolling) return;
       setScrolling(true);
       // window.mp = mapRef.current;
-      mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      setTimeout(() => mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
     }
   }, [scrolling]);
 
