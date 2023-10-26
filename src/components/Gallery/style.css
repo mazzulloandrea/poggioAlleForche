@@ -15,6 +15,16 @@
 }
 
 /* video */
+.video-react {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  background: transparent;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .video-react .video-react-big-play-button {
   top: 0;
   bottom: 0;

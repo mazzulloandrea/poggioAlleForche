@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { galleries } from '../../assets';
+import { galleries, background } from '../../assets';
 import { Player } from 'video-react';
+import { PlayerContainer } from './styled';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
 import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
@@ -10,7 +11,7 @@ import './style.css';
 const Gallery = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
-  const [loadedVideo, setLoadedVideo] = useState(false);
+  // const [loadedVideo, setLoadedVideo] = useState(false);
   const containerRef = useRef(null);
   const galleryRef = useRef(null);
 
@@ -20,15 +21,21 @@ const Gallery = ({ dimensions }) => {
       containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
       setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
     }
-    // return false;
   }, [hash, galleryRef]);
 
   const renderVideo = videoSrc => {
-    if (!videoSrc) return null;
+    console.log(galleryRef);
     return (
-      <Player>
-        <source src={videoSrc} />
-      </Player>
+      <>
+        <img src={background} />
+        {videoSrc && (
+          <PlayerContainer>
+            <Player>
+              <source src={videoSrc} />
+            </Player>
+          </PlayerContainer>
+        )}
+      </>
     );
   };
 
@@ -40,7 +47,10 @@ const Gallery = ({ dimensions }) => {
     const videoSrc = galleries[galleriesName].video;
 
     if (['/', '/tradizione'].includes(pathname)) {
+      // list[0] = { original: list[0], renderItem: () => renderVideo(list[0]) };
       list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc) };
+      // list[2] = { original: list[2], renderItem: () => renderVideo(list[2]) };
+      // list[3] = { original: list[3], renderItem: () => renderVideo(list[3]) };
     }
     return {
       list,
@@ -66,20 +76,11 @@ const Gallery = ({ dimensions }) => {
     }
   }, [pathname, loadedGif]);
 
-  // const changeToVideo = useCallback(() => {
-  //   if (['/', 'tradizione'].includes(window.location.pathname) && !loadedVideo) {
-  //     setLoadedVideo(true);
-  //     const videoContainer = document.querySelectorAll('.image-gallery-image')[1];
-  //     // videoContainer
-  //   }
-  // }, [pathname, loadedVideo]);
-
   const loadGif = evt => {
     if (evt.target.src.includes(images.list[0].original)) {
       setTimeout(() => {
         changeGif();
       }, 2500);
-      // changeToVideo();
     }
   };
 
@@ -130,6 +131,7 @@ const Gallery = ({ dimensions }) => {
         className="galleryContainer"
         showFullscreenButton={true}
         useBrowserFullscreen={false}
+        showPlayButton={false}
         items={images.list}
         ref={galleryRef}
         onImageLoad={loadGif}
