@@ -225,7 +225,7 @@ const Cover = ({ staticSite }) => {
       <CookieConsent
         location="bottom"
         buttonText="Accept"
-        cookieName="myAwesomeCookieName2"
+        cookieName="cookie_poggio"
         style={{ background: '#2B373B' }}
         buttonStyle={{ background: '#FFFFFF', color: '#4e503b', fontSize: '13px' }}
         expires={1}

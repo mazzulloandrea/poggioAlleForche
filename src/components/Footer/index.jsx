@@ -14,6 +14,7 @@ import {
   MapLink,
   VideoLink,
   Underline,
+  ArticleText,
 } from './styled';
 
 const Footer = ({ dimensions }) => {
@@ -21,12 +22,13 @@ const Footer = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
 
   const handleClickLogo = () => {
-    if (isHomepage) return null;
+    document.documentElement.scrollTop = 0;
+    if (['/', '/tradizione'].includes(pathname)) return null;
     return navigate(routes.tradizione);
   };
 
   const getLogo = (
-    <BackToHome istablet={dimensions.isTablet ? 1 : 0} onClick={() => pathname === '/tradizione'}>
+    <BackToHome istablet={dimensions.isTablet ? 1 : 0} onClick={handleClickLogo}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </BackToHome>
@@ -34,24 +36,16 @@ const Footer = ({ dimensions }) => {
 
   const getContacs = (
     <Contacts istablet={dimensions.isTablet ? 1 : 0}>
-      {/* <div>Indirizzo</div> */}
-      {/* <br />
-      <br /> */}
       <article>
-        <p>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</p>
-        {/* <p>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</p> */}
+        <ArticleText>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</ArticleText>
       </article>
-      {/* <br /> */}
-      {/* <article>
-        <p>C.F. e PIVA iscrizione registro imprese Siena: xxxxxxx</p>
-      </article> */}
     </Contacts>
   );
 
   const getAddress = (
     <Address istablet={dimensions.isTablet ? 1 : 0}>
       <article>
-        <p>Podere Scarnacuoia 288, Montalcino (Siena) - Italia</p>
+        <ArticleText>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</ArticleText>
       </article>
     </Address>
   );
@@ -84,16 +78,14 @@ const Footer = ({ dimensions }) => {
 
   const getGrants = (
     <Grants istablet={dimensions.isTablet ? 1 : 0}>
-      {/* <div>Contatti</div>
-      <br />
-      <br /> */}
       <article>
-        <p>
-          Email{' '}
+        <ArticleText>
+          Contatti
+          <br />
           <a href="mailto:poggioalleforche@email.it" style={{ textDecoration: 'underline' }}>
             poggioalleforche@email.it{' '}
           </a>
-        </p>
+        </ArticleText>
       </article>
       {/* <br />
       <article>

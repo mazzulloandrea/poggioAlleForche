@@ -133,10 +133,16 @@ export const MapLink = styled.article`
 `;
 
 export const VideoLink = styled(MapLink)`
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
-export const Underline = styled.p`
+export const ArticleText = styled.p`
+  text-align: center;
+  font-family: 'Times New Roman';
+  font-size: 1.1em;
+`;
+
+export const Underline = styled(ArticleText)`
   text-decoration: underline;
   cursor: pointer;
 `;
