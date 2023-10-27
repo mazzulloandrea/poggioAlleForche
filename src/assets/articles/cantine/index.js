@@ -18,20 +18,20 @@ ed equilibrato arricchito di profumi agrumati persistenti.`;
 const articleTradizione = {
   mobile: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
+    { type: 'imgBck', src: img1 },
     { type: 'txt', src: text2 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img2 },
   ],
   tablet: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
+    { type: 'imgBck', src: img1 },
     { type: 'txt', src: text2 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img2 },
   ],
   desktop: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img1 },
+    { type: 'imgBck', src: img2 },
     { type: 'txt', src: text2 },
   ],
 };

@@ -10,6 +10,7 @@ import {
   TitleWrapper,
   Title,
   SubTitle,
+  Img,
   ImgBkg,
   ImgMap,
 } from './styled';
@@ -93,7 +94,8 @@ const Articles = ({ dimensions }) => {
             </Text>
           </TextWrapper>
         )}
-        {type === 'img' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
+        {type === 'imgBck' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
+        {type === 'img' && <Img id={id} src={src} {...defaulProps} full={full} />}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}

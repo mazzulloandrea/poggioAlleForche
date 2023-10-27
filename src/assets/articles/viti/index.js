@@ -18,20 +18,20 @@ di bacche di ginepro. Il tannino è armonico e levigato, con un finale lungo e v
 const articleViti = {
   mobile: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
+    { type: 'imgBck', src: img1 },
     { type: 'txt', src: text2 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img2 },
   ],
   tablet: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
+    { type: 'imgBck', src: img1 },
     { type: 'txt', src: text2 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img2 },
   ],
   desktop: [
     { type: 'txt', src: text1, title, subTitle },
-    { type: 'img', src: img1 },
-    { type: 'img', src: img2 },
+    { type: 'imgBck', src: img1 },
+    { type: 'imgBck', src: img2 },
     { type: 'txt', src: text2 },
   ],
 };
