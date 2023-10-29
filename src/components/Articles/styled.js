@@ -117,7 +117,8 @@ export const Text = styled.p`
       : css``}
 `;
 
-export const ImgBkg = styled.div`
+export const Img = styled.img``;
+export const ImgBkg = styled.img`
   width: 100%;
   height: 100%;
   background: ${props => (props.src ? `url(${props.src})` : '')};

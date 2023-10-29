@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { galleries, background } from '../../assets';
+import { galleries, background, playIcon } from '../../assets';
 import { Player } from 'video-react';
-import { PlayerContainer } from './styled';
+import ReactPlayer from 'react-player';
+import { PlayerContainer, PlayerButton } from './styled';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
 import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
@@ -11,9 +12,10 @@ import './style.css';
 const Gallery = ({ dimensions }) => {
   const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
-  // const [loadedVideo, setLoadedVideo] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const containerRef = useRef(null);
   const galleryRef = useRef(null);
+  const videoRef = useRef(null);
 
   const swipeToVideo = useEffect(() => {
     if (hash === '#video' && galleryRef) {
@@ -23,21 +25,55 @@ const Gallery = ({ dimensions }) => {
     }
   }, [hash, galleryRef]);
 
-  const renderVideo = videoSrc => {
-    console.log(galleryRef);
-    return (
-      <>
-        <img src={background} />
-        {videoSrc && (
-          <PlayerContainer>
-            <Player>
-              <source src={videoSrc} />
-            </Player>
-          </PlayerContainer>
-        )}
-      </>
-    );
-  };
+  const renderVideo = useCallback(
+    (videoSrc, backVideoImage) => {
+      console.log(galleryRef);
+      console.log(playing);
+      if (videoRef && videoRef.current) {
+        console.log(videoRef.current);
+      }
+      return (
+        <>
+          <img src={background} />
+          {videoSrc && (
+            <PlayerContainer>
+              <ReactPlayer
+                ref={videoRef}
+                url={videoSrc}
+                controls={true}
+                playing={{ playing }}
+                width="100%"
+                height="700px"
+                light={<img src={backVideoImage.original.original} alt="" />}
+                playIcon={
+                  <img
+                    src={playIcon}
+                    alt=""
+                    style={{ position: 'absolute', width: '30%', heigjt: 'auto' }}
+                    onClick={() => {
+                      setPlaying(true);
+                    }}
+                  />
+                }
+                config={{
+                  file: {
+                    attributes: {
+                      controlsList: 'nodownload',
+                    },
+                  },
+                }}
+                // Disable right click
+                onContextMenu={e => e.preventDefault()}
+                onPlay={() => setPlaying(true)}
+                onPause={() => setPlaying(false)}
+              />
+            </PlayerContainer>
+          )}
+        </>
+      );
+    },
+    [playing],
+  );
 
   const images = useMemo(() => {
     let galleriesName = pathname.substring(1, pathname.length);
@@ -47,10 +83,7 @@ const Gallery = ({ dimensions }) => {
     const videoSrc = galleries[galleriesName].video;
 
     if (['/', '/tradizione'].includes(pathname)) {
-      // list[0] = { original: list[0], renderItem: () => renderVideo(list[0]) };
-      list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc) };
-      // list[2] = { original: list[2], renderItem: () => renderVideo(list[2]) };
-      // list[3] = { original: list[3], renderItem: () => renderVideo(list[3]) };
+      list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
     }
     return {
       list,
