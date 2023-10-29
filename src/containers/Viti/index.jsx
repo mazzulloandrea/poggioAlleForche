@@ -58,8 +58,8 @@ const Viti = () => {
     };
 
     const changeOrientation = () => {
-      // setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
-      setDimensions({ ...dimensions, isPortrait: screen.orientation.type.includes('portrait') });
+      const isPortrait = screen.orientation.type.includes('portrait');
+      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 200);
     };
 
     window.addEventListener('resize', debouncedHandleResize);
