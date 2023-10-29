@@ -26,77 +26,85 @@ const videoDim = 900;
 
 export const PlayerContainer = styled.div`
   position: absolute;
-  min-width: ${videoDim}px;
-  max-width: ${videoDim}px;
+  min-width: 70%;
+  max-width: 70%;
+  height: 70%;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
-  height: 700px;
-  // > div {
-  //   padding-top: 56.25%; /* Percentage ratio for 16:9*/
-  //   position: relative; /* Set to relative*/
-  //   > video {
-  //     position: absolute; /* Scaling will occur since parent is relative now*/
-  //   }
-  // }
-  ${props =>
-    props.isbigscreen
-      ? css`
-          min-width: ${videoContainer.bigScreen.w}px;
-          max-width: ${videoContainer.bigScreen.w}px;
-          height: ${videoContainer.bigScreen.h}px;
-          > div {
-            height: ${videoContainer.bigScreen.h}px!important;
-          }
-        `
-      : ``}
-  ${props =>
-    props.ismediumscreen
-      ? css`
-          min-width: ${videoContainer.mediumScreen.w}px;
-          max-width: ${videoContainer.mediumScreen.w}px;
-          height: ${videoContainer.mediumScreen.h}px;
-          > div {
-            height: ${videoContainer.mediumScreen.h}px!important;
-          }
-        `
-      : ``}
-  ${props =>
-    props.issmallscreen
-      ? css`
-          min-width: ${videoContainer.smallScreen.w}px;
-          max-width: ${videoContainer.smallScreen.w}px;
-          height: ${videoContainer.smallScreen.h}px;
-          > div {
-            height: ${videoContainer.smallScreen.h}px!important;
-          }
-        `
-      : ``}
-  ${props =>
-    props.istablet
-      ? css`
-          min-width: ${videoContainer.tablet.w}px;
-          max-width: ${videoContainer.tablet.w}px;
-          height: ${videoContainer.tablet.h}px;
-          > div {
-            height: ${videoContainer.tablet.h}px!important;
-          }
-        `
-      : ``}
-  ${props =>
-    props.ismobile
-      ? css`
-          min-width: ${videoContainer.mobile.w}px;
-          max-width: ${videoContainer.mobile.w}px;
-          height: ${videoContainer.mobile.h}px;
-          > div {
-            height: ${videoContainer.mobile.h}px!important;
-          }
-        `
-      : ``}
+  > div {
+    height: 100% !important;
+  }
 `;
+
+/*
+// ${props =>
+  //   props.isbigscreen
+  //     ? css`
+  //         min-width: ${videoContainer.bigScreen.w}px;
+  //         max-width: ${videoContainer.bigScreen.w}px;
+  //         height: ${videoContainer.bigScreen.h}px;
+  //         > div {
+  //           height: ${videoContainer.bigScreen.h}px!important;
+  //         }
+  //       `
+  //     : ``}
+  // ${props =>
+  //   props.ismediumscreen
+  //     ? css`
+  //         min-width: ${videoContainer.mediumScreen.w}px;
+  //         max-width: ${videoContainer.mediumScreen.w}px;
+  //         height: ${videoContainer.mediumScreen.h}px;
+  //         > div {
+  //           height: ${videoContainer.mediumScreen.h}px!important;
+  //         }
+  //       `
+  //     : ``}
+  // ${props =>
+  //   props.issmallscreen
+  //     ? css`
+  //         min-width: ${videoContainer.smallScreen.w}px;
+  //         max-width: ${videoContainer.smallScreen.w}px;
+  //         height: ${videoContainer.smallScreen.h}px;
+  //         > div {
+  //           height: ${videoContainer.smallScreen.h}px!important;
+  //         }
+  //       `
+  //     : ``}
+  // ${props =>
+  //   props.istablet
+  //     ? css`
+  //         min-width: ${videoContainer.tablet.w}px;
+  //         max-width: ${videoContainer.tablet.w}px;
+  //         height: ${videoContainer.tablet.h}px;
+  //         > div {
+  //           height: ${videoContainer.tablet.h}px!important;
+  //         }
+  //       `
+  //     : ``}
+  // ${props =>
+  //   props.ismobile
+  //     ? props.isportrait
+  //       ? css`
+  //           min-width: ${videoContainer.mobile.w / 2}px;
+  //           max-width: ${videoContainer.mobile.w / 2}px;
+  //           height: ${videoContainer.mobile.h / 2}px;
+  //           > div {
+  //             height: ${videoContainer.mobile.h / 2}px!important;
+  //           }
+  //         `
+  //       : css`
+  //           min-width: ${videoContainer.mobile.w}px;
+  //           max-width: ${videoContainer.mobile.w}px;
+  //           height: ${videoContainer.mobile.h}px;
+  //           > div {
+  //             height: ${videoContainer.mobile.h}px!important;
+  //           }
+  //         `
+  //     : ``}
+*/
 
 export const PlayerButton = styled.div`
   position: absolute;

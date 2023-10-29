@@ -6,7 +6,7 @@ export const BackgroundContainerRules = css`
   background-position: center;
 `;
 
-export const FooterStyled = styled.article`
+export const FooterStyled = styled.footer`
   height: 15vh;
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
@@ -15,15 +15,17 @@ export const FooterStyled = styled.article`
   padding: 10px 30px;
   ${props =>
     props.ismobile
-      ? css`
-          height: 100vh;
-          flex-direction: column;
-          padding-top: 30px;
-          > div {
+      ? props.isportrait
+        ? css`
+            height: 20vh;
+            padding: 0;
+            flex-direction: row;
+          `
+        : css`
             height: 30vh;
-            width: 100%;
-          }
-        `
+            padding: 0;
+            flex-direction: row;
+          `
       : css``}
   ${props =>
     props.istablet
@@ -40,9 +42,6 @@ export const footerArticle = styled.div`
   width: 20%;
   color: white;
   padding: 0 2%;
-  > article {
-    font-size: 0.8em;
-  }
 `;
 
 const footerArticleTablet = css`
@@ -52,8 +51,28 @@ const footerArticleTablet = css`
   justify-content: center;
 `;
 
-export const Contacts = styled(footerArticle)`
+export const Address = styled(footerArticle)`
+  ${footerArticleTablet}
+  ${props =>
+    props.ismobile
+      ? css`
+          display: block;
+          width: 100%;
+        `
+      : css``}
+`;
+
+export const Address2 = styled(footerArticle)`
   ${props => (props.istablet ? footerArticleTablet : css``)}
+  ${props =>
+    props.ismobile
+      ? css`
+          display: block;
+          width: 100%;
+          > article {
+          }
+        `
+      : css``}
 `;
 
 export const BackToHome = styled.div`
@@ -65,6 +84,14 @@ export const BackToHome = styled.div`
   flex-direction: column;
   cursor: pointer;
   ${props =>
+    props.ismobile
+      ? css`
+          width: 100%;
+          height: 55%;
+          padding-right: 30px;
+        `
+      : css``}
+  ${props =>
     props.istablet
       ? css`
           margin-top: -10px;
@@ -72,7 +99,7 @@ export const BackToHome = styled.div`
       : css``}
 `;
 
-export const Grants = styled(Contacts)`
+export const ContactContainer = styled(Address2)`
   width: 20%;
   text-align: center;
   ${props =>
@@ -112,12 +139,20 @@ export const Marchio = styled.div`
   background-size: contain;
 `;
 
-export const Address = styled(footerArticle)`
-  ${footerArticleTablet}
-`;
-
 export const Links = styled(footerArticle)`
   ${footerArticleTablet}
+  ${props =>
+    props.ismobile
+      ? css`
+          width: 100%;
+          height: calc(100% - 40px);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          margin-top: 20px;
+        `
+      : css``}
 `;
 
 export const MapLink = styled.article`
@@ -134,15 +169,50 @@ export const MapLink = styled.article`
 
 export const VideoLink = styled(MapLink)`
   margin: 5px 0;
+  ${props =>
+    props.ismobile
+      ? css`
+          margin: 0;
+        `
+      : css``}
 `;
 
 export const ArticleText = styled.p`
   text-align: center;
   font-family: 'Times New Roman';
   font-size: 1.1em;
+  ${props =>
+    props.ismobile
+      ? css`
+          font-size: 0.65em;
+          text-align: left;
+        `
+      : css``}
 `;
 
 export const Underline = styled(ArticleText)`
   text-decoration: underline;
   cursor: pointer;
+`;
+
+/** MOBILE FOOTER */
+export const Left = styled.div`
+  width: 50%;
+  height: 100%;
+  padding: 10px 15px;
+  ${props =>
+    props.ismobile && !props.isportrait
+      ? css`
+          padding: 10px 70px;
+        `
+      : css``}
+`;
+
+export const Right = styled(Left)`
+  padding-top: 0;
+  border-left: 1px solid white;
+  box-sizing: border-box;
+  margin: 15px 0;
+  box-sizing: border-box;
+  height: calc(100% - 30px);
 `;
