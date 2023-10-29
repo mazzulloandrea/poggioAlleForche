@@ -89,9 +89,7 @@ const Articles = ({ dimensions }) => {
               {...defaulProps}
               className={isBigScreen && 'bigScreenText'}
               dangerouslySetInnerHTML={{ __html: src }}
-            >
-              {/* {src} */}
-            </Text>
+            ></Text>
           </TextWrapper>
         )}
         {type === 'imgBck' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
