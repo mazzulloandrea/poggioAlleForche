@@ -81,7 +81,7 @@ const Tradizione = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      {dimensione.isPortrait ? (
+      {dimensions.isPortrait ? (
         <Layout dimensions={dimensions}>
           <Articles dimensions={dimensions} />
         </Layout>
