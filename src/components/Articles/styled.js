@@ -25,7 +25,18 @@ export const Article = styled.article`
           height: auto;
         `
       : css``};
-
+  ${props =>
+    props.issmallscreen
+      ? css`
+          height: 63vh;
+        `
+      : css``};
+  ${props =>
+    props.isbigscreen
+      ? css`
+          height: 660px;
+        `
+      : css``};
   ${props =>
     props.fullwidth
       ? css`
@@ -106,19 +117,27 @@ export const Text = styled.p`
   ${props =>
     props.ismediumscreen
       ? css`
-          font-size: 2.3em;
+          font-size: 1.7em;
         `
       : css``}
   ${props =>
     props.isbigscreen
       ? css`
-          font-size: 2.3em;
+          font-size: 1.9em;
         `
       : css``}
 `;
 
-export const Img = styled.img``;
-export const ImgBkg = styled.img`
+export const Img = styled.img`
+  ${props =>
+    props.spaceTop
+      ? css`
+          padding-top: 100px;
+        `
+      : css``}
+`;
+
+export const ImgBkg = styled.div`
   width: 100%;
   height: 100%;
   background: ${props => (props.src ? `url(${props.src})` : '')};

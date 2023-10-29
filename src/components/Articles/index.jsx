@@ -61,7 +61,7 @@ const Articles = ({ dimensions }) => {
   };
 
   const getComponent = (el, id) => {
-    const { type, src, title, subTitle, full } = el;
+    const { type, src, title, subTitle, full, spaceTop } = el;
     const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
       dimensions;
     const defaulProps = {
@@ -89,13 +89,13 @@ const Articles = ({ dimensions }) => {
               {...defaulProps}
               className={isBigScreen && 'bigScreenText'}
               dangerouslySetInnerHTML={{ __html: src }}
-            >
-              {/* {src} */}
-            </Text>
+            ></Text>
           </TextWrapper>
         )}
         {type === 'imgBck' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
-        {type === 'img' && <Img id={id} src={src} {...defaulProps} full={full} />}
+        {type === 'img' && (
+          <Img id={id} src={src} {...defaulProps} full={full} spaceTop={spaceTop} />
+        )}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}

@@ -12,7 +12,7 @@ import {
   IndicatorStyled,
   UnderConstruction,
 } from './styled';
-import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
 const Cover = ({ staticSite }) => {
@@ -29,10 +29,10 @@ const Cover = ({ staticSite }) => {
     query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
   });
   const isTablet = useMediaQuery({
-    query: `(min-width: ${mobilebletWidth}px) and (max-width: ${tabletWidth}px)`,
+    query: `(min-width: ${mobileWidth}px) and (max-width: ${tabletWidth}px)`,
   });
   const isMobile = useMediaQuery({
-    query: `(max-width: ${mobilebletWidth}px)`,
+    query: `(max-width: ${mobileWidth}px)`,
   });
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
@@ -82,26 +82,18 @@ const Cover = ({ staticSite }) => {
     setTimeout(() => setStep(1), 1500);
   }, []);
 
-  // WORKAROUND use to force launch animation after 5 seconds
-  // useEffect(() => {
-  //   console.log('actual step', step);
-  //   setTimeout(() => {
-  //     if (step === 0) {
-  //       setStep(4);
-  //     }
-  //   }, 5000);
-  // }, [step]);
-
   useEffect(() => {
-    console.log(dimensions.isPortrait ? 'portrait' : 'landscap');
+    console.log(dimensions.isPortrait ? 'portrait' : 'landscae');
+    setDimensions({
+      ...dimensions,
+      isPortrait: dimensions.isPortrait,
+    });
   }, [dimensions.isPortrait]);
 
   const setUp = useCallback(
     event => {
-      // console.log('setUp actual step', step);
       setStep(step + 1);
       event.stopPropagation();
-      // console.log(step);
     },
     [step],
   );
@@ -111,7 +103,6 @@ const Cover = ({ staticSite }) => {
   }, [step]);
 
   const isToAnimate = type => {
-    // console.log(`isToAnimate  type:${type},  step:${step}`);
     switch (type) {
       case 'logo':
         return step >= 1;
