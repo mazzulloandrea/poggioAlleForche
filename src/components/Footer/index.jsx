@@ -20,6 +20,7 @@ import {
 } from './styled';
 
 const Footer = ({ dimensions }) => {
+  console.log('footer isPOrtrait ?', dimensions.isPortrait);
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
 
