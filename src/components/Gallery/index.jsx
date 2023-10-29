@@ -10,6 +10,7 @@ import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
 const Gallery = ({ dimensions }) => {
+  const { isBigScreen, isMediumScreen, isSmallScreen, isTablet, isMobile, isPortrait } = dimensions;
   const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -27,16 +28,18 @@ const Gallery = ({ dimensions }) => {
 
   const renderVideo = useCallback(
     (videoSrc, backVideoImage) => {
-      console.log(galleryRef);
-      console.log(playing);
-      if (videoRef && videoRef.current) {
-        console.log(videoRef.current);
-      }
       return (
         <>
           <img src={background} />
           {videoSrc && (
-            <PlayerContainer>
+            <PlayerContainer
+              isbigscreen={isBigScreen ? 1 : 0}
+              ismediumscreen={isMediumScreen ? 1 : 0}
+              issmallscreen={isSmallScreen ? 1 : 0}
+              istablet={isTablet ? 1 : 0}
+              ismobile={isMobile ? 1 : 0}
+              isportrait={isPortrait ? 1 : 0}
+            >
               <ReactPlayer
                 ref={videoRef}
                 url={videoSrc}

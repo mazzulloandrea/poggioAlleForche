@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { bigScreen, mediumScreen, tabletWidth, mobilebletWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
 import { Articles } from '../../components';
 
 const Prodotti = () => {
@@ -18,10 +18,10 @@ const Prodotti = () => {
     query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
   });
   const isTablet = useMediaQuery({
-    query: `(min-width: ${mobilebletWidth}px) and (max-width: ${tabletWidth}px)`,
+    query: `(min-width: ${mobileWidth}px) and (max-width: ${tabletWidth}px)`,
   });
   const isMobile = useMediaQuery({
-    query: `(max-width: ${mobilebletWidth}px)`,
+    query: `(max-width: ${mobileWidth}px)`,
   });
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
