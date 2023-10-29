@@ -149,7 +149,7 @@ export const Links = styled(footerArticle)`
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          justify-content: space-between;
+          justify-content: end;
           margin-top: 20px;
         `
       : css``}
@@ -173,6 +173,7 @@ export const VideoLink = styled(MapLink)`
     props.ismobile
       ? css`
           margin: 0;
+          margin: 3vh 0 0 0;
         `
       : css``}
 `;
