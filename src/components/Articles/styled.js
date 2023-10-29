@@ -128,7 +128,14 @@ export const Text = styled.p`
       : css``}
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  ${props =>
+    props.spaceTop
+      ? css`
+          padding-top: 100px;
+        `
+      : css``}
+`;
 
 export const ImgBkg = styled.div`
   width: 100%;

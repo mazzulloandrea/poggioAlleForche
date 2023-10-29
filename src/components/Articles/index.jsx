@@ -61,7 +61,7 @@ const Articles = ({ dimensions }) => {
   };
 
   const getComponent = (el, id) => {
-    const { type, src, title, subTitle, full } = el;
+    const { type, src, title, subTitle, full, spaceTop } = el;
     const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
       dimensions;
     const defaulProps = {
@@ -93,7 +93,9 @@ const Articles = ({ dimensions }) => {
           </TextWrapper>
         )}
         {type === 'imgBck' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
-        {type === 'img' && <Img id={id} src={src} {...defaulProps} full={full} />}
+        {type === 'img' && (
+          <Img id={id} src={src} {...defaulProps} full={full} spaceTop={spaceTop} />
+        )}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}
