@@ -68,7 +68,8 @@ const Prodotti = () => {
     };
 
     const changeOrientation = () => {
-      setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
+      // setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
+      setDimensions({ ...dimensions, isPortrait: screen.orientation.type.includes('portrait') });
     };
 
     window.addEventListener('resize', debouncedHandleResize);

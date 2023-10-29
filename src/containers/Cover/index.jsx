@@ -83,11 +83,12 @@ const Cover = ({ staticSite }) => {
   }, []);
 
   useEffect(() => {
-    console.log(dimensions.isPortrait ? 'portrait' : 'landscae');
-    setDimensions({
-      ...dimensions,
-      isPortrait: dimensions.isPortrait,
-    });
+    // console.log(dimensions.isPortrait ? 'portrait' : 'landscae');
+    // setDimensions({
+    //   ...dimensions,
+    //   isPortrait: dimensions.isPortrait,
+    // });
+    setDimensions({ ...dimensions, isPortrait: screen.orientation.type.includes('portrait') });
   }, [dimensions.isPortrait]);
 
   const setUp = useCallback(
