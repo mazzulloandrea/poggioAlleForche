@@ -81,9 +81,15 @@ const Prodotti = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions}>
-        <Articles dimensions={dimensions} />
-      </Layout>
+      {dimensione.isPortrait ? (
+        <Layout dimensions={dimensions}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      ) : (
+        <Layout dimensions={dimensions}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      )}
     </Wrapper>
   );
 };

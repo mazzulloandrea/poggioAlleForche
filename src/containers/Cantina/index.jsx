@@ -81,9 +81,15 @@ const Cantina = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
-        <Articles dimensions={dimensions} />
-      </Layout>
+      {dimensione.isPortrait ? (
+        <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      ) : (
+        <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      )}
     </Wrapper>
   );
 };
