@@ -7,7 +7,7 @@ const Layout = ({ dimensions, galleryRef, inViewport, children }) => {
   return (
     <div>
       <Header dimensions={dimensions} />
-      <Gallery dimensions={dimensions} galleryRef={galleryRef} inViewport={inViewport} />
+      {/* <Gallery dimensions={dimensions} galleryRef={galleryRef} inViewport={inViewport} /> */}
       {children}
       <Footer dimensions={dimensions} />
     </div>

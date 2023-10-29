@@ -123,17 +123,23 @@ const Footer = ({ dimensions }) => {
       src={dimensions.isMobile ? background : headerBkg}
       ismobile={dimensions.isMobile ? 1 : 0}
       istablet={dimensions.isTablet ? 1 : 0}
-      isportrait={dimensions.isPortrait ? 1 : 0}
+      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
       id="map"
     >
       {dimensions.isMobile ? (
         <>
-          <Left ismobile={dimensions.isMobile ? 1 : 0} isportrait={dimensions.isPortrait ? 1 : 0}>
+          <Left
+            ismobile={dimensions.isMobile ? 1 : 0}
+            isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+          >
             {getLogo}
             {getAddress}
             {getAddress2}
           </Left>
-          <Right ismobile={dimensions.isMobile ? 1 : 0} isportrait={dimensions.isPortrait ? 1 : 0}>
+          <Right
+            ismobile={dimensions.isMobile ? 1 : 0}
+            isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+          >
             {getContact}
             {getLink}
           </Right>
