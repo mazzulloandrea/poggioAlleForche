@@ -146,10 +146,15 @@ export const ImgBkg = styled.div`
   background-repeat: no-repeat;
   ${props =>
     props.ismobile
-      ? css`
-          font-size: 1em;
-          height: 35vh;
-        `
+      ? props.isportrait
+        ? css`
+            font-size: 1em;
+            height: 35vh;
+          `
+        : css`
+            font-size: 1em;
+            height: 100vh;
+          `
       : css``};
   ${props =>
     props.istablet

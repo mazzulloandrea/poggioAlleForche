@@ -69,7 +69,7 @@ const Cantina = () => {
 
     const changeOrientation = () => {
       const isPortrait = screen.orientation.type.includes('portrait');
-      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 200);
+      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 400);
     };
 
     window.addEventListener('resize', debouncedHandleResize);
