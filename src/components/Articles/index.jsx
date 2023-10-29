@@ -70,7 +70,7 @@ const Articles = ({ dimensions }) => {
       issmallscreen: isSmallScreen ? 1 : 0,
       ismediumscreen: isMediumScreen ? 1 : 0,
       isbigscreen: isBigScreen ? 1 : 0,
-      isportrait: isPortrait ? 1 : 0,
+      isportrait: screen.orientation.type.includes('portrait') ? 1 : 0,
     };
     return (
       <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0} full={full}>
