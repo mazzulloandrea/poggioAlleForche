@@ -71,9 +71,15 @@ const Viti = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      <Layout dimensions={dimensions}>
-        <Articles dimensions={dimensions} />
-      </Layout>
+      {dimensions.isPortrait ? (
+        <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      ) : (
+        <Layout dimensions={dimensions} galleryRef={myRef} inViewport={inViewport}>
+          <Articles dimensions={dimensions} />
+        </Layout>
+      )}
     </Wrapper>
   );
 };
