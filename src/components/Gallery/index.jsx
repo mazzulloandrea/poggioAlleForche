@@ -200,7 +200,7 @@ const Gallery = ({ dimensions }) => {
               onClick();
               setTimeout(() => {
                 dimensions.isMobile && changeOrientation(!isFullscreen);
-              }, 200);
+              }, 400);
             }}
           >
             {isFullscreen ? (
