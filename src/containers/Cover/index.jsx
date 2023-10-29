@@ -68,7 +68,7 @@ const Cover = ({ staticSite }) => {
 
     const changeOrientation = () => {
       const isPortrait = screen.orientation.type.includes('portrait');
-      settimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 200);
+      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 200);
     };
 
     window.addEventListener('resize', debouncedHandleResize);
