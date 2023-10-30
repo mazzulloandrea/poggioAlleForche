@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { Articles } from '../../components';
 
 const Prodotti = () => {
@@ -24,7 +24,7 @@ const Prodotti = () => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   // useEffect(() => {
   //   if (pathname) {
@@ -50,7 +50,7 @@ const Prodotti = () => {
     isSmallScreen,
     isTablet,
     isMobile,
-    isPortrait,
+    isPortrait: isScreenInPortrait(),
   });
 
   useEffect(() => {
@@ -63,13 +63,13 @@ const Prodotti = () => {
         isSmallScreen,
         isTablet,
         isMobile,
-        isPortrait,
+        isPortrait: isScreenInPortrait(),
       });
     };
 
     const changeOrientation = () => {
-      const isPortrait = screen.orientation.type.includes('portrait');
-      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 400);
+      const isPortrait = isScreenInPortrait(); //screen.orientation.type.includes('portrait');
+      setTimeout(() => setDimensions({ ...dimensions, isPortrait }), 400);
     };
 
     window.addEventListener('resize', debouncedHandleResize);

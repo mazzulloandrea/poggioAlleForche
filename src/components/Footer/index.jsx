@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes } from '../../utils';
+import { routes, isScreenInPortrait } from '../../utils';
 import { background, headerBkg, logo, marchio } from '../../assets';
 import {
   FooterStyled,
@@ -34,7 +34,7 @@ const Footer = ({ dimensions }) => {
     <BackToHome
       istablet={dimensions.isTablet ? 1 : 0}
       ismobile={dimensions.isMobile ? 1 : 0}
-      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+      isportrait={isScreenInPortrait()}
       onClick={handleClickLogo}
     >
       <Logo src={logo} />
@@ -79,13 +79,18 @@ const Footer = ({ dimensions }) => {
     </Address2>
   );
 
+  const reloadWorkaround = () => {
+    const hash = window.location.hash;
+    window.location.hash = '';
+    window.location.hash = hash;
+  };
+
   const getLink = (
     <Links ismobile={dimensions.isMobile ? 1 : 0}>
+      {/* <Link to={`${routes.prodotti}#map`}> */}
       <MapLink
         onClick={event => {
-          pathname === routes.prodotti
-            ? (document.documentElement.scrollTop -= 300)
-            : navigate(`${routes.prodotti}#map`);
+          pathname === routes.prodotti ? reloadWorkaround() : navigate(`${routes.prodotti}#map`);
           event.stopPropagation();
         }}
         istablet={dimensions.isTablet ? 1 : 0}
@@ -93,11 +98,12 @@ const Footer = ({ dimensions }) => {
       >
         <Underline ismobile={dimensions.isMobile ? 1 : 0}>Dove siamo</Underline>
       </MapLink>
+      {/* </Link> */}
       <VideoLink
         ismobile={dimensions.isMobile ? 1 : 0}
         onClick={event => {
           pathname === routes.tradizione
-            ? (document.documentElement.scrollTop = 300)
+            ? reloadWorkaround()
             : navigate(`${routes.tradizione}#video`);
           event.stopPropagation();
         }}
@@ -109,7 +115,7 @@ const Footer = ({ dimensions }) => {
 
   const getContact = (
     <ContactContainer
-      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+      isportrait={isScreenInPortrait()}
       istablet={dimensions.isTablet ? 1 : 0}
       ismobile={dimensions.isMobile ? 1 : 0}
     >
@@ -126,7 +132,7 @@ const Footer = ({ dimensions }) => {
   );
 
   const getMobile = () => {
-    if (screen.orientation.type.includes('portrait')) {
+    if (isScreenInPortrait()) {
       return mobilePortrait;
     } else {
       return mobileLandscape;
@@ -164,7 +170,7 @@ const Footer = ({ dimensions }) => {
       src={dimensions.isMobile ? background : headerBkg}
       ismobile={dimensions.isMobile ? 1 : 0}
       istablet={dimensions.isTablet ? 1 : 0}
-      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+      isportrait={isScreenInPortrait()}
       id="map"
     >
       {dimensions.isMobile ? (
