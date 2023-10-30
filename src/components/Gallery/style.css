@@ -28,8 +28,8 @@
 }
 
 .grow {
-  transform: scale(1.2) !important;
-  transition: all 2500ms linear;
+  transform: scale(1.1) !important;
+  transition: all 2000ms linear;
 }
 
 /* video */

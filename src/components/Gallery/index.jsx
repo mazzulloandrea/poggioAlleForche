@@ -52,7 +52,7 @@ const Gallery = ({ dimensions }) => {
                   <img
                     src={playIcon}
                     alt=""
-                    style={{ position: 'absolute', width: '30%', heigjt: 'auto' }}
+                    style={{ position: 'absolute', width: '20%', heigjt: 'auto' }}
                     onClick={() => {
                       setPlaying(true);
                     }}
@@ -110,7 +110,7 @@ const Gallery = ({ dimensions }) => {
       setLoadedGif(true);
       const gifElement = document.querySelector('.image-gallery-image');
       gifElement.src = images.gif;
-      // gifElement.parentElement.classList.add('grow');
+      gifElement.parentElement.classList.add('grow');
     }
   }, [pathname, loadedGif]);
 
