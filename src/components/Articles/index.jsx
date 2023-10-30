@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY, tabletWidth } from '../../utils';
+import { routes, NO_MENU_ROUTE_KEY, tabletWidth, isScreenInPortrait } from '../../utils';
 import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
   Wrapper,
@@ -70,7 +70,7 @@ const Articles = ({ dimensions }) => {
       issmallscreen: isSmallScreen ? 1 : 0,
       ismediumscreen: isMediumScreen ? 1 : 0,
       isbigscreen: isBigScreen ? 1 : 0,
-      isportrait: screen.orientation.type.includes('portrait') ? 1 : 0,
+      isportrait: isScreenInPortrait(),
     };
     return (
       <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0} full={full}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { Articles } from '../../components';
 
 const Page = () => {
@@ -21,7 +21,7 @@ const Page = () => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
     setShow(true);
@@ -35,7 +35,7 @@ const Page = () => {
     isSmallScreen,
     isTablet,
     isMobile,
-    isPortrait,
+    isPortrait: isScreenInPortrait(),
   });
 
   useEffect(() => {
@@ -48,12 +48,12 @@ const Page = () => {
         isSmallScreen,
         isTablet,
         isMobile,
-        isPortrait,
+        isPortrait: isScreenInPortrait(),
       });
     };
 
     const changeOrientation = () => {
-      setDimensions({ ...dimensions, isPortrait: !dimensions.isPortrait });
+      setDimensions({ ...dimensions, isPortrait: isScreenInPortrait() });
     };
 
     window.addEventListener('resize', debouncedHandleResize);

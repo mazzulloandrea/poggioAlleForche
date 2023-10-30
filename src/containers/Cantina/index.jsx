@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { Articles } from '../../components';
 
 const Cantina = () => {
@@ -23,7 +23,7 @@ const Cantina = () => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cantina' });
@@ -41,7 +41,7 @@ const Cantina = () => {
     isSmallScreen,
     isTablet,
     isMobile,
-    isPortrait,
+    isPortrait: isScreenInPortrait(),
   });
 
   useEffect(() => {
@@ -54,12 +54,12 @@ const Cantina = () => {
         isSmallScreen,
         isTablet,
         isMobile,
-        isPortrait,
+        isPortrait: isScreenInPortrait(),
       });
     };
 
     const changeOrientation = () => {
-      const isPortrait = screen.orientation.type.includes('portrait');
+      const isPortrait = isScreenInPortrait();
       setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 400);
     };
 

@@ -12,7 +12,7 @@ import {
   IndicatorStyled,
   UnderConstruction,
 } from './styled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
+import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
 const Cover = ({ staticSite }) => {
@@ -35,7 +35,7 @@ const Cover = ({ staticSite }) => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -45,7 +45,7 @@ const Cover = ({ staticSite }) => {
     isSmallScreen,
     isTablet,
     isMobile,
-    isPortrait,
+    isPortrait: isScreenInPortrait(),
   });
 
   useEffect(() => {
@@ -67,8 +67,8 @@ const Cover = ({ staticSite }) => {
     };
 
     const changeOrientation = () => {
-      const isPortrait = screen.orientation.type.includes('portrait');
-      setTimeout(() => setDimensions({ ...dimensions, isPortrait: isPortrait }), 400);
+      const isPortrait = isScreenInPortrait(); // screen.orientation.type.includes('portrait');
+      setTimeout(() => setDimensions({ ...dimensions, isPortrait }), 400);
     };
 
     window.addEventListener('resize', debouncedHandleResize);
@@ -89,7 +89,7 @@ const Cover = ({ staticSite }) => {
     //   ...dimensions,
     //   isPortrait: dimensions.isPortrait,
     // });
-    setDimensions({ ...dimensions, isPortrait: screen.orientation.type.includes('portrait') });
+    setDimensions({ ...dimensions, isPortrait: isScreenInPortrait() });
   }, [dimensions.isPortrait]);
 
   const setUp = useCallback(
@@ -127,7 +127,7 @@ const Cover = ({ staticSite }) => {
             issmallscreen={isSmallScreen ? 1 : 0}
             istablet={isTablet ? 1 : 0}
             ismobile={isMobile ? 1 : 0}
-            isportrait={isPortrait ? 1 : 0}
+            isportrait={isScreenInPortrait()}
           >
             <LogoStyled
               staticSite={staticSite}
@@ -171,7 +171,7 @@ const Cover = ({ staticSite }) => {
           issmallscreen={isSmallScreen ? 1 : 0}
           istablet={isTablet ? 1 : 0}
           ismobile={isMobile ? 1 : 0}
-          isportrait={isPortrait ? 1 : 0}
+          isportrait={isScreenInPortrait()}
         >
           <LogoStyled
             className="logo"
