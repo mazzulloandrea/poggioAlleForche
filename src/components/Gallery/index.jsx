@@ -110,7 +110,7 @@ const Gallery = ({ dimensions }) => {
       setLoadedGif(true);
       const gifElement = document.querySelector('.image-gallery-image');
       gifElement.src = images.gif;
-      gifElement.parentElement.classList.add('grow');
+      // gifElement.parentElement.classList.add('grow');
     }
   }, [pathname, loadedGif]);
 
