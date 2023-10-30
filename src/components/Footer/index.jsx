@@ -21,7 +21,6 @@ import {
 } from './styled';
 
 const Footer = ({ dimensions }) => {
-  // console.log('footer isPortrait ?', dimensions.isPortrait);
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
 
@@ -51,7 +50,9 @@ const Footer = ({ dimensions }) => {
             Azienda agricola di Turchi Lorenzo.
           </ArticleText>
         ) : (
-          <ArticleText>Azienda agricola Poggio alle Forche di Turchi Lorenzo.</ArticleText>
+          <ArticleText istablet={dimensions.isTablet ? 1 : 0}>
+            Azienda agricola Poggio alle Forche di Turchi Lorenzo.
+          </ArticleText>
         )}
       </article>
     </Address>
@@ -70,7 +71,7 @@ const Footer = ({ dimensions }) => {
             </ArticleText>
           </>
         ) : (
-          <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
+          <ArticleText istablet={dimensions.isTablet ? 1 : 0}>
             Podere Scarnacuoia 288, Montalcino (Siena) - Italia
           </ArticleText>
         )}

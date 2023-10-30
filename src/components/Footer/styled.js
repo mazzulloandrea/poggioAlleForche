@@ -117,11 +117,13 @@ export const ContactContainer = styled(Address2)`
         `
       : css``}
   ${props =>
-    props.ismobile && props.isportrait
-      ? css``
-      : css`
-          width: 100%;
-        `}
+    props.ismobile
+      ? props.isportrait
+        ? css``
+        : css`
+            width: 100%;
+          `
+      : css``}
 `;
 
 // export const LogoContainer = styled.a`
@@ -205,12 +207,19 @@ export const VideoLink = styled(MapLink)`
 export const ArticleText = styled.p`
   text-align: center;
   font-family: 'Times New Roman';
-  font-size: 1.1em;
+  font-size: 0.9em;
+  line-height: 1.1em;
   ${props =>
     props.ismobile
       ? css`
           font-size: 0.65em;
           text-align: left;
+        `
+      : css``}
+  ${props =>
+    props.istablet
+      ? css`
+          font-size: 1em;
         `
       : css``}
 `;
