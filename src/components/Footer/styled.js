@@ -85,11 +85,16 @@ export const BackToHome = styled.div`
   cursor: pointer;
   ${props =>
     props.ismobile
-      ? css`
-          width: 100%;
-          height: 55%;
-          padding-right: 30px;
-        `
+      ? props.isportrait
+        ? css`
+            width: 100%;
+            height: 55%;
+            padding-right: 30px;
+          `
+        : css`
+            width: 100%;
+            padding: 0;
+          `
       : css``}
   ${props =>
     props.istablet
@@ -111,6 +116,12 @@ export const ContactContainer = styled(Address2)`
           justify-content: center;
         `
       : css``}
+  ${props =>
+    props.ismobile && props.isportrait
+      ? css``
+      : css`
+          width: 100%;
+        `}
 `;
 
 // export const LogoContainer = styled.a`
@@ -143,15 +154,24 @@ export const Links = styled(footerArticle)`
   ${footerArticleTablet}
   ${props =>
     props.ismobile
-      ? css`
-          width: 100%;
-          height: calc(100% - 40px);
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: end;
-          margin-top: 20px;
-        `
+      ? props.isportrait
+        ? css`
+            width: 100%;
+            height: calc(100% - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: end;
+            margin-top: 20px;
+          `
+        : css`
+            width: 100%;
+            height: calc(100% - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: end;
+          `
       : css``}
 `;
 
@@ -171,10 +191,14 @@ export const VideoLink = styled(MapLink)`
   margin: 5px 0;
   ${props =>
     props.ismobile
-      ? css`
-          margin: 0;
-          margin: 3vh 0 0 0;
-        `
+      ? props.isportrait
+        ? css`
+            margin: 0;
+            margin: 3vh 0 0 0;
+          `
+        : css`
+            margin: 0;
+          `
       : css``}
 `;
 
@@ -204,7 +228,11 @@ export const Left = styled.div`
   ${props =>
     props.ismobile && !props.isportrait
       ? css`
-          padding: 10px 70px;
+          padding: 20px;
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
         `
       : css``}
 `;
@@ -216,4 +244,16 @@ export const Right = styled(Left)`
   margin: 15px 0;
   box-sizing: border-box;
   height: calc(100% - 30px);
+  ${props =>
+    props.ismobile && props.isportrait
+      ? css``
+      : css`
+          padding-top: 5px;
+          padding-bottom: 5px;
+        `}
+`;
+
+export const Center = styled(Right)`
+  width: 40%;
+  padding: 0;
 `;

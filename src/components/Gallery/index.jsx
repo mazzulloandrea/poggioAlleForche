@@ -108,7 +108,9 @@ const Gallery = ({ dimensions }) => {
   const changeGif = useCallback(() => {
     if (window.location.href.includes(pathname) && !loadedGif) {
       setLoadedGif(true);
-      document.querySelector('.image-gallery-image').src = images.gif;
+      const gifElement = document.querySelector('.image-gallery-image');
+      gifElement.src = images.gif;
+      gifElement.parentElement.classList.add('grow');
     }
   }, [pathname, loadedGif]);
 
