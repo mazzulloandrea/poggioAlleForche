@@ -134,7 +134,7 @@ const Gallery = ({ dimensions }) => {
       /* IE11 */
       await elemFullscreen.msRequestFullscreen();
     }
-    screen?.orientation?.lock('landscape');
+    // screen?.orientation?.lock('landscape');
   }, []);
 
   const exitFullscreen = useCallback(async () => {
@@ -149,7 +149,7 @@ const Gallery = ({ dimensions }) => {
       /* IE11 */
       await document.msExitFullscreen();
     }
-    screen?.orientation?.lock('portrait');
+    // screen?.orientation?.lock('portrait');
   }, []);
 
   const changeOrientation = isFullscreen => {

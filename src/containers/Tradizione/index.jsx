@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ReactGA from 'react-ga4';
-// import { useInViewport } from 'react-in-viewport';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobileWidth } from '../../utils';
@@ -9,14 +8,6 @@ import { Articles } from '../../components';
 
 const Tradizione = () => {
   const [show, setShow] = useState(false);
-  // const myRef = useRef();
-
-  // const { inViewport, enterCount, leaveCount } = useInViewport(
-  //   // myRef,
-  //   {}, // (options),
-  //   { disconnectOnLeave: false }, // (config = { disconnectOnLeave: false }),
-  //   {}, // props,
-  // );
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
