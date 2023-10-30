@@ -1,19 +1,3 @@
-// import tw from 'tailwind-styled-components';
-// import { BiArrowBack } from 'react-icons/bi';
-
-// export const GoBack = tw(BiArrowBack)`
-//     absolute
-//     top-[11px]
-//     left-0
-//     mt-3
-//     ml-3
-//     cursor-pointer
-// `;
-
-// export const Logo = tw.img`
-//   ${({ $isHomepage }) => (!$isHomepage ? 'cursor-pointer' : 'cursor-default')}
-// `;
-
 import styled, { css } from 'styled-components';
 
 export const HamburgerStyled = styled.img`
@@ -54,12 +38,12 @@ export const MenuVoice = styled.a`
       margin: 5vh 0 5vh 2vw;
       width: 80%;
       height: 50px;
-    `}
-  span {
-    color: white;
-    text-transform: uppercase;
-    font-size: 1em;
-  }
+    `}// span {
+  //   color: white;
+  //   text-transform: uppercase;
+  //   font-size: 1em;
+  //   font-family: 'Times New Roman';
+  // }
 `;
 
 export const LogoContainer = styled.a`
@@ -88,4 +72,19 @@ export const Marchio = styled.div`
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
   background-size: contain;
+`;
+
+export const MenuText = styled.span`
+  color: white;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-family: 'Times New Roman';
+  ${props =>
+    props.selected
+      ? css`
+          display: inline-block;
+          border-bottom: 1px solid white;
+          padding-bottom: 2px;
+        `
+      : css``}
 `;

@@ -16,6 +16,7 @@ import {
   Underline,
   ArticleText,
   Left,
+  Center,
   Right,
 } from './styled';
 
@@ -34,6 +35,7 @@ const Footer = ({ dimensions }) => {
     <BackToHome
       istablet={dimensions.isTablet ? 1 : 0}
       ismobile={dimensions.isMobile ? 1 : 0}
+      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
       onClick={handleClickLogo}
     >
       <Logo src={logo} />
@@ -105,7 +107,11 @@ const Footer = ({ dimensions }) => {
   );
 
   const getContact = (
-    <ContactContainer istablet={dimensions.isTablet ? 1 : 0} ismobile={dimensions.isMobile ? 1 : 0}>
+    <ContactContainer
+      isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
+      istablet={dimensions.isTablet ? 1 : 0}
+      ismobile={dimensions.isMobile ? 1 : 0}
+    >
       <article>
         <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
           Contatti
@@ -118,6 +124,40 @@ const Footer = ({ dimensions }) => {
     </ContactContainer>
   );
 
+  const getMobile = () => {
+    if (screen.orientation.type.includes('portrait')) {
+      return mobilePortrait;
+    } else {
+      return mobileLandscape;
+    }
+  };
+  const mobilePortrait = (
+    <>
+      <Left ismobile={1} isportrait={1}>
+        {getLogo}
+        {getAddress}
+        {getAddress2}
+      </Left>
+      <Right ismobile={1} isportrait={1}>
+        {getContact}
+        {getLink}
+      </Right>
+    </>
+  );
+  const mobileLandscape = (
+    <>
+      <Left ismobile={1} isportrait={0}>
+        {getAddress}
+        {getAddress2}
+      </Left>
+      <Center>{getLogo}</Center>
+      <Right ismobile={1} isportrait={0}>
+        {getContact}
+        {getLink}
+      </Right>
+    </>
+  );
+
   return (
     <FooterStyled
       src={dimensions.isMobile ? background : headerBkg}
@@ -127,23 +167,7 @@ const Footer = ({ dimensions }) => {
       id="map"
     >
       {dimensions.isMobile ? (
-        <>
-          <Left
-            ismobile={dimensions.isMobile ? 1 : 0}
-            isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
-          >
-            {getLogo}
-            {getAddress}
-            {getAddress2}
-          </Left>
-          <Right
-            ismobile={dimensions.isMobile ? 1 : 0}
-            isportrait={screen.orientation.type.includes('portrait') ? 1 : 0}
-          >
-            {getContact}
-            {getLink}
-          </Right>
-        </>
+        getMobile()
       ) : (
         <>
           {getAddress}

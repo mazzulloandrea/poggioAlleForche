@@ -16,7 +16,15 @@ import {
   menuMobile as menuMobileVoice,
   headerBkg,
 } from '../../assets';
-import { HeaderStyled, MenuDesktopStyled, MenuVoice, LogoContainer, Logo, Marchio } from './styled';
+import {
+  HeaderStyled,
+  MenuDesktopStyled,
+  MenuVoice,
+  LogoContainer,
+  Logo,
+  Marchio,
+  MenuText,
+} from './styled';
 import './menuMobile.css';
 
 const Header = ({ dimensions }) => {
@@ -78,7 +86,16 @@ const Header = ({ dimensions }) => {
   };
 
   const getMenuLabel = menuKey => {
-    if (`/${menuKey}` === routes.tradizione) return 'Tradizione e modernità';
+    switch (`/${menuKey}`) {
+      case routes.tradizione:
+        return 'Tradizione e modernità';
+      case routes.viti:
+        return 'Le viti';
+      case routes.cantina:
+        return 'La cantina';
+      case routes.prodotti:
+        return 'I prodotti';
+    }
     return menuKey;
   };
 
@@ -100,7 +117,12 @@ const Header = ({ dimensions }) => {
             }}
             ismobile={1}
           >
-            <span key={`span_menu_label_${menuKey}`}>{getMenuLabel(menuKey)}</span>
+            <MenuText
+              key={`span_menu_label_${menuKey}`}
+              selected={pathname === `/${menuKey}` ? 1 : 0}
+            >
+              {getMenuLabel(menuKey)}
+            </MenuText>
           </MenuVoice>
         ))}
       </MenuHamburger>

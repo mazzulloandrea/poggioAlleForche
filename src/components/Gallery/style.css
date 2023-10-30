@@ -27,6 +27,11 @@
   position: absolute; /* Scaling will occur since parent is relative now*/
 }
 
+.grow {
+  transform: scale(1.2) !important;
+  transition: all 2500ms linear;
+}
+
 /* video */
 .video-react {
   position: absolute;
