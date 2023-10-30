@@ -51,6 +51,9 @@ export const Article = styled.article`
           margin: 50px 0;
           width: 100vw;
           height: 115vh;
+          > img {
+            width: 100%;
+          }
         `
       : css``}
 `;
