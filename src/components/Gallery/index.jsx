@@ -134,10 +134,11 @@ const Gallery = ({ dimensions }) => {
       /* IE11 */
       await elemFullscreen.msRequestFullscreen();
     }
-    // screen?.orientation?.lock('landscape');
+    screen?.orientation?.lock('landscape');
   }, []);
 
   const exitFullscreen = useCallback(async () => {
+    screen?.orientation?.lock('portrait');
     const galleryContainer = document.querySelector('.image-gallery');
     galleryContainer.classList.remove('fullscreen-modal');
     if (document.exitFullscreen) {
@@ -149,7 +150,6 @@ const Gallery = ({ dimensions }) => {
       /* IE11 */
       await document.msExitFullscreen();
     }
-    // screen?.orientation?.lock('portrait');
   }, []);
 
   const changeOrientation = isFullscreen => {
