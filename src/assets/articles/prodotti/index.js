@@ -32,7 +32,7 @@ const articleProdotti = {
     { type: 'img', src: mobile7, spaceTop: true },
     { type: 'img', src: mobile8 },
     // { type: 'img', src: mobile9, spaceTop: true },
-    { type: 'img', src: mobileMap, spaceTop: true },
+    { type: 'img', src: mobileMap, spaceTop: true, id: 'map' },
     { type: 'img', src: mobile10 },
     { type: 'img', src: mobile11 },
   ],
@@ -41,7 +41,7 @@ const articleProdotti = {
     { type: 'img', src: img2, full: true },
     { type: 'img', src: img3, full: true },
     { type: 'img', src: img4, full: true },
-    { type: 'map', src: img5 }, // mappa },
+    { type: 'map', src: img5, id: 'map' }, // mappa },
     { type: 'img', src: img6, full: true, width: 100 },
   ],
   desktop: [
@@ -49,7 +49,7 @@ const articleProdotti = {
     { type: 'img', src: img2, full: true },
     { type: 'img', src: img3, full: true },
     { type: 'img', src: img4, full: true },
-    { type: 'map', src: img5 }, //mappa },
+    { type: 'map', src: img5, id: 'map' }, //mappa },
     { type: 'img', src: img6, full: true, width: 100 },
   ],
 };

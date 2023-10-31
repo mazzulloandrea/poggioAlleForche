@@ -26,7 +26,13 @@ const Articles = ({ dimensions }) => {
       if (scrolling) return;
       setScrolling(true);
       // window.mp = mapRef.current;
-      setTimeout(() => mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+      setTimeout(() => {
+        if (mapRef && map.current) {
+          mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          document.querySelector('#map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 500);
     }
   }, [scrolling]);
 
@@ -60,8 +66,9 @@ const Articles = ({ dimensions }) => {
     return articleData.desktop;
   };
 
-  const getComponent = (el, id) => {
-    const { type, src, title, subTitle, full, spaceTop } = el;
+  const getComponent = (el, elementId) => {
+    const { type, src, title, subTitle, full, spaceTop, id } = el;
+    const idToUse = id || elementId;
     const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
       dimensions;
     const defaulProps = {
@@ -73,9 +80,15 @@ const Articles = ({ dimensions }) => {
       isportrait: isScreenInPortrait(),
     };
     return (
-      <Article {...defaulProps} key={id} fullwidth={type === 'map' ? 1 : 0} full={full}>
+      <Article
+        {...defaulProps}
+        id={idToUse}
+        key={idToUse}
+        fullwidth={type === 'map' ? 1 : 0}
+        full={full}
+      >
         {type === 'txt' && (
-          <TextWrapper>
+          <TextWrapper id={`${idToUse}_textWrapper`} key={`${idToUse}_textWrapper`}>
             {title && (
               <TitleWrapper {...defaulProps}>
                 <Title src={title} />
@@ -83,7 +96,8 @@ const Articles = ({ dimensions }) => {
             )}
             {subTitle && <SubTitle src={subTitle} />}
             <Text
-              id={id}
+              id={`${idToUse}_text`}
+              key={`${idToUse}_text`}
               style={{}}
               src={src || ''}
               {...defaulProps}
@@ -92,14 +106,30 @@ const Articles = ({ dimensions }) => {
             ></Text>
           </TextWrapper>
         )}
-        {type === 'imgBck' && <ImgBkg id={id} src={src} {...defaulProps} full={full} />}
+        {type === 'imgBck' && (
+          <ImgBkg
+            id={`${idToUse}_imgBkg`}
+            key={`${idToUse}_imgBkg`}
+            src={src}
+            {...defaulProps}
+            full={full}
+          />
+        )}
         {type === 'img' && (
-          <Img id={id} src={src} {...defaulProps} full={full} spaceTop={spaceTop} />
+          <Img
+            id={`${idToUse}_img`}
+            key={`${idToUse}_img`}
+            src={src}
+            {...defaulProps}
+            full={full}
+            spaceTop={spaceTop}
+          />
         )}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}
-            id="map"
+            id={`${idToUse}_map`}
+            key={`${idToUse}_map`}
             src={src}
             {...defaulProps}
             className={isBigScreen && 'bigScreenMap'}
