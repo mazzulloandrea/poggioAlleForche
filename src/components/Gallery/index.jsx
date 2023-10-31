@@ -19,9 +19,13 @@ const Gallery = ({ dimensions }) => {
   const videoRef = useRef(null);
 
   const swipeToVideo = useEffect(() => {
-    if (hash === '#video' && galleryRef) {
-      window.gr = galleryRef;
-      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (hash.includes('#video') && galleryRef) {
+      // window.gr = galleryRef;
+      if (containerRef && containerRef.current) {
+        containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        document.querySelector('#video').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
     }
   }, [hash, galleryRef]);
@@ -30,7 +34,7 @@ const Gallery = ({ dimensions }) => {
     (videoSrc, backVideoImage) => {
       return (
         <>
-          <img src={background} />
+          <img id="video" src={background} className="image-gallery-image" />
           {videoSrc && (
             <PlayerContainer
               isbigscreen={isBigScreen ? 1 : 0}

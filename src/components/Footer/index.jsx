@@ -79,10 +79,20 @@ const Footer = ({ dimensions }) => {
     </Address2>
   );
 
-  const reloadWorkaround = () => {
-    const hash = window.location.hash;
-    window.location.hash = '';
-    window.location.hash = hash;
+  const reloadWorkaround = id => {
+    const el = document.querySelector(id);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (id === '#video') {
+      const hash = location.hash;
+      const hashSplitted = hash.split('_');
+      let newHash = hashSplitted[0].concat('_');
+      if (hashSplitted[1]) {
+        newHash = newHash.concat(Number(hashSplitted[1]) + 1);
+      } else {
+        newHash = newHash.concat('1');
+      }
+      window.location.hash = newHash;
+    }
   };
 
   const getLink = (
@@ -90,7 +100,9 @@ const Footer = ({ dimensions }) => {
       {/* <Link to={`${routes.prodotti}#map`}> */}
       <MapLink
         onClick={event => {
-          pathname === routes.prodotti ? reloadWorkaround() : navigate(`${routes.prodotti}#map`);
+          pathname === routes.prodotti
+            ? reloadWorkaround('#map')
+            : navigate(`${routes.prodotti}#map`);
           event.stopPropagation();
         }}
         istablet={dimensions.isTablet ? 1 : 0}
@@ -103,7 +115,7 @@ const Footer = ({ dimensions }) => {
         ismobile={dimensions.isMobile ? 1 : 0}
         onClick={event => {
           pathname === routes.tradizione
-            ? reloadWorkaround()
+            ? reloadWorkaround('#video')
             : navigate(`${routes.tradizione}#video`);
           event.stopPropagation();
         }}
@@ -171,7 +183,6 @@ const Footer = ({ dimensions }) => {
       ismobile={dimensions.isMobile ? 1 : 0}
       istablet={dimensions.isTablet ? 1 : 0}
       isportrait={isScreenInPortrait()}
-      id="map"
     >
       {dimensions.isMobile ? (
         getMobile()
