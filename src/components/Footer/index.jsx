@@ -173,7 +173,7 @@ const Footer = () => {
 
   return (
     <FooterStyled src={dimensions.isMobile ? background : headerBkg} {...defProps}>
-      {isMobile ? (
+      {isMobile || isMini ? (
         getMobile()
       ) : (
         <>

@@ -14,6 +14,13 @@ export const FooterStyled = styled.footer`
   align-items: center;
   padding: 10px 30px;
   ${props =>
+    props.ismini
+      ? css`
+          padding: 10px;
+          height: 25vh;
+        `
+      : css``}
+  ${props =>
     props.ismobile
       ? props.isportrait
         ? css`
@@ -29,12 +36,16 @@ export const FooterStyled = styled.footer`
       : css``}
   ${props =>
     props.istablet
-      ? css`
-          align-items: flex-start;
-          > div {
-            padding-top: 15px;
-          }
-        `
+      ? props.isportrait
+        ? css`
+            align-items: flex-start;
+            > div {
+              padding-top: 15px;
+            }
+          `
+        : css`
+            height: 30vh;
+          `
       : css``}
 `;
 
@@ -54,6 +65,12 @@ const footerArticleTablet = css`
 export const Address = styled(footerArticle)`
   ${footerArticleTablet}
   ${props =>
+    props.ismini
+      ? css`
+          width: 100%;
+        `
+      : css``}
+  ${props =>
     props.ismobile
       ? css`
           display: block;
@@ -63,6 +80,12 @@ export const Address = styled(footerArticle)`
 `;
 
 export const Address2 = styled(footerArticle)`
+  ${props =>
+    props.ismini
+      ? css`
+          width: 100%;
+        `
+      : css``}
   ${props => (props.istablet ? footerArticleTablet : css``)}
   ${props =>
     props.ismobile
@@ -83,6 +106,14 @@ export const BackToHome = styled.div`
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
+  ${props =>
+    props.ismini
+      ? css`
+          width: 90%;
+          height: 50%;
+          margin: 0 auto;
+        `
+      : css``}
   ${props =>
     props.ismobile
       ? props.isportrait
@@ -106,6 +137,18 @@ export const BackToHome = styled.div`
 export const ContactContainer = styled(Address2)`
   width: 20%;
   text-align: center;
+  ${props =>
+    props.ismini
+      ? css`
+          width: 100%;
+          text-align: left;
+          > article {
+            > p {
+              text-align: left;
+            }
+          }
+        `
+      : css``}
   ${props =>
     props.istablet
       ? css`
@@ -144,6 +187,17 @@ export const Marchio = styled.div`
 export const Links = styled(footerArticle)`
   ${footerArticleTablet}
   ${props =>
+    props.ismini
+      ? css`
+          width: 100%;
+          height: calc(100% - 30px);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+        `
+      : css``}
+  ${props =>
     props.ismobile
       ? props.isportrait
         ? css`
@@ -179,6 +233,12 @@ export const MapLink = styled.article`
 
 export const VideoLink = styled(MapLink)`
   margin: 5px 0;
+  ${props =>
+    props.ismini
+      ? css`
+          margin: 25px 0 0;
+        `
+      : css``}
   ${props =>
     props.ismobile
       ? props.isportrait
@@ -229,14 +289,22 @@ export const Left = styled.div`
   height: 100%;
   padding: 10px 15px;
   ${props =>
-    props.ismobile && !props.isportrait
+    props.ismini
       ? css`
-          padding: 20px;
-          width: 30%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
+          padding: 0;
         `
+      : css``}
+  ${props =>
+    props.ismobile
+      ? props.isportrait
+        ? css``
+        : css`
+            padding: 20px;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+          `
       : css``}
 `;
 
@@ -248,12 +316,20 @@ export const Right = styled(Left)`
   box-sizing: border-box;
   height: calc(100% - 30px);
   ${props =>
-    props.ismobile && props.isportrait
-      ? css``
-      : css`
-          padding-top: 5px;
-          padding-bottom: 5px;
-        `}
+    props.ismini
+      ? css`
+          padding-left: 5px;
+        `
+      : css``}
+  ${props =>
+    props.ismobile
+      ? props.isportrait
+        ? css``
+        : css`
+            padding-top: 5px;
+            padding-bottom: 5px;
+          `
+      : css``}
 `;
 
 export const Center = styled(Right)`
