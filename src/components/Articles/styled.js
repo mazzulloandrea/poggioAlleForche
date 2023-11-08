@@ -145,6 +145,15 @@ export const Img = styled.img`
           padding-top: 100px;
         `
       : css``}
+  ${props =>
+    props.ismobile
+      ? props.isportrait
+        ? css`
+            width: 100%;
+            margin: 0 auto;
+          `
+        : css``
+      : css``}
 `;
 
 export const ImgBkg = styled.div`
