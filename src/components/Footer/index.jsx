@@ -159,12 +159,12 @@ const Footer = () => {
   );
   const mobileLandscape = (
     <>
-      <Left ismobile={1} isportrait={0}>
+      <Left {...defProps}>
         {getAddress}
         {getAddress2}
       </Left>
-      <Center>{getLogo}</Center>
-      <Right ismobile={1} isportrait={0}>
+      <Center {...defProps}>{getLogo}</Center>
+      <Right {...defProps}>
         {getContact}
         {getLink}
       </Right>

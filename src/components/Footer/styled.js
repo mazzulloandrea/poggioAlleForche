@@ -24,7 +24,7 @@ export const FooterStyled = styled.footer`
     props.ismobile
       ? props.isportrait
         ? css`
-            height: 20vh;
+            height: 40vh;
             padding: 0;
             flex-direction: row;
           `
@@ -150,6 +150,19 @@ export const ContactContainer = styled(Address2)`
         `
       : css``}
   ${props =>
+    props.ismobile
+      ? props.isportrait
+        ? css``
+        : css`
+            width: 100%;
+            > article {
+              > p {
+                text-align: left;
+              }
+            }
+          `
+      : css``}
+      ${props =>
     props.istablet
       ? css`
           display: flex;
@@ -157,14 +170,6 @@ export const ContactContainer = styled(Address2)`
           flex-direction: column;
           justify-content: center;
         `
-      : css``}
-  ${props =>
-    props.ismobile
-      ? props.isportrait
-        ? css``
-        : css`
-            width: 100%;
-          `
       : css``}
 `;
 
@@ -299,7 +304,7 @@ export const Left = styled.div`
       ? props.isportrait
         ? css``
         : css`
-            padding: 20px;
+            padding: 10px;
             width: 30%;
             display: flex;
             flex-direction: column;
@@ -326,13 +331,13 @@ export const Right = styled(Left)`
       ? props.isportrait
         ? css``
         : css`
-            padding-top: 5px;
-            padding-bottom: 5px;
+            // padding-top: 5px;
+            // padding-bottom: 5px;
           `
       : css``}
 `;
 
 export const Center = styled(Right)`
   width: 40%;
-  padding: 0;
+  padding: 0 15px;
 `;
