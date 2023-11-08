@@ -10,13 +10,13 @@ const CookieComponent = ({ setCookie }) => {
       cookieName={COOKIE_NAME}
       style={{ background: '#2B373B' }}
       buttonStyle={{ background: '#FFFFFF', color: '#4e503b', fontSize: '13px' }}
-      expires={1}
+      expires={365}
       onAccept={acceptedByScrolling => {
         setCookie(true);
       }}
     >
-      This website uses cookies to allows a service to distinguish one visitor from another and
-      lasts 2 years; data is also used for google analytics.
+      Questo sito web utilizza i cookie per consentire di distinguere i visitatori; i cookie vengono
+      memorizzati per 1 anno e vengono utilizzati anche per Google Analytics. ​
     </CookieConsent>
   );
 };
