@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
+import { routes, NO_MENU_ROUTE_KEY, isScreenInPortrait, getScreenDimensions } from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
   tradizione,
@@ -27,10 +27,22 @@ import {
 } from './styled';
 import './menuMobile.css';
 
-const Header = ({ dimensions }) => {
+const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dimensions = getScreenDimensions();
+  const { isMini, isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen } = dimensions;
+  const defProps = {
+    ismini: isMini ? 1 : 0,
+    ismobile: isMobile ? 1 : 0,
+    istablet: isTablet ? 1 : 0,
+    issmallscreen: isSmallScreen ? 1 : 0,
+    ismediumscreen: isMediumScreen ? 1 : 0,
+    isbigscreen: isBigScreen ? 1 : 0,
+    isportrait: isScreenInPortrait(),
+  };
   const isHomepage = pathname === routes.tradizione || pathname === '\\';
+  const [menuMobileOpen, setMenuMobileOpen] = useState(false);
 
   const handleClickLogo = () => {
     if (isHomepage) return null;
@@ -99,6 +111,10 @@ const Header = ({ dimensions }) => {
     return menuKey;
   };
 
+  const handleStateChange = state => {
+    setMenuMobileOpen(state.isOpen);
+  };
+
   const menuMobile = () => {
     const menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
 
@@ -107,6 +123,8 @@ const Header = ({ dimensions }) => {
         right
         customBurgerIcon={<img src={menuMobileVoice.hamburger} />}
         customCrossIcon={<img src={menuMobileVoice.xClose} />}
+        isOpen={menuMobileOpen}
+        onStateChange={state => handleStateChange(state)}
       >
         {menuList.map(menuKey => (
           <MenuVoice
@@ -114,6 +132,7 @@ const Header = ({ dimensions }) => {
             id={menuKey}
             onClick={() => {
               navigate(`/${menuKey}`);
+              setMenuMobileOpen(false);
             }}
             ismobile={1}
           >
@@ -130,11 +149,7 @@ const Header = ({ dimensions }) => {
   };
 
   const LogoComponent = (
-    <LogoContainer
-      key="LogoCOmponent"
-      onClick={handleClickLogo}
-      istablet={dimensions.isTablet ? 1 : 0}
-    >
+    <LogoContainer key="LogoCOmponent" onClick={handleClickLogo} istablet={isTablet ? 1 : 0}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </LogoContainer>
@@ -163,11 +178,17 @@ const Header = ({ dimensions }) => {
     );
   };
 
+  const isMenuHamburger = () => {
+    // consider only for dimension non for device
+    if (isMobile || isMini) return true;
+    return false;
+  };
+
   return (
     <>
-      {dimensions.isMobile && menuMobile()}
-      <HeaderStyled src={headerBkg}>
-        {!dimensions.isMobile ? menuDesktop() : LogoComponent}
+      {isMenuHamburger() && menuMobile()}
+      <HeaderStyled src={headerBkg} {...defProps}>
+        {isMenuHamburger() ? LogoComponent : menuDesktop()}
       </HeaderStyled>
     </>
   );
