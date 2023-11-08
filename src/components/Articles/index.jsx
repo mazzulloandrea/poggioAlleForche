@@ -105,7 +105,8 @@ const Articles = () => {
     }
   }, [pathname]);
 
-  const getLayout = articleData => {
+  const getOrderOfData = articleData => {
+    if (isMini) return articleData.mobile;
     if (isMobile) {
       // fix per mettere la mappa del tablet in landscape mobile
       if (!isPortrait) {
@@ -190,7 +191,7 @@ const Articles = () => {
 
   return (
     <Wrapper>
-      {getLayout(getArticle()).map((el, index) => getComponent(el, `${index}_article`))}
+      {getOrderOfData(getArticle()).map((el, index) => getComponent(el, `${index}_article`))}
     </Wrapper>
   );
 };
