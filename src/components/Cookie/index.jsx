@@ -15,7 +15,8 @@ const CookieComponent = ({ setCookie }) => {
         setCookie(true);
       }}
     >
-      This website uses cookies to enhance the user experience.{' '}
+      This website uses cookies to allows a service to distinguish one visitor from another and
+      lasts 2 years; data is also used for google analytics.
     </CookieConsent>
   );
 };
