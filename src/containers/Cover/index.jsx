@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactGA from 'react-ga4';
 import { useMediaQuery } from 'react-responsive';
-import CookieConsent from 'react-cookie-consent';
 import { Tradizione, COVER_SHOW, COVER_HIDE } from '..';
 import {
   Wrapper,
@@ -12,7 +11,16 @@ import {
   IndicatorStyled,
   UnderConstruction,
 } from './styled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
+import { CookieComponent } from '../../components';
+import {
+  bigScreen,
+  mediumScreen,
+  tabletWidth,
+  mobileWidth,
+  isScreenInPortrait,
+  COOKIE_NAME,
+  getCookie,
+} from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
 const Cover = ({ staticSite }) => {
@@ -34,8 +42,6 @@ const Cover = ({ staticSite }) => {
   const isMobile = useMediaQuery({
     query: `(max-width: ${mobileWidth}px)`,
   });
-
-  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -67,7 +73,7 @@ const Cover = ({ staticSite }) => {
     };
 
     const changeOrientation = () => {
-      const isPortrait = isScreenInPortrait(); // screen.orientation.type.includes('portrait');
+      const isPortrait = isScreenInPortrait();
       setTimeout(() => setDimensions({ ...dimensions, isPortrait }), 400);
     };
 
@@ -77,7 +83,7 @@ const Cover = ({ staticSite }) => {
       window.removeEventListener('resize', debouncedHandleResize);
       window.removeEventListener('orientationchange', changeOrientation);
     };
-  }, []); // TODO definire eventuali dipendenze
+  }, []);
 
   useEffect(() => {
     setTimeout(() => setStep(1), 1500);
@@ -155,6 +161,7 @@ const Cover = ({ staticSite }) => {
         src={background}
         showcover={showCover}
         onClick={() => {
+          if (!getCookie(COOKIE_NAME)) return;
           if (isToAnimate('indicator')) {
             setMoveUp(true);
           }
@@ -210,19 +217,7 @@ const Cover = ({ staticSite }) => {
         </ContainerCentered>
       </Wrapper>
       {showCover === COVER_HIDE && <Tradizione dimensions={dimensions} />}
-      <CookieConsent
-        location="bottom"
-        buttonText="Accept"
-        cookieName="cookie_poggio"
-        style={{ background: '#2B373B' }}
-        buttonStyle={{ background: '#FFFFFF', color: '#4e503b', fontSize: '13px' }}
-        expires={1}
-        onAccept={acceptedByScrolling => {
-          setCookieAcceptance(true);
-        }}
-      >
-        This website uses cookies to enhance the user experience.{' '}
-      </CookieConsent>
+      {<CookieComponent setCookie={setCookieAcceptance} />}
     </>
   );
 };

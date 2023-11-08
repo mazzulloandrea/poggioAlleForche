@@ -23,8 +23,6 @@ const Cantina = () => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-
   useEffect(() => {
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cantina' });
   }, []);
