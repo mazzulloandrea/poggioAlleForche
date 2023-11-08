@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY, tabletWidth, isScreenInPortrait } from '../../utils';
+import {
+  routes,
+  NO_MENU_ROUTE_KEY,
+  tabletWidth,
+  isScreenInPortrait,
+  getScreenDimensions,
+} from '../../utils';
 import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
   Wrapper,
@@ -16,8 +22,9 @@ import {
 } from './styled';
 import './style.css';
 
-const Articles = ({ dimensions }) => {
+const Articles = () => {
   const { pathname, hash } = useLocation();
+  const dimensions = getScreenDimensions();
   const mapRef = useRef(null);
   const [scrolling, setScrolling] = useState(false);
 

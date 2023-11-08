@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, isScreenInPortrait } from '../../utils';
+import { routes, isScreenInPortrait, getScreenDimensions } from '../../utils';
 import { background, headerBkg, logo, marchio } from '../../assets';
 import {
   FooterStyled,
@@ -20,9 +20,10 @@ import {
   Right,
 } from './styled';
 
-const Footer = ({ dimensions }) => {
+const Footer = () => {
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
+  const dimensions = getScreenDimensions();
 
   const handleClickLogo = () => {
     document.documentElement.scrollTop = 0;

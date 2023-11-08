@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY } from '../../utils';
+import { routes, NO_MENU_ROUTE_KEY, isScreenInPortrait, getScreenDimensions } from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
   tradizione,
@@ -27,9 +27,10 @@ import {
 } from './styled';
 import './menuMobile.css';
 
-const Header = ({ dimensions }) => {
+const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dimensions = getScreenDimensions();
   const isHomepage = pathname === routes.tradizione || pathname === '\\';
 
   const handleClickLogo = () => {
