@@ -31,6 +31,16 @@ const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dimensions = getScreenDimensions();
+  const { isMini, isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen } = dimensions;
+  const defProps = {
+    ismini: isMini ? 1 : 0,
+    ismobile: isMobile ? 1 : 0,
+    istablet: isTablet ? 1 : 0,
+    issmallscreen: isSmallScreen ? 1 : 0,
+    ismediumscreen: isMediumScreen ? 1 : 0,
+    isbigscreen: isBigScreen ? 1 : 0,
+    isportrait: isScreenInPortrait(),
+  };
   const isHomepage = pathname === routes.tradizione || pathname === '\\';
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
 
@@ -139,11 +149,7 @@ const Header = () => {
   };
 
   const LogoComponent = (
-    <LogoContainer
-      key="LogoCOmponent"
-      onClick={handleClickLogo}
-      istablet={dimensions.isTablet ? 1 : 0}
-    >
+    <LogoContainer key="LogoCOmponent" onClick={handleClickLogo} istablet={isTablet ? 1 : 0}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </LogoContainer>
@@ -172,11 +178,17 @@ const Header = () => {
     );
   };
 
+  const isMenuHamburger = () => {
+    // consider only for dimension non for device
+    if (isMobile || isMini) return true;
+    return false;
+  };
+
   return (
     <>
-      {dimensions.isMobile && menuMobile()}
-      <HeaderStyled src={headerBkg}>
-        {!dimensions.isMobile ? menuDesktop() : LogoComponent}
+      {isMenuHamburger() && menuMobile()}
+      <HeaderStyled src={headerBkg} {...defProps}>
+        {isMenuHamburger() ? LogoComponent : menuDesktop()}
       </HeaderStyled>
     </>
   );

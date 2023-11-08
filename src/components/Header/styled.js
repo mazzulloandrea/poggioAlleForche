@@ -15,6 +15,14 @@ export const HeaderStyled = styled.header`
   height: 15vh;
   background: ${props => (props.src ? `url(${props.src})` : '')};
   ${BackgroundContainerRules}
+  ${props =>
+    props.istablet
+      ? props.isportrait
+        ? css``
+        : css`
+            height: 20vh;
+          `
+      : css``}}
 `;
 
 export const MenuDesktopStyled = styled.div`
@@ -38,16 +46,10 @@ export const MenuVoice = styled.a`
       margin: 5vh 0 5vh 2vw;
       width: 80%;
       height: 50px;
-    `}// span {
-  //   color: white;
-  //   text-transform: uppercase;
-  //   font-size: 1em;
-  //   font-family: 'Times New Roman';
-  // }
+    `}
 `;
 
 export const LogoContainer = styled.a`
-  // width: ${props => (props.istablet ? '100%' : '40%')};
   width: 40%;
   height: 100%;
   padding: 2vh 2vw;
