@@ -24,7 +24,7 @@ export const FooterStyled = styled.footer`
     props.ismobile
       ? props.isportrait
         ? css`
-            height: 20vh;
+            height: 40vh;
             padding: 0;
             flex-direction: row;
           `
