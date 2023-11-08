@@ -25,6 +25,26 @@ import './style.css';
 const Articles = () => {
   const { pathname, hash } = useLocation();
   const dimensions = getScreenDimensions();
+  const {
+    height,
+    width,
+    isPortrait,
+    isMini,
+    isMobile,
+    isTablet,
+    isSmallScreen,
+    isMediumScreen,
+    isBigScreen,
+  } = dimensions;
+  const defaultProps = {
+    ismini: isMini ? 1 : 0,
+    ismobile: isMobile ? 1 : 0,
+    istablet: isTablet ? 1 : 0,
+    issmallscreen: isSmallScreen ? 1 : 0,
+    ismediumscreen: isMediumScreen ? 1 : 0,
+    isbigscreen: isBigScreen ? 1 : 0,
+    isportrait: isScreenInPortrait(),
+  };
   const mapRef = useRef(null);
   const [scrolling, setScrolling] = useState(false);
 
@@ -43,6 +63,33 @@ const Articles = () => {
     }
   }, [scrolling]);
 
+  const getHeigth = useCallback(
+    type => {
+      // prodotti contains only fullwidth images
+      if (['img', 'map'].includes(type)) return 'auto';
+
+      // in portrait tutti i conteniotori dei testi vanno in auto
+      if (['txt'].includes(type) && isPortrait) return 'auto';
+
+      // vanno in auto anche i testi in landscape ma solo fino a dimensione Mobile Landscape (< 850 (tabletWidth))
+      if (width < tabletWidth && !isPortrait && type === 'txt') return 'auto';
+
+      const maxDim = width > height ? width : height;
+      const minDim = width < height ? width : height;
+      let resHeight = Math.round(Number(maxDim / 2 / 1.67));
+      if (isPortrait) {
+        resHeight = Math.round(Number(minDim / 1.67));
+      } else {
+        if (maxDim < tabletWidth) {
+          resHeight = Math.round(Number(maxDim / 1.67));
+        }
+      }
+      return `${resHeight}px`;
+    },
+
+    [width, height, isPortrait],
+  );
+
   const getArticle = useCallback(() => {
     switch (pathname) {
       case '/tradizione':
@@ -59,15 +106,15 @@ const Articles = () => {
   }, [pathname]);
 
   const getLayout = articleData => {
-    if (dimensions && dimensions.isMobile) {
+    if (isMobile) {
       // fix per mettere la mappa del tablet in landscape mobile
-      if (!dimensions.isPortrait) {
+      if (!isPortrait) {
         return articleData.tablet;
       }
 
       return articleData.mobile;
     }
-    if (dimensions && dimensions.isTablet) {
+    if (isTablet) {
       return articleData.tablet || articleData.mobile;
     }
     return articleData.desktop;
@@ -76,28 +123,23 @@ const Articles = () => {
   const getComponent = (el, elementId) => {
     const { type, src, title, subTitle, full, spaceTop, id } = el;
     const idToUse = id || elementId;
-    const { isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen, isPortrait } =
-      dimensions;
-    const defaulProps = {
-      ismobile: isMobile ? 1 : 0,
-      istablet: isTablet ? 1 : 0,
-      issmallscreen: isSmallScreen ? 1 : 0,
-      ismediumscreen: isMediumScreen ? 1 : 0,
-      isbigscreen: isBigScreen ? 1 : 0,
-      isportrait: isScreenInPortrait(),
-    };
+    defaultProps.height = getHeigth(type);
     return (
       <Article
-        {...defaulProps}
+        {...defaultProps}
         id={idToUse}
         key={idToUse}
         fullwidth={type === 'map' ? 1 : 0}
         full={full}
       >
         {type === 'txt' && (
-          <TextWrapper id={`${idToUse}_textWrapper`} key={`${idToUse}_textWrapper`}>
+          <TextWrapper
+            id={`${idToUse}_textWrapper`}
+            key={`${idToUse}_textWrapper`}
+            {...defaultProps}
+          >
             {title && (
-              <TitleWrapper {...defaulProps}>
+              <TitleWrapper {...defaultProps}>
                 <Title src={title} />
               </TitleWrapper>
             )}
@@ -107,7 +149,7 @@ const Articles = () => {
               key={`${idToUse}_text`}
               style={{}}
               src={src || ''}
-              {...defaulProps}
+              {...defaultProps}
               className={isBigScreen && 'bigScreenText'}
               dangerouslySetInnerHTML={{ __html: src }}
             ></Text>
@@ -118,7 +160,7 @@ const Articles = () => {
             id={`${idToUse}_imgBkg`}
             key={`${idToUse}_imgBkg`}
             src={src}
-            {...defaulProps}
+            {...defaultProps}
             full={full}
           />
         )}
@@ -127,7 +169,7 @@ const Articles = () => {
             id={`${idToUse}_img`}
             key={`${idToUse}_img`}
             src={src}
-            {...defaulProps}
+            {...defaultProps}
             full={full}
             spaceTop={spaceTop}
           />
@@ -138,7 +180,7 @@ const Articles = () => {
             id={`${idToUse}_map`}
             key={`${idToUse}_map`}
             src={src}
-            {...defaulProps}
+            {...defaultProps}
             className={isBigScreen && 'bigScreenMap'}
           />
         )}

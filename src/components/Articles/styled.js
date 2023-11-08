@@ -10,38 +10,38 @@ export const Wrapper = styled.section`
 export const Article = styled.article`
   float: left;
   width: 50%;
-  height: 60vh;
+  height: ${props => props.height || '60vh'};
   ${props =>
     props.ismobile
       ? css`
           width: 100%;
-          height: auto;
+          // height: auto;
         `
       : css``};
   ${props =>
     props.istablet
       ? css`
           width: 100%;
-          height: auto;
+          // height: auto;
         `
       : css``};
   ${props =>
     props.issmallscreen
       ? css`
-          height: 63vh;
+          // height: 63vh;
         `
       : css``};
   ${props =>
     props.isbigscreen
       ? css`
-          height: 660px;
+          // height: 660px;
         `
       : css``};
   ${props =>
     props.fullwidth
       ? css`
           width: 100%;
-          height: auto;
+          // height: auto;
           padding: 5vh 0;
         `
       : css``};
@@ -50,7 +50,7 @@ export const Article = styled.article`
       ? css`
           margin: 50px 0;
           width: 100vw;
-          height: 115vh;
+          // height: 115vh;
           > img {
             width: 100%;
           }
@@ -61,11 +61,14 @@ export const Article = styled.article`
 export const TextWrapper = styled.div`
   padding: 5%;
   ${props =>
-    props.ismobile
-      ? css`
-          height: 60vh;
-        `
-      : css``};
+    props.issmallscreen
+      ? props.isportrait
+        ? css``
+        : css`
+            padding: 4%;
+          `
+      : css``}
+  ${props => (props.ismobile ? css`` : css``)};
 `;
 
 export const TitleWrapper = styled.div`
@@ -113,9 +116,13 @@ export const Text = styled.p`
       : css``}
   ${props =>
     props.issmallscreen
-      ? css`
-          font-size: 1.3em;
-        `
+      ? props.isportrait
+        ? css`
+            font-size: 1.3em;
+          `
+        : css`
+            font-size: 1.1em;
+          `
       : css``}
   ${props =>
     props.ismediumscreen
@@ -152,25 +159,25 @@ export const ImgBkg = styled.div`
       ? props.isportrait
         ? css`
             font-size: 1em;
-            height: 35vh;
+            // height: 35vh;
           `
         : css`
             font-size: 1em;
-            height: 100vh;
+            // height: 100vh;
           `
       : css``};
   ${props =>
     props.istablet
       ? css`
           font-size: 1em;
-          height: 85vh;
+          // height: 85vh;
         `
       : css``};
 
   ${props =>
     props.ismobile && !props.isportrait
       ? css`
-          height: 100vh;
+          // height: 100vh;
         `
       : css``}
   ${props =>
