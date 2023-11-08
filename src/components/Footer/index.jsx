@@ -24,7 +24,16 @@ const Footer = () => {
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
   const dimensions = getScreenDimensions();
-
+  const { isMini, isMobile, isTablet, isSmallScreen, isMediumScreen, isBigScreen } = dimensions;
+  const defProps = {
+    ismini: isMini ? 1 : 0,
+    ismobile: isMobile ? 1 : 0,
+    istablet: isTablet ? 1 : 0,
+    issmallscreen: isSmallScreen ? 1 : 0,
+    ismediumscreen: isMediumScreen ? 1 : 0,
+    isbigscreen: isBigScreen ? 1 : 0,
+    isportrait: isScreenInPortrait(),
+  };
   const handleClickLogo = () => {
     document.documentElement.scrollTop = 0;
     if (['/', '/tradizione'].includes(pathname)) return null;
@@ -32,26 +41,19 @@ const Footer = () => {
   };
 
   const getLogo = (
-    <BackToHome
-      istablet={dimensions.isTablet ? 1 : 0}
-      ismobile={dimensions.isMobile ? 1 : 0}
-      isportrait={isScreenInPortrait()}
-      onClick={handleClickLogo}
-    >
+    <BackToHome {...defProps} onClick={handleClickLogo}>
       <Logo src={logo} />
       <Marchio src={marchio} />
     </BackToHome>
   );
 
   const getAddress = (
-    <Address istablet={dimensions.isTablet ? 1 : 0} ismobile={dimensions.isMobile ? 1 : 0}>
+    <Address {...defProps}>
       <article>
-        {dimensions.isMobile ? (
-          <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
-            Azienda agricola di Turchi Lorenzo.
-          </ArticleText>
+        {isMobile ? (
+          <ArticleText {...defProps}>Azienda agricola di Turchi Lorenzo.</ArticleText>
         ) : (
-          <ArticleText istablet={dimensions.isTablet ? 1 : 0}>
+          <ArticleText {...defProps}>
             Azienda agricola Poggio alle Forche di Turchi Lorenzo.
           </ArticleText>
         )}
@@ -60,19 +62,15 @@ const Footer = () => {
   );
 
   const getAddress2 = (
-    <Address2 istablet={dimensions.isTablet ? 1 : 0} ismobile={dimensions.isMobile ? 1 : 0}>
+    <Address2 {...defProps}>
       <article>
-        {dimensions.isMobile ? (
+        {isMobile ? (
           <>
-            <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
-              Podere Scarnacuoia 288,{' '}
-            </ArticleText>
-            <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
-              Montalcino (Siena) - Italia
-            </ArticleText>
+            <ArticleText {...defProps}>Podere Scarnacuoia 288, </ArticleText>
+            <ArticleText {...defProps}>Montalcino (Siena) - Italia</ArticleText>
           </>
         ) : (
-          <ArticleText istablet={dimensions.isTablet ? 1 : 0}>
+          <ArticleText {...defProps}>
             Podere Scarnacuoia 288, Montalcino (Siena) - Italia
           </ArticleText>
         )}
@@ -97,8 +95,7 @@ const Footer = () => {
   };
 
   const getLink = (
-    <Links ismobile={dimensions.isMobile ? 1 : 0}>
-      {/* <Link to={`${routes.prodotti}#map`}> */}
+    <Links {...defProps}>
       <MapLink
         onClick={event => {
           pathname === routes.prodotti
@@ -106,14 +103,13 @@ const Footer = () => {
             : navigate(`${routes.prodotti}#map`);
           event.stopPropagation();
         }}
-        istablet={dimensions.isTablet ? 1 : 0}
-        ismobile={dimensions.isMobile ? 1 : 0}
+        {...defProps}
       >
-        <Underline ismobile={dimensions.isMobile ? 1 : 0}>Dove siamo</Underline>
+        <Underline {...defProps}>Dove siamo</Underline>
       </MapLink>
       {/* </Link> */}
       <VideoLink
-        ismobile={dimensions.isMobile ? 1 : 0}
+        {...defProps}
         onClick={event => {
           pathname === routes.tradizione
             ? reloadWorkaround('#video')
@@ -121,19 +117,15 @@ const Footer = () => {
           event.stopPropagation();
         }}
       >
-        <Underline ismobile={dimensions.isMobile ? 1 : 0}>Video</Underline>
+        <Underline {...defProps}>Video</Underline>
       </VideoLink>
     </Links>
   );
 
   const getContact = (
-    <ContactContainer
-      isportrait={isScreenInPortrait()}
-      istablet={dimensions.isTablet ? 1 : 0}
-      ismobile={dimensions.isMobile ? 1 : 0}
-    >
+    <ContactContainer {...defProps}>
       <article>
-        <ArticleText ismobile={dimensions.isMobile ? 1 : 0}>
+        <ArticleText {...defProps}>
           Contatti
           <br />
           <a href="mailto:poggioalleforche@email.it" style={{ textDecoration: 'underline' }}>
@@ -151,14 +143,15 @@ const Footer = () => {
       return mobileLandscape;
     }
   };
+
   const mobilePortrait = (
     <>
-      <Left ismobile={1} isportrait={1}>
+      <Left {...defProps}>
         {getLogo}
         {getAddress}
         {getAddress2}
       </Left>
-      <Right ismobile={1} isportrait={1}>
+      <Right {...defProps}>
         {getContact}
         {getLink}
       </Right>
@@ -179,13 +172,8 @@ const Footer = () => {
   );
 
   return (
-    <FooterStyled
-      src={dimensions.isMobile ? background : headerBkg}
-      ismobile={dimensions.isMobile ? 1 : 0}
-      istablet={dimensions.isTablet ? 1 : 0}
-      isportrait={isScreenInPortrait()}
-    >
-      {dimensions.isMobile ? (
+    <FooterStyled src={dimensions.isMobile ? background : headerBkg} {...defProps}>
+      {isMobile ? (
         getMobile()
       ) : (
         <>

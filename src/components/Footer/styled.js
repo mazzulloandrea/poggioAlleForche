@@ -89,7 +89,6 @@ export const BackToHome = styled.div`
         ? css`
             width: 100%;
             height: 55%;
-            padding-right: 30px;
           `
         : css`
             width: 100%;
@@ -126,16 +125,6 @@ export const ContactContainer = styled(Address2)`
       : css``}
 `;
 
-// export const LogoContainer = styled.a`
-//   width: 20%;
-//   height: 100%;
-//   // padding: 2vh 2vw;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-// `;
-
 export const Logo = styled.div`
   height: 100%;
   width: 100%;
@@ -164,7 +153,6 @@ export const Links = styled(footerArticle)`
             flex-direction: column;
             align-items: flex-start;
             justify-content: end;
-            margin-top: 20px;
           `
         : css`
             width: 100%;
@@ -196,7 +184,7 @@ export const VideoLink = styled(MapLink)`
       ? props.isportrait
         ? css`
             margin: 0;
-            margin: 3vh 0 0 0;
+            margin: 2vh 0 0 0;
           `
         : css`
             margin: 0;
@@ -211,10 +199,16 @@ export const ArticleText = styled.p`
   line-height: 1.1em;
   ${props =>
     props.ismobile
-      ? css`
-          font-size: 0.65em;
-          text-align: left;
-        `
+      ? props.isportrait
+        ? css`
+            text-align: center;
+            font-size: 1em;
+            padding-top: 7px;
+          `
+        : css`
+            // font-size: 0.65em;
+            // text-align: left;
+          `
       : css``}
   ${props =>
     props.istablet
