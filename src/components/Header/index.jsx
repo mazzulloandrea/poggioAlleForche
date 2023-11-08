@@ -32,6 +32,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dimensions = getScreenDimensions();
   const isHomepage = pathname === routes.tradizione || pathname === '\\';
+  const [menuMobileOpen, setMenuMobileOpen] = useState(false);
 
   const handleClickLogo = () => {
     if (isHomepage) return null;
@@ -100,6 +101,10 @@ const Header = () => {
     return menuKey;
   };
 
+  const handleStateChange = state => {
+    setMenuMobileOpen(state.isOpen);
+  };
+
   const menuMobile = () => {
     const menuList = Object.keys(routes).filter(k => k != NO_MENU_ROUTE_KEY);
 
@@ -108,6 +113,8 @@ const Header = () => {
         right
         customBurgerIcon={<img src={menuMobileVoice.hamburger} />}
         customCrossIcon={<img src={menuMobileVoice.xClose} />}
+        isOpen={menuMobileOpen}
+        onStateChange={state => handleStateChange(state)}
       >
         {menuList.map(menuKey => (
           <MenuVoice
@@ -115,6 +122,7 @@ const Header = () => {
             id={menuKey}
             onClick={() => {
               navigate(`/${menuKey}`);
+              setMenuMobileOpen(false);
             }}
             ismobile={1}
           >
