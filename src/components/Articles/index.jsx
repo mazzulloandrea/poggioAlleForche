@@ -54,7 +54,7 @@ const Articles = () => {
       setScrolling(true);
       // window.mp = mapRef.current;
       setTimeout(() => {
-        if (mapRef && map.current) {
+        if (mapRef && mapRef.current) {
           mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           document.querySelector('#map').scrollIntoView({ behavior: 'smooth', block: 'center' });
