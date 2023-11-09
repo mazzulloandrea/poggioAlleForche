@@ -140,11 +140,11 @@ const Gallery = ({ dimensions }) => {
       /* IE11 */
       await elemFullscreen.msRequestFullscreen();
     }
-    screen?.orientation?.lock('landscape');
+    window.screen?.orientation?.lock('landscape');
   }, []);
 
   const exitFullscreen = useCallback(async () => {
-    screen?.orientation?.lock('portrait');
+    window.screen?.orientation?.lock('portrait');
     const galleryContainer = document.querySelector('.image-gallery');
     galleryContainer.classList.remove('fullscreen-modal');
     if (document.exitFullscreen) {

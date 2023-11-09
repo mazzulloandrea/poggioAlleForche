@@ -2,7 +2,7 @@ import { bigScreen, mediumScreen, tabletWidth, mobileWidth, miniMobileWidth } fr
 import isScreenInPortrait from './screenOrientation';
 
 const getScreenDimensions = () => {
-  const { height, width } = screen;
+  const { height, width } = window.screen;
   const isInPortait = isScreenInPortrait();
   const defProps = { height, width, isPortrait: isInPortait ? 1 : 0 };
 
