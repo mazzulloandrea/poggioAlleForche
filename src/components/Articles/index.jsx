@@ -71,11 +71,12 @@ const Articles = () => {
       // in portrait tutti i conteniotori dei testi vanno in auto
       if (['txt'].includes(type) && isPortrait) return 'auto';
 
+      const { innerWidth, innerHeight } = window;
       // vanno in auto anche i testi in landscape ma solo fino a dimensione Mobile Landscape (< 850 (tabletWidth))
-      if (width < tabletWidth && !isPortrait && type === 'txt') return 'auto';
+      if (innerWidth < tabletWidth && !isPortrait && type === 'txt') return 'auto';
 
-      const maxDim = width > height ? width : height;
-      const minDim = width < height ? width : height;
+      const maxDim = innerWidth > innerHeight ? innerWidth : height;
+      const minDim = innerWidth < innerHeight ? innerWidth : height;
       let resHeight = Math.round(Number(maxDim / 2 / 1.67));
       if (isPortrait) {
         resHeight = Math.round(Number(minDim / 1.67));
