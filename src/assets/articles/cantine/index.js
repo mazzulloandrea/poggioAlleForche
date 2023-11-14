@@ -9,13 +9,7 @@ accoglie i migliori grappoli di una vendemmia a cui partecipa tutta la famiglia,
 
 const text2 = `“Condivido con Lorenzo vita e lavoro in vigna e in cantina
 da 40 anni, la nostra è una simbiosi, una passione che dura
-e ha formato il cemento su cui si è costruita l’azienda”.
-</br>
-</br>
-Lo SCARNACUOIA 288 del 2019 si presenta all’olfatto
-con note fitte di vaniglia e cacao dalla forte intensità balsamica.
-In bocca è armonico e avvolgente con un tannino rotondo
-ed equilibrato arricchito di profumi agrumati persistenti.`;
+e ha formato il cemento su cui si è costruita l’azienda”.`;
 
 const articleCantina = {
   mobile: [

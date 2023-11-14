@@ -1,7 +1,6 @@
 import img1 from './foto1.png';
 import img2 from './foto2.png';
 import img3 from './foto3.png';
-import img4 from './foto4.png';
 import img5 from './foto5.png';
 import img6 from './foto6.png';
 import { mappa, mappaMobile } from './map';
@@ -12,8 +11,6 @@ import mobile3 from './mobile3.png';
 import mobile4 from './mobile4.png';
 import mobile5 from './mobile5.png';
 import mobile6 from './mobile6.png';
-import mobile7 from './mobile7.png';
-import mobile8 from './mobile8.png';
 import mobileMap from './mobile9.png';
 import mobile10 from './mobile10.png';
 import mobile11 from './mobile11.png';
@@ -29,9 +26,6 @@ const articleProdotti = {
     { type: 'img', src: mobile4 },
     { type: 'img', src: mobile5, spaceTop: true },
     { type: 'img', src: mobile6 },
-    { type: 'img', src: mobile7, spaceTop: true },
-    { type: 'img', src: mobile8 },
-    // { type: 'img', src: mobile9, spaceTop: true },
     { type: 'img', src: mobileMap, spaceTop: true, id: 'map' },
     { type: 'img', src: mobile10 },
     { type: 'img', src: mobile11 },
@@ -40,7 +34,6 @@ const articleProdotti = {
     { type: 'img', src: img1, full: true },
     { type: 'img', src: img2, full: true },
     { type: 'img', src: img3, full: true },
-    { type: 'img', src: img4, full: true },
     { type: 'map', src: img5, id: 'map' }, // mappa },
     { type: 'img', src: img6, full: true, width: 100 },
   ],
@@ -48,7 +41,6 @@ const articleProdotti = {
     { type: 'img', src: img1, full: true },
     { type: 'img', src: img2, full: true },
     { type: 'img', src: img3, full: true },
-    { type: 'img', src: img4, full: true },
     { type: 'map', src: img5, id: 'map' }, //mappa },
     { type: 'img', src: img6, full: true, width: 100 },
   ],
