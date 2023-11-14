@@ -80,7 +80,9 @@ export const MenuText = styled.span`
   color: white;
   text-transform: uppercase;
   font-size: 1em;
-  font-family: 'Times New Roman';
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica Neue, Arial, Noto Sans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    Segoe UI Symbol, 'Noto Color Emoji';
   ${props =>
     props.selected
       ? css`
