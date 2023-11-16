@@ -134,6 +134,9 @@ const Footer = () => {
           >
             info@poggioalleforche.it{' '}
           </a>
+          <a href="tel:+393491927357" style={{ cursor: 'pointer' }}>
+            +39 349 1927 357
+          </a>
         </ArticleText>
       </article>
     </ContactContainer>

@@ -11,7 +11,6 @@ const App = () => {
       window.location.pathname = '/';
     }
   }
-  debugger;
   return (
     <HistoryRouter history={history}>
       {staticSite && (
