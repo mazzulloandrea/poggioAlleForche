@@ -128,8 +128,11 @@ const Footer = () => {
         <ArticleText {...defProps}>
           Contatti
           <br />
-          <a href="mailto:poggioalleforche@email.it" style={{ textDecoration: 'underline' }}>
-            poggioalleforche@email.it{' '}
+          <a
+            href="mailto:info@poggioalleforche.it"
+            style={{ textDecoration: 'underline', cursor: 'pointer' }}
+          >
+            info@poggioalleforche.it{' '}
           </a>
         </ArticleText>
       </article>

@@ -11,21 +11,23 @@ const App = () => {
       window.location.pathname = '/';
     }
   }
+  debugger;
   return (
     <HistoryRouter history={history}>
-      <Routes>
-        {staticSite && <Route path="*" exact element={<Cover staticSite={staticSite} />} />}
-        {!staticSite && (
-          <>
-            <Route path={routes.cover} exact element={<Cover />} />
-            <Route path={routes.tradizione} exact element={<Tradizione />} />
-            <Route path={routes.viti} exact element={<Viti />} />
-            <Route path={routes.cantina} exact element={<Cantina />} />
-            <Route path={routes.prodotti} exact element={<Prodotti />} />
-            <Route path="*" element={<Navigate replace to={routes.cover} />} />
-          </>
-        )}
-      </Routes>
+      {staticSite && (
+        <Routes>
+          <Route path="*" exact element={<Cover staticSite={staticSite} />} />
+        </Routes>
+      )}
+      {!staticSite && (
+        <Routes>
+          <Route path={routes.cover} exact element={<Cover />} />
+          <Route path={routes.tradizione} exact element={<Tradizione />} />
+          <Route path={routes.viti} exact element={<Viti />} />
+          <Route path={routes.cantina} exact element={<Cantina />} />
+          <Route path={routes.prodotti} exact element={<Prodotti />} />
+        </Routes>
+      )}
     </HistoryRouter>
   );
 };
