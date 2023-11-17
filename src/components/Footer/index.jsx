@@ -130,12 +130,15 @@ const Footer = () => {
           <br />
           <a
             href="mailto:info@poggioalleforche.it"
-            style={{ textDecoration: 'underline', cursor: 'pointer' }}
+            style={{ textDecoration: 'underline', cursor: 'pointer', display: 'block' }}
           >
             info@poggioalleforche.it{' '}
           </a>
-          <a href="tel:+393491927357" style={{ cursor: 'pointer' }}>
-            +39 349 1927 357
+          <a
+            href="tel:+393471927357"
+            style={{ cursor: 'pointer', display: 'block', paddingTop: '8px' }}
+          >
+            +39 347 1927 357
           </a>
         </ArticleText>
       </article>

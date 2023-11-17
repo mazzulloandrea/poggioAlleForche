@@ -21,7 +21,7 @@ const getScreenDimensions = () => {
     isSmallScreen: dimToConsider > tabletWidth && dimToConsider <= mediumScreen,
     isTablet: dimToConsider > mobileWidth && dimToConsider <= tabletWidth,
     isMobile: dimToConsider > miniMobileWidth && dimToConsider <= mobileWidth,
-    isMini: dimToConsider < miniMobileWidth,
+    isMini: dimToConsider <= miniMobileWidth,
     isPortrait: isScreenInPortrait(),
   };
 };

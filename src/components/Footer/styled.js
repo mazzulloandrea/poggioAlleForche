@@ -152,7 +152,14 @@ export const ContactContainer = styled(Address2)`
   ${props =>
     props.ismobile
       ? props.isportrait
-        ? css``
+        ? css`
+            width: 100%;
+            > article {
+              > p {
+                text-align: left;
+              }
+            }
+          `
         : css`
             width: 100%;
             > article {
@@ -207,7 +214,7 @@ export const Links = styled(footerArticle)`
       ? props.isportrait
         ? css`
             width: 100%;
-            height: calc(100% - 40px);
+            height: calc(100% - 60px);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -241,7 +248,7 @@ export const VideoLink = styled(MapLink)`
   ${props =>
     props.ismini
       ? css`
-          margin: 25px 0 0;
+          margin: 15px 0 10px;
         `
       : css``}
   ${props =>
