@@ -128,8 +128,17 @@ const Footer = () => {
         <ArticleText {...defProps}>
           Contatti
           <br />
-          <a href="mailto:poggioalleforche@email.it" style={{ textDecoration: 'underline' }}>
-            poggioalleforche@email.it{' '}
+          <a
+            href="mailto:info@poggioalleforche.it"
+            style={{ textDecoration: 'underline', cursor: 'pointer', display: 'block' }}
+          >
+            info@poggioalleforche.it{' '}
+          </a>
+          <a
+            href="tel:+393471927357"
+            style={{ cursor: 'pointer', display: 'block', paddingTop: '8px' }}
+          >
+            +39 347 1927 357
           </a>
         </ArticleText>
       </article>

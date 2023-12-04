@@ -2,6 +2,7 @@
   "name": "poggioalleforche",
   "version": "0.0.1",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "start": "vite",
     "prettier": "prettier --write src",
