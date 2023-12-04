@@ -1,7 +1,7 @@
 import title from '../common/title.png';
 import subTitle from './subtitle.png';
-import img1 from './a.png';
-import img2 from './b.png';
+import img1 from './Le_viti_1.png';
+import img2 from './Le_viti_2.png';
 
 const text1 = `“Il vino nasce in vigna e non in cantina”, dice Lorenzo che si definisce vignaiolo. Dei suoi filari conosce assolutamente tutto, compresi le problematiche e l’immenso fascino di cui è fiero.
 Scarnacuoia 288 e Poggio alle Forche sono fatte di piccoli appezzamenti che danno caratteristiche diverse alle uve.  Le altitudini disuguali delle colline in cui sono coltivate sfruttano microclimi che non sono gli stessi, come i terreni e le esposizioni che danno al Sangiovese note e sfumature che determinano
