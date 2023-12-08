@@ -7,7 +7,8 @@ import tradizione6 from './tradizione/foto6.jpg';
 import tradizione7 from './tradizione/foto7.png';
 // import tradizione1Colored from './tradizione/foto1_colored.png';
 import tradizioneGif1 from './tradizione/tradizione.gif';
-import tradizioneVideo from '../video/tradizione.MP4';
+// import tradizioneVideo from '../video/tradizione.MP4';
+const tradizioneVideo = 'https://youtu.be/6_tNfQl8DOc';
 
 import viti1 from './viti/foto1.png';
 import viti2 from './viti/foto2.png';
