@@ -1,5 +1,6 @@
 import title from '../common/title.png';
 import subTitle from './subtitle.png';
+import subTitle_en from './subtitle_en.png';
 import img1 from './La_tradizione_1.png';
 import img2 from './La_tradizione_2.jpg';
 
@@ -32,19 +33,19 @@ const articleTradizione = {
   },
   eng: {
     mobile: [
-      { type: 'txt', src: text1_en, title, subTitle },
+      { type: 'txt', src: text1_en, title, subTitle: subTitle_en },
       { type: 'imgBck', src: img1 },
       { type: 'txt', src: text2_en },
       { type: 'imgBck', src: img2 },
     ],
     tablet: [
-      { type: 'txt', src: text1_en, title: title, subTitle },
+      { type: 'txt', src: text1_en, title: title, subTitle: subTitle_en },
       { type: 'imgBck', src: img1 },
       { type: 'txt', src: text2_en },
       { type: 'imgBck', src: img2 },
     ],
     desktop: [
-      { type: 'txt', src: text1_en, title: title, subTitle },
+      { type: 'txt', src: text1_en, title: title, subTitle: subTitle_en },
       { type: 'imgBck', src: img1 },
       { type: 'imgBck', src: img2 },
       { type: 'txt', src: text2_en },

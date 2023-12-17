@@ -58,21 +58,25 @@ const galleries = {
     // colored: tradizione1Colored,
     gif: tradizioneGif1,
     video: tradizioneVideo,
+    en: tradizione1_en,
   },
   viti: {
     list: [viti1, viti2, viti3, viti4, viti5, viti6],
     // colored: viti1Colored,
     gif: vitiGif1,
+    en: viti1_en,
   },
   cantina: {
     list: [cantina1, cantina2, cantina3, cantina4, cantina5, cantina6],
     // colored: cantina1Colored,
     gif: cantinaGif1,
+    en: cantina1_en,
   },
   prodotti: {
     list: [prodotti1, prodotti2, prodotti3],
     // colored: prodotti1Colored,
     gif: prodottiGif1,
+    en: prodotti1_en,
   },
   galleryCustom: {
     arrowSx,

@@ -17,6 +17,14 @@ import {
   prodottiSelected,
   viti,
   vitiSelected,
+  tradizione_en,
+  tradizioneSelected_en,
+  cantina_en,
+  cantinaSelected_en,
+  prodotti_en,
+  prodottiSelected_en,
+  viti_en,
+  vitiSelected_en,
   logo,
   marchio,
   menuMobile as menuMobileVoice,
@@ -30,6 +38,7 @@ import {
   Logo,
   Marchio,
   MenuText,
+  DesktopLanguageContainer,
   LanguageChoice,
 } from './styled';
 import './menuMobile.css';
@@ -60,44 +69,59 @@ const Header = ({ lang, setLang }) => {
     let menuVoice = '';
     switch (menuKey) {
       case routes.tradizione:
-        menuVoice =
-          pathname === menuKey || pathname === '/'
-            ? isMobile
-              ? menuMobileVoice.tradizioneSelected
-              : tradizioneSelected
-            : isMobile
-            ? menuMobileVoice.tradizione
-            : tradizione;
+        if (lang === 'eng') {
+          menuVoice =
+            pathname === menuKey || pathname === '/' ? tradizioneSelected_en : tradizione_en;
+        } else {
+          menuVoice = pathname === menuKey || pathname === '/' ? tradizioneSelected : tradizione;
+        }
+        // ? isMobile
+        //   ? menuMobileVoice.tradizioneSelected
+        //   : tradizioneSelected
+        // : isMobile
+        // ? menuMobileVoice.tradizione
+        // : tradizione;
         break;
       case routes.cantina:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.cantinaSelected
-              : cantinaSelected
-            : isMobile
-            ? menuMobileVoice.cantina
-            : cantina;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? cantinaSelected_en : cantina_en;
+        } else {
+          menuVoice = pathname === menuKey ? cantinaSelected : cantina;
+        }
+        // ? isMobile
+        //   ? menuMobileVoice.cantinaSelected
+        //   : cantinaSelected
+        // : isMobile
+        // ? menuMobileVoice.cantina
+        // : cantina;
         break;
       case routes.viti:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.vitiSelected
-              : vitiSelected
-            : isMobile
-            ? menuMobileVoice.viti
-            : viti;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? vitiSelected_en : viti_en;
+        } else {
+          menuVoice = pathname === menuKey ? vitiSelected : viti;
+        }
+
+        // ? isMobile
+        //   ? menuMobileVoice.vitiSelected
+        //   : vitiSelected
+        // : isMobile
+        // ? menuMobileVoice.viti
+        // : viti;
         break;
       case routes.prodotti:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.prodottiSelected
-              : prodottiSelected
-            : isMobile
-            ? menuMobileVoice.prodotti
-            : prodotti;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? prodottiSelected_en : prodotti_en;
+        } else {
+          menuVoice = pathname === menuKey ? prodottiSelected : prodotti;
+        }
+
+        // ? isMobile
+        //   ? menuMobileVoice.prodottiSelected
+        //   : prodottiSelected
+        // : isMobile
+        // ? menuMobileVoice.prodotti
+        // : prodotti;
         break;
     }
 
@@ -163,6 +187,7 @@ const Header = ({ lang, setLang }) => {
 
     return (
       <MenuDesktopStyled>
+        <DesktopLanguageContainer>{LanguageSection()}</DesktopLanguageContainer>
         {menuList.map(menuKey => {
           if (menuKey === 'logo') return LogoComponent;
           return (

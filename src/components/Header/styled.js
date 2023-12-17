@@ -93,6 +93,17 @@ export const MenuText = styled.span`
       : css``}
 `;
 
+export const DesktopLanguageContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  width: 5%;
+  justify-content: space-around;
+`;
+
 export const LanguageChoice = styled.div`
   ${props =>
     props.selected

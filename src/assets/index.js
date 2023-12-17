@@ -9,6 +9,14 @@ export {
   prodottiSelected,
   viti,
   vitiSelected,
+  tradizione_en,
+  tradizioneSelected_en,
+  cantina_en,
+  cantinaSelected_en,
+  prodotti_en,
+  prodottiSelected_en,
+  viti_en,
+  vitiSelected_en,
 } from './menuDesktop';
 export { default as menuMobile } from './menuMobile';
 export { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from './articles';

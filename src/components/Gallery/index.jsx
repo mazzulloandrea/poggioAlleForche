@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import { galleries, background, playIcon } from '../../assets';
-import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
-import { PlayerContainer, PlayerButton } from './styled';
+import { PlayerContainer, ImageWrapper, ImageContainer } from './styled';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
 import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
@@ -14,13 +13,16 @@ const Gallery = ({ dimensions, lang }) => {
   const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);
   const [playing, setPlaying] = useState(false);
+
   const containerRef = useRef(null);
   const galleryRef = useRef(null);
   const videoRef = useRef(null);
 
+  // need for english image gallery
+  const [colored, setColored] = useState(false);
+
   const swipeToVideo = useEffect(() => {
     if (hash.includes('#video') && galleryRef) {
-      // window.gr = galleryRef;
       if (containerRef && containerRef.current) {
         containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
@@ -85,6 +87,7 @@ const Gallery = ({ dimensions, lang }) => {
   const images = useMemo(() => {
     let galleriesName = pathname.substring(1, pathname.length);
     if (!galleries[galleriesName]) galleriesName = 'tradizione';
+
     const list = galleries[galleriesName].list.map(el => ({ original: el }));
     const gif = galleries[galleriesName].gif;
     const videoSrc = galleries[galleriesName].video;
@@ -165,6 +168,17 @@ const Gallery = ({ dimensions, lang }) => {
       exitFullscreen();
     }
   };
+
+  if (lang === 'eng') {
+    let galleriesName = pathname.substring(1, pathname.length);
+    if (!galleries[galleriesName]) galleriesName = 'tradizione';
+
+    return (
+      <ImageWrapper ref={containerRef}>
+        <ImageContainer src={galleries[galleriesName].en} />
+      </ImageWrapper>
+    );
+  }
 
   return (
     <div ref={containerRef}>
