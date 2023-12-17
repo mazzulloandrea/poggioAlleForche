@@ -5,7 +5,7 @@ import { galleries, background, playIcon } from '../../assets';
 import ReactPlayer from 'react-player';
 import { PlayerContainer, ImageWrapper, ImageContainer } from './styled';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
-import '../../../node_modules/video-react/dist/video-react.css'; // video css
+// import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
 const Gallery = ({ dimensions, lang }) => {
