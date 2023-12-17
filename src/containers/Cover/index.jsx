@@ -23,7 +23,7 @@ import {
 } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
-const Cover = ({ staticSite }) => {
+const Cover = ({ staticSite, lang, setLang }) => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
   const [showCover, setShowCover] = useState(COVER_SHOW);
@@ -216,7 +216,9 @@ const Cover = ({ staticSite }) => {
           )}
         </ContainerCentered>
       </Wrapper>
-      {showCover === COVER_HIDE && <Tradizione dimensions={dimensions} />}
+      {showCover === COVER_HIDE && (
+        <Tradizione dimensions={dimensions} lang={lang} setLang={setLang} />
+      )}
       {<CookieComponent setCookie={setCookieAcceptance} />}
     </>
   );
