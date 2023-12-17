@@ -100,11 +100,12 @@ export const DesktopLanguageContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  width: 5%;
+  width: 10%;
   justify-content: space-around;
 `;
 
 export const LanguageChoice = styled.div`
+  cursor: pointer;
   ${props =>
     props.selected
       ? css`
