@@ -92,3 +92,14 @@ export const MenuText = styled.span`
         `
       : css``}
 `;
+
+export const LanguageChoice = styled.div`
+  ${props =>
+    props.selected
+      ? css`
+          color: gold;
+        `
+      : css`
+          color: white;
+        `}
+`;

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY, isScreenInPortrait, getScreenDimensions } from '../../utils';
+import {
+  routes,
+  NO_MENU_ROUTE_KEY,
+  isScreenInPortrait,
+  getScreenDimensions,
+  getRouteLabel,
+} from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
   tradizione,
@@ -24,10 +30,11 @@ import {
   Logo,
   Marchio,
   MenuText,
+  LanguageChoice,
 } from './styled';
 import './menuMobile.css';
 
-const Header = () => {
+const Header = ({ lang, setLang }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dimensions = getScreenDimensions();
@@ -97,22 +104,16 @@ const Header = () => {
     return menuVoice;
   };
 
-  const getMenuLabel = menuKey => {
-    switch (`/${menuKey}`) {
-      case routes.tradizione:
-        return 'Tradizione e modernità';
-      case routes.viti:
-        return 'Le viti';
-      case routes.cantina:
-        return 'La cantina';
-      case routes.prodotti:
-        return 'I prodotti';
-    }
-    return menuKey;
-  };
-
   const handleStateChange = state => {
     setMenuMobileOpen(state.isOpen);
+  };
+
+  const LanguageSection = () => {
+    return ['ita', 'eng'].map(l => (
+      <LanguageChoice key={l} onClick={() => setLang(l)} selected={lang === l}>
+        {l}
+      </LanguageChoice>
+    ));
   };
 
   const menuMobile = () => {
@@ -126,6 +127,7 @@ const Header = () => {
         isOpen={menuMobileOpen}
         onStateChange={state => handleStateChange(state)}
       >
+        {LanguageSection()}
         {menuList.map(menuKey => (
           <MenuVoice
             key={menuKey}
@@ -140,7 +142,7 @@ const Header = () => {
               key={`span_menu_label_${menuKey}`}
               selected={pathname === `/${menuKey}` ? 1 : 0}
             >
-              {getMenuLabel(menuKey)}
+              {getRouteLabel({ route: menuKey, lang })}
             </MenuText>
           </MenuVoice>
         ))}

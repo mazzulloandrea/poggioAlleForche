@@ -7,7 +7,10 @@ export {
   bigScreen,
   NO_MENU_ROUTE_KEY,
   COOKIE_NAME,
+  EN,
+  IT,
 } from './constants';
 export { default as isScreenInPortrait } from './screenOrientation';
 export { default as getScreenDimensions } from './screenDimensions';
 export { default as getCookie } from './cookieReader';
+export { default as getRouteLabel } from './routeMapping';

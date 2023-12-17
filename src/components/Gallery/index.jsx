@@ -9,7 +9,7 @@ import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
-const Gallery = ({ dimensions }) => {
+const Gallery = ({ dimensions, lang }) => {
   const { isBigScreen, isMediumScreen, isSmallScreen, isTablet, isMobile, isPortrait } = dimensions;
   const { pathname, hash } = useLocation();
   const [loadedGif, setLoadedGif] = useState(false);

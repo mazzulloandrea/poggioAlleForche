@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Header, Gallery, Footer } from '../../components';
 
-const Layout = ({ dimensions, children }) => {
+const Layout = ({ dimensions, children, lang, setLang }) => {
   useEffect(() => {}, []);
 
   return (
     <div>
-      <Header dimensions={dimensions} />
-      <Gallery dimensions={dimensions} />
+      <Header dimensions={dimensions} lang={lang} setLang={setLang} />
+      <Gallery dimensions={dimensions} lang={lang} />
       {children}
-      <Footer dimensions={dimensions} />
+      <Footer dimensions={dimensions} lang={lang} />
     </div>
   );
 };
