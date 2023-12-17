@@ -39,73 +39,6 @@ export const PlayerContainer = styled.div`
   }
 `;
 
-/*
-// ${props =>
-  //   props.isbigscreen
-  //     ? css`
-  //         min-width: ${videoContainer.bigScreen.w}px;
-  //         max-width: ${videoContainer.bigScreen.w}px;
-  //         height: ${videoContainer.bigScreen.h}px;
-  //         > div {
-  //           height: ${videoContainer.bigScreen.h}px!important;
-  //         }
-  //       `
-  //     : ``}
-  // ${props =>
-  //   props.ismediumscreen
-  //     ? css`
-  //         min-width: ${videoContainer.mediumScreen.w}px;
-  //         max-width: ${videoContainer.mediumScreen.w}px;
-  //         height: ${videoContainer.mediumScreen.h}px;
-  //         > div {
-  //           height: ${videoContainer.mediumScreen.h}px!important;
-  //         }
-  //       `
-  //     : ``}
-  // ${props =>
-  //   props.issmallscreen
-  //     ? css`
-  //         min-width: ${videoContainer.smallScreen.w}px;
-  //         max-width: ${videoContainer.smallScreen.w}px;
-  //         height: ${videoContainer.smallScreen.h}px;
-  //         > div {
-  //           height: ${videoContainer.smallScreen.h}px!important;
-  //         }
-  //       `
-  //     : ``}
-  // ${props =>
-  //   props.istablet
-  //     ? css`
-  //         min-width: ${videoContainer.tablet.w}px;
-  //         max-width: ${videoContainer.tablet.w}px;
-  //         height: ${videoContainer.tablet.h}px;
-  //         > div {
-  //           height: ${videoContainer.tablet.h}px!important;
-  //         }
-  //       `
-  //     : ``}
-  // ${props =>
-  //   props.ismobile
-  //     ? props.isportrait
-  //       ? css`
-  //           min-width: ${videoContainer.mobile.w / 2}px;
-  //           max-width: ${videoContainer.mobile.w / 2}px;
-  //           height: ${videoContainer.mobile.h / 2}px;
-  //           > div {
-  //             height: ${videoContainer.mobile.h / 2}px!important;
-  //           }
-  //         `
-  //       : css`
-  //           min-width: ${videoContainer.mobile.w}px;
-  //           max-width: ${videoContainer.mobile.w}px;
-  //           height: ${videoContainer.mobile.h}px;
-  //           > div {
-  //             height: ${videoContainer.mobile.h}px!important;
-  //           }
-  //         `
-  //     : ``}
-*/
-
 export const PlayerButton = styled.div`
   position: absolute;
   background: ${props => (props.src ? `url(${props.src})` : '')};
@@ -119,5 +52,25 @@ export const PlayerButton = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-  // z-index: 999;
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  z-index: 1;
+  trasform: translateZ(0) !important;
+`;
+
+export const ImageContainer = styled.img`
+  height: auto;
+  object-fit: cover;
+  transition: transform 4s ease, filter 4s ease;
+  filter: sepia(100);
+  transform: scale(1);
+
+  &:hover {
+    filter: sepia(0);
+    transform: scale(1.1);
+  }
 `;

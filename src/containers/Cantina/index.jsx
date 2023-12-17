@@ -6,7 +6,7 @@ import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { Articles } from '../../components';
 
-const Cantina = () => {
+const Cantina = ({ lang, setLang }) => {
   const [show, setShow] = useState(false);
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
@@ -71,15 +71,9 @@ const Cantina = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      {dimensions.isPortrait ? (
-        <Layout dimensions={dimensions}>
-          <Articles dimensions={dimensions} />
-        </Layout>
-      ) : (
-        <Layout dimensions={dimensions}>
-          <Articles dimensions={dimensions} />
-        </Layout>
-      )}
+      <Layout dimensions={dimensions} lang={lang} setLang={setLang}>
+        <Articles dimensions={dimensions} lang={lang} />
+      </Layout>
     </Wrapper>
   );
 };

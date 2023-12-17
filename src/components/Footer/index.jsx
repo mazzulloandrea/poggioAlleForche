@@ -20,7 +20,7 @@ import {
   Right,
 } from './styled';
 
-const Footer = () => {
+const Footer = ({ lang }) => {
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
   const dimensions = getScreenDimensions();
@@ -51,10 +51,16 @@ const Footer = () => {
     <Address {...defProps}>
       <article>
         {isMobile ? (
-          <ArticleText {...defProps}>Azienda agricola di Turchi Lorenzo.</ArticleText>
+          <ArticleText {...defProps}>
+            {lang === 'eng'
+              ? 'Agricultural Company of Turchi Lorenzo.'
+              : 'Azienda agricola di Turchi Lorenzo.'}
+          </ArticleText>
         ) : (
           <ArticleText {...defProps}>
-            Azienda agricola Poggio alle Forche di Turchi Lorenzo.
+            {lang === 'eng'
+              ? 'Poggio lle Forche Agricultural Company of Turchi Lorenzo.'
+              : 'Azienda agricola Poggio alle Forche di Turchi Lorenzo.'}
           </ArticleText>
         )}
       </article>
@@ -66,12 +72,20 @@ const Footer = () => {
       <article>
         {isMobile ? (
           <>
-            <ArticleText {...defProps}>Podere Scarnacuoia 288, </ArticleText>
-            <ArticleText {...defProps}>Montalcino (Siena) - Italia</ArticleText>
+            <ArticleText {...defProps}>
+              {' '}
+              {lang === 'eng' ? 'Scarnacuoia 288 farm,' : 'Podere Scarnacuoia 288,'}{' '}
+            </ArticleText>
+            <ArticleText {...defProps}>
+              {' '}
+              {lang === 'eng' ? 'Montalcino (Siena) - Italy' : 'Montalcino (Siena) - Italia'}
+            </ArticleText>
           </>
         ) : (
           <ArticleText {...defProps}>
-            Podere Scarnacuoia 288, Montalcino (Siena) - Italia
+            {lang === 'eng'
+              ? 'Scarnacuoia 288 farm, Montalcino (Siena) - Italy'
+              : 'Podere Scarnacuoia 288, Montalcino (Siena) - Italia'}
           </ArticleText>
         )}
       </article>
@@ -105,20 +119,22 @@ const Footer = () => {
         }}
         {...defProps}
       >
-        <Underline {...defProps}>Dove siamo</Underline>
+        <Underline {...defProps}>{lang === 'eng' ? 'Where to find us' : 'Dove siamo'}</Underline>
       </MapLink>
-      {/* </Link> */}
-      <VideoLink
-        {...defProps}
-        onClick={event => {
-          pathname === routes.tradizione
-            ? reloadWorkaround('#video')
-            : navigate(`${routes.tradizione}#video`);
-          event.stopPropagation();
-        }}
-      >
-        <Underline {...defProps}>Video</Underline>
-      </VideoLink>
+
+      {lang !== 'eng' && (
+        <VideoLink
+          {...defProps}
+          onClick={event => {
+            pathname === routes.tradizione
+              ? reloadWorkaround('#video')
+              : navigate(`${routes.tradizione}#video`);
+            event.stopPropagation();
+          }}
+        >
+          <Underline {...defProps}>{lang === 'eng' ? 'Videos' : 'Video'}</Underline>
+        </VideoLink>
+      )}
     </Links>
   );
 
@@ -126,7 +142,7 @@ const Footer = () => {
     <ContactContainer {...defProps}>
       <article>
         <ArticleText {...defProps}>
-          Contatti
+          {lang === 'eng' ? 'Contacts' : 'Contatti'}
           <br />
           <a
             href="mailto:info@poggioalleforche.it"

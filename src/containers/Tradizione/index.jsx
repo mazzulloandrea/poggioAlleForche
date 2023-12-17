@@ -6,7 +6,7 @@ import { Wrapper } from '../commonStyled';
 import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
 import { Articles } from '../../components';
 
-const Tradizione = () => {
+const Tradizione = ({ lang, setLang }) => {
   const [show, setShow] = useState(false);
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
@@ -22,8 +22,6 @@ const Tradizione = () => {
   const isMobile = useMediaQuery({
     query: `(max-width: ${mobileWidth}px)`,
   });
-
-  // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
   useEffect(() => {
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Tradizione' });
@@ -73,15 +71,9 @@ const Tradizione = () => {
 
   return (
     <Wrapper show={show ? 1 : 0}>
-      {dimensions.isPortrait ? (
-        <Layout dimensions={dimensions}>
-          <Articles dimensions={dimensions} />
-        </Layout>
-      ) : (
-        <Layout dimensions={dimensions}>
-          <Articles dimensions={dimensions} />
-        </Layout>
-      )}
+      <Layout dimensions={dimensions} lang={lang} setLang={setLang}>
+        <Articles dimensions={dimensions} lang={lang} />
+      </Layout>
     </Wrapper>
   );
 };

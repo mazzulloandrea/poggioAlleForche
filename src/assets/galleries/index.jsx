@@ -9,6 +9,7 @@ import tradizione7 from './tradizione/foto7.png';
 import tradizioneGif1 from './tradizione/tradizione.gif';
 // import tradizioneVideo from '../video/tradizione.MP4';
 const tradizioneVideo = 'https://youtu.be/6_tNfQl8DOc';
+import tradizione1_en from './tradizione/foto1_en.png';
 
 import viti1 from './viti/foto1.png';
 import viti2 from './viti/foto2.png';
@@ -18,6 +19,7 @@ import viti5 from './viti/foto5.png';
 import viti6 from './viti/foto6.png';
 // import viti1Colored from './viti/foto1_colored.png';
 import vitiGif1 from './viti/viti.gif';
+import viti1_en from './viti/foto1_en.png';
 
 import cantina1 from './cantina/foto1.png';
 import cantina2 from './cantina/foto2.png';
@@ -27,11 +29,13 @@ import cantina5 from './cantina/foto5.png';
 import cantina6 from './cantina/foto6.png';
 // import cantina1Colored from './cantina/foto1_colored.png';
 import cantinaGif1 from './cantina/cantina.gif';
+import cantina1_en from './cantina/foto1_en.png';
 
 import prodotti1 from './prodotti/foto1.png';
 import prodotti2 from './prodotti/foto2.png';
 import prodotti3 from './prodotti/foto3.png';
 import prodottiGif1 from './prodotti/prodotti.gif';
+import prodotti1_en from './prodotti/foto1_en.png';
 
 // import prodotti1Colored from './prodotti/foto1_colored.png';
 
@@ -54,21 +58,25 @@ const galleries = {
     // colored: tradizione1Colored,
     gif: tradizioneGif1,
     video: tradizioneVideo,
+    en: tradizione1_en,
   },
   viti: {
     list: [viti1, viti2, viti3, viti4, viti5, viti6],
     // colored: viti1Colored,
     gif: vitiGif1,
+    en: viti1_en,
   },
   cantina: {
     list: [cantina1, cantina2, cantina3, cantina4, cantina5, cantina6],
     // colored: cantina1Colored,
     gif: cantinaGif1,
+    en: cantina1_en,
   },
   prodotti: {
     list: [prodotti1, prodotti2, prodotti3],
     // colored: prodotti1Colored,
     gif: prodottiGif1,
+    en: prodotti1_en,
   },
   galleryCustom: {
     arrowSx,

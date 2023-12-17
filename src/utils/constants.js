@@ -4,4 +4,7 @@ export const tabletWidth = 1100;
 export const mobileWidth = 800;
 export const miniMobileWidth = 400;
 export const NO_MENU_ROUTE_KEY = 'cover';
+export const NO_MENU_ROUTE_VALUE = '/';
 export const COOKIE_NAME = 'cookie_poggio';
+export const EN = 'eng';
+export const IT = 'ita';

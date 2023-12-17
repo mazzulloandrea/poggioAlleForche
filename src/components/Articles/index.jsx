@@ -6,6 +6,8 @@ import {
   tabletWidth,
   isScreenInPortrait,
   getScreenDimensions,
+  EN,
+  IT,
 } from '../../utils';
 import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
@@ -22,7 +24,7 @@ import {
 } from './styled';
 import './style.css';
 
-const Articles = () => {
+const Articles = ({ lang }) => {
   const { pathname, hash } = useLocation();
   const dimensions = getScreenDimensions();
   const {
@@ -94,17 +96,21 @@ const Articles = () => {
   const getArticle = useCallback(() => {
     switch (pathname) {
       case '/tradizione':
-        return articlesTradizione;
+        if (lang === EN) return articlesTradizione[EN];
+        return articlesTradizione[IT];
       case '/viti':
-        return articlesViti;
+        if (lang === EN) return articlesViti[EN];
+        return articlesViti[IT];
       case '/cantina':
-        return articlesCantine;
+        if (lang === EN) return articlesCantine[EN];
+        return articlesCantine[IT];
       case '/prodotti':
-        return articlesProdotti;
+        if (lang === EN) return articlesProdotti[EN];
+        return articlesProdotti[IT];
       default:
-        return articlesTradizione;
+        return articlesTradizione[IT];
     }
-  }, [pathname]);
+  }, [pathname, lang]);
 
   const getOrderOfData = articleData => {
     if (isMini) return articleData.mobile;

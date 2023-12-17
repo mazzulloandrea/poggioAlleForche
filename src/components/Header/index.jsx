@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routes, NO_MENU_ROUTE_KEY, isScreenInPortrait, getScreenDimensions } from '../../utils';
+import {
+  routes,
+  NO_MENU_ROUTE_KEY,
+  isScreenInPortrait,
+  getScreenDimensions,
+  getRouteLabel,
+} from '../../utils';
 import { slide as MenuHamburger } from 'react-burger-menu';
 import {
   tradizione,
@@ -11,6 +17,14 @@ import {
   prodottiSelected,
   viti,
   vitiSelected,
+  tradizione_en,
+  tradizioneSelected_en,
+  cantina_en,
+  cantinaSelected_en,
+  prodotti_en,
+  prodottiSelected_en,
+  viti_en,
+  vitiSelected_en,
   logo,
   marchio,
   menuMobile as menuMobileVoice,
@@ -24,10 +38,12 @@ import {
   Logo,
   Marchio,
   MenuText,
+  DesktopLanguageContainer,
+  LanguageChoice,
 } from './styled';
 import './menuMobile.css';
 
-const Header = () => {
+const Header = ({ lang, setLang }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dimensions = getScreenDimensions();
@@ -53,66 +69,75 @@ const Header = () => {
     let menuVoice = '';
     switch (menuKey) {
       case routes.tradizione:
-        menuVoice =
-          pathname === menuKey || pathname === '/'
-            ? isMobile
-              ? menuMobileVoice.tradizioneSelected
-              : tradizioneSelected
-            : isMobile
-            ? menuMobileVoice.tradizione
-            : tradizione;
+        if (lang === 'eng') {
+          menuVoice =
+            pathname === menuKey || pathname === '/' ? tradizioneSelected_en : tradizione_en;
+        } else {
+          menuVoice = pathname === menuKey || pathname === '/' ? tradizioneSelected : tradizione;
+        }
+        // ? isMobile
+        //   ? menuMobileVoice.tradizioneSelected
+        //   : tradizioneSelected
+        // : isMobile
+        // ? menuMobileVoice.tradizione
+        // : tradizione;
         break;
       case routes.cantina:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.cantinaSelected
-              : cantinaSelected
-            : isMobile
-            ? menuMobileVoice.cantina
-            : cantina;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? cantinaSelected_en : cantina_en;
+        } else {
+          menuVoice = pathname === menuKey ? cantinaSelected : cantina;
+        }
+        // ? isMobile
+        //   ? menuMobileVoice.cantinaSelected
+        //   : cantinaSelected
+        // : isMobile
+        // ? menuMobileVoice.cantina
+        // : cantina;
         break;
       case routes.viti:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.vitiSelected
-              : vitiSelected
-            : isMobile
-            ? menuMobileVoice.viti
-            : viti;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? vitiSelected_en : viti_en;
+        } else {
+          menuVoice = pathname === menuKey ? vitiSelected : viti;
+        }
+
+        // ? isMobile
+        //   ? menuMobileVoice.vitiSelected
+        //   : vitiSelected
+        // : isMobile
+        // ? menuMobileVoice.viti
+        // : viti;
         break;
       case routes.prodotti:
-        menuVoice =
-          pathname === menuKey
-            ? isMobile
-              ? menuMobileVoice.prodottiSelected
-              : prodottiSelected
-            : isMobile
-            ? menuMobileVoice.prodotti
-            : prodotti;
+        if (lang === 'eng') {
+          menuVoice = pathname === menuKey ? prodottiSelected_en : prodotti_en;
+        } else {
+          menuVoice = pathname === menuKey ? prodottiSelected : prodotti;
+        }
+
+        // ? isMobile
+        //   ? menuMobileVoice.prodottiSelected
+        //   : prodottiSelected
+        // : isMobile
+        // ? menuMobileVoice.prodotti
+        // : prodotti;
         break;
     }
 
     return menuVoice;
   };
 
-  const getMenuLabel = menuKey => {
-    switch (`/${menuKey}`) {
-      case routes.tradizione:
-        return 'Tradizione e modernità';
-      case routes.viti:
-        return 'Le viti';
-      case routes.cantina:
-        return 'La cantina';
-      case routes.prodotti:
-        return 'I prodotti';
-    }
-    return menuKey;
-  };
-
   const handleStateChange = state => {
     setMenuMobileOpen(state.isOpen);
+  };
+
+  const LanguageSection = () => {
+    return ['ita', 'eng'].map(l => (
+      <LanguageChoice key={l} onClick={() => setLang(l)} selected={lang === l}>
+        {l}
+      </LanguageChoice>
+    ));
   };
 
   const menuMobile = () => {
@@ -126,6 +151,7 @@ const Header = () => {
         isOpen={menuMobileOpen}
         onStateChange={state => handleStateChange(state)}
       >
+        {LanguageSection()}
         {menuList.map(menuKey => (
           <MenuVoice
             key={menuKey}
@@ -140,7 +166,7 @@ const Header = () => {
               key={`span_menu_label_${menuKey}`}
               selected={pathname === `/${menuKey}` ? 1 : 0}
             >
-              {getMenuLabel(menuKey)}
+              {getRouteLabel({ route: menuKey, lang })}
             </MenuText>
           </MenuVoice>
         ))}
@@ -161,6 +187,7 @@ const Header = () => {
 
     return (
       <MenuDesktopStyled>
+        <DesktopLanguageContainer>{LanguageSection()}</DesktopLanguageContainer>
         {menuList.map(menuKey => {
           if (menuKey === 'logo') return LogoComponent;
           return (
