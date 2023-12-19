@@ -29,6 +29,10 @@ import {
   marchio,
   menuMobile as menuMobileVoice,
   headerBkg,
+  ita,
+  ita_selected,
+  eng,
+  eng_selected,
 } from '../../assets';
 import {
   HeaderStyled,
@@ -132,11 +136,20 @@ const Header = ({ lang, setLang }) => {
     setMenuMobileOpen(state.isOpen);
   };
 
+  const getLangSrc = (label, isSelected) => {
+    if (label === 'ita') {
+      return isSelected ? ita_selected : ita;
+    }
+    return isSelected ? eng_selected : eng;
+  };
+
   const LanguageSection = () => {
     return ['ita', 'eng'].map(l => (
-      <LanguageChoice key={l} onClick={() => setLang(l)} selected={lang === l}>
-        {l}
-      </LanguageChoice>
+      <LanguageChoice
+        key={l}
+        onClick={() => setLang(l)}
+        src={getLangSrc(l, lang === l)}
+      ></LanguageChoice>
     ));
   };
 
