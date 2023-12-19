@@ -18,7 +18,7 @@ const Gallery = ({ dimensions, lang }) => {
   const galleryRef = useRef(null);
   const videoRef = useRef(null);
 
-  // need for english image gallery
+  // need for start animartion for first image gallery
   const [colored, setColored] = useState(false);
 
   const swipeToVideo = useEffect(() => {
@@ -95,6 +95,7 @@ const Gallery = ({ dimensions, lang }) => {
     if (['/', '/tradizione'].includes(pathname)) {
       list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
     }
+    return list;
     return {
       list,
       gif,
@@ -188,7 +189,7 @@ const Gallery = ({ dimensions, lang }) => {
         showFullscreenButton={true}
         useBrowserFullscreen={false}
         showPlayButton={false}
-        items={images.list}
+        items={images}
         ref={galleryRef}
         onImageLoad={loadGif}
         renderLeftNav={(onClick, disabled) => (

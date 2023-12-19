@@ -24,3 +24,4 @@ export { default as galleries } from './galleries';
 export { headerBkg } from './header';
 export { default as dialogBackground } from './dialog/dialogBackground.png';
 export { default as playIcon } from './video/play_icon.png';
+export { ita, ita_selected, eng, eng_selected } from './language';

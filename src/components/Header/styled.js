@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ita, ita_selected, eng, eng_selected } from '../../assets';
 
 export const HamburgerStyled = styled.img`
   width: 5vw;
@@ -102,16 +103,13 @@ export const DesktopLanguageContainer = styled.div`
   font-size: 12px;
   width: 10%;
   justify-content: space-around;
+  height: 5%;
 `;
 
 export const LanguageChoice = styled.div`
   cursor: pointer;
-  ${props =>
-    props.selected
-      ? css`
-          color: gold;
-        `
-      : css`
-          color: white;
-        `}
+  background: ${props => (props.src ? `url(${props.src})` : '')};
+  ${BackgroundContainerRules}
+  background-size: contain;
+  width: 100%;
 `;
