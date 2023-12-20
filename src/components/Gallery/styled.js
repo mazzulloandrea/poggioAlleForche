@@ -59,7 +59,7 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   max-width: 100%;
   z-index: 1;
-  trasform: translateZ(0) !important;
+  transform: translateZ(0) !important;
 `;
 
 export const ImageContainer = styled.img`

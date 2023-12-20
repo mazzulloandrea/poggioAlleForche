@@ -88,19 +88,14 @@ const Gallery = ({ dimensions, lang }) => {
     let galleriesName = pathname.substring(1, pathname.length);
     if (!galleries[galleriesName]) galleriesName = 'tradizione';
 
-    const list = galleries[galleriesName].list.map(el => ({ original: el }));
-    const gif = galleries[galleriesName].gif;
+    const list = galleries[galleriesName][lang].map(el => ({ original: el }));
     const videoSrc = galleries[galleriesName].video;
 
     if (['/', '/tradizione'].includes(pathname)) {
       list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
     }
     return list;
-    return {
-      list,
-      gif,
-    };
-  }, [pathname]);
+  }, [pathname, lang]);
 
   const arrowProps = {
     height: '10vw',
@@ -113,22 +108,22 @@ const Gallery = ({ dimensions, lang }) => {
         : '17vh',
   };
 
-  const changeGif = useCallback(() => {
-    if (window.location.href.includes(pathname) && !loadedGif) {
-      setLoadedGif(true);
-      const gifElement = document.querySelector('.image-gallery-image');
-      gifElement.src = images.gif;
-      gifElement.parentElement.classList.add('grow');
-    }
-  }, [pathname, loadedGif]);
+  // const changeGif = useCallback(() => {
+  //   if (window.location.href.includes(pathname) && !loadedGif) {
+  //     setLoadedGif(true);
+  //     const gifElement = document.querySelector('.image-gallery-image');
+  //     gifElement.src = images.gif;
+  //     gifElement.parentElement.classList.add('grow');
+  //   }
+  // }, [pathname, loadedGif]);
 
-  const loadGif = evt => {
-    if (evt.target.src.includes(images.list[0].original)) {
-      setTimeout(() => {
-        changeGif();
-      }, 2500);
-    }
-  };
+  // const loadGif = evt => {
+  //   if (evt.target.src.includes(images.list[0].original)) {
+  //     setTimeout(() => {
+  //       changeGif();
+  //     }, 2500);
+  //   }
+  // };
 
   const enterFullscreen = useCallback(async () => {
     const elemFullscreen = document.documentElement;
@@ -170,16 +165,16 @@ const Gallery = ({ dimensions, lang }) => {
     }
   };
 
-  if (lang === 'eng') {
-    let galleriesName = pathname.substring(1, pathname.length);
-    if (!galleries[galleriesName]) galleriesName = 'tradizione';
+  // if (lang === 'eng') {
+  //   let galleriesName = pathname.substring(1, pathname.length);
+  //   if (!galleries[galleriesName]) galleriesName = 'tradizione';
 
-    return (
-      <ImageWrapper ref={containerRef}>
-        <ImageContainer src={galleries[galleriesName].en} />
-      </ImageWrapper>
-    );
-  }
+  //   return (
+  //     <ImageWrapper ref={containerRef}>
+  //       <ImageContainer src={galleries[galleriesName].en} />
+  //     </ImageWrapper>
+  //   );
+  // }
 
   return (
     <div ref={containerRef}>
@@ -191,7 +186,7 @@ const Gallery = ({ dimensions, lang }) => {
         showPlayButton={false}
         items={images}
         ref={galleryRef}
-        onImageLoad={loadGif}
+        // onImageLoad={loadGif}
         renderLeftNav={(onClick, disabled) => (
           <button className="image-gallery-icon image-gallery-left-nav">
             <img

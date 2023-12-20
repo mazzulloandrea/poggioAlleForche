@@ -44,6 +44,8 @@ import {
   MenuText,
   DesktopLanguageContainer,
   LanguageChoice,
+  MenuVoiceLang,
+  MenuTextLang,
 } from './styled';
 import './menuMobile.css';
 
@@ -143,7 +145,16 @@ const Header = ({ lang, setLang }) => {
     return isSelected ? eng_selected : eng;
   };
 
-  const LanguageSection = () => {
+  const LanguageSection = isMobile => {
+    if (isMobile) {
+      return ['ita', 'eng'].map(l => (
+        <MenuVoiceLang key={l} id={l} onClick={() => setLang(l)} ismobile={1}>
+          <MenuTextLang key={`span_menu_label_${l}`} selected={lang === l ? 1 : 0}>
+            {l}
+          </MenuTextLang>
+        </MenuVoiceLang>
+      ));
+    }
     return ['ita', 'eng'].map(l => (
       <LanguageChoice
         key={l}
@@ -164,7 +175,7 @@ const Header = ({ lang, setLang }) => {
         isOpen={menuMobileOpen}
         onStateChange={state => handleStateChange(state)}
       >
-        {LanguageSection()}
+        {LanguageSection(true)}
         {menuList.map(menuKey => (
           <MenuVoice
             key={menuKey}

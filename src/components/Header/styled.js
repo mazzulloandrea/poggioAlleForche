@@ -113,3 +113,21 @@ export const LanguageChoice = styled.div`
   background-size: contain;
   width: 100%;
 `;
+
+export const MenuVoiceLang = styled(MenuVoice)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 30px;
+`;
+
+export const MenuTextLang = styled(MenuText)`
+  ${props =>
+    props.selected
+      ? css`
+          display: inline-block;
+          border-bottom: 1px solid gold;
+          padding-bottom: 2px;
+          color: gold;
+        `
+      : css``}
+`;
