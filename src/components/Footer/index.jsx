@@ -122,19 +122,17 @@ const Footer = ({ lang }) => {
         <Underline {...defProps}>{lang === 'eng' ? 'Where to find us' : 'Dove siamo'}</Underline>
       </MapLink>
 
-      {lang !== 'eng' && (
-        <VideoLink
-          {...defProps}
-          onClick={event => {
-            pathname === routes.tradizione
-              ? reloadWorkaround('#video')
-              : navigate(`${routes.tradizione}#video`);
-            event.stopPropagation();
-          }}
-        >
-          <Underline {...defProps}>{lang === 'eng' ? 'Videos' : 'Video'}</Underline>
-        </VideoLink>
-      )}
+      <VideoLink
+        {...defProps}
+        onClick={event => {
+          pathname === routes.tradizione
+            ? reloadWorkaround('#video')
+            : navigate(`${routes.tradizione}#video`);
+          event.stopPropagation();
+        }}
+      >
+        <Underline {...defProps}>{lang === 'eng' ? 'Videos' : 'Video'}</Underline>
+      </VideoLink>
     </Links>
   );
 
