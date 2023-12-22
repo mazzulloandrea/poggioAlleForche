@@ -15,21 +15,21 @@
 }
 
 /** sephia animation */
-.image-gallery-slides div:first-child {
+.image-gallery-slides > div:first-child {
   /* position: relative; */
-  overflow: hidden;
+  /* overflow: hidden; */
   /* max-width: 100%; */
   /* z-index: 1; */
-  transform: translateZ(0) !important;
+  /* transform: translateZ(0) !important; */
 }
-.image-gallery-slides div:first-child > img {
+.image-gallery-slides > div:first-child > img {
   height: auto;
   object-fit: cover;
   transition: transform 4s ease, filter 4s ease;
   filter: sepia(100);
   transform: scale(1);
 }
-.image-gallery-slides div:first-child > img:hover {
+.image-gallery-slides > div:first-child > img:hover {
   filter: sepia(0);
   transform: scale(1.1);
 }
