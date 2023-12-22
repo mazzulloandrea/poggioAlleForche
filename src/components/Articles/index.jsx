@@ -108,6 +108,7 @@ const Articles = ({ lang }) => {
         if (lang === EN) return articlesProdotti[EN];
         return articlesProdotti[IT];
       default:
+        if (lang === EN) return articlesTradizione[EN];
         return articlesTradizione[IT];
     }
   }, [pathname, lang]);
