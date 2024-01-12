@@ -1,32 +1,28 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
-import { galleries, background, playIcon } from '../../assets';
 import ReactPlayer from 'react-player';
-import { PlayerContainer, ImageWrapper, ImageContainer } from './styled';
+import { VIDEO_TAG } from '../../utils';
+import { galleries, background, playIcon } from '../../assets';
+import { PlayerContainer } from './styled';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
-// import '../../../node_modules/video-react/dist/video-react.css'; // video css
 import './style.css';
 
 const Gallery = ({ dimensions, lang }) => {
   const { isBigScreen, isMediumScreen, isSmallScreen, isTablet, isMobile, isPortrait } = dimensions;
   const { pathname, hash } = useLocation();
-  const [loadedGif, setLoadedGif] = useState(false);
   const [playing, setPlaying] = useState(false);
 
   const containerRef = useRef(null);
   const galleryRef = useRef(null);
   const videoRef = useRef(null);
 
-  // need for start animartion for first image gallery
-  const [colored, setColored] = useState(false);
-
   const swipeToVideo = useEffect(() => {
-    if (hash.includes('#video') && galleryRef) {
+    if (hash.includes(VIDEO_TAG) && galleryRef) {
       if (containerRef && containerRef.current) {
         containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
-        document.querySelector('#video').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelector(VIDEO_TAG).scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
       setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
     }
@@ -108,23 +104,6 @@ const Gallery = ({ dimensions, lang }) => {
         : '17vh',
   };
 
-  // const changeGif = useCallback(() => {
-  //   if (window.location.href.includes(pathname) && !loadedGif) {
-  //     setLoadedGif(true);
-  //     const gifElement = document.querySelector('.image-gallery-image');
-  //     gifElement.src = images.gif;
-  //     gifElement.parentElement.classList.add('grow');
-  //   }
-  // }, [pathname, loadedGif]);
-
-  // const loadGif = evt => {
-  //   if (evt.target.src.includes(images.list[0].original)) {
-  //     setTimeout(() => {
-  //       changeGif();
-  //     }, 2500);
-  //   }
-  // };
-
   const enterFullscreen = useCallback(async () => {
     const elemFullscreen = document.documentElement;
     const galleryContainer = document.querySelector('.image-gallery');
@@ -165,17 +144,6 @@ const Gallery = ({ dimensions, lang }) => {
     }
   };
 
-  // if (lang === 'eng') {
-  //   let galleriesName = pathname.substring(1, pathname.length);
-  //   if (!galleries[galleriesName]) galleriesName = 'tradizione';
-
-  //   return (
-  //     <ImageWrapper ref={containerRef}>
-  //       <ImageContainer src={galleries[galleriesName].en} />
-  //     </ImageWrapper>
-  //   );
-  // }
-
   return (
     <div ref={containerRef}>
       <ImageGallery
@@ -186,7 +154,6 @@ const Gallery = ({ dimensions, lang }) => {
         showPlayButton={false}
         items={images}
         ref={galleryRef}
-        // onImageLoad={loadGif}
         renderLeftNav={(onClick, disabled) => (
           <button className="image-gallery-icon image-gallery-left-nav">
             <img

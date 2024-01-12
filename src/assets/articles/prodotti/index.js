@@ -29,6 +29,9 @@ import mobile11_en from './mobile11_en.png';
 // const text1 = `In principio fu Ofelio Cherubini che alla metà del secolo scorso comprò il podere Scarnacuoia 288 nella zona vocata del Brunello di Montalcino. La sua terza figlia Giuliana e il marito Lorenzo Turchi, dopo 40 anni di esperienza di viticoltori per una grande azienda locale decisero, qualche anno fa, di riprendere la terra e le tradizioni familiari per lanciare POGGIO ALLE FORCHE, un brand di Brunello molto speciale.`;
 // const text2 = `In edizione limitata, elaborato con tecniche artigianali e uve raccolte a mano, il marchio prende il nome dall’omonima tenuta a due passi dalla basilica di Sant’Antimo, a Castelnuovo dell’Abate, dove vengono prodotte una parte delle uve. Scarnacuoia 288, a poche centinaia di metri dal Castello di Montalcino, resta il cuore pulsante della produzione che non ha niente di industriale. Le uve pregiate sono coltivate in filari che arrivano fino al giardino della casa sul poggio dove Ofelio vive ancora e non c’è giorno, comprese le feste comandate, che Giuliana e Lorenzo non lavorino alla produzione dei loro vini.`;
 
+const map = 'map';
+const rec = 'recycle';
+
 const articleProdotti = {
   ita: {
     mobile: [
@@ -38,23 +41,25 @@ const articleProdotti = {
       { type: 'img', src: mobile4 },
       { type: 'img', src: mobile5, spaceTop: true },
       { type: 'img', src: mobile6 },
-      { type: 'img', src: mobileMap, spaceTop: true, id: 'map' },
-      { type: 'img', src: mobile10 },
+      { type: 'img', src: mobileMap, spaceTop: true, id: map },
+      { type: 'img', src: mobile10, id: rec },
       { type: 'img', src: mobile11 },
     ],
     tablet: [
       { type: 'img', src: img1, full: true },
       { type: 'img', src: img2, full: true },
       { type: 'img', src: img3, full: true },
-      { type: 'map', src: img5, id: 'map' }, // mappa },
-      { type: 'img', src: img6, full: true, width: 100 },
+      { type: 'map', src: img5, id: map }, // mappa },
+      // { type: 'img', src: img6, full: true, width: 100 },
+      { type: 'map', src: img6, id: rec },
     ],
     desktop: [
       { type: 'img', src: img1, full: true },
       { type: 'img', src: img2, full: true },
       { type: 'img', src: img3, full: true },
-      { type: 'map', src: img5, id: 'map' }, //mappa },
-      { type: 'img', src: img6, full: true, width: 100 },
+      { type: 'map', src: img5, id: map }, //mappa },
+      // { type: 'img', src: img6, full: true, width: 100 },
+      { type: 'map', src: img6, id: rec },
     ],
   },
   eng: {
@@ -65,23 +70,25 @@ const articleProdotti = {
       { type: 'img', src: mobile4_en },
       { type: 'img', src: mobile5, spaceTop: true },
       { type: 'img', src: mobile6_en },
-      { type: 'img', src: mobileMap_en, spaceTop: true, id: 'map' },
-      { type: 'img', src: mobile10_en },
+      { type: 'img', src: mobileMap_en, spaceTop: true, id: map },
+      { type: 'img', src: mobile10_en, id: rec },
       { type: 'img', src: mobile11_en },
     ],
     tablet: [
       { type: 'img', src: img1_en, full: true },
       { type: 'img', src: img2_en, full: true },
       { type: 'img', src: img3_en, full: true },
-      { type: 'map', src: img5_en, id: 'map' }, // mappa },
-      { type: 'img', src: img6_en, full: true, width: 100 },
+      { type: 'map', src: img5_en, id: map }, // mappa },
+      // { type: 'img', src: img6_en, full: true, width: 100 },
+      { type: 'map', src: img6_en, id: rec },
     ],
     desktop: [
       { type: 'img', src: img1_en, full: true },
       { type: 'img', src: img2_en, full: true },
       { type: 'img', src: img3_en, full: true },
-      { type: 'map', src: img5_en, id: 'map' }, //mappa },
-      { type: 'img', src: img6_en, full: true, width: 100 },
+      { type: 'map', src: img5_en, id: map }, //mappa },
+      // { type: 'img', src: img6_en, full: true, width: 100 },
+      { type: 'map', src: img6_en, id: rec },
     ],
   },
 };

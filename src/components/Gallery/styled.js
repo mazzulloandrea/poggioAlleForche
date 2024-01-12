@@ -53,24 +53,3 @@ export const PlayerButton = styled.div`
   right: 0;
   margin: auto;
 `;
-
-export const ImageWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  z-index: 1;
-  transform: translateZ(0) !important;
-`;
-
-export const ImageContainer = styled.img`
-  height: auto;
-  object-fit: cover;
-  transition: transform 4s ease, filter 4s ease;
-  filter: sepia(100);
-  transform: scale(1);
-
-  &:hover {
-    filter: sepia(0);
-    transform: scale(1.1);
-  }
-`;
