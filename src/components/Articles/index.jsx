@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import {} from '../../';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   routes,
@@ -8,6 +9,8 @@ import {
   getScreenDimensions,
   EN,
   IT,
+  MAP_TAG,
+  RECYCLE_TAG,
 } from '../../utils';
 import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
@@ -51,7 +54,7 @@ const Articles = ({ lang }) => {
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
-    if (hash === '#map') {
+    if (hash === MAP_TAG) {
       if (scrolling) return;
       setScrolling(true);
       // window.mp = mapRef.current;
@@ -59,7 +62,21 @@ const Articles = ({ lang }) => {
         if (mapRef && mapRef.current) {
           mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          document.querySelector('#map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.querySelector(MAP_TAG).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 500);
+    }
+    if (hash === RECYCLE_TAG) {
+      if (scrolling) return;
+      setScrolling(true);
+      // window.mp = mapRef.current;
+      setTimeout(() => {
+        if (mapRef && mapRef.current) {
+          mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          document
+            .querySelector(RECYCLE_TAG)
+            .scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 500);
     }

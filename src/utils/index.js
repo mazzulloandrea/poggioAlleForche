@@ -9,6 +9,9 @@ export {
   COOKIE_NAME,
   EN,
   IT,
+  MAP_TAG,
+  VIDEO_TAG,
+  RECYCLE_TAG,
 } from './constants';
 export { default as isScreenInPortrait } from './screenOrientation';
 export { default as getScreenDimensions } from './screenDimensions';
