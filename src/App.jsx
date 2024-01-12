@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { unstable_HistoryRouter as HistoryRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  unstable_HistoryRouter as HistoryRouter,
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import { Cover, Tradizione, Viti, Cantina, Prodotti } from './containers';
 import { history, routes, COOKIE_NAME, getCookie } from './utils';
 
@@ -18,24 +23,45 @@ const App = () => {
       window.location.pathname = '/';
     }
   }
+  if (staticSite) {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<Cover staticSite={staticSite} />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
   return (
-    <HistoryRouter history={history}>
-      {staticSite && (
-        <Routes>
-          <Route path="*" exact element={<Cover staticSite={staticSite} />} />
-        </Routes>
-      )}
-      {!staticSite && (
-        <Routes>
-          <Route path={routes.cover} exact element={<Cover {...lanProps} />} />
-          <Route path={routes.tradizione} exact element={<Tradizione {...lanProps} />} />
-          <Route path={routes.viti} exact element={<Viti {...lanProps} />} />
-          <Route path={routes.cantina} exact element={<Cantina {...lanProps} />} />
-          <Route path={routes.prodotti} exact element={<Prodotti {...lanProps} />} />
-        </Routes>
-      )}
-    </HistoryRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path={routes.tradizione} element={<Tradizione {...lanProps} />} />
+        <Route path={routes.viti} element={<Viti {...lanProps} />} />
+        <Route path={routes.cantina} element={<Cantina {...lanProps} />} />
+        <Route path={routes.prodotti} element={<Prodotti {...lanProps} />} />
+        <Route path={routes.cover} element={<Cover {...lanProps} />} />
+      </Routes>
+    </BrowserRouter>
   );
+
+  // return (
+  //   <HistoryRouter history={history}>
+  //     {staticSite && (
+  //       <Routes>
+  //         <Route path="*" exact element={<Cover staticSite={staticSite} />} />
+  //       </Routes>
+  //     )}
+  //     {!staticSite && (
+  //       <Routes>
+  //         <Route path={routes.cover} exact element={<Cover {...lanProps} />} />
+  //         <Route path={routes.tradizione} exact element={<Tradizione {...lanProps} />} />
+  //         <Route path={routes.viti} exact element={<Viti {...lanProps} />} />
+  //         <Route path={routes.cantina} exact element={<Cantina {...lanProps} />} />
+  //         <Route path={routes.prodotti} exact element={<Prodotti {...lanProps} />} />
+  //       </Routes>
+  //     )}
+  //   </HistoryRouter>
+  // );
 };
 
 export default App;
