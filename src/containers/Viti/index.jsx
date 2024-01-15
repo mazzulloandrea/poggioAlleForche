@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 import ReactGA from 'react-ga4';
 import { Layout } from '..';
 import { Wrapper } from '../commonStyled';
-import { bigScreen, mediumScreen, tabletWidth, mobileWidth, isScreenInPortrait } from '../../utils';
+import {
+  bigScreen,
+  mediumScreen,
+  tabletWidth,
+  mobileWidth,
+  isScreenInPortrait,
+  getScreenDimensions,
+} from '../../utils';
 import { Articles } from '../../components';
 
 const Viti = ({ lang, setLang }) => {
   const [show, setShow] = useState(false);
 
-  const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
-  const isMediumScreen = useMediaQuery({
-    query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
-  });
-  const isSmallScreen = useMediaQuery({
-    query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
-  });
-  const isTablet = useMediaQuery({
-    query: `(min-width: ${mobileWidth}px) and (max-width: ${tabletWidth}px)`,
-  });
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${mobileWidth}px)`,
-  });
+  // const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
+  // const isMediumScreen = useMediaQuery({
+  //   query: `(min-width: ${mediumScreen}px) and (max-width: ${bigScreen}px)`,
+  // });
+  // const isSmallScreen = useMediaQuery({
+  //   query: `(min-width: ${tabletWidth}px) and (max-width: ${mediumScreen}px)`,
+  // });
+  // const isTablet = useMediaQuery({
+  //   query: `(min-width: ${mobileWidth}px) and (max-width: ${tabletWidth}px)`,
+  // });
+  // const isMobile = useMediaQuery({
+  //   query: `(max-width: ${mobileWidth}px)`,
+  // });
 
   // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
@@ -36,11 +43,12 @@ const Viti = ({ lang, setLang }) => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
-    isBigScreen,
-    isMediumScreen,
-    isSmallScreen,
-    isTablet,
-    isMobile,
+    ...getScreenDimensions(),
+    // isBigScreen,
+    // isMediumScreen,
+    // isSmallScreen,
+    // isTablet,
+    // isMobile,
     isPortrait: isScreenInPortrait(),
   });
 
@@ -49,11 +57,12 @@ const Viti = ({ lang, setLang }) => {
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
-        isBigScreen,
-        isMediumScreen,
-        isSmallScreen,
-        isTablet,
-        isMobile,
+        ...getScreenDimensions(),
+        // isBigScreen,
+        // isMediumScreen,
+        // isSmallScreen,
+        // isTablet,
+        // isMobile,
         isPortrait: isScreenInPortrait(),
       });
     };
