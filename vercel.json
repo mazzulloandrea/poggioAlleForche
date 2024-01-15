@@ -1,6 +1,0 @@
-{
-  "routes": [
-    { "src": "/tradizione", "dest": "/tradizione", "status": 200 },
-    { "src": "/viti", "dest": "/viti", "status": 200 }
-  ]
-}
