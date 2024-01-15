@@ -1,19 +1,13 @@
 import React, { useState, lazy, Suspense } from 'react';
-import {
-  // unstable_HistoryRouter as HistoryRouter,
-  // BrowserRouter,
-  Routes,
-  HashRouter,
-  Route,
-} from 'react-router-dom';
-// import { Cover, Tradizione, Viti, Cantina, Prodotti } from './containers';
+import { Routes, HashRouter, Route } from 'react-router-dom';
+import { Cover, Tradizione, Viti, Cantina, Prodotti } from './containers';
 import { history, routes, COOKIE_NAME, getCookie } from './utils';
 
-const Cover = lazy(() => import('./containers/Cover'));
-const Tradizione = lazy(() => import('./containers/Tradizione'));
-const Viti = lazy(() => import('./containers/Viti'));
-const Cantina = lazy(() => import('./containers/Cantina'));
-const Prodotti = lazy(() => import('./containers/Prodotti'));
+// const Cover = lazy(() => import('./containers/Cover'));
+// const Tradizione = lazy(() => import('./containers/Tradizione'));
+// const Viti = lazy(() => import('./containers/Viti'));
+// const Cantina = lazy(() => import('./containers/Cantina'));
+// const Prodotti = lazy(() => import('./containers/Prodotti'));
 
 // NB use to force STATIC site PRE-LIVE
 // const staticSite = false;
@@ -32,17 +26,15 @@ const App = () => {
   }
 
   return (
-    <Suspense fallback={<div></div>}>
-      <HashRouter basename="/">
-        <Routes>
-          <Route path={routes.tradizione} element={<Tradizione {...lanProps} />} />
-          <Route path={routes.viti} element={<Viti {...lanProps} />} />
-          <Route path={routes.cantina} element={<Cantina {...lanProps} />} />
-          <Route path={routes.prodotti} element={<Prodotti {...lanProps} />} />
-          <Route path={routes.cover} element={<Cover {...lanProps} />} />
-        </Routes>
-      </HashRouter>
-    </Suspense>
+    <HashRouter basename="/">
+      <Routes>
+        <Route path={routes.tradizione} element={<Tradizione {...lanProps} />} />
+        <Route path={routes.viti} element={<Viti {...lanProps} />} />
+        <Route path={routes.cantina} element={<Cantina {...lanProps} />} />
+        <Route path={routes.prodotti} element={<Prodotti {...lanProps} />} />
+        <Route path={routes.cover} element={<Cover {...lanProps} />} />
+      </Routes>
+    </HashRouter>
   );
   // div class class class(staticSite) {
   //   return (
@@ -53,12 +45,14 @@ const App = () => {
   // }
   // return (
   //   <Suspense fallback={<div>Loading...</div>}>
-  //     <HashRouter>
+  //     <HashRouter basename="/">
+  //       <Routes>
   //       <Route path={routes.tradizione} element={<Tradizione {...lanProps} />} />
   //       <Route path={routes.viti} element={<Viti {...lanProps} />} />
   //       <Route path={routes.cantina} element={<Cantina {...lanProps} />} />
   //       <Route path={routes.prodotti} element={<Prodotti {...lanProps} />} />
   //       <Route path={routes.cover} element={<Cover {...lanProps} />} />
+  //       </Routes>
   //     </HashRouter>
   //   </Suspense>
   // );
