@@ -95,17 +95,17 @@ const Footer = ({ lang }) => {
   const reloadWorkaround = id => {
     const el = document.querySelector(id);
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (id === VIDEO_TAG) {
-      const hash = location.hash;
-      const hashSplitted = hash.split('_');
-      let newHash = hashSplitted[0].concat('_');
-      if (hashSplitted[1]) {
-        newHash = newHash.concat(Number(hashSplitted[1]) + 1);
-      } else {
-        newHash = newHash.concat('1');
-      }
-      window.location.hash = newHash;
-    }
+    // if (id === VIDEO_TAG) {
+    //   const hash = location.hash;
+    //   const hashSplitted = hash.split('_');
+    //   let newHash = hashSplitted[0].concat('_');
+    //   if (hashSplitted[1]) {
+    //     newHash = newHash.concat(Number(hashSplitted[1]) + 1);
+    //   } else {
+    //     newHash = newHash.concat('1');
+    //   }
+    //   window.location.hash = newHash;
+    // }
   };
 
   const getLink = (
@@ -113,8 +113,8 @@ const Footer = ({ lang }) => {
       <MapLink
         onClick={event => {
           pathname === routes.prodotti
-            ? reloadWorkaround(MAP_TAG)
-            : navigate(`${routes.prodotti}${MAP_TAG}`);
+            ? reloadWorkaround(`#${MAP_TAG}`)
+            : navigate(`${routes.prodotti}/${MAP_TAG}`);
           event.stopPropagation();
         }}
         {...defProps}
@@ -126,8 +126,8 @@ const Footer = ({ lang }) => {
         {...defProps}
         onClick={event => {
           pathname === routes.tradizione
-            ? reloadWorkaround(VIDEO_TAG)
-            : navigate(`${routes.tradizione}${VIDEO_TAG}`);
+            ? reloadWorkaround(`#${VIDEO_TAG}`)
+            : navigate(`${routes.tradizione}/${VIDEO_TAG}`);
           event.stopPropagation();
         }}
       >

@@ -1,7 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { Routes, HashRouter, Route } from 'react-router-dom';
 import { Cover, Tradizione, Viti, Cantina, Prodotti } from './containers';
-import { history, routes, COOKIE_NAME, getCookie } from './utils';
+import { history, routes, COOKIE_NAME, getCookie, MAP_TAG, VIDEO_TAG, RECYCLE_TAG } from './utils';
 
 // const Cover = lazy(() => import('./containers/Cover'));
 // const Tradizione = lazy(() => import('./containers/Tradizione'));
@@ -29,9 +29,16 @@ const App = () => {
     <HashRouter basename="/">
       <Routes>
         <Route path={routes.tradizione} element={<Tradizione {...lanProps} />} />
+        <Route path={`${routes.tradizione}/${VIDEO_TAG}`} element={<Tradizione {...lanProps} />} />
+
         <Route path={routes.viti} element={<Viti {...lanProps} />} />
+
         <Route path={routes.cantina} element={<Cantina {...lanProps} />} />
+
         <Route path={routes.prodotti} element={<Prodotti {...lanProps} />} />
+        <Route path={`${routes.prodotti}/${MAP_TAG}`} element={<Prodotti {...lanProps} />} />
+        <Route path={`${routes.prodotti}/${RECYCLE_TAG}`} element={<Prodotti {...lanProps} />} />
+
         <Route path={routes.cover} element={<Cover {...lanProps} />} />
       </Routes>
     </HashRouter>
