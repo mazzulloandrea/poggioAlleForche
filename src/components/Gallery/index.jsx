@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 import { VIDEO_TAG } from '../../utils';
 import { galleries, background, playIcon } from '../../assets';
 import { PlayerContainer } from './styled';
+import { routes } from '../../utils';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'; // gallery css
 import './style.css';
 
@@ -18,7 +19,7 @@ const Gallery = ({ dimensions, lang }) => {
   const videoRef = useRef(null);
 
   const swipeToVideo = useEffect(() => {
-    if (hash.includes(VIDEO_TAG) && galleryRef) {
+    if (pathname.includes(VIDEO_TAG) && galleryRef) {
       if (containerRef && containerRef.current) {
         containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
@@ -26,13 +27,13 @@ const Gallery = ({ dimensions, lang }) => {
       }
       setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
     }
-  }, [hash, galleryRef]);
+  }, [pathname, galleryRef]);
 
   const renderVideo = useCallback(
     (videoSrc, backVideoImage) => {
       return (
         <>
-          <img id="video" src={background} className="image-gallery-image" />
+          <img id={VIDEO_TAG} src={background} className="image-gallery-image" />
           {videoSrc && (
             <PlayerContainer
               isbigscreen={isBigScreen ? 1 : 0}
@@ -82,12 +83,21 @@ const Gallery = ({ dimensions, lang }) => {
 
   const images = useMemo(() => {
     let galleriesName = pathname.substring(1, pathname.length);
-    if (!galleries[galleriesName]) galleriesName = 'tradizione';
-
+    if (pathname.includes(routes.tradizione)) {
+      galleriesName = 'tradizione';
+    } else if (pathname.includes(routes.viti)) {
+      galleriesName = 'viti';
+    } else if (pathname.includes(routes.cantina)) {
+      galleriesName = 'cantina';
+    } else if (pathname.includes(routes.prodotti)) {
+      galleriesName = 'prodotti';
+    } else {
+      galleriesName = 'tradizione';
+    }
     const list = galleries[galleriesName][lang].map(el => ({ original: el }));
     const videoSrc = galleries[galleriesName].video;
 
-    if (['/', '/tradizione'].includes(pathname)) {
+    if ([routes.cover, routes.tradizione, `${routes.tradizione}/${VIDEO_TAG}`].includes(pathname)) {
       list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
     }
     return list;

@@ -51,31 +51,32 @@ const Articles = ({ lang }) => {
     isportrait: isScreenInPortrait(),
   };
   const mapRef = useRef(null);
+  const recycleRef = useRef(null);
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
-    if (hash === MAP_TAG) {
+    if (pathname.includes(MAP_TAG)) {
       if (scrolling) return;
       setScrolling(true);
-      // window.mp = mapRef.current;
-      setTimeout(() => {
-        if (mapRef && mapRef.current) {
-          mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          document.querySelector(MAP_TAG).scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 500);
-    }
-    if (hash === RECYCLE_TAG) {
-      if (scrolling) return;
-      setScrolling(true);
-      // window.mp = mapRef.current;
       setTimeout(() => {
         if (mapRef && mapRef.current) {
           mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           document
-            .querySelector(RECYCLE_TAG)
+            .querySelector(`#${MAP_TAG}`)
+            .scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 500);
+    }
+    if (pathname.includes(RECYCLE_TAG)) {
+      if (scrolling) return;
+      setScrolling(true);
+      setTimeout(() => {
+        if (recycleRef && recycleRef.current) {
+          recycleRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          document
+            .querySelector(`#${RECYCLE_TAG}`)
             .scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 500);
@@ -85,7 +86,7 @@ const Articles = ({ lang }) => {
   const getHeigth = useCallback(
     type => {
       // prodotti contains only fullwidth images
-      if (['img', 'map'].includes(type)) return 'auto';
+      if (['img', 'map', 'recycle'].includes(type)) return 'auto';
 
       // in portrait tutti i conteniotori dei testi vanno in auto
       if (['txt'].includes(type) && isPortrait) return 'auto';
@@ -111,23 +112,31 @@ const Articles = ({ lang }) => {
   );
 
   const getArticle = useCallback(() => {
-    switch (pathname) {
-      case '/tradizione':
-        if (lang === EN) return articlesTradizione[EN];
-        return articlesTradizione[IT];
-      case '/viti':
-        if (lang === EN) return articlesViti[EN];
-        return articlesViti[IT];
-      case '/cantina':
-        if (lang === EN) return articlesCantine[EN];
-        return articlesCantine[IT];
-      case '/prodotti':
-        if (lang === EN) return articlesProdotti[EN];
-        return articlesProdotti[IT];
-      default:
-        if (lang === EN) return articlesTradizione[EN];
-        return articlesTradizione[IT];
+    if (pathname.includes(routes.tradizione)) {
+      if (lang === EN) {
+        return articlesTradizione[EN];
+      }
+      return articlesTradizione[IT];
+    } else if (pathname.includes(routes.viti)) {
+      if (lang === EN) {
+        return articlesViti[EN];
+      }
+      return articlesViti[IT];
+    } else if (pathname.includes(routes.cantina)) {
+      if (lang === EN) {
+        return articlesCantine[EN];
+      }
+      return articlesCantine[IT];
+    } else if (pathname.includes(routes.prodotti)) {
+      if (lang === EN) {
+        return articlesProdotti[EN];
+      }
+      return articlesProdotti[IT];
     }
+    if (lang === EN) {
+      return articlesTradizione[EN];
+    }
+    return articlesTradizione[IT];
   }, [pathname, lang]);
 
   const getOrderOfData = articleData => {
@@ -155,7 +164,7 @@ const Articles = ({ lang }) => {
         {...defaultProps}
         id={idToUse}
         key={idToUse}
-        fullwidth={type === 'map' ? 1 : 0}
+        fullwidth={['map', 'recycle'].includes(type) ? 1 : 0}
         full={full}
       >
         {type === 'txt' && (
@@ -192,7 +201,7 @@ const Articles = ({ lang }) => {
         )}
         {type === 'img' && (
           <Img
-            id={`${idToUse}_img`}
+            id={`${idToUse}`}
             key={`${idToUse}_img`}
             src={src}
             {...defaultProps}
@@ -203,8 +212,18 @@ const Articles = ({ lang }) => {
         {type === 'map' && (
           <ImgMap
             ref={mapRef}
-            id={`${idToUse}_map`}
+            id={`${idToUse}`}
             key={`${idToUse}_map`}
+            src={src}
+            {...defaultProps}
+            className={isBigScreen && 'bigScreenMap'}
+          />
+        )}
+        {type === 'recycle' && (
+          <ImgMap
+            ref={recycleRef}
+            id={`${idToUse}`}
+            key={`${idToUse}_recycle`}
             src={src}
             {...defaultProps}
             className={isBigScreen && 'bigScreenMap'}

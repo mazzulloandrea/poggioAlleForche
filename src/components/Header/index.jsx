@@ -71,63 +71,38 @@ const Header = ({ lang, setLang }) => {
     return navigate(routes.tradizione);
   };
 
-  const getSrc = (menuKey, isMobile) => {
+  const getSrc = menuKey => {
     let menuVoice = '';
     switch (menuKey) {
       case routes.tradizione:
         if (lang === 'eng') {
           menuVoice =
-            pathname === menuKey || pathname === '/' ? tradizioneSelected_en : tradizione_en;
+            pathname.includes(menuKey) || pathname === '/' ? tradizioneSelected_en : tradizione_en;
         } else {
-          menuVoice = pathname === menuKey || pathname === '/' ? tradizioneSelected : tradizione;
+          menuVoice =
+            pathname.includes(menuKey) || pathname === '/' ? tradizioneSelected : tradizione;
         }
-        // ? isMobile
-        //   ? menuMobileVoice.tradizioneSelected
-        //   : tradizioneSelected
-        // : isMobile
-        // ? menuMobileVoice.tradizione
-        // : tradizione;
         break;
       case routes.cantina:
         if (lang === 'eng') {
-          menuVoice = pathname === menuKey ? cantinaSelected_en : cantina_en;
+          menuVoice = pathname.includes(menuKey) ? cantinaSelected_en : cantina_en;
         } else {
-          menuVoice = pathname === menuKey ? cantinaSelected : cantina;
+          menuVoice = pathname.includes(menuKey) ? cantinaSelected : cantina;
         }
-        // ? isMobile
-        //   ? menuMobileVoice.cantinaSelected
-        //   : cantinaSelected
-        // : isMobile
-        // ? menuMobileVoice.cantina
-        // : cantina;
         break;
       case routes.viti:
         if (lang === 'eng') {
-          menuVoice = pathname === menuKey ? vitiSelected_en : viti_en;
+          menuVoice = pathname.includes(menuKey) ? vitiSelected_en : viti_en;
         } else {
-          menuVoice = pathname === menuKey ? vitiSelected : viti;
+          menuVoice = pathname.includes(menuKey) ? vitiSelected : viti;
         }
-
-        // ? isMobile
-        //   ? menuMobileVoice.vitiSelected
-        //   : vitiSelected
-        // : isMobile
-        // ? menuMobileVoice.viti
-        // : viti;
         break;
       case routes.prodotti:
         if (lang === 'eng') {
-          menuVoice = pathname === menuKey ? prodottiSelected_en : prodotti_en;
+          menuVoice = pathname.includes(menuKey) ? prodottiSelected_en : prodotti_en;
         } else {
-          menuVoice = pathname === menuKey ? prodottiSelected : prodotti;
+          menuVoice = pathname.includes(menuKey) ? prodottiSelected : prodotti;
         }
-
-        // ? isMobile
-        //   ? menuMobileVoice.prodottiSelected
-        //   : prodottiSelected
-        // : isMobile
-        // ? menuMobileVoice.prodotti
-        // : prodotti;
         break;
     }
 
@@ -188,7 +163,7 @@ const Header = ({ lang, setLang }) => {
           >
             <MenuText
               key={`span_menu_label_${menuKey}`}
-              selected={pathname === `/${menuKey}` ? 1 : 0}
+              selected={pathname.includes(`/${menuKey}`) ? 1 : 0}
             >
               {getRouteLabel({ route: menuKey, lang })}
             </MenuText>

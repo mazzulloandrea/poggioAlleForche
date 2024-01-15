@@ -9,6 +9,6 @@ export const COOKIE_NAME = 'cookie_poggio';
 export const EN = 'eng';
 export const IT = 'ita';
 
-export const MAP_TAG = '#map';
-export const VIDEO_TAG = '#video';
-export const RECYCLE_TAG = '#recycle';
+export const MAP_TAG = 'map_tag';
+export const VIDEO_TAG = 'video_tag';
+export const RECYCLE_TAG = 'recycle_tag';
