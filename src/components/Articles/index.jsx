@@ -59,26 +59,31 @@ const Articles = ({ lang }) => {
       if (scrolling) return;
       setScrolling(true);
       setTimeout(() => {
-        if (mapRef && mapRef.current) {
-          mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          document
-            .querySelector(`#${MAP_TAG}`)
-            .scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const top = document.querySelector(`#${MAP_TAG}`).getBoundingClientRect().top;
+        document.documentElement.scroll(0, top);
+
+        // if (mapRef && mapRef.current) {
+        //   mapRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // } else {
+        //   document
+        //     .querySelector(`#${MAP_TAG}`)
+        //     .scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // }
       }, 500);
     }
     if (pathname.includes(RECYCLE_TAG)) {
       if (scrolling) return;
       setScrolling(true);
       setTimeout(() => {
-        if (recycleRef && recycleRef.current) {
-          recycleRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          document
-            .querySelector(`#${RECYCLE_TAG}`)
-            .scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const top = document.querySelector(`#${RECYCLE_TAG}`).getBoundingClientRect().top;
+        document.documentElement.scroll(0, top);
+        // if (recycleRef && recycleRef.current) {
+        //   recycleRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // } else {
+        //   document
+        //     .querySelector(`#${RECYCLE_TAG}`)
+        //     .scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // }
       }, 500);
     }
   }, [scrolling]);
