@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import {} from '../../';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import {} from '../../';
+import { useLocation } from 'react-router-dom';
 import {
   routes,
-  NO_MENU_ROUTE_KEY,
   tabletWidth,
   isScreenInPortrait,
   getScreenDimensions,
@@ -11,6 +10,7 @@ import {
   IT,
   MAP_TAG,
   RECYCLE_TAG,
+  VISITED_CELLAR,
 } from '../../utils';
 import { articlesTradizione, articlesViti, articlesCantine, articlesProdotti } from '../../assets';
 import {
@@ -24,6 +24,7 @@ import {
   Img,
   ImgBkg,
   ImgMap,
+  VisitedArticle,
 } from './styled';
 import './style.css';
 
@@ -145,6 +146,15 @@ const Articles = ({ lang }) => {
     return articleData.desktop;
   };
 
+  const getVisitedText = subTitle => {
+    return (
+      <VisitedArticle>
+        <div>{subTitle}</div>
+        <a href="mailto:info@poggioalleforche.it">info@poggioalleforche.it</a>
+      </VisitedArticle>
+    );
+  };
+
   const getComponent = (el, elementId) => {
     const { type, src, title, subTitle, full, spaceTop, id } = el;
     const idToUse = id || elementId;
@@ -199,6 +209,7 @@ const Articles = ({ lang }) => {
             spaceTop={spaceTop}
           />
         )}
+        {id === VISITED_CELLAR && getVisitedText(subTitle)}
         {type === 'map' && (
           <ImgMap
             ref={mapRef}

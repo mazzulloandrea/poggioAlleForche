@@ -12,6 +12,9 @@ export {
   MAP_TAG,
   VIDEO_TAG,
   RECYCLE_TAG,
+  VISITED_CELLAR,
+  VISITED_CELLAR_MSG,
+  VISITED_CELLAR_MSG_EN,
 } from './constants';
 export { default as isScreenInPortrait } from './screenOrientation';
 export { default as getScreenDimensions } from './screenDimensions';

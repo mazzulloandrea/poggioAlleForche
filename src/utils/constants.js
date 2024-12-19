@@ -12,3 +12,6 @@ export const IT = 'ita';
 export const MAP_TAG = 'map_tag';
 export const VIDEO_TAG = 'video_tag';
 export const RECYCLE_TAG = 'recycle_tag';
+export const VISITED_CELLAR = 'visited_cellar_id';
+export const VISITED_CELLAR_MSG = 'Volentieri vi accogliamo previa prenotazione alla mail:';
+export const VISITED_CELLAR_MSG_EN = 'We are happy to welcome you upon reservation by email:';

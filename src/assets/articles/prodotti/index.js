@@ -1,13 +1,17 @@
 import img1 from './foto1.png';
 import img2 from './foto2.png';
 import img3 from './foto3.png';
-import img5 from './foto5.png';
-import img6 from './foto6.png';
+import img4 from './foto5.png';
+import img5 from './visita_cantina.png';
+// import img6 from './foto6.png';
+import img6 from './smaltimento.png';
 import img1_en from './foto1_en.png';
 import img2_en from './foto2_en.png';
 import img3_en from './foto3_en.png';
-import img5_en from './foto5_en.png';
-import img6_en from './foto6_en.png';
+import img4_en from './foto5_en.png';
+import img5_en from './visita_cantina_en.png';
+// import img6_en from './foto6_en.png';
+import img6_en from './smaltimento_en.png';
 
 import mobile1 from './mobile1.png';
 import mobile2 from './mobile2.png';
@@ -26,7 +30,13 @@ import mobileMap_en from './mobile9_en.png';
 import mobile10_en from './mobile10_en.png';
 import mobile11_en from './mobile11_en.png';
 
-import { MAP_TAG, RECYCLE_TAG } from '../../../utils';
+import {
+  MAP_TAG,
+  RECYCLE_TAG,
+  VISITED_CELLAR,
+  VISITED_CELLAR_MSG,
+  VISITED_CELLAR_MSG_EN,
+} from '../../../utils';
 
 const articleProdotti = {
   ita: {
@@ -45,14 +55,16 @@ const articleProdotti = {
       { type: 'img', src: img1, full: true },
       { type: 'img', src: img2, full: true },
       { type: 'img', src: img3, full: true },
-      { type: 'map', src: img5, id: MAP_TAG }, // mappa },
+      { type: 'map', src: img4, id: MAP_TAG }, // mappa },
+      { type: 'img', src: img5, full: true, id: VISITED_CELLAR, subTitle: VISITED_CELLAR_MSG },
       { type: 'recycle', src: img6, id: RECYCLE_TAG },
     ],
     desktop: [
       { type: 'img', src: img1, full: true },
       { type: 'img', src: img2, full: true },
       { type: 'img', src: img3, full: true },
-      { type: 'map', src: img5, id: MAP_TAG }, //mappa },
+      { type: 'map', src: img4, id: MAP_TAG }, //mappa },
+      { type: 'img', src: img5, full: true, id: VISITED_CELLAR, subTitle: VISITED_CELLAR_MSG },
       { type: 'recycle', src: img6, id: RECYCLE_TAG },
     ],
   },
@@ -72,7 +84,14 @@ const articleProdotti = {
       { type: 'img', src: img1_en, full: true },
       { type: 'img', src: img2_en, full: true },
       { type: 'img', src: img3_en, full: true },
-      { type: 'map', src: img5_en, id: MAP_TAG }, // mappa },
+      { type: 'map', src: img4_en, id: MAP_TAG }, // mappa },
+      {
+        type: 'img',
+        src: img5_en,
+        full: true,
+        id: VISITED_CELLAR,
+        subTitle: VISITED_CELLAR_MSG_EN,
+      },
       // { type: 'img', src: img6_en, full: true, width: 100 },
       { type: 'recycle', src: img6_en, id: RECYCLE_TAG },
     ],
@@ -80,7 +99,14 @@ const articleProdotti = {
       { type: 'img', src: img1_en, full: true },
       { type: 'img', src: img2_en, full: true },
       { type: 'img', src: img3_en, full: true },
-      { type: 'map', src: img5_en, id: MAP_TAG }, //mappa },
+      { type: 'map', src: img4_en, id: MAP_TAG }, //mappa },
+      {
+        type: 'img',
+        src: img5_en,
+        full: true,
+        id: VISITED_CELLAR,
+        subTitle: VISITED_CELLAR_MSG_EN,
+      },
       // { type: 'img', src: img6_en, full: true, width: 100 },
       { type: 'recycle', src: img6_en, id: RECYCLE_TAG },
     ],

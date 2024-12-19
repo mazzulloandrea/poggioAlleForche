@@ -11,6 +11,7 @@ export const Article = styled.article`
   float: left;
   width: 50%;
   height: ${props => props.height || '60vh'};
+  position: relative;
   ${props =>
     props.ismobile || props.ismini
       ? css`
@@ -125,6 +126,9 @@ export const Text = styled.p`
 `;
 
 export const Img = styled.img`
+  &#visited_cellar_id {
+    position: relative;
+  }
   ${props =>
     props.spaceTop
       ? css`
@@ -174,4 +178,14 @@ export const ImgMap = styled.img`
   width: 100%;
   height: auto;
   margin: 5vh 0;
+`;
+
+export const VisitedArticle = styled.div`
+  position: absolute;
+  color: white;
+  width: 50%;
+  left: 50%;
+  text-align: center;
+  font-size: 1vw;
+  top: 10vw;
 `;
