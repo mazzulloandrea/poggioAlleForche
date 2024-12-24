@@ -3,15 +3,17 @@ import tradizione2 from './tradizione/foto2.png';
 import tradizione3 from './tradizione/family.png';
 import tradizione4 from './tradizione/foto3.png';
 import tradizione5 from './tradizione/foto4.png';
-import tradizione6 from './tradizione/raccolta.png';
-import tradizione7 from './tradizione/olive.png';
-import tradizione8 from './tradizione/foto5.png';
+import tradizione6 from './tradizione/foto5.png';
+import tradizione7 from './tradizione/raccolta.png';
+import tradizione8 from './tradizione/olive.png';
 import tradizione9 from './tradizione/foto6.jpg';
 import tradizione10 from './tradizione/foto7.png';
 // import tradizione1Colored from './tradizione/foto1_colored.png';
 // import tradizioneGif1 from './tradizione/tradizione.gif';
 // import tradizioneVideo from '../video/tradizione.MP4';
-const tradizioneVideo = 'https://youtu.be/6_tNfQl8DOc';
+// const tradizioneVideo = 'https://youtu.be/6_tNfQl8DOc';
+const tradizioneVideo = 'https://youtu.be/TTreLz6hTfg';
+
 import tradizione1_en from './tradizione/foto1_en.png';
 
 import viti1 from './viti/foto1.png';
