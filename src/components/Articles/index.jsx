@@ -26,6 +26,7 @@ import {
   ImgMap,
   VisitedArticle,
   ImgDescription,
+  Multiline,
 } from './styled';
 import './style.css';
 
@@ -219,7 +220,9 @@ const Articles = ({ lang }) => {
             ></Img>
             {imgDescription && (
               <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef}>
-                {imgDescription}
+                {imgDescription.split('\n').map((txt, key) => (
+                  <Multiline key={key}>{txt}</Multiline>
+                ))}
               </ImgDescription>
             )}
           </>

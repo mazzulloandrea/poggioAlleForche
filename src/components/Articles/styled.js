@@ -199,3 +199,7 @@ export const ImgDescription = styled.div`
   text-align: center;
   overflow-y: auto;
 `;
+
+export const Multiline = styled.div`
+  min-height: 10px;
+`;
