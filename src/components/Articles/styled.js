@@ -126,6 +126,7 @@ export const Text = styled.p`
 `;
 
 export const Img = styled.img`
+  position: relative;
   &#visited_cellar_id {
     position: relative;
   }
@@ -188,4 +189,13 @@ export const VisitedArticle = styled.div`
   text-align: center;
   font-size: 1vw;
   top: 10vw;
+`;
+
+export const ImgDescription = styled.div`
+  position: absolute;
+  top: 150px;
+  height: calc(100% - 120px);
+  padding: 0 50px;
+  text-align: center;
+  overflow-y: auto;
 `;

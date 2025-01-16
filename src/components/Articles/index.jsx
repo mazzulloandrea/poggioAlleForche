@@ -25,6 +25,7 @@ import {
   ImgBkg,
   ImgMap,
   VisitedArticle,
+  ImgDescription,
 } from './styled';
 import './style.css';
 
@@ -54,6 +55,13 @@ const Articles = ({ lang }) => {
   const mapRef = useRef(null);
   const recycleRef = useRef(null);
   const [scrolling, setScrolling] = useState(false);
+  const oilRef = useRef(null);
+
+  useEffect(() => {
+    if (!oilRef.current) return;
+    window.el = oilRef.current;
+    console.log(oilRef.current);
+  }, [oilRef.current]);
 
   useEffect(() => {
     if (pathname.includes(MAP_TAG)) {
@@ -156,7 +164,7 @@ const Articles = ({ lang }) => {
   };
 
   const getComponent = (el, elementId) => {
-    const { type, src, title, subTitle, full, spaceTop, id } = el;
+    const { type, src, title, subTitle, full, spaceTop, id, imgDescription } = el;
     const idToUse = id || elementId;
     defaultProps.height = getHeigth(type);
     return (
@@ -200,14 +208,21 @@ const Articles = ({ lang }) => {
           />
         )}
         {type === 'img' && (
-          <Img
-            id={`${idToUse}`}
-            key={`${idToUse}_img`}
-            src={src}
-            {...defaultProps}
-            full={full}
-            spaceTop={spaceTop}
-          />
+          <>
+            <Img
+              id={`${idToUse}`}
+              key={`${idToUse}_img`}
+              src={src}
+              {...defaultProps}
+              full={full}
+              spaceTop={spaceTop}
+            ></Img>
+            {imgDescription && (
+              <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef}>
+                {imgDescription}
+              </ImgDescription>
+            )}
+          </>
         )}
         {id === VISITED_CELLAR && getVisitedText(subTitle)}
         {type === 'map' && (
