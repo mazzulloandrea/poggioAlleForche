@@ -193,11 +193,52 @@ export const VisitedArticle = styled.div`
 
 export const ImgDescription = styled.div`
   position: absolute;
-  top: 150px;
-  height: calc(100% - 120px);
   padding: 0 50px;
   text-align: center;
   overflow-y: auto;
+  // mobile
+  top: 130px;
+  height: calc(100% - 130px);
+
+  @media screen and (orientation: landscape) {
+    top: 18vw;
+    height: calc(100% - 18vw);
+  }
+
+  // // tablet
+  // @media screen and (min-width: 800px) {
+  //   top: 160px;
+  //   height: calc(100% - 160px);
+  // }
+  // // Desktop 1000
+  // @media screen and (min-width: 1000px) {
+  //   top: 195px;
+  //   height: calc(100% - 195px);
+  // }
+  // // Desktop 1200
+  // @media screen and (min-width: 1200px) {
+  //   top: 230px;
+  //   height: calc(100% - 230px);
+  // }
+  // // Desktop 1400
+  // @media screen and (min-width: 1400px) {
+  //   top: 260px;
+  //   height: calc(100% - 260px);
+  // }
+  // @media screen and (max-width: 800px) {
+  //   top: 155px;
+  //   height: calc(100% - 155px);
+  // }
+  // @media screen and (max-width: 600px) {
+  //   top: 155px;
+  //   height: calc(100% - 155px);
+  // }
+  ${props =>
+    props.text === 'right'
+      ? css`
+          left: 50%;
+        `
+      : css``}
 `;
 
 export const Multiline = styled.div`

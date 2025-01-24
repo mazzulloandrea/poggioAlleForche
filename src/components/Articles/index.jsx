@@ -165,7 +165,7 @@ const Articles = ({ lang }) => {
   };
 
   const getComponent = (el, elementId) => {
-    const { type, src, title, subTitle, full, spaceTop, id, imgDescription } = el;
+    const { type, src, title, subTitle, full, spaceTop, id, imgDescription, text } = el;
     const idToUse = id || elementId;
     defaultProps.height = getHeigth(type);
     return (
@@ -219,7 +219,7 @@ const Articles = ({ lang }) => {
               spaceTop={spaceTop}
             ></Img>
             {imgDescription && (
-              <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef}>
+              <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef} text={text}>
                 {imgDescription.split('\n').map((txt, key) => (
                   <Multiline key={key}>{txt}</Multiline>
                 ))}
