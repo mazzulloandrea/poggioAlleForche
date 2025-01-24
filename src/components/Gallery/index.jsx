@@ -97,8 +97,20 @@ const Gallery = ({ dimensions, lang }) => {
     const list = galleries[galleriesName][lang].map(el => ({ original: el }));
     const videoSrc = galleries[galleriesName].video;
 
-    if ([routes.cover, routes.tradizione, `${routes.tradizione}/${VIDEO_TAG}`].includes(pathname)) {
-      list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
+    if (
+      [
+        routes.cover,
+        routes.tradizione,
+        `${routes.tradizione}/${VIDEO_TAG}`,
+        routes.prodotti,
+      ].includes(pathname)
+    ) {
+      if (galleriesName === 'tradizione') {
+        list[1] = { original: list[1], renderItem: () => renderVideo(videoSrc, list[1]) };
+      }
+      if (galleriesName === 'prodotti') {
+        list[4] = { original: list[4], renderItem: () => renderVideo(videoSrc, list[4]) };
+      }
     }
     return list;
   }, [pathname, lang]);
