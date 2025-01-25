@@ -192,6 +192,7 @@ export const VisitedArticle = styled.div`
 `;
 
 export const ImgDescription = styled.div`
+  font-family: 'Times new Roman';
   position: absolute;
   padding: 0 50px;
   text-align: center;
