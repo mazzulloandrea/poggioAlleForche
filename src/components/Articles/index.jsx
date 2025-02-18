@@ -167,7 +167,6 @@ const Articles = ({ lang }) => {
 
   const getComponent = (el, elementId) => {
     const { type, src, title, subTitle, full, spaceTop, id, imgDescription, text, settings } = el;
-    console.log(el.settings);
     const idToUse = id || elementId;
     defaultProps.height = getHeigth(type);
     return (
