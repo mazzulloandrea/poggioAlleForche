@@ -61,6 +61,7 @@ export const YearButton = styled.img`
   width: 5rem;
   height: auto;
   margin-right: 5%;
+  cursor: pointer;
   ${props =>
     props.ismobile || props.ismini
       ? css`
