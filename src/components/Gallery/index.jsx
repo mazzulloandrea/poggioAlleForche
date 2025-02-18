@@ -18,16 +18,16 @@ const Gallery = ({ dimensions, lang }) => {
   const galleryRef = useRef(null);
   const videoRef = useRef(null);
 
-  const swipeToVideo = useEffect(() => {
-    if (pathname.includes(VIDEO_TAG) && galleryRef) {
-      if (containerRef && containerRef.current) {
-        containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        document.querySelector(VIDEO_TAG).scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
-    }
-  }, [pathname, galleryRef]);
+  // const swipeToVideo = useEffect(() => {
+  //   if (pathname.includes(VIDEO_TAG) && galleryRef) {
+  //     if (containerRef && containerRef.current) {
+  //       containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //     } else {
+  //       document.querySelector(VIDEO_TAG).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //     }
+  //     setTimeout(() => galleryRef.current.slideToIndex(1), 1000);
+  //   }
+  // }, [pathname, galleryRef]);
 
   const renderVideo = useCallback(
     (videoSrc, backVideoImage) => {
@@ -112,6 +112,7 @@ const Gallery = ({ dimensions, lang }) => {
         list[4] = { original: list[4], renderItem: () => renderVideo(videoSrc, list[4]) };
       }
     }
+    // console.log(list);
     return list;
   }, [pathname, lang]);
 

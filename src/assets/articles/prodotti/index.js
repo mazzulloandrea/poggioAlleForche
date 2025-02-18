@@ -1,12 +1,18 @@
-import img1 from './foto1.png';
-import img2 from './foto2.png';
-import img3 from './foto3.png';
+import scarnacuoia from './scarnacuoia.png';
+import scarnacuoia_2020 from './scarnacuoia_2020.png';
+import brunello from './brunello.png';
+import brunello_2020 from './brunello_2020.png';
+import rosso from './rosso.png';
+import rosso_2023 from './rosso_2023.png';
 import img4 from './foto5.png';
 import img5 from './visita_cantina.png';
 import img6 from './smaltimento.png';
-import img1_en from './foto1_en.png';
-import img2_en from './foto2_en.png';
-import img3_en from './foto3_en.png';
+import scarnacuoia_en from './scarnacuoia_en.png';
+import scarnacuoia_2020_en from './scarnacuoia_2020_en.png';
+import brunello_en from './brunello_en.png';
+import brunello_2020_en from './brunello_2020_en.png';
+import rosso_en from './rosso_en.png';
+import rosso_2023_en from './rosso_2023_en.png';
 import img4_en from './foto5_en.png';
 import img5_en from './visita_cantina_en.png';
 import img6_en from './smaltimento_en.png';
@@ -31,12 +37,25 @@ import mobile_olio from './mobile_olio.png';
 import olio from './olio.png';
 
 import {
+  y2019,
+  y2019_active,
+  y2020,
+  y2020_active,
+  y2022,
+  y2022_active,
+  y2023,
+  y2023_active,
+} from './yearsButton';
+
+import {
   MAP_TAG,
   RECYCLE_TAG,
   VISITED_CELLAR,
   VISITED_CELLAR_MSG,
   VISITED_CELLAR_MSG_EN,
 } from '../../../utils';
+
+export { y2019, y2019_active, y2020, y2020_active, y2022, y2022_active, y2023, y2023_active };
 
 const olioIta = `Con la stessa cura con cui lavoriamo le nostre viti coltiviamo nei pressi della sede aziendale, a circa 400 mt slm, 500 piante di olivo delle varietà moraiolo, leccino, frantoio per ottenere un pregiato olio extra vergine d’oliva.
 \n\n
@@ -80,9 +99,54 @@ const articleProdotti = {
       { type: 'img', src: mobile11 },
     ],
     tablet: [
-      { type: 'img', src: img1, full: true },
-      { type: 'img', src: img2, full: true },
-      { type: 'img', src: img3, full: true },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: scarnacuoia_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: brunello },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: brunello_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2022',
+          years: [
+            { value: '2022', buttonSrc: y2022, buttonSrcActive: y2022_active, src: rosso },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: rosso_2023,
+            },
+          ],
+        },
+      },
       {
         type: 'img',
         src: olio,
@@ -96,9 +160,55 @@ const articleProdotti = {
       { type: 'recycle', src: img6, id: RECYCLE_TAG },
     ],
     desktop: [
-      { type: 'img', src: img1, full: true },
-      { type: 'img', src: img2, full: true },
-      { type: 'img', src: img3, full: true },
+      {
+        type: 'img',
+        src: scarnacuoia,
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: scarnacuoia_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: scarnacuoia_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2022',
+          years: [
+            { value: '2022', buttonSrc: y2022, buttonSrcActive: y2022_active, src: rosso },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: rosso_2023,
+            },
+          ],
+        },
+      },
       {
         type: 'img',
         src: olio,
@@ -131,9 +241,56 @@ const articleProdotti = {
       { type: 'img', src: mobile11_en },
     ],
     tablet: [
-      { type: 'img', src: img1_en, full: true },
-      { type: 'img', src: img2_en, full: true },
-      { type: 'img', src: img3_en, full: true },
+      {
+        type: 'img',
+        // src: scarnacuoia_en,
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia_en },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: scarnacuoia_2020_en,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: brunello_en },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: brunello_2020_en,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        // src: rosso_en,
+        full: true,
+        settings: {
+          defaultYearSelected: '2022',
+          years: [
+            { value: '2022', buttonSrc: y2022, buttonSrcActive: y2022_active, src: rosso_en },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: rosso_2023_en,
+            },
+          ],
+        },
+      },
       {
         type: 'img',
         src: olio,
@@ -153,9 +310,57 @@ const articleProdotti = {
       { type: 'recycle', src: img6_en, id: RECYCLE_TAG },
     ],
     desktop: [
-      { type: 'img', src: img1_en, full: true },
-      { type: 'img', src: img2_en, full: true },
-      { type: 'img', src: img3_en, full: true },
+      {
+        type: 'img',
+        // src: scarnacuoia_en,
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia_en },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: scarnacuoia_2020_en,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        // src: brunello_en,
+        full: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: brunello_en },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: brunello_2020_en,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        // src: rosso_en,
+        full: true,
+        settings: {
+          defaultYearSelected: '2022',
+          years: [
+            { value: '2022', buttonSrc: y2022, buttonSrcActive: y2022_active, src: rosso_en },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: rosso_2023_en,
+            },
+          ],
+        },
+      },
       {
         type: 'img',
         src: olio,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-// import {} from '../../';
+import Product from '../Product';
 import { useLocation } from 'react-router-dom';
 import {
   routes,
@@ -27,6 +27,8 @@ import {
   VisitedArticle,
   ImgDescription,
   Multiline,
+  YearsButtons,
+  YearButton,
 } from './styled';
 import './style.css';
 
@@ -61,7 +63,6 @@ const Articles = ({ lang }) => {
   useEffect(() => {
     if (!oilRef.current) return;
     window.el = oilRef.current;
-    console.log(oilRef.current);
   }, [oilRef.current]);
 
   useEffect(() => {
@@ -165,7 +166,8 @@ const Articles = ({ lang }) => {
   };
 
   const getComponent = (el, elementId) => {
-    const { type, src, title, subTitle, full, spaceTop, id, imgDescription, text } = el;
+    const { type, src, title, subTitle, full, spaceTop, id, imgDescription, text, settings } = el;
+    console.log(el.settings);
     const idToUse = id || elementId;
     defaultProps.height = getHeigth(type);
     return (
@@ -210,21 +212,38 @@ const Articles = ({ lang }) => {
         )}
         {type === 'img' && (
           <>
-            <Img
+            <Product
+              idToUse={`${idToUse}`}
+              key={`${idToUse}_img`}
+              src={src}
+              full={full}
+              spaceTop={spaceTop}
+              settings={settings}
+              imgDescription={imgDescription}
+              {...defaultProps}
+              oilRef={oilRef}
+              text={text}
+            />
+            {/* <Img
               id={`${idToUse}`}
               key={`${idToUse}_img`}
               src={src}
               {...defaultProps}
               full={full}
               spaceTop={spaceTop}
-            ></Img>
-            {imgDescription && (
+            /> */}
+            {/* {settings?.years && (
+              <YearsButtons>
+                <YearButton />
+              </YearsButtons>
+            )} */}
+            {/* {imgDescription && (
               <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef} text={text}>
                 {imgDescription.split('\n').map((txt, key) => (
                   <Multiline key={key}>{txt}</Multiline>
                 ))}
               </ImgDescription>
-            )}
+            )} */}
           </>
         )}
         {id === VISITED_CELLAR && getVisitedText(subTitle)}

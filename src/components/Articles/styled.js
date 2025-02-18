@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { y2019, y2019_active, y2020, y2020_active } from '../../assets/articles/prodotti';
+
 export const Wrapper = styled.section`
   margin: 5% 0;
   display: flex;
@@ -244,4 +246,17 @@ export const ImgDescription = styled.div`
 
 export const Multiline = styled.div`
   min-height: 10px;
+`;
+
+export const YearsButtons = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  // width: 300px;
+  // height: 50px;
+  // background: red;
+`;
+
+export const YearButton = styled.img`
+  src: ${y2019};
 `;
