@@ -8,7 +8,7 @@ import img4 from './foto5.png';
 import img5 from './visita_cantina.png';
 import img6 from './smaltimento.png';
 import scarnacuoia_en from './scarnacuoia_en.png';
-import scarnacuoia_2020_en from './scarnacuoia_2020_en.png';
+import scarnacuoia_2020_en from './scarnacuoia_2020_eng.png';
 import brunello_en from './brunello_en.png';
 import brunello_2020_en from './brunello_2020_en.png';
 import rosso_en from './rosso_en.png';
