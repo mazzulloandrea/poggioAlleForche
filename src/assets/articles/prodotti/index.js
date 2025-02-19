@@ -183,12 +183,12 @@ const articleProdotti = {
         settings: {
           defaultYearSelected: '2019',
           years: [
-            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: scarnacuoia },
+            { value: '2019', buttonSrc: y2019, buttonSrcActive: y2019_active, src: brunello },
             {
               value: '2020',
               buttonSrc: y2020,
               buttonSrcActive: y2020_active,
-              src: scarnacuoia_2020,
+              src: brunello_2020,
             },
           ],
         },
@@ -243,7 +243,6 @@ const articleProdotti = {
     tablet: [
       {
         type: 'img',
-        // src: scarnacuoia_en,
         full: true,
         settings: {
           defaultYearSelected: '2019',
@@ -276,7 +275,6 @@ const articleProdotti = {
       },
       {
         type: 'img',
-        // src: rosso_en,
         full: true,
         settings: {
           defaultYearSelected: '2022',
