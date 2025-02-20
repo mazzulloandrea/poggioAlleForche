@@ -14,6 +14,12 @@ export const Img = styled.img`
         `
       : css``}
   ${props =>
+    props.spaceTop && props.isportrait && (props.ismini || props.ismobile)
+      ? css`
+          padding-top: 50px;
+        `
+      : css``}
+  ${props =>
     props.ismobile
       ? props.isportrait
         ? css`
@@ -54,6 +60,18 @@ export const YearsButtons = styled.div`
   top: 0;
   left: 51%;
   display: flex;
+  ${props =>
+    props.ismobile || props.ismini
+      ? props.isportrait
+        ? css`
+            left: 8px;
+            top: 51%;
+          `
+        : css`
+            left: 51%;
+            top: 0;
+          `
+      : css``}
 `;
 
 export const YearButton = styled.img`

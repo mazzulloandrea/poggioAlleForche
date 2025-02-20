@@ -210,40 +210,18 @@ const Articles = ({ lang }) => {
           />
         )}
         {type === 'img' && (
-          <>
-            <Product
-              idToUse={`${idToUse}`}
-              key={`${idToUse}_img`}
-              src={src}
-              full={full}
-              spaceTop={spaceTop}
-              settings={settings}
-              imgDescription={imgDescription}
-              {...defaultProps}
-              oilRef={oilRef}
-              text={text}
-            />
-            {/* <Img
-              id={`${idToUse}`}
-              key={`${idToUse}_img`}
-              src={src}
-              {...defaultProps}
-              full={full}
-              spaceTop={spaceTop}
-            /> */}
-            {/* {settings?.years && (
-              <YearsButtons>
-                <YearButton />
-              </YearsButtons>
-            )} */}
-            {/* {imgDescription && (
-              <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef} text={text}>
-                {imgDescription.split('\n').map((txt, key) => (
-                  <Multiline key={key}>{txt}</Multiline>
-                ))}
-              </ImgDescription>
-            )} */}
-          </>
+          <Product
+            idToUse={`${idToUse}`}
+            key={`${idToUse}_img`}
+            src={src}
+            full={full}
+            spaceTop={spaceTop}
+            settings={settings}
+            imgDescription={imgDescription}
+            oilRef={oilRef}
+            text={text}
+            {...defaultProps}
+          />
         )}
         {id === VISITED_CELLAR && getVisitedText(subTitle)}
         {type === 'map' && (

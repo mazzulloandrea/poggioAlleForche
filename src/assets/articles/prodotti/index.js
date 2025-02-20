@@ -17,22 +17,32 @@ import img4_en from './foto5_en.png';
 import img5_en from './visita_cantina_en.png';
 import img6_en from './smaltimento_en.png';
 
-import mobile1 from './mobile1.png';
-import mobile2 from './mobile2.png';
-import mobile3 from './mobile3.png';
-import mobile4 from './mobile4.png';
-import mobile5 from './mobile5.png';
-import mobile6 from './mobile6.png';
+import mobile_scarnacuoia from './mobile_scarnacuoia.png';
+import mobile_scarnacuoia_2020 from './mobile_scarnacuoia_2020.png';
+import mobile_scarnacuoia_text from './mobile_scarnacuoia_text.png';
+import mobile_scarnacuoia_txt_2020 from './mobile_scarnacuoia_txt_2020.png';
+import mobile_scarnacuoia_txt_2020_en from './mobile_scarnacuoia_txt_2020_en.png';
+import mobile_brunello from './mobile_brunello.png';
+import mobile_brunello_2020 from './mobile_brunello_2020.png';
+import mobile_brunello_txt from './mobile_brunello_txt.png';
+import mobile_brunello_txt_2020 from './mobile_brunello_txt_2020.png';
+import mobile_brunello_txt_2020_en from './mobile_brunello_txt_2020_en.png';
+import mobile_rosso from './mobile_rosso.png';
+import mobile_rosso_2023 from './mobile_rosso_2023.png';
+import mobile_rosso_txt from './mobile_rosso_txt.png';
+import mobile_rosso_txt_2023 from './mobile_rosso_txt_2023.png';
+import mobile_rosso_txt_2023_en from './mobile_rosso_txt_2023_en.png';
 import mobileMap from './mobile9.png';
 import mobile10 from './mobile10.png';
 import mobile11 from './mobile11.png';
 
-import mobile2_en from './mobile2_en.png';
-import mobile4_en from './mobile4_en.png';
-import mobile6_en from './mobile6_en.png';
+import mobile_scarnacuoia_text_en from './mobile_scarnacuoia_text_en.png';
+import mobile_brunello_txt_en from './mobile_brunello_txt_en.png';
+import mobile_rosso_txt_en from './mobile_rosso_txt_en.png';
 import mobileMap_en from './mobile9_en.png';
 import mobile10_en from './mobile10_en.png';
 import mobile11_en from './mobile11_en.png';
+import mobile_olio_txt from './mobile_olio_txt.png';
 import mobile_olio from './mobile_olio.png';
 import olio from './olio.png';
 
@@ -82,15 +92,79 @@ Although color is not a qualitative parameter, its bright, intense emerald green
 const articleProdotti = {
   ita: {
     mobile: [
-      { type: 'img', src: mobile1, spaceTop: true },
-      { type: 'img', src: mobile2 },
-      { type: 'img', src: mobile3, spaceTop: true },
-      { type: 'img', src: mobile4 },
-      { type: 'img', src: mobile5, spaceTop: true },
-      { type: 'img', src: mobile6 },
       {
         type: 'img',
-        src: mobile_olio,
+        spaceTop: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            {
+              value: '2019',
+              buttonSrc: y2019,
+              buttonSrcActive: y2019_active,
+              src: mobile_scarnacuoia,
+              srcDescr: mobile_scarnacuoia_text,
+            },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: mobile_scarnacuoia_2020,
+              srcDescr: mobile_scarnacuoia_txt_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        spaceTop: true,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            {
+              value: '2019',
+              buttonSrc: y2019,
+              buttonSrcActive: y2019_active,
+              src: mobile_brunello,
+              srcDescr: mobile_brunello_txt,
+            },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: mobile_brunello_2020,
+              srcDescr: mobile_brunello_txt_2020,
+            },
+          ],
+        },
+      },
+      {
+        type: 'img',
+        spaceTop: true,
+        settings: {
+          defaultYearSelected: '2022',
+          years: [
+            {
+              value: '2022',
+              buttonSrc: y2022,
+              buttonSrcActive: y2022_active,
+              src: mobile_rosso,
+              srcDescr: mobile_rosso_txt,
+            },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: mobile_rosso_2023,
+              srcDescr: mobile_rosso_txt_2023,
+            },
+          ],
+        },
+      },
+      { type: 'img', src: mobile_olio, spaceTop: true },
+      {
+        type: 'img',
+        src: mobile_olio_txt,
         id: 'imgDescription',
         imgDescription: olioIta,
       },
@@ -224,15 +298,81 @@ const articleProdotti = {
   },
   eng: {
     mobile: [
-      { type: 'img', src: mobile1, spaceTop: true },
-      { type: 'img', src: mobile2_en },
-      { type: 'img', src: mobile3, spaceTop: true },
-      { type: 'img', src: mobile4_en },
-      { type: 'img', src: mobile5, spaceTop: true },
-      { type: 'img', src: mobile6_en },
       {
         type: 'img',
-        src: mobile_olio,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            {
+              value: '2019',
+              buttonSrc: y2019,
+              buttonSrcActive: y2019_active,
+              src: mobile_scarnacuoia,
+              srcDescr: mobile_scarnacuoia_text_en,
+            },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: mobile_scarnacuoia_2020,
+              srcDescr: mobile_scarnacuoia_txt_2020_en,
+            },
+          ],
+        },
+      },
+      // { type: 'img', src: mobile_brunello, spaceTop: true },
+      {
+        type: 'img',
+        spaceTop: true,
+        // src: mobile_brunello_txt_en,
+        settings: {
+          defaultYearSelected: '2019',
+          years: [
+            {
+              value: '2019',
+              buttonSrc: y2019,
+              buttonSrcActive: y2019_active,
+              src: mobile_brunello,
+              srcDescr: mobile_brunello_txt_en,
+            },
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: mobile_brunello_2020,
+              srcDescr: mobile_brunello_txt_2020_en,
+            },
+          ],
+        },
+      },
+      // { type: 'img', src: mobile_rosso, spaceTop: true },
+      {
+        type: 'img',
+        spaceTop: true,
+        settings: {
+          defaultYearSelected: '2020',
+          years: [
+            {
+              value: '2020',
+              buttonSrc: y2020,
+              buttonSrcActive: y2020_active,
+              src: mobile_rosso,
+              srcDescr: mobile_rosso_txt_en,
+            },
+            {
+              value: '2023',
+              buttonSrc: y2023,
+              buttonSrcActive: y2023_active,
+              src: mobile_rosso_2023,
+              srcDescr: mobile_rosso_txt_2023_en,
+            },
+          ],
+        },
+      },
+      { type: 'img', src: mobile_olio, spaceTop: true },
+      {
+        type: 'img',
+        src: mobile_olio_txt,
         id: 'imgDescription',
         imgDescription: olioEn,
       },
