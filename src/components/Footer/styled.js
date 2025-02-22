@@ -274,7 +274,8 @@ export const ArticleText = styled.p`
       ? props.isportrait
         ? css`
             text-align: center;
-            font-size: 1em;
+            // font-size: 1em;
+            font-size: 0.9em;
             padding-top: 7px;
           `
         : css`

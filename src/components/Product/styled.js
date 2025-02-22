@@ -29,6 +29,7 @@ export const Img = styled.img`
         : css``
       : css``}
 `;
+
 export const ImgDescription = styled.div`
   font-family: 'Times new Roman';
   position: absolute;
@@ -36,13 +37,22 @@ export const ImgDescription = styled.div`
   text-align: center;
   overflow-y: auto;
   // mobile
-  top: 130px;
-  height: calc(100% - 130px);
+  top: 140px;
+  height: calc(100% - 140px);
 
   @media screen and (orientation: landscape) {
     top: 18vw;
     height: calc(100% - 18vw);
   }
+
+  ${props =>
+    (props.ismobile || props.issmallscreen) && props.isportrait
+      ? css`
+          top: 200px;
+          height: calc(100% - 200px);
+        `
+      : css``}
+
   ${props =>
     props.text === 'right'
       ? css`
@@ -82,9 +92,14 @@ export const YearButton = styled.img`
   cursor: pointer;
   ${props =>
     props.ismobile || props.ismini
-      ? css`
-          width: 65px;
-        `
+      ? props.isportrait
+        ? css`
+            width: 65px;
+          `
+        : css`
+            width: 60px;
+            height: 95%;
+          `
       : css``};
   ${props =>
     props.istablet

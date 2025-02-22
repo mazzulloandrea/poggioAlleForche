@@ -70,7 +70,13 @@ const Product = ({
         </YearsButtons>
       )}
       {imgDescription && (
-        <ImgDescription id={`${idToUse}`} key={`${idToUse}_img`} ref={oilRef} text={text}>
+        <ImgDescription
+          id={`${idToUse}`}
+          key={`${idToUse}_img`}
+          ref={oilRef}
+          text={text}
+          {...defaultProps}
+        >
           {imgDescription.split('\n').map((txt, key) => (
             <Multiline key={key}>{txt}</Multiline>
           ))}
