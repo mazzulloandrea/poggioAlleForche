@@ -18,5 +18,5 @@ export {
 } from './constants';
 export { default as isScreenInPortrait } from './screenOrientation';
 export { default as getScreenDimensions } from './screenDimensions';
-export { default as getCookie } from './cookieReader';
+// export { default as getCookie } from './cookieReader';
 export { default as getRouteLabel } from './routeMapping';

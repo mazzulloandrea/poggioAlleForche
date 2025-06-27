@@ -32,9 +32,9 @@ const Viti = ({ lang, setLang }) => {
 
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
 
-  useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Viti' });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Viti' });
+  // }, []);
 
   useEffect(() => {
     setShow(true);

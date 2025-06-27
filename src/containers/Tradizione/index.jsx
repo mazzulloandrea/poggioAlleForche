@@ -23,9 +23,9 @@ const Tradizione = ({ lang, setLang }) => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Tradizione' });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Tradizione' });
+  // }, []);
 
   useEffect(() => {
     setShow(true);

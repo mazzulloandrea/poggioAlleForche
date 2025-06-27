@@ -1,7 +1,15 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { Routes, HashRouter, Route } from 'react-router-dom';
 import { Cover, Tradizione, Viti, Cantina, Prodotti } from './containers';
-import { history, routes, COOKIE_NAME, getCookie, MAP_TAG, VIDEO_TAG, RECYCLE_TAG } from './utils';
+import {
+  history,
+  routes,
+  /*COOKIE_NAME,
+   getCookie, */
+  MAP_TAG,
+  VIDEO_TAG,
+  RECYCLE_TAG,
+} from './utils';
 
 // const Cover = lazy(() => import('./containers/Cover'));
 // const Tradizione = lazy(() => import('./containers/Tradizione'));
@@ -19,11 +27,11 @@ const App = () => {
     lang,
     setLang,
   };
-  if (!getCookie(COOKIE_NAME)) {
-    if (window.location.pathname !== '/') {
-      window.location.pathname = '/';
-    }
-  }
+  // if (!getCookie(COOKIE_NAME)) {
+  //   if (window.location.pathname !== '/') {
+  //     window.location.pathname = '/';
+  //   }
+  // }
 
   return (
     <HashRouter basename="/">

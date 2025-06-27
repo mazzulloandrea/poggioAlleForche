@@ -27,9 +27,9 @@ const Prodotti = ({ lang, setLang }) => {
     setShow(true);
   }, []);
 
-  useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Prodotti' });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Prodotti' });
+  // }, []);
 
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,

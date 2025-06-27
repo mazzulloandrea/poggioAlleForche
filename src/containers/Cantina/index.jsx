@@ -23,9 +23,9 @@ const Cantina = ({ lang, setLang }) => {
     query: `(max-width: ${mobileWidth}px)`,
   });
 
-  useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cantina' });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cantina' });
+  // }, []);
 
   useEffect(() => {
     setShow(true);

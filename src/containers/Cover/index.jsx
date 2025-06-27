@@ -11,15 +11,15 @@ import {
   IndicatorStyled,
   UnderConstruction,
 } from './styled';
-import { CookieComponent } from '../../components';
+// import { CookieComponent } from '../../components';
 import {
   bigScreen,
   mediumScreen,
   tabletWidth,
   mobileWidth,
   isScreenInPortrait,
-  COOKIE_NAME,
-  getCookie,
+  /*COOKIE_NAME,
+  getCookie,*/
 } from '../../utils';
 import { logo, marchio, dicitura, background, arrowDown as indicator } from '../../assets';
 
@@ -27,7 +27,7 @@ const Cover = ({ staticSite, lang, setLang }) => {
   const [step, setStep] = useState(0);
   const [moveUp, setMoveUp] = useState(false);
   const [showCover, setShowCover] = useState(COVER_SHOW);
-  const [cookieAcceptance, setCookieAcceptance] = useState(false);
+  // const [cookieAcceptance, setCookieAcceptance] = useState(false);
 
   const isBigScreen = useMediaQuery({ query: `(min-width: ${bigScreen}px)` });
   const isMediumScreen = useMediaQuery({
@@ -54,9 +54,9 @@ const Cover = ({ staticSite, lang, setLang }) => {
     isPortrait: isScreenInPortrait(),
   });
 
-  useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cover' });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: 'pageview', page: window.location.pathname, title: 'Cover' });
+  // }, []);
 
   useEffect(() => {
     const debouncedHandleResize = () => {
@@ -161,7 +161,7 @@ const Cover = ({ staticSite, lang, setLang }) => {
         src={background}
         showcover={showCover}
         onClick={() => {
-          if (!getCookie(COOKIE_NAME)) return;
+          // if (!getCookie(COOKIE_NAME)) return;
           if (isToAnimate('indicator')) {
             setMoveUp(true);
           }
@@ -219,7 +219,7 @@ const Cover = ({ staticSite, lang, setLang }) => {
       {showCover === COVER_HIDE && (
         <Tradizione dimensions={dimensions} lang={lang} setLang={setLang} />
       )}
-      {<CookieComponent setCookie={setCookieAcceptance} />}
+      {/* {<CookieComponent setCookie={setCookieAcceptance} />} */}
     </>
   );
 };
